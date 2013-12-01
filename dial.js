@@ -1,4 +1,8 @@
 //
+// 回転ダイヤルであらゆるコンテンツを閲覧する
+// 2013/12/1 増井
+// 
+
 //
 // リストのアニメーションをどうするか?
 //  * 現在の状態の<span>リストを作る
@@ -7,25 +11,19 @@
 //   - 消える場合は移動しながらフェードアウト
 //   - 新しく出る場合は移動しながらフェードイン
 //
-//
 
-var data;
 var root = {};
 var curnode;
 var curindex = 0;
 var list;
 var timeout;
-var expandtimeout;
 
 var win = window.open();
-win.location.href = "http://pitecan.com/";
 
 $(function() {
-    $.getJSON("data.json",function(_data) {
-	data = _data;
+    $.getJSON("data.json",function(data) {
 	root.children = data;
 	initdata(data,root,0);
-
 	curnode = root.children[0];
 
 	calc();
@@ -42,31 +40,19 @@ var browserHeight = function(){
     return 0;  
 };
 
-// 現在見ているところを子供まで展開する
-function expand(){
+// 現在見ているところを段階的に展開する
+var expand = function(){
     var newnode = curnode;
-    if(false){
-	while(newnode.children){
-	    newnode = newnode.children[0];
-	}
-	if(curnode != newnode){
-	    curnode = newnode;
-	    calc();
-	    display();
-	}
+    if(newnode.children){
+	newnode = newnode.children[0];
     }
-    else {
-	if(newnode.children){
-	    newnode = newnode.children[0];
-	}
-	if(curnode != newnode){
-	    curnode = newnode;
-	    calc();
-	    display();
-	    expandtimeout = setTimeout(expand,500);
-	}
+    if(curnode != newnode){
+	curnode = newnode;
+	calc();
+	display();
+	timeout = setTimeout(expand,500);
     }
-}
+};
 
 var initdata = function(node,parent,level){
     var i;
@@ -83,7 +69,7 @@ var initdata = function(node,parent,level){
     }
 };
 
-function displine(text,x,y,color,parent){
+var displine = function(text,x,y,color,parent){
     var line;
     line = $('<span>');
     line.css('position','absolute');
@@ -96,9 +82,9 @@ function displine(text,x,y,color,parent){
     line.css('top',String(y));
     line.text(text);
     parent.append(line);
-}
+};
 
-function display(){
+var display = function(){
     var tree;
     var line;
     var node;
@@ -108,7 +94,7 @@ function display(){
     tree = $('body');
     tree.children().remove();
     curnode = list[curindex];
-    // $('#view').attr('src',curnode.url);
+    // $('#view').attr('src',curnode.url); // iframeの場合
     if(curnode.url){
 	win.location.href = curnode.url;
     }
@@ -127,48 +113,34 @@ function display(){
 	node = list[i+curindex];
 	displine(node.title, 10 + node.level * 20, y, '#000' ,tree);
     }
-}
+};
 
-function calc(){
-    var i;
+var calc = function(){
     var node;
     list = {};
     list[0] = curnode;
     curindex = 0;
     node = curnode;
-    for(i=1;node = nextNode(node);i++){
+    for(var i=1;node = nextNode(node);i++){
 	list[i] = node;
     }
     node = curnode;
-    for(i= -1;node = prevNode(node);i--){
+    for(var i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
 }
 
-function nextNode(node){
+var nextNode = function(node){
     var nextnode;
-
-    // 全部たどる場合
-    if(false){
-	nextnode = (node.children ? node.children[0] : node.younger);
-	while(!nextnode && node.parent){
-	    node = node.parent;
-	    nextnode = node.younger;
-	}
-    }
-    // 子供はたどらない場合
-    else {
+    nextnode = node.younger;
+    while(!nextnode && node.parent){
+	node = node.parent;
 	nextnode = node.younger;
-	while(!nextnode && node.parent){
-	    node = node.parent;
-	    nextnode = node.younger;
-	}
     }
-
     return nextnode;
-}
+};
 
-function prevNode(node){
+var prevNode = function(node){
     var prenode = node.elder;
     while(!prenode && node.parent != root){
 	prenode = node.parent;
@@ -177,20 +149,19 @@ function prevNode(node){
 }
 
 $(window).keydown(function(e){
-    clearTimeout(expandtimeout);
     clearTimeout(timeout);
-    if(e.keyCode == 39){
+    if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右
 	if(list[curindex+1]) curindex += 1;
 	timeout = setTimeout(function(){
 	    expand();
 	},1500);
     }
-    else if(e.keyCode == 37){
+    else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左
 	timeout = setTimeout(function(){
 	    expand();
 	},1500);
 	if(list[curindex-1]){
-	    if(list[curindex-1].level < list[curindex].level){
+	    if(list[curindex-1].level < list[curindex].level){ // 親に戻ったときは閉じる
 		curnode = list[curindex-1];
 		calc(false);
 		display();
@@ -203,35 +174,3 @@ $(window).keydown(function(e){
     display();
     return false;
 });
-
-function display___(node){
-    var line = $('<span>');
-    line.css('position','absolute');
-    line.css('left','40');
-    line.css('top','' + browserHeight() / 2);
-    line.text('らいん');
-    $('body').append(line);
-    line.animate({ 
-	width: "80%",
-	//opacity: 0.4,
-	marginLeft: "0.6in",
-	fontSize: "20em", 
-	borderWidth: "10px"
-    }, 600 );
-    line = $('<span>');
-    line.css('position','absolute');
-    line.css('width','500');
-    line.css('left','40');
-    line.css('top','' + (browserHeight() / 2 + 100));
-    line.text('らいん!!!!');
-    $('body').append(line);
-    line.animate({ 
-	width: "80%",
-	//opacity: 0.4,
-	marginLeft: "0.6in",
-	fontSize: "20em", 
-	borderWidth: "10px"
-    }, 1200 );
-}
-
-
