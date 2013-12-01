@@ -2,12 +2,11 @@
 // 回転ダイヤルであらゆるコンテンツを閲覧する
 // 2013/12/1 増井
 // 
-// 選択したコンテンツをiframeに表示できないことが多いので別ウィンドウを開く。
-// (YouTube, Cookpadなど)
-//
-// TODO:
-//  * リストのアニメーション
+// Issues:
+//  * リストのアニメーション (必要か?)
 //  * キーワードからの写真検索
+//  * 富豪的実装のスリム化
+//  * Wikipedia, 辞書などコンテンツ増強
 //
 
 var list;                 // 表示エントリのリスト. list[0]が表示中心
@@ -16,7 +15,7 @@ var timeout;
 var StepTimeout = 600;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
-var win = window.open();  // コンテンツ表示のために別ウィンドウを開く
+var win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 
 $(function() {
     $.getJSON("data.json",function(data) {
@@ -107,7 +106,7 @@ var display = function(){ // calc()で計算したリストを表示
 var calc = function(centernode){ // centernodeを中心にlistを再計算して表示
     var node;
     var i;
-    list = {};
+    list = {}; // 毎回富豪的にリストを生成
     list[0] = centernode;
     node = centernode;
     for(i=1;node = nextNode(node);i++){
