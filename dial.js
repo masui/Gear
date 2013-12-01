@@ -15,7 +15,7 @@ var curindex = 0;
 var list;
 var timeout;
 
-var StepTimeout = 500;    // 段階的展開のタイムアウト
+var StepTimeout = 600;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
 var win = window.open();
@@ -84,7 +84,8 @@ var display = function(){
     var tree;
     var line;
     var node;
-    var y,i;
+    var y;
+    var i;
     var center = browserHeight() / 2;
     // tree = $('#tree');
     tree = $('body');
@@ -113,22 +114,22 @@ var display = function(){
 
 var calc = function(){
     var node;
+    var i;
     list = {};
     list[0] = curnode;
     curindex = 0;
     node = curnode;
-    for(var i=1;node = nextNode(node);i++){
+    for(i=1;node = nextNode(node);i++){
 	list[i] = node;
     }
     node = curnode;
-    for(var i= -1;node = prevNode(node);i--){
+    for(i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
 };
 
 var nextNode = function(node){
-    var nextnode;
-    nextnode = node.younger;
+    var nextnode = node.younger;
     while(!nextnode && node.parent){
 	node = node.parent;
 	nextnode = node.younger;
