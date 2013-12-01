@@ -10,12 +10,10 @@
 //  * キーワードからの写真検索
 //
 
-var root = {};
-var curnode;
-var curindex = 0;
-var list;
-var timeout;
+var list;                 // 表示エントリのリスト. 添字が負数〜正数
+var curindex = 0;         // 現在見ているエントリのインデクス
 
+var timeout;
 var StepTimeout = 600;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
@@ -23,11 +21,8 @@ var win = window.open();
 
 $(function() {
     $.getJSON("data.json",function(data) {
-	root.children = data;
-	initdata(data,root,0);
-	curnode = root.children[0];
-
-	calc();
+	initdata(data,null,0);
+	calc(data[0]);
 	display();
 	timeout = setTimeout(expand,ExpandTimeout);
     });
@@ -42,9 +37,8 @@ var browserHeight = function(){
 // 現在見ているところを段階的に展開する
 var expand = function(){
     timeout = null;
-    if(curnode.children){
-	curnode = curnode.children[0];
-	calc();
+    if(list[curindex].children){
+	calc(list[curindex].children[0]);
 	display();
 	timeout = setTimeout(expand,StepTimeout);
     }
@@ -76,6 +70,7 @@ var displine = function(text,level,y,color,bold,parent,showloading){
     if(bold) line.css('font-weight','bold');
     line.text('・' + text);
     if(showloading){
+	// http://preloaders.net/ で作成したロード中アイコンを利用
 	line.append($('<span>&nbsp;</span>'));
 	line.append($('<img src="loading.gif" style="height:12pt;">'));
     }
@@ -91,9 +86,8 @@ var display = function(){
     var center = browserHeight() / 2;
     body = $('body');
     body.children().remove();
-    curnode = list[curindex];
-    if(curnode.url){
-	win.location.href = curnode.url;
+    if(list[curindex].url){
+	win.location.href = list[curindex].url;
     }
 
     node = list[curindex];
@@ -112,7 +106,7 @@ var display = function(){
     }
 };
 
-var calc = function(){
+var calc = function(curnode){ // curnodeを中心にlistを再計算
     var node;
     var i;
     list = {};
@@ -138,12 +132,12 @@ var nextNode = function(node){
 };
 
 var prevNode = function(node){
-    var prenode = node.elder;
-    while(!prenode && node.parent != root){
-	prenode = node.parent;
+    var prevnode = node.elder;
+    while(!prevnode && node.parent){
+	prevnode = node.parent;
     }
-    return prenode;
-}
+    return prevnode;
+};
 
 $(window).keydown(function(e){
     clearTimeout(timeout);
@@ -155,8 +149,7 @@ $(window).keydown(function(e){
 	timeout = setTimeout(expand,ExpandTimeout);
 	if(list[curindex-1]){
 	    if(list[curindex-1].level < list[curindex].level){ // 親に戻ったときは閉じる
-		curnode = list[curindex-1];
-		calc();
+		calc(list[curindex-1]);
 	    }
 	    else {
 		curindex -= 1;
