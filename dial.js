@@ -56,7 +56,7 @@ var initdata = function(nodes,parent,level){
 
 var displine = function(text,level,y,color,bold,parent,showloading){
     var line;
-    var x = 10 + level * 20;
+    var x = 5 + level * 20;
     line = $('<span>');
     line.attr('class','line');
     line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
@@ -106,16 +106,17 @@ var display = function(){ // calc()で計算したリストを表示
 var calc = function(centernode){ // centernodeを中心にlistを再計算して表示
     var node;
     var i;
-    list = {}; // 毎回富豪的にリストを生成
-    list[0] = centernode;
+    var newlist = {}; // 毎回富豪的にリストを生成
+    newlist[0] = centernode;
     node = centernode;
     for(i=1;node = nextNode(node);i++){
-	list[i] = node;
+	newlist[i] = node;
     }
     node = centernode;
     for(i= -1;node = prevNode(node);i--){
-	list[i] = node;
+	newlist[i] = node;
     }
+    list = newlist; // listからnewlistへの変化をアニメーションしたい
     display();
 };
 
