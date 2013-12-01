@@ -43,6 +43,7 @@ var browserHeight = function(){
 
 // 現在見ているところを段階的に展開する
 var expand = function(){
+    timeout = null;
     var newnode = curnode;
     if(newnode.children){
 	newnode = newnode.children[0];
@@ -69,7 +70,7 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var displine = function(text,level,y,color,parent){
+var displine = function(text,level,y,color,parent,showloading){
     var line;
     var x = 10 + level * 20;
     line = $('<span>');
@@ -79,6 +80,15 @@ var displine = function(text,level,y,color,parent){
     line.css('color',color);
     line.css('top',String(y));
     line.text('・' + text);
+    if(showloading){
+	if(curnode.children){
+	    line.append($('<span>&nbsp;</span>'));
+	    var loading = $('<img>');
+	    loading.attr('src','loading.gif');
+	    loading.css('height','12pt');
+	    line.append(loading);
+	}
+    }
     parent.append(line);
 };
 
@@ -97,18 +107,18 @@ var display = function(){
     }
 
     node = list[curindex];
-    displine(node.title, node.level, center, '#00f' ,body);
+    displine(node.title, node.level, center, '#00f', body, true);
     for(i=1;list[i+curindex];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i+curindex];
-	displine(node.title, node.level, y, '#000' ,body);
+	displine(node.title, node.level, y, '#000', body, false);
     }
     for(i= -1;list[i+curindex];i--){
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i+curindex];
-	displine(node.title, node.level, y, '#000' ,body);
+	displine(node.title, node.level, y, '#000', body, false);
     }
 };
 
