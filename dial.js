@@ -80,7 +80,19 @@ var initdata = function(node,parent,level){
     }
 };
 
-function displine(element,height,indent){
+function displine(text,x,y,color,parent){
+    var line;
+    line = $('<span>');
+    line.css('position','absolute');
+    line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
+    line.css('text-overflow','ellipsis');
+    line.css('white-space','nowrap');
+    line.css('overflow','hidden');
+    line.css('left',String(x));
+    line.css('color',color);
+    line.css('top',String(y));
+    line.text(text);
+    parent.append(line);
 }
 
 function display(){
@@ -88,34 +100,25 @@ function display(){
     var line;
     var node;
     var y,i;
+    var center = browserHeight() / 2;
     tree = $('#tree');
     tree.children().remove();
     curnode = list[curindex];
-    for(i=0;list[i+curindex];i++){
-	y = browserHeight() / 2 + i * 20;
-	if(y > browserHeight()) break;
+    $('#view').attr('src',curnode.url);
+
+    node = list[curindex];
+    displine(node.title, 10 + node.level * 20, center, '#00f', tree);
+    for(i=1;list[i+curindex];i++){
+	y = center + i * 20;
+	if(y > browserHeight() - 40) break;
 	node = list[i+curindex];
-	line = $('<span>');
-	line.css('position','absolute');
-	line.css('width','500');
-	line.css('left',String(10 + node.level * 20));
-	line.css('color',i == 0 ? '#00f' : '#000');
-	line.css('top',String(y));
-	line.text(node.title);
-	tree.append(line);
+	displine(node.title, 10 + node.level * 20, y, '#000' ,tree);
     }
     for(i= -1;list[i+curindex];i--){
-	y = browserHeight() / 2 + i * 20;
-	if(y > browserHeight()) break;
+	y = center + i * 20;
+	if(y < 0) break;
 	node = list[i+curindex];
-	line = $('<span>');
-	line.css('position','absolute');
-	line.css('width','500');
-	line.css('left',String(10 + node.level * 20));
-	line.css('color','#000');
-	line.css('top',String(y));
-	line.text(node.title);
-	tree.append(line);
+	displine(node.title, 10 + node.level * 20, y, '#000' ,tree);
     }
 }
 
@@ -169,7 +172,6 @@ function prevNode(node){
 $(window).keydown(function(e){
     clearTimeout(expandtimeout);
     clearTimeout(timeout);
-    $('#view').src = list[curindex].url;
     if(e.keyCode == 39){
 	if(list[curindex+1]) curindex += 1;
 	timeout = setTimeout(function(){
