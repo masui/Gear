@@ -2,6 +2,10 @@ body {
 	background-color: #ddf;
 }
 
+span {
+	font-size: 11pt;
+}
+
 .line {
 	position: absolute;
 	text-overflow: ellipsis;
