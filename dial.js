@@ -54,16 +54,16 @@ var expand = function(){
     }
 };
 
-var initdata = function(node,parent,level){
-    for(var i=0;i<node.length;i++){
-	var n = node[i];
-	n.number = i;
-	n.level = level;
-	n.elder = (i > 0 ? node[i-1] : null);
-	n.younger = (i < node.length-1 ? node[i+1] : null);
-	n.parent = parent;
-	if(n.children){
-	    initdata(n.children,n,level+1);
+var initdata = function(nodes,parent,level){
+    for(var i=0;i<nodes.length;i++){
+	var node = nodes[i];
+	node.number = i;
+	node.level = level;
+	node.elder = (i > 0 ? nodes[i-1] : null);
+	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
+	node.parent = parent;
+	if(node.children){
+	    initdata(node.children,node,level+1);
 	}
     }
 };
