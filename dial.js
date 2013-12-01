@@ -22,7 +22,6 @@ $(function() {
     $.getJSON("data.json",function(data) {
 	initdata(data,null,0);
 	calc(data[0]);
-	display();
 	timeout = setTimeout(expand,ExpandTimeout);
     });
 });
@@ -38,7 +37,6 @@ var expand = function(){
     timeout = null;
     if(list[0].children){
 	calc(list[0].children[0]);
-	display();
 	timeout = setTimeout(expand,StepTimeout);
     }
 };
@@ -76,7 +74,7 @@ var displine = function(text,level,y,color,bold,parent,showloading){
     parent.append(line);
 };
 
-var display = function(){
+var display = function(){ // calc()で計算したリストを表示
     var body;
     var line;
     var node;
@@ -105,7 +103,7 @@ var display = function(){
     }
 };
 
-var calc = function(centernode){ // centernodeを中心にlistを再計算
+var calc = function(centernode){ // centernodeを中心にlistを再計算して表示
     var node;
     var i;
     list = {};
@@ -118,6 +116,7 @@ var calc = function(centernode){ // centernodeを中心にlistを再計算
     for(i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
+    display();
 };
 
 var nextNode = function(node){
@@ -143,14 +142,12 @@ $(window).keydown(function(e){
 	timeout = setTimeout(expand,ExpandTimeout);
 	if(list[1]){
 	    calc(list[1]);
-	    display();
 	}
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
 	timeout = setTimeout(expand,ExpandTimeout);
 	if(list[-1]){
 	    calc(list[-1]);
-	    display();
 	}
     }
     return false;
