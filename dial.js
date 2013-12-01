@@ -16,7 +16,7 @@ var curindex = 0;
 var list;
 var timeout;
 
-var StepTimeout = 600;    // 段階的展開のタイムアウト
+var StepTimeout = 800;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
 var win = window.open();
@@ -70,7 +70,7 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var displine = function(text,level,y,color,parent,showloading){
+var displine = function(text,level,y,color,bold,parent,showloading){
     var line;
     var x = 10 + level * 20;
     line = $('<span>');
@@ -79,6 +79,7 @@ var displine = function(text,level,y,color,parent,showloading){
     line.css('left',String(x));
     line.css('color',color);
     line.css('top',String(y));
+    if(bold) line.css('font-weight','bold');
     line.text('・' + text);
     if(showloading){
 	if(curnode.children){
@@ -107,18 +108,18 @@ var display = function(){
     }
 
     node = list[curindex];
-    displine(node.title, node.level, center, '#00f', body, true);
+    displine(node.title, node.level, center, '#00f', true, body, true);
     for(i=1;list[i+curindex];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i+curindex];
-	displine(node.title, node.level, y, '#000', body, false);
+	displine(node.title, node.level, y, '#000', false, body, false);
     }
     for(i= -1;list[i+curindex];i--){
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i+curindex];
-	displine(node.title, node.level, y, '#000', body, false);
+	displine(node.title, node.level, y, '#000', false, body, false);
     }
 };
 
