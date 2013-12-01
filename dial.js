@@ -7,8 +7,7 @@
 //
 // TODO:
 //  * リストのアニメーション
-//  * 展開するぞ、という雰囲気をアニメGIFで表現する
-//  * キーワードからの検索
+//  * キーワードからの写真検索
 //
 
 var root = {};
@@ -30,9 +29,7 @@ $(function() {
 
 	calc();
 	display();
-	timeout = setTimeout(function(){
-	    expand();
-	},ExpandTimeout);
+	timeout = setTimeout(expand,ExpandTimeout);
     });
 });
 
@@ -45,12 +42,8 @@ var browserHeight = function(){
 // 現在見ているところを段階的に展開する
 var expand = function(){
     timeout = null;
-    var newnode = curnode;
-    if(newnode.children){
-	newnode = newnode.children[0];
-    }
-    if(curnode != newnode){
-	curnode = newnode;
+    if(curnode.children){
+	curnode = curnode.children[0];
 	calc();
 	display();
 	timeout = setTimeout(expand,StepTimeout);
@@ -83,13 +76,8 @@ var displine = function(text,level,y,color,bold,parent,showloading){
     if(bold) line.css('font-weight','bold');
     line.text('・' + text);
     if(showloading){
-	if(curnode.children){
-	    line.append($('<span>&nbsp;</span>'));
-	    var loading = $('<img>');
-	    loading.attr('src','loading.gif');
-	    loading.css('height','12pt');
-	    line.append(loading);
-	}
+	line.append($('<span>&nbsp;</span>'));
+	line.append($('<img src="loading.gif" style="height:12pt;">'));
     }
     parent.append(line);
 };
@@ -109,7 +97,7 @@ var display = function(){
     }
 
     node = list[curindex];
-    displine(node.title, node.level, center, '#00f', true, body, true);
+    displine(node.title, node.level, center, '#00f', true, body, node.children);
     for(i=1;list[i+curindex];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
@@ -160,20 +148,15 @@ var prevNode = function(node){
 $(window).keydown(function(e){
     clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
+	timeout = setTimeout(expand,ExpandTimeout);
 	if(list[curindex+1]) curindex += 1;
-	timeout = setTimeout(function(){
-	    expand();
-	},ExpandTimeout);
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
-	timeout = setTimeout(function(){
-	    expand();
-	},ExpandTimeout);
+	timeout = setTimeout(expand,ExpandTimeout);
 	if(list[curindex-1]){
 	    if(list[curindex-1].level < list[curindex].level){ // 親に戻ったときは閉じる
 		curnode = list[curindex-1];
-		calc(false);
-		display();
+		calc();
 	    }
 	    else {
 		curindex -= 1;
