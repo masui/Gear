@@ -8,6 +8,7 @@
 // TODO:
 //  * リストのアニメーション
 //  * 展開するぞ、という雰囲気をアニメGIFで表現する
+//  * キーワードからの検索
 //
 
 var root = {};
@@ -16,7 +17,7 @@ var curindex = 0;
 var list;
 var timeout;
 
-var StepTimeout = 800;    // 段階的展開のタイムアウト
+var StepTimeout = 600;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
 var win = window.open();
