@@ -7,6 +7,7 @@
 //
 // TODO:
 //  * リストのアニメーション
+//  * 展開するぞ、という雰囲気をアニメGIFで表現する
 //
 
 var root = {};
@@ -68,47 +69,46 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var displine = function(text,x,y,color,parent){
+var displine = function(text,level,y,color,parent){
     var line;
+    var x = 10 + level * 20;
     line = $('<span>');
     line.attr('class','line');
     line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
     line.css('left',String(x));
     line.css('color',color);
     line.css('top',String(y));
-    line.text(text);
+    line.text('・' + text);
     parent.append(line);
 };
 
 var display = function(){
-    var tree;
+    var body;
     var line;
     var node;
     var y;
     var i;
     var center = browserHeight() / 2;
-    // tree = $('#tree');
-    tree = $('body');
-    tree.children().remove();
+    body = $('body');
+    body.children().remove();
     curnode = list[curindex];
-    // $('#view').attr('src',curnode.url); // iframeの場合
     if(curnode.url){
 	win.location.href = curnode.url;
     }
 
     node = list[curindex];
-    displine(node.title, 10 + node.level * 20, center, '#00f', tree);
+    displine(node.title, node.level, center, '#00f' ,body);
     for(i=1;list[i+curindex];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i+curindex];
-	displine(node.title, 10 + node.level * 20, y, '#000' ,tree);
+	displine(node.title, node.level, y, '#000' ,body);
     }
     for(i= -1;list[i+curindex];i--){
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i+curindex];
-	displine(node.title, 10 + node.level * 20, y, '#000' ,tree);
+	displine(node.title, node.level, y, '#000' ,body);
     }
 };
 
