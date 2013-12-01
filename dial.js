@@ -16,7 +16,7 @@ var timeout;
 var StepTimeout = 600;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
-var win = window.open();
+var win = window.open();  // コンテンツ表示のために別ウィンドウを開く
 
 $(function() {
     $.getJSON("data.json",function(data) {
@@ -32,7 +32,7 @@ var browserHeight = function(){ // jQuery式の書き方がありそうだが?
     return 0;  
 };
 
-// 現在見ているところを段階的に展開する
+// 表示中心を段階的に展開する
 var expand = function(){
     timeout = null;
     if(list[0].children){
@@ -82,7 +82,8 @@ var display = function(){ // calc()で計算したリストを表示
     var i;
     var center = browserHeight() / 2;
     body = $('body');
-    body.children().remove();
+    body.children().remove(); // 毎回富豪的にDOMを生成する
+
     if(list[0].url){
 	win.location.href = list[0].url;
     }
