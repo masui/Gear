@@ -2,14 +2,11 @@
 // 回転ダイヤルであらゆるコンテンツを閲覧する
 // 2013/12/1 増井
 // 
-
+// 選択したコンテンツをiframeに表示できないことが多いので別ウィンドウを開く。
+// (YouTube, Cookpadなど)
 //
-// リストのアニメーションをどうするか?
-//  * 現在の状態の<span>リストを作る
-//  * 次の状態の<span>リストを作る
-//   - 同じ<span>が移動する場合はアニメーション移動
-//   - 消える場合は移動しながらフェードアウト
-//   - 新しく出る場合は移動しながらフェードイン
+// TODO:
+//  * リストのアニメーション
 //
 
 var root = {};
@@ -17,6 +14,9 @@ var curnode;
 var curindex = 0;
 var list;
 var timeout;
+
+var StepTimeout = 500;    // 段階的展開のタイムアウト
+var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
 var win = window.open();
 
@@ -30,7 +30,7 @@ $(function() {
 	display();
 	timeout = setTimeout(function(){
 	    expand();
-	},1000);
+	},ExpandTimeout);
     });
 });
 
@@ -50,7 +50,7 @@ var expand = function(){
 	curnode = newnode;
 	calc();
 	display();
-	timeout = setTimeout(expand,500);
+	timeout = setTimeout(expand,StepTimeout);
     }
 };
 
@@ -73,12 +73,6 @@ var displine = function(text,x,y,color,parent){
     line = $('<span>');
     line.attr('class','line');
     line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
-
-    //line.css('position','absolute');
-    //line.css('text-overflow','ellipsis');
-    //line.css('white-space','nowrap');
-    //line.css('overflow','hidden');
-
     line.css('left',String(x));
     line.css('color',color);
     line.css('top',String(y));
@@ -152,16 +146,16 @@ var prevNode = function(node){
 
 $(window).keydown(function(e){
     clearTimeout(timeout);
-    if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右
+    if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	if(list[curindex+1]) curindex += 1;
 	timeout = setTimeout(function(){
 	    expand();
-	},1500);
+	},ExpandTimeout);
     }
-    else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左
+    else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
 	timeout = setTimeout(function(){
 	    expand();
-	},1500);
+	},ExpandTimeout);
 	if(list[curindex-1]){
 	    if(list[curindex-1].level < list[curindex].level){ // 親に戻ったときは閉じる
 		curnode = list[curindex-1];
