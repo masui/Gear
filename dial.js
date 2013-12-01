@@ -55,8 +55,7 @@ var expand = function(){
 };
 
 var initdata = function(node,parent,level){
-    var i;
-    for(i=0;i<node.length;i++){
+    for(var i=0;i<node.length;i++){
 	var n = node[i];
 	n.number = i;
 	n.level = level;
@@ -128,7 +127,7 @@ var calc = function(){
     for(var i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
-}
+};
 
 var nextNode = function(node){
     var nextnode;
