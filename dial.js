@@ -15,18 +15,21 @@ var curnode;
 var curindex = 0;
 var list;
 var timeout;
+var expandtimeout;
 
 $(function() {
     $.getJSON("data.json",function(_data) {
 	data = _data;
 	root.children = data;
-	initdata(data,root,1);
+	initdata(data,root,0);
 
 	curnode = root.children[0];
 
-	calc(false);
+	calc();
 	display();
-	expand();
+	timeout = setTimeout(function(){
+	    expand();
+	},1000);
     });
 });
 
@@ -39,13 +42,26 @@ var browserHeight = function(){
 // 現在見ているところを子供まで展開する
 function expand(){
     var newnode = curnode;
-    while(newnode.children){
-	newnode = newnode.children[0];
+    if(false){
+	while(newnode.children){
+	    newnode = newnode.children[0];
+	}
+	if(curnode != newnode){
+	    curnode = newnode;
+	    calc();
+	    display();
+	}
     }
-    if(curnode != newnode){
-	curnode = newnode;
-	calc(false);
-	display();
+    else {
+	if(newnode.children){
+	    newnode = newnode.children[0];
+	}
+	if(curnode != newnode){
+	    curnode = newnode;
+	    calc();
+	    display();
+	    expandtimeout = setTimeout(expand,500);
+	}
     }
 }
 
@@ -68,12 +84,12 @@ function displine(element,height,indent){
 }
 
 function display(){
-    var body;
+    var tree;
     var line;
     var node;
     var y,i;
-    body = $('body');
-    body.children().remove();
+    tree = $('#tree');
+    tree.children().remove();
     curnode = list[curindex];
     for(i=0;list[i+curindex];i++){
 	y = browserHeight() / 2 + i * 20;
@@ -82,11 +98,11 @@ function display(){
 	line = $('<span>');
 	line.css('position','absolute');
 	line.css('width','500');
-	line.css('left',String(40 + node.level * 40));
+	line.css('left',String(10 + node.level * 20));
 	line.css('color',i == 0 ? '#00f' : '#000');
 	line.css('top',String(y));
 	line.text(node.title);
-	body.append(line);
+	tree.append(line);
     }
     for(i= -1;list[i+curindex];i--){
 	y = browserHeight() / 2 + i * 20;
@@ -95,35 +111,35 @@ function display(){
 	line = $('<span>');
 	line.css('position','absolute');
 	line.css('width','500');
-	line.css('left',String(40 + node.level * 40));
+	line.css('left',String(10 + node.level * 20));
 	line.css('color','#000');
 	line.css('top',String(y));
 	line.text(node.title);
-	body.append(line);
+	tree.append(line);
     }
 }
 
-function calc(exp){
+function calc(){
     var i;
     var node;
     list = {};
     list[0] = curnode;
     curindex = 0;
     node = curnode;
-    for(i=1;node = nextNode(node,exp);i++){
+    for(i=1;node = nextNode(node);i++){
 	list[i] = node;
     }
     node = curnode;
-    for(i= -1;node = prevNode(node,exp);i--){
+    for(i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
 }
 
-function nextNode(node,exp){
+function nextNode(node){
     var nextnode;
 
     // 全部たどる場合
-    if(exp){
+    if(false){
 	nextnode = (node.children ? node.children[0] : node.younger);
 	while(!nextnode && node.parent){
 	    node = node.parent;
@@ -151,18 +167,16 @@ function prevNode(node){
 }
 
 $(window).keydown(function(e){
-//    timeout = setTimeout(function(){
-//	expand();
-//    },1500);
+    clearTimeout(expandtimeout);
+    clearTimeout(timeout);
+    $('#view').src = list[curindex].url;
     if(e.keyCode == 39){
 	if(list[curindex+1]) curindex += 1;
-	clearTimeout(timeout);
 	timeout = setTimeout(function(){
 	    expand();
 	},1500);
     }
     else if(e.keyCode == 37){
-	clearTimeout(timeout);
 	timeout = setTimeout(function(){
 	    expand();
 	},1500);
