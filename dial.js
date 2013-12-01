@@ -17,6 +17,9 @@ var list;
 var timeout;
 var expandtimeout;
 
+var win = window.open();
+win.location.href = "http://pitecan.com/";
+
 $(function() {
     $.getJSON("data.json",function(_data) {
 	data = _data;
@@ -101,10 +104,14 @@ function display(){
     var node;
     var y,i;
     var center = browserHeight() / 2;
-    tree = $('#tree');
+    // tree = $('#tree');
+    tree = $('body');
     tree.children().remove();
     curnode = list[curindex];
-    $('#view').attr('src',curnode.url);
+    // $('#view').attr('src',curnode.url);
+    if(curnode.url){
+	win.location.href = curnode.url;
+    }
 
     node = list[curindex];
     displine(node.title, 10 + node.level * 20, center, '#00f', tree);
