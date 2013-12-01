@@ -1,0 +1,11 @@
+body {
+	background-color: #ff8;
+}
+
+.line {
+	position: absolute;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+

@@ -71,11 +71,14 @@ var initdata = function(node,parent,level){
 var displine = function(text,x,y,color,parent){
     var line;
     line = $('<span>');
-    line.css('position','absolute');
+    line.attr('class','line');
     line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
-    line.css('text-overflow','ellipsis');
-    line.css('white-space','nowrap');
-    line.css('overflow','hidden');
+
+    //line.css('position','absolute');
+    //line.css('text-overflow','ellipsis');
+    //line.css('white-space','nowrap');
+    //line.css('overflow','hidden');
+
     line.css('left',String(x));
     line.css('color',color);
     line.css('top',String(y));
