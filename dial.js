@@ -10,8 +10,7 @@
 //  * キーワードからの写真検索
 //
 
-var list;                 // 表示エントリのリスト. 添字が負数〜正数
-var curindex = 0;         // 現在見ているエントリのインデクス
+var list;                 // 表示エントリのリスト. list[0]が表示中心
 
 var timeout;
 var StepTimeout = 600;    // 段階的展開のタイムアウト
@@ -37,8 +36,8 @@ var browserHeight = function(){
 // 現在見ているところを段階的に展開する
 var expand = function(){
     timeout = null;
-    if(list[curindex].children){
-	calc(list[curindex].children[0]);
+    if(list[0].children){
+	calc(list[0].children[0]);
 	display();
 	timeout = setTimeout(expand,StepTimeout);
     }
@@ -86,37 +85,36 @@ var display = function(){
     var center = browserHeight() / 2;
     body = $('body');
     body.children().remove();
-    if(list[curindex].url){
-	win.location.href = list[curindex].url;
+    if(list[0].url){
+	win.location.href = list[0].url;
     }
 
-    node = list[curindex];
+    node = list[0];
     displine(node.title, node.level, center, '#00f', true, body, node.children);
-    for(i=1;list[i+curindex];i++){
+    for(i=1;list[i];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
-	node = list[i+curindex];
+	node = list[i];
 	displine(node.title, node.level, y, '#000', false, body, false);
     }
-    for(i= -1;list[i+curindex];i--){
+    for(i= -1;list[i];i--){
 	y = center + i * 20;
 	if(y < 0) break;
-	node = list[i+curindex];
+	node = list[i];
 	displine(node.title, node.level, y, '#000', false, body, false);
     }
 };
 
-var calc = function(curnode){ // curnodeを中心にlistを再計算
+var calc = function(centernode){ // centernodeを中心にlistを再計算
     var node;
     var i;
     list = {};
-    list[0] = curnode;
-    curindex = 0;
-    node = curnode;
+    list[0] = centernode;
+    node = centernode;
     for(i=1;node = nextNode(node);i++){
 	list[i] = node;
     }
-    node = curnode;
+    node = centernode;
     for(i= -1;node = prevNode(node);i--){
 	list[i] = node;
     }
@@ -143,19 +141,17 @@ $(window).keydown(function(e){
     clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	timeout = setTimeout(expand,ExpandTimeout);
-	if(list[curindex+1]) curindex += 1;
+	if(list[1]){
+	    calc(list[1]);
+	    display();
+	}
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
 	timeout = setTimeout(expand,ExpandTimeout);
-	if(list[curindex-1]){
-	    if(list[curindex-1].level < list[curindex].level){ // 親に戻ったときは閉じる
-		calc(list[curindex-1]);
-	    }
-	    else {
-		curindex -= 1;
-	    }
+	if(list[-1]){
+	    calc(list[-1]);
+	    display();
 	}
     }
-    display();
     return false;
 });
