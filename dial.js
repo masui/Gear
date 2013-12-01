@@ -12,6 +12,7 @@
 var data;
 var root = {};
 var curnode;
+var list;
 
 $(function() {
     $.getJSON("data.json",function(_data) {
@@ -20,7 +21,9 @@ $(function() {
 	initdata(data,root,1);
 
 	curnode = root.children[0];
-	// display();
+
+	calc();
+	display();
     });
 });
 
@@ -48,39 +51,56 @@ var initdata = function(node,parent,level){
 function displine(element,height,indent){
 }
 
-function nextNode(){
-    var node = curnode;
+function display(){
+}
+
+function calc(){
+    var i;
+    var node;
+    list = {};
+    list[0] = curnode;
+    node = curnode;
+    for(i=1;node = nextNode(node);i++){
+	list[i] = node;
+    }
+    node = curnode;
+    for(i= -1;node = prevNode(node);i--){
+	list[i] = node;
+    }
+}
+
+function nextNode(node){
     var nextnode;
     nextnode = (node.children ? node.children[0] : node.younger);
     while(!nextnode && node.parent){
 	node = node.parent;
 	nextnode = node.younger;
     }
-    if(nextnode) curnode = nextnode;
-    $("#title").text(curnode.title);
+    return nextnode;
 }
 
-function prevNode(){
-    var node = curnode;
-    var nextnode = node.elder;
-    while(!nextnode && node.parent != root){
-	nextnode = node.parent;
+function prevNode(node){
+    var prenode = node.elder;
+    while(!prenode && node.parent != root){
+	prenode = node.parent;
     }
-    if(nextnode) curnode = nextnode;
-    $("#title").text(curnode.title);
+    return prenode;
 }
 
 $(window).keydown(function(e){
-	if(e.keyCode == 39){
-	    nextNode();
-	}
-	else if(e.keyCode == 37){
-	    prevNode();
-	}
-	return false;
-    });
+    if(e.keyCode == 39){
+	curnode = nextNode(curnode) || curnode;
+	$("#title").text(curnode.title);
+    }
+    else if(e.keyCode == 37){
+	curnode = prevNode(curnode) || curnode;
+	$("#title").text(curnode.title);
+    }
+    display();
+    return false;
+});
 
-function display(node){
+function display___(node){
     var line = $('<span>');
     line.css('position','absolute');
     line.css('left','40');
