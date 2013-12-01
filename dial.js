@@ -26,7 +26,7 @@ $(function() {
     });
 });
 
-var browserHeight = function(){  
+var browserHeight = function(){ // jQuery式の書き方がありそうだが?
     if(window.innerHeight){ return window.innerHeight; }  
     else if(document.body){ return document.body.clientHeight; }  
     return 0;  
