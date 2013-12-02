@@ -9,12 +9,18 @@
 //  * Wikipedia, 辞書などコンテンツ増強
 //
 
-var list;                 // 表示エントリのリスト. list[0]が表示中心
+var doanimation = true;
+var showcontents = false;
+
+var list = {};                 // 表示エントリのリスト. list[0]が表示中心
 var lines;
+
+var shrinking = false;
 
 var timeout;
 var StepTimeout = 800;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
+var AnimationTime = 300;
 
 var win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 
@@ -35,6 +41,7 @@ var browserHeight = function(){ // jQuery式の書き方がありそうだが?
 // 表示中心を段階的に展開する
 var expand = function(){
     timeout = null;
+    shrinking = false;
     if(list[0].children){
 	calc(list[0].children[0]);
 	timeout = setTimeout(expand,StepTimeout);
@@ -73,8 +80,7 @@ var displine = function(node,ind,y,color,bold,parent,showloading){
     }
     parent.append(line);
 
-    //if(oldlines) line.hide();
-    line.hide();
+    if(doanimation) line.hide();
     lines[ind] = line;
     node.line = line; // ???
 };
@@ -91,32 +97,34 @@ var display = function(newlist){ // calc()で計算したリストを表示
     lines = {};
 
     var node2index = {};
-    var posy = {};
 
     var body;
     var line;
     var node;
     var y;
     var i,j,k;
+    var parent;
     var center = browserHeight() / 2;
     body = $('body');
-    //body.children().remove(); // 毎回富豪的にDOMを生成する
+    if(!doanimation){
+	body.children().remove(); // 毎回富豪的にDOMを生成する
+    }
 
     // ウィンドウにコンテンツ表示
-    //if(list[0].url){
-    //	win.location.href = list[0].url;
-    //}
+    if(list[0].url){
+	if(showcontents){
+    	    win.location.href = list[0].url;
+	}
+    }
 
-    // 新しいノード表示位置計算
+    // 新しいノードの表示位置計算
     node = list[0];
-    posy[0] = center;
     node2index[nodestr(node)] = 0;
     displine(node, 0, center, '#00f', true, body, node.children);
     for(i=1;list[i];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i];
-	posy[i] = y;
 	node2index[nodestr(node)] = i;
 	displine(node, i, y, '#000', false, body, false);
     }
@@ -124,69 +132,111 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i];
-	posy[i] = y;
 	node2index[nodestr(node)] = i;
 	displine(node, i, y, '#000', false, body, false);
     }
 
     // アニメーション表示
-    for(i in oldlist){
-	var oldnode = oldlist[i];
-	j = node2index[nodestr(oldnode)];
-	if(j == 0 || j){
-	    if(oldlines[i]){ // ?????
-		oldlines[i].animate(
-		    {
-			top: posy[j]
-		    },
-		    {
-			duration: 200,
-			complete: function(){
-			    this.remove();
-			    for(k in lines){
-				lines[k].show();
-			    }
-			    for(k in oldlines){
-			        oldlines[k].remove();
-			    }
-			}
-		    }
-		);
-	    }
-	}
-	else {
-	    var parent = oldnode.parent;
-	    if(parent){
-		j = node2index[nodestr(parent)];
-		if(j == 0 || j){
-		    if(oldlines[i]){ // ?????
-			oldlines[i].animate(
-			    {
-				top: posy[j]
-			    },
-			    {
-				duration: 1000,
-				color: '#ff0',
-				opacity: 0.8,
-				complete: function(){
-				    this.remove();
-				    for(k in lines){
-					lines[k].show();
-				    }
-				    for(k in oldlines){
-					oldlines[k].remove();
-				    }
+    if(doanimation){
+	for(i in oldlist){
+	    var oldnode = oldlist[i];
+	    j = node2index[nodestr(oldnode)];
+	    if(j == 0 || j){
+		if(oldlines[i]){ // ?????
+		    oldlines[i].animate(
+			{
+			    top: list[j].line.css('top')
+			},
+			{
+			    duration: AnimationTime,
+			    complete: function(){
+				this.remove();
+				for(k in lines){
+				    lines[k].show();
+				}
+				for(k in oldlines){
+			            oldlines[k].remove();
 				}
 			    }
-			);
+			}
+		    );
+		}
+	    }
+	    else {
+		parent = oldnode.parent;
+		if(parent && shrinking){
+		    j = node2index[nodestr(parent)];
+		    if(j == 0 || j){
+			if(oldlines[i]){ // ?????
+			    oldlines[i].animate(
+				{
+				    top: list[j].line.css('top'),
+				    color: '#fff',
+				    opacity: 0.1
+				},
+				{
+				    duration: AnimationTime,
+				    complete: function(){
+					this.remove();
+					for(k in lines){
+					    lines[k].show();
+					}
+					for(k in oldlines){
+					    oldlines[k].remove();
+					}
+				    }
+				}
+			    );
+			}
+		    }
+		}
+		
+		
+		//if(oldlines[i]){ ///
+		//oldlines[i].remove();
+		//}
+	    }
+	}
+	if(false){
+	    for(i in list){
+		var newnode = list[i];
+		var found = false;
+		for(k in oldlist){
+		    if(newnode == oldlist[k]) found = true;
+		}
+		if(!found){
+		    parent = newnode.parent;
+		    if(parent && !shrinking){
+			j = node2index[nodestr(parent)];
+			if(j == 0 || j){
+			    var dest = newnode.line.css('top');
+			    newnode.line.show();
+			    newnode.line.css('color','#000');
+			    newnode.line.css('opacity',0);
+			    newnode.line.css('top',parent.line.css('top'));
+			    newnode.line.animate(
+				{
+				    top: dest,
+				    color: '#000',
+				    opacity: 1.0
+				},
+				{
+				    duration: AnimationTime,
+				    complete: function(){
+					// this.remove();
+					for(k in lines){
+					    lines[k].show();
+					}
+					for(k in oldlines){
+					    oldlines[k].remove();
+					}
+				    }
+				}
+			    );
+			}
 		    }
 		}
 	    }
-
-
-	    //if(oldlines[i]){ ///
-		//oldlines[i].remove();
-	    //}
 	}
     }
 };
@@ -228,12 +278,14 @@ $(window).keydown(function(e){
     clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	timeout = setTimeout(expand,ExpandTimeout);
+	shrinking = false;
 	if(list[1]){
 	    calc(list[1]);
 	}
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
 	timeout = setTimeout(expand,ExpandTimeout);
+	shrinking = true;
 	if(list[-1]){
 	    calc(list[-1]);
 	}
