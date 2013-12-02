@@ -85,9 +85,12 @@ var displine = function(node,ind,y,color,bold,parent,showloading){
     node.line = line; // ???
 };
 
-var nodestr = function(node){
-    return node.title + node.level + node.url;
-};
+function hashfind(hash,entry){
+    for(var i in hash){
+	if(hash[i] == entry) return i;
+    }
+    return null;
+}
 
 var display = function(newlist){ // calc()で計算したリストを表示
     var oldlist = list;
@@ -95,8 +98,6 @@ var display = function(newlist){ // calc()で計算したリストを表示
 
     var oldlines = lines;
     lines = {};
-
-    var node2index = {};
 
     var body;
     var line;
@@ -119,20 +120,17 @@ var display = function(newlist){ // calc()で計算したリストを表示
 
     // 新しいノードの表示位置計算
     node = list[0];
-    node2index[nodestr(node)] = 0;
     displine(node, 0, center, '#00f', true, body, node.children);
     for(i=1;list[i];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i];
-	node2index[nodestr(node)] = i;
 	displine(node, i, y, '#000', false, body, false);
     }
     for(i= -1;list[i];i--){
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i];
-	node2index[nodestr(node)] = i;
 	displine(node, i, y, '#000', false, body, false);
     }
 
@@ -140,8 +138,8 @@ var display = function(newlist){ // calc()で計算したリストを表示
     if(doanimation){
 	for(i in oldlist){
 	    var oldnode = oldlist[i];
-	    j = node2index[nodestr(oldnode)];
-	    if(j == 0 || j){
+	    j = hashfind(list,oldnode);
+	    if(j != null){
 		if(oldlines[i]){ // ?????
 		    oldlines[i].animate(
 			{
@@ -163,10 +161,9 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		}
 	    }
 	    else {
-		parent = oldnode.parent;
-		if(parent && shrinking){
-		    j = node2index[nodestr(parent)];
-		    if(j == 0 || j){
+		if(shrinking){
+		    j = hashfind(list,oldnode.parent);
+		    if(j != null){
 			if(oldlines[i]){ // ?????
 			    oldlines[i].animate(
 				{
@@ -190,25 +187,22 @@ var display = function(newlist){ // calc()で計算したリストを表示
 			}
 		    }
 		}
-		
-		
-		//if(oldlines[i]){ ///
-		//oldlines[i].remove();
-		//}
+		else {
+		    //alert(oldnode.title);
+		    //oldnode.remove();
+		    //oldnode.hide();
+		}
 	    }
 	}
 	if(false){
 	    for(i in list){
 		var newnode = list[i];
-		var found = false;
-		for(k in oldlist){
-		    if(newnode == oldlist[k]) found = true;
-		}
-		if(!found){
+		k = hashfind(oldlist,newnode);
+		if(k == null){
 		    parent = newnode.parent;
 		    if(parent && !shrinking){
-			j = node2index[nodestr(parent)];
-			if(j == 0 || j){
+			j = hashfind(list,parent);
+			if(j){
 			    var dest = newnode.line.css('top');
 			    newnode.line.show();
 			    newnode.line.css('color','#000');
