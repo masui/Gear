@@ -204,35 +204,33 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		}
 	    }
 	}
-	if(true){
-	    for(i in list){
-		var newnode = list[i];
-		k = hashfind(oldlist,newnode);
-		if(k == null){
-		    parent = newnode.parent;
-		    if(parent && !shrinking){
-			j = hashfind(list,parent);
-			if(j != null){
-			    if(newnode.line){
-				var dest = newnode.line.css('top');
-				newnode.line.show();
-				//newnode.line.css('color','#000');
-				newnode.line.css('opacity',0);
-				newnode.line.css('top',value(parent.line.css('top'))+20);
-				newnode.line.animate(
-				    {
-					top: dest,
-					color: '#000',
-					opacity: 1.0
-				    },
-				    {
-					duration: AnimationTime,
-					complete: function(){
-					    update();
-					}
+	for(i in list){
+	    var newnode = list[i];
+	    k = hashfind(oldlist,newnode);
+	    if(k == null){
+		parent = newnode.parent;
+		if(parent && !shrinking){
+		    j = hashfind(list,parent);
+		    if(j != null){
+			if(newnode.line){
+			    var dest = newnode.line.css('top');
+			    newnode.line.show();
+			    //newnode.line.css('color','#000');
+			    newnode.line.css('opacity',0);
+			    newnode.line.css('top',value(parent.line.css('top'))+20);
+			    newnode.line.animate(
+				{
+				    top: dest,
+				    color: '#000',
+				    opacity: 1.0
+				},
+				{
+				    duration: AnimationTime,
+				    complete: function(){
+					update();
 				    }
-				);
-			    }
+				}
+			    );
 			}
 		    }
 		}
