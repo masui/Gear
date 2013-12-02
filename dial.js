@@ -169,16 +169,16 @@ var display = function(newlist){ // calc()で計算したリストを表示
 			);
 		    }
 		}
-		else { // 見えなくなるものは消す
+		else { // 見えなくなるものは即座に消す
 		    if(oldnode.line){
 			oldnode.line.hide();
 		    }
 		}
 	    }
-	    else {
+	    else { // 表示が消える場合
 		if(shrinking){
 		    j = hashfind(list,oldnode.parent);
-		    if(j != null){
+		    if(j != null){ // 親の位置にシュリンクする
 			if(oldlines[i]){ // ?????
 			    oldlines[i].animate(
 				{
@@ -202,12 +202,8 @@ var display = function(newlist){ // calc()で計算したリストを表示
 			}
 		    }
 		}
-		else {
-		    //alert("消える");
-		    oldnode.hide();
-		    //alert(oldnode.title);
-		    //oldnode.remove();
-		    //oldnode.hide();
+		else { // 即座に消す
+		    oldnode.line.hide();
 		}
 	    }
 	}
@@ -220,10 +216,10 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    if(parent && !shrinking){
 			j = hashfind(list,parent);
 			if(j != null){
-			    var dest = newnode.line.css('top');
 			    if(newnode.line){
+				var dest = newnode.line.css('top');
 				newnode.line.show();
-				newnode.line.css('color','#000');
+				//newnode.line.css('color','#000');
 				newnode.line.css('opacity',0);
 				newnode.line.css('top',value(parent.line.css('top'))+20);
 				newnode.line.animate(
