@@ -62,12 +62,20 @@ var initdata = function(nodes,parent,level){
     }
 };
 
+function value(s){
+    return Number(s.replace(/px/,''));
+}
+
+function width(entry){
+    return value(entry.css('width'));
+}
+
 var displine = function(node,ind,y,color,bold,parent,showloading){
     var line;
     var x = 5 + node.level * 20;
     line = $('<span>');
     line.attr('class','line');
-    line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
+    line.css('width',String(width(parent)-x));
     line.css('left',String(x));
     line.css('color',color);
     line.css('top',String(y));
@@ -139,25 +147,32 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	for(i in oldlist){
 	    var oldnode = oldlist[i];
 	    j = hashfind(list,oldnode);
-	    if(j != null){
-		if(oldlines[i]){ // ?????
-		    oldlines[i].animate(
-			{
-			    top: list[j].line.css('top')
-			},
-			{
-			    duration: AnimationTime,
-			    complete: function(){
-				this.remove();
-				for(k in lines){
-				    lines[k].show();
-				}
-				for(k in oldlines){
-			            oldlines[k].remove();
+	    if(j != null){ // 新しいリストにノードが含まれる場合
+		if(lines[j]){ // ノードが見えている場合
+		    if(oldlines[i]){ // ?????
+			oldlines[i].animate(
+			    {
+				top: list[j].line.css('top')
+			    },
+			    {
+				duration: AnimationTime,
+				complete: function(){
+				    this.remove();
+				    for(k in lines){
+					lines[k].show();
+				    }
+				    for(k in oldlines){
+					oldlines[k].remove();
+				    }
 				}
 			    }
-			}
-		    );
+			);
+		    }
+		}
+		else { // 見えなくなるものは消す
+		    if(oldnode.line){
+			oldnode.line.hide();
+		    }
 		}
 	    }
 	    else {
@@ -188,13 +203,15 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    }
 		}
 		else {
+		    //alert("消える");
+		    oldnode.hide();
 		    //alert(oldnode.title);
 		    //oldnode.remove();
 		    //oldnode.hide();
 		}
 	    }
 	}
-	if(false){
+	if(true){
 	    for(i in list){
 		var newnode = list[i];
 		k = hashfind(oldlist,newnode);
@@ -202,31 +219,33 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    parent = newnode.parent;
 		    if(parent && !shrinking){
 			j = hashfind(list,parent);
-			if(j){
+			if(j != null){
 			    var dest = newnode.line.css('top');
-			    newnode.line.show();
-			    newnode.line.css('color','#000');
-			    newnode.line.css('opacity',0);
-			    newnode.line.css('top',parent.line.css('top'));
-			    newnode.line.animate(
-				{
-				    top: dest,
-				    color: '#000',
-				    opacity: 1.0
-				},
-				{
-				    duration: AnimationTime,
-				    complete: function(){
-					// this.remove();
-					for(k in lines){
-					    lines[k].show();
-					}
-					for(k in oldlines){
-					    oldlines[k].remove();
+			    if(newnode.line){
+				newnode.line.show();
+				newnode.line.css('color','#000');
+				newnode.line.css('opacity',0);
+				newnode.line.css('top',value(parent.line.css('top'))+20);
+				newnode.line.animate(
+				    {
+					top: dest,
+					color: '#000',
+					opacity: 1.0
+				    },
+				    {
+					duration: AnimationTime,
+					complete: function(){
+					    // this.remove();
+					    for(k in lines){
+						lines[k].show();
+					    }
+					    for(k in oldlines){
+						oldlines[k].remove();
+					    }
 					}
 				    }
-				}
-			    );
+				);
+			    }
 			}
 		    }
 		}
