@@ -8,51 +8,36 @@
 //  * キーワードからの写真検索
 //  * 富豪的実装のスリム化
 //  * Wikipedia, 辞書などコンテンツ増強
+//  * 行の高さやインデントなどを定数で指定する
 //
 
-var useAnimation = true;  // アニメーションを使うかどうか
+var useAnimation = true;   // アニメーションを使うかどうか
 var showContents = false;  // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
-var list = {};            // 表示エントリのリスト. list[0]が表示中心
-var oldlist;
+var list = {};             // 表示エントリのリスト. list[0]を中心に表示する
+var oldlist;               // アニメーション前のリスト
 var lines;
 var oldlines;
 
-var shrinking = false;
+var shrinking = false;     // 回転方向
 
 var timeout;
 var StepTimeout = 1000;    // 段階的展開のタイムアウト
-var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
-var AnimationTime = 300;
+var ExpandTimeout = 1500;  // 無操作時展開のタイムアウト
+var AnimationTime = 300;   // ズーミングのアニメーション時間
 
 var win;
 if(showContents){
     win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 }
 
-$(function() {
+$(function() { // jQueryのready関数. 最初に呼ばれる
     $.getJSON("data.json",function(data) {
 	initdata(data,null,0);
 	calc(data[0]);
 	timeout = setTimeout(expand,ExpandTimeout);
     });
 });
-
-var browserHeight = function(){ // jQuery式の書き方がありそうだが?
-    if(window.innerHeight){ return window.innerHeight; }  
-    else if(document.body){ return document.body.clientHeight; }  
-    return 0;  
-};
-
-// 表示中心を段階的に展開する
-var expand = function(){
-    timeout = null;
-    shrinking = false;
-    if(list[0].children){
-	calc(list[0].children[0]);
-	timeout = setTimeout(expand,StepTimeout);
-    }
-};
 
 var initdata = function(nodes,parent,level){
     for(var i=0;i<nodes.length;i++){
@@ -68,32 +53,47 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var value = function(s){
+var browserHeight = function(){ // jQuery式の書き方がありそうだが?
+    if(window.innerHeight){ return window.innerHeight; }  
+    else if(document.body){ return document.body.clientHeight; }  
+    return 0;  
+};
+
+var expand = function(){ // 注目してるエントリの子供を段階的に展開する
+    timeout = null;
+    shrinking = false;
+    if(list[0].children){
+	calc(list[0].children[0]);
+	timeout = setTimeout(expand,StepTimeout);
+    }
+};
+
+var intValue = function(s){
     return Number(s.replace(/px/,''));
 };
 
-var width = function(entry){
-    return value(entry.css('width'));
+var cssWidth = function(entry){
+    return intValue(entry.css('width'));
 };
 
-var update = function(){
+var refresh = function(){ // ゴミDOMを始末する
     var i;
     for(i in lines) lines[i].show();
     for(i in oldlines) oldlines[i].remove();
 };
 
-var displine = function(node,ind,y,color,bold,parent,showloading){
+var dispLine = function(node,ind,top,color,bold,parent,showloading){
     var line;
-    var x = 5 + node.level * 20;
+    var left = 5 + node.level * 20;
     line = $('<span>');
     line.attr('class','line');
-    line.css('width',String(width(parent)-x));
-    line.css('left',String(x));
+    line.css('width',String(cssWidth(parent)-left));
+    line.css('left',String(left));
     line.css('color',color);
-    line.css('top',String(y));
+    line.css('top',String(top));
     if(bold) line.css('font-weight','bold');
     line.text('・' + node.title);
-    if(showloading){
+    if(showloading){ // ローディングGIFアニメ表示
 	// http://preloaders.net/ で作成したロード中アイコンを利用
 	line.append($(' <span>&nbsp;</span>'));
 	line.append($('<img src="loading.gif" style="height:12pt;">'));
@@ -105,12 +105,12 @@ var displine = function(node,ind,y,color,bold,parent,showloading){
     node.line = line;
 };
 
-var hashfind = function(hash,entry){
+var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関数ないのか?
     for(var i in hash){
 	if(hash[i] == entry) return i;
     }
     return null;
-}
+};
 
 var display = function(newlist){ // calc()で計算したリストを表示
     oldlist = list;
@@ -118,48 +118,44 @@ var display = function(newlist){ // calc()で計算したリストを表示
     oldlines = lines;
     lines = {};
 
-    var body;
     var line;
     var node;
-    var y;
+    var top;
     var i,j,k;
     var parent;
     var center = browserHeight() / 2;
-    body = $('body');
+    var body = $('body');
     if(!useAnimation){
-	body.children().remove(); // 毎回富豪的にDOMを生成する
+	body.children().remove(); // 富豪的に生成したDOMを消す
     }
 
-    // ウィンドウにコンテンツ表示
-    if(list[0].url){
-	if(showContents){
-    	    win.location.href = list[0].url;
-	}
+    if(list[0].url && showContents){ // 別ウィンドウにコンテンツ表示
+    	win.location.href = list[0].url;
     }
 
     // 新しいノードの表示位置計算
     node = list[0];
-    displine(node, 0, center, '#00f', true, body, node.children);
+    dispLine(node, 0, center, '#00f', true, body, node.children);
     for(i=1;list[i];i++){
-	y = center + i * 20;
-	if(y > browserHeight() - 40) break;
+	top = center + i * 20;
+	if(top > browserHeight() - 40) break;
 	node = list[i];
-	displine(node, i, y, '#000', false, body, false);
+	dispLine(node, i, top, '#000', false, body, false);
     }
     for(i= -1;list[i];i--){
-	y = center + i * 20;
-	if(y < 0) break;
+	top = center + i * 20;
+	if(top < 0) break;
 	node = list[i];
-	displine(node, i, y, '#000', false, body, false);
+	dispLine(node, i, top, '#000', false, body, false);
     }
 
     // アニメーション表示
     if(useAnimation){
 	for(i in oldlist){
 	    var oldnode = oldlist[i];
-	    j = hashfind(list,oldnode);
-	    if(j != null){ // 新しいリストにノードが含まれる場合
-		if(lines[j]){ // ノードが見えている場合
+	    j = hashIndex(list,oldnode);
+	    if(j != null){ // エントリが移動する場合
+		if(lines[j]){ // 見える場所に移動する場合
 		    if(oldlines[i]){ // ?????
 			oldlines[i].animate(
 			    {
@@ -169,7 +165,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				duration: AnimationTime,
 				complete: function(){
 				    this.remove();
-				    update();
+				    refresh();
 				}
 			    }
 			);
@@ -181,10 +177,10 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    }
 		}
 	    }
-	    else { // 表示が消える場合
+	    else { // エントリが消える場合
 		if(shrinking){
-		    j = hashfind(list,oldnode.parent);
-		    if(j != null){ // 親の位置にシュリンクする
+		    j = hashIndex(list,oldnode.parent);
+		    if(j != null){ // 親の位置にシュリンクしながら消える
 			if(oldlines[i]){ // ?????
 			    oldlines[i].animate(
 				{
@@ -196,7 +192,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				    duration: AnimationTime,
 				    complete: function(){
 					this.remove();
-					update();
+					refresh();
 				    }
 				}
 			    );
@@ -210,17 +206,17 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	}
 	for(i in list){ // 新たに出現するもの
 	    var newnode = list[i];
-	    k = hashfind(oldlist,newnode);
+	    k = hashIndex(oldlist,newnode);
 	    if(k == null){
 		parent = newnode.parent;
-		if(parent && !shrinking){
-		    j = hashfind(list,parent);
+		if(parent && !shrinking){ // 親の位置から出現する
+		    j = hashIndex(list,parent);
 		    if(j != null){
 			if(newnode.line){
 			    var dest = newnode.line.css('top');
 			    newnode.line.show();
 			    newnode.line.css('opacity',0);
-			    newnode.line.css('top',value(parent.line.css('top'))+20);
+			    newnode.line.css('top',intValue(parent.line.css('top'))+20);
 			    newnode.line.animate(
 				{
 				    top: dest,
@@ -230,7 +226,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				{
 				    duration: AnimationTime,
 				    complete: function(){
-					update();
+					refresh();
 				    }
 				}
 			    );
@@ -276,7 +272,7 @@ var prevNode = function(node){
 };
 
 $(window).keydown(function(e){
-    update();
+    refresh();
     clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	timeout = setTimeout(expand,ExpandTimeout);
