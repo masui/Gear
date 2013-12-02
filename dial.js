@@ -3,13 +3,15 @@
 // 2013/12/1 増井
 // 
 // Issues:
+//  * 早送り/ページ送りも回転で制御する
+//  * 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする
 //  * キーワードからの写真検索
 //  * 富豪的実装のスリム化
 //  * Wikipedia, 辞書などコンテンツ増強
 //
 
 var useAnimation = true;  // アニメーションを使うかどうか
-var showContents = true;  // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = false;  // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var list = {};            // 表示エントリのリスト. list[0]が表示中心
 var oldlist;
@@ -19,7 +21,7 @@ var oldlines;
 var shrinking = false;
 
 var timeout;
-var StepTimeout = 800;    // 段階的展開のタイムアウト
+var StepTimeout = 1000;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 var AnimationTime = 300;
 
