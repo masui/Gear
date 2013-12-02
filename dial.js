@@ -97,7 +97,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
     var line;
     var node;
     var y;
-    var i,j;
+    var i,j,k;
     var center = browserHeight() / 2;
     body = $('body');
     //body.children().remove(); // 毎回富豪的にDOMを生成する
@@ -129,11 +129,11 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	displine(node, i, y, '#000', false, body, false);
     }
 
+    // アニメーション表示
     for(i in oldlist){
 	var oldnode = oldlist[i];
 	j = node2index[nodestr(oldnode)];
 	if(j == 0 || j){
-	    node = list[j];
 	    if(oldlines[i]){ // ?????
 		oldlines[i].animate(
 		    {
@@ -143,11 +143,11 @@ var display = function(newlist){ // calc()で計算したリストを表示
 			duration: 200,
 			complete: function(){
 			    this.remove();
-			    for(j in lines){
-				lines[j].show();
+			    for(k in lines){
+				lines[k].show();
 			    }
-			    for(j in oldlines){
-			        oldlines[j].remove();
+			    for(k in oldlines){
+			        oldlines[k].remove();
 			    }
 			}
 		    }
@@ -155,9 +155,38 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	    }
 	}
 	else {
-	    if(oldlines[i]){ ///
-		oldlines[i].remove();
+	    var parent = oldnode.parent;
+	    if(parent){
+		j = node2index[nodestr(parent)];
+		if(j == 0 || j){
+		    if(oldlines[i]){ // ?????
+			oldlines[i].animate(
+			    {
+				top: posy[j]
+			    },
+			    {
+				duration: 1000,
+				color: '#ff0',
+				opacity: 0.8,
+				complete: function(){
+				    this.remove();
+				    for(k in lines){
+					lines[k].show();
+				    }
+				    for(k in oldlines){
+					oldlines[k].remove();
+				    }
+				}
+			    }
+			);
+		    }
 		}
+	    }
+
+
+	    //if(oldlines[i]){ ///
+		//oldlines[i].remove();
+	    //}
 	}
     }
 };
