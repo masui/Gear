@@ -10,9 +10,10 @@
 //
 
 var list;                 // 表示エントリのリスト. list[0]が表示中心
+var lines;
 
 var timeout;
-var StepTimeout = 600;    // 段階的展開のタイムアウト
+var StepTimeout = 800;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500; // 無操作時に展開のタイムアウト
 
 var win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
@@ -54,9 +55,6 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var lines = {};
-var oldlines = false;
-
 var displine = function(node,ind,y,color,bold,parent,showloading){
     var line;
     var x = 5 + node.level * 20;
@@ -75,14 +73,11 @@ var displine = function(node,ind,y,color,bold,parent,showloading){
     }
     parent.append(line);
 
-    if(oldlines) line.hide();
+    //if(oldlines) line.hide();
+    line.hide();
     lines[ind] = line;
     node.line = line; // ???
 };
-
-var children;
-//var node2index;
-var posy = {};
 
 var nodestr = function(node){
     return node.title + node.level + node.url;
@@ -92,11 +87,11 @@ var display = function(newlist){ // calc()で計算したリストを表示
     var oldlist = list;
     list = newlist;
 
-    oldlines = lines;
+    var oldlines = lines;
     lines = {};
 
     var node2index = {};
-    posy = {};
+    var posy = {};
 
     var body;
     var line;
@@ -106,7 +101,6 @@ var display = function(newlist){ // calc()で計算したリストを表示
     var center = browserHeight() / 2;
     body = $('body');
     //body.children().remove(); // 毎回富豪的にDOMを生成する
-    children = body.children();
 
     // ウィンドウにコンテンツ表示
     //if(list[0].url){
