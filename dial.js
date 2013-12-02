@@ -54,9 +54,12 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var displine = function(text,level,y,color,bold,parent,showloading){
+var lines = {};
+var oldlines = false;
+
+var displine = function(node,ind,y,color,bold,parent,showloading){
     var line;
-    var x = 5 + level * 20;
+    var x = 5 + node.level * 20;
     line = $('<span>');
     line.attr('class','line');
     line.css('width',String(Number(parent.css('width').replace(/px/,''))-x));
@@ -64,42 +67,104 @@ var displine = function(text,level,y,color,bold,parent,showloading){
     line.css('color',color);
     line.css('top',String(y));
     if(bold) line.css('font-weight','bold');
-    line.text('・' + text);
+    line.text('・' + node.title);
     if(showloading){
 	// http://preloaders.net/ で作成したロード中アイコンを利用
-	line.append($('<span>&nbsp;</span>'));
+	line.append($(' <span>&nbsp;</span>'));
 	line.append($('<img src="loading.gif" style="height:12pt;">'));
     }
     parent.append(line);
+
+    if(oldlines) line.hide();
+    lines[ind] = line;
+    node.line = line; // ???
 };
 
-var display = function(){ // calc()で計算したリストを表示
+var children;
+var node2index;
+var posy = {};
+
+var nodestr = function(node){
+    return node.title + node.level + node.url;
+};
+
+var display = function(newlist){ // calc()で計算したリストを表示
+    var oldlist = list;
+    list = newlist;
+
+    oldlines = lines;
+    lines = {};
+
+    node2index = {};
+    posy = {};
+
     var body;
     var line;
     var node;
     var y;
-    var i;
+    var i,j;
     var center = browserHeight() / 2;
     body = $('body');
-    body.children().remove(); // 毎回富豪的にDOMを生成する
+    //body.children().remove(); // 毎回富豪的にDOMを生成する
+    children = body.children();
 
-    if(list[0].url){
-	win.location.href = list[0].url;
-    }
+    // ウィンドウにコンテンツ表示
+    //if(list[0].url){
+    //	win.location.href = list[0].url;
+    //}
 
+    // 新しいノード表示位置計算
     node = list[0];
-    displine(node.title, node.level, center, '#00f', true, body, node.children);
+    posy[0] = center;
+    node2index[nodestr(node)] = 0;
+    displine(node, 0, center, '#00f', true, body, node.children);
     for(i=1;list[i];i++){
 	y = center + i * 20;
 	if(y > browserHeight() - 40) break;
 	node = list[i];
-	displine(node.title, node.level, y, '#000', false, body, false);
+	posy[i] = y;
+	node2index[nodestr(node)] = i;
+	displine(node, i, y, '#000', false, body, false);
     }
     for(i= -1;list[i];i--){
 	y = center + i * 20;
 	if(y < 0) break;
 	node = list[i];
-	displine(node.title, node.level, y, '#000', false, body, false);
+	posy[i] = y;
+	node2index[nodestr(node)] = i;
+	displine(node, i, y, '#000', false, body, false);
+    }
+
+    for(var ii in oldlist){
+	var oldnode = oldlist[ii];
+	j = node2index[nodestr(oldnode)];
+	if(j == 0 || j){
+	    node = list[j];
+	    if(oldlines[ii]){ // ?????
+		oldlines[ii].animate(
+		    {
+			top: posy[j]
+		    },
+		    {
+			duration: 200,
+			complete: function(){
+			    this.remove();
+			    for(var iii in lines){
+				lines[iii].show();
+			    }
+			    for(var iiii in oldlines){
+			        oldlines[iiii].remove();
+			    }
+			}
+		    }
+		);
+	    }
+	}
+	else {
+	    if(oldlines[ii]){ ///
+		oldlines[ii].remove();
+		}
+	}
     }
 };
 
@@ -116,8 +181,7 @@ var calc = function(centernode){ // centernodeを中心にlistを再計算して
     for(i= -1;node = prevNode(node);i--){
 	newlist[i] = node;
     }
-    list = newlist; // listからnewlistへの変化をアニメーションしたい
-    display();
+    display(newlist);
 };
 
 var nextNode = function(node){
