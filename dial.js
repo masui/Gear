@@ -81,7 +81,7 @@ var displine = function(node,ind,y,color,bold,parent,showloading){
 };
 
 var children;
-var node2index;
+//var node2index;
 var posy = {};
 
 var nodestr = function(node){
@@ -95,7 +95,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
     oldlines = lines;
     lines = {};
 
-    node2index = {};
+    var node2index = {};
     posy = {};
 
     var body;
@@ -135,13 +135,13 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	displine(node, i, y, '#000', false, body, false);
     }
 
-    for(var ii in oldlist){
-	var oldnode = oldlist[ii];
+    for(i in oldlist){
+	var oldnode = oldlist[i];
 	j = node2index[nodestr(oldnode)];
 	if(j == 0 || j){
 	    node = list[j];
-	    if(oldlines[ii]){ // ?????
-		oldlines[ii].animate(
+	    if(oldlines[i]){ // ?????
+		oldlines[i].animate(
 		    {
 			top: posy[j]
 		    },
@@ -149,11 +149,11 @@ var display = function(newlist){ // calc()で計算したリストを表示
 			duration: 200,
 			complete: function(){
 			    this.remove();
-			    for(var iii in lines){
-				lines[iii].show();
+			    for(j in lines){
+				lines[j].show();
 			    }
-			    for(var iiii in oldlines){
-			        oldlines[iiii].remove();
+			    for(j in oldlines){
+			        oldlines[j].remove();
 			    }
 			}
 		    }
@@ -161,8 +161,8 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	    }
 	}
 	else {
-	    if(oldlines[ii]){ ///
-		oldlines[ii].remove();
+	    if(oldlines[i]){ ///
+		oldlines[i].remove();
 		}
 	}
     }
