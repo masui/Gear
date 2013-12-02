@@ -3,14 +3,13 @@
 // 2013/12/1 増井
 // 
 // Issues:
-//  * リストのアニメーション (必要か?)
 //  * キーワードからの写真検索
 //  * 富豪的実装のスリム化
 //  * Wikipedia, 辞書などコンテンツ増強
 //
 
 var doanimation = true;
-var showcontents = false;
+var showcontents = true;
 
 var list = {};                 // 表示エントリのリスト. list[0]が表示中心
 var oldlist;
