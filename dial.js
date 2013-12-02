@@ -13,7 +13,9 @@ var doanimation = true;
 var showcontents = false;
 
 var list = {};                 // 表示エントリのリスト. list[0]が表示中心
+var oldlist;
 var lines;
+var oldlines;
 
 var shrinking = false;
 
@@ -70,6 +72,12 @@ function width(entry){
     return value(entry.css('width'));
 }
 
+function update(){
+    var i;
+    for(i in lines) lines[i].show();
+    for(i in oldlines) oldlines[i].remove();
+}
+
 var displine = function(node,ind,y,color,bold,parent,showloading){
     var line;
     var x = 5 + node.level * 20;
@@ -101,10 +109,10 @@ function hashfind(hash,entry){
 }
 
 var display = function(newlist){ // calc()で計算したリストを表示
-    var oldlist = list;
+    oldlist = list;
     list = newlist;
 
-    var oldlines = lines;
+    oldlines = lines;
     lines = {};
 
     var body;
@@ -158,12 +166,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				duration: AnimationTime,
 				complete: function(){
 				    this.remove();
-				    for(k in lines){
-					lines[k].show();
-				    }
-				    for(k in oldlines){
-					oldlines[k].remove();
-				    }
+				    update();
 				}
 			    }
 			);
@@ -190,12 +193,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				    duration: AnimationTime,
 				    complete: function(){
 					this.remove();
-					for(k in lines){
-					    lines[k].show();
-					}
-					for(k in oldlines){
-					    oldlines[k].remove();
-					}
+					update();
 				    }
 				}
 			    );
@@ -231,13 +229,7 @@ var display = function(newlist){ // calc()で計算したリストを表示
 				    {
 					duration: AnimationTime,
 					complete: function(){
-					    // this.remove();
-					    for(k in lines){
-						lines[k].show();
-					    }
-					    for(k in oldlines){
-						oldlines[k].remove();
-					    }
+					    update();
 					}
 				    }
 				);
@@ -284,6 +276,7 @@ var prevNode = function(node){
 };
 
 $(window).keydown(function(e){
+    update();
     clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	timeout = setTimeout(expand,ExpandTimeout);
