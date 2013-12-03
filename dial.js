@@ -54,7 +54,7 @@ var initdata = function(nodes,parent,level){
     }
 };
 
-var browserHeight = function(){ // jQuery式の書き方がありそうだが?
+var browserHeight = function(){ // jQuery式の標準関数がありそうだが?
     if(window.innerHeight){ return window.innerHeight; }  
     else if(document.body){ return document.body.clientHeight; }  
     return 0;  
@@ -77,7 +77,7 @@ var cssWidth = function(entry){
     return intValue(entry.css('width'));
 };
 
-var refresh = function(){ // ゴミDOMを始末する. 富豪的すぎる?
+var refresh = function(){ // ゴミDOMを始末する. 富豪的すぎるかも?
     var i;
     for(i in spans) spans[i].show();
     for(i in oldSpans) oldSpans[i].remove();
@@ -151,13 +151,13 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 
     // アニメーション表示
     if(useAnimation){
-	for(i in oldNodeList){
+	for(i in oldNodeList){ // 古いエントリの扱いを調査
 	    var oldnode = oldNodeList[i];
-	    j = hashIndex(nodeList,oldnode);
-	    if(j != null){ // エントリが移動する場合
+	    j = hashIndex(nodeList,oldnode); // 新しいリストに存在するか調査
+	    if(j != null){ // 新しいリストに存在する == エントリが移動する
 		if(spans[j]){ // 見える場所に移動する場合
-		    if(oldSpans[i]){ // ?????
-			oldSpans[i].animate(
+		    if(oldSpans[i]){
+			oldSpans[i].animate( // 移動アニメーション
 			    {
 				top: nodeList[j].span.css('top')
 			    },
@@ -171,17 +171,17 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 			);
 		    }
 		}
-		else { // 見えなくなるものは即座に消す
+		else { // 見えなくなるエントリは即座に消す
 		    if(oldnode.span){
 			oldnode.span.hide();
 		    }
 		}
 	    }
-	    else { // エントリが消える場合
+	    else { // 古いエントリが消える場合
 		if(shrinking){
 		    j = hashIndex(nodeList,oldnode.parent);
 		    if(j != null){ // 親の位置にシュリンクしながら消える
-			if(oldSpans[i]){ // ?????
+			if(oldSpans[i]){
 			    oldSpans[i].animate(
 				{
 				    top: nodeList[j].span.css('top'),
@@ -204,7 +204,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 		}
 	    }
 	}
-	for(i in nodeList){ // 新たに出現するもの
+	for(i in nodeList){ // 新たに出現するエントリ
 	    var newnode = nodeList[i];
 	    k = hashIndex(oldNodeList,newnode);
 	    if(k == null){
