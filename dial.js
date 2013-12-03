@@ -1,6 +1,7 @@
 //
 // 回転ダイヤルであらゆるコンテンツを閲覧する
 // 2013/12/1 増井
+// pitecan.com:/home/masui/git/DialLens.git
 // 
 // Issues:
 //  * 早送り/ページ送りも回転で制御する
@@ -14,10 +15,10 @@
 var useAnimation = true;   // アニメーションを使うかどうか
 var showContents = false;  // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
-var list = {};             // 表示エントリのリスト. list[0]を中心に表示する
-var oldlist;               // アニメーション前のリスト
-var lines;
-var oldlines;
+var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
+var oldNodeList;           // アニメーション前のnodeList
+var spans;                 // 表示されるspan要素のリスト
+var oldSpans;              // アニメーション前のspans
 
 var shrinking = false;     // 回転方向
 
@@ -62,8 +63,8 @@ var browserHeight = function(){ // jQuery式の書き方がありそうだが?
 var expand = function(){ // 注目してるエントリの子供を段階的に展開する
     timeout = null;
     shrinking = false;
-    if(list[0].children){
-	calc(list[0].children[0]);
+    if(nodeList[0].children){
+	calc(nodeList[0].children[0]);
 	timeout = setTimeout(expand,StepTimeout);
     }
 };
@@ -76,33 +77,33 @@ var cssWidth = function(entry){
     return intValue(entry.css('width'));
 };
 
-var refresh = function(){ // ゴミDOMを始末する
+var refresh = function(){ // ゴミDOMを始末する. 富豪的すぎる?
     var i;
-    for(i in lines) lines[i].show();
-    for(i in oldlines) oldlines[i].remove();
+    for(i in spans) spans[i].show();
+    for(i in oldSpans) oldSpans[i].remove();
 };
 
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
-    var line;
+    var span;
     var left = 5 + node.level * 20;
-    line = $('<span>');
-    line.attr('class','line');
-    line.css('width',String(cssWidth(parent)-left));
-    line.css('left',String(left));
-    line.css('color',color);
-    line.css('top',String(top));
-    if(bold) line.css('font-weight','bold');
-    line.text('・' + node.title);
+    span = $('<span>');
+    span.attr('class','line');
+    span.css('width',String(cssWidth(parent)-left));
+    span.css('left',String(left));
+    span.css('color',color);
+    span.css('top',String(top));
+    if(bold) span.css('font-weight','bold');
+    span.text('・' + node.title);
     if(showloading){ // ローディングGIFアニメ表示
 	// http://preloaders.net/ で作成したロード中アイコンを利用
-	line.append($(' <span>&nbsp;</span>'));
-	line.append($('<img src="loading.gif" style="height:12pt;">'));
+	span.append($(' <span>&nbsp;</span>'));
+	span.append($('<img src="loading.gif" style="height:12pt;">'));
     }
-    parent.append(line);
+    parent.append(span);
 
-    if(useAnimation) line.hide();
-    lines[ind] = line;
-    node.line = line;
+    if(useAnimation) span.hide();
+    spans[ind] = span;
+    node.span = span;
 };
 
 var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関数ないのか?
@@ -112,13 +113,12 @@ var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関�
     return null;
 };
 
-var display = function(newlist){ // calc()で計算したリストを表示
-    oldlist = list;
-    list = newlist;
-    oldlines = lines;
-    lines = {};
+var display = function(newNodeList){ // calc()で計算したリストを表示
+    oldNodeList = nodeList;
+    nodeList = newNodeList;
+    oldSpans = spans;
+    spans = {};
 
-    var line;
     var node;
     var top;
     var i,j,k;
@@ -129,37 +129,37 @@ var display = function(newlist){ // calc()で計算したリストを表示
 	body.children().remove(); // 富豪的に生成したDOMを消す
     }
 
-    if(list[0].url && showContents){ // 別ウィンドウにコンテンツ表示
-    	win.location.href = list[0].url;
+    if(nodeList[0].url && showContents){ // 別ウィンドウにコンテンツ表示
+    	win.location.href = nodeList[0].url;
     }
 
     // 新しいノードの表示位置計算
-    node = list[0];
+    node = nodeList[0];
     dispLine(node, 0, center, '#00f', true, body, node.children);
-    for(i=1;list[i];i++){
+    for(i=1;nodeList[i];i++){
 	top = center + i * 20;
 	if(top > browserHeight() - 40) break;
-	node = list[i];
+	node = nodeList[i];
 	dispLine(node, i, top, '#000', false, body, false);
     }
-    for(i= -1;list[i];i--){
+    for(i= -1;nodeList[i];i--){
 	top = center + i * 20;
 	if(top < 0) break;
-	node = list[i];
+	node = nodeList[i];
 	dispLine(node, i, top, '#000', false, body, false);
     }
 
     // アニメーション表示
     if(useAnimation){
-	for(i in oldlist){
-	    var oldnode = oldlist[i];
-	    j = hashIndex(list,oldnode);
+	for(i in oldNodeList){
+	    var oldnode = oldNodeList[i];
+	    j = hashIndex(nodeList,oldnode);
 	    if(j != null){ // エントリが移動する場合
-		if(lines[j]){ // 見える場所に移動する場合
-		    if(oldlines[i]){ // ?????
-			oldlines[i].animate(
+		if(spans[j]){ // 見える場所に移動する場合
+		    if(oldSpans[i]){ // ?????
+			oldSpans[i].animate(
 			    {
-				top: list[j].line.css('top')
+				top: nodeList[j].span.css('top')
 			    },
 			    {
 				duration: AnimationTime,
@@ -172,19 +172,19 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    }
 		}
 		else { // 見えなくなるものは即座に消す
-		    if(oldnode.line){
-			oldnode.line.hide();
+		    if(oldnode.span){
+			oldnode.span.hide();
 		    }
 		}
 	    }
 	    else { // エントリが消える場合
 		if(shrinking){
-		    j = hashIndex(list,oldnode.parent);
+		    j = hashIndex(nodeList,oldnode.parent);
 		    if(j != null){ // 親の位置にシュリンクしながら消える
-			if(oldlines[i]){ // ?????
-			    oldlines[i].animate(
+			if(oldSpans[i]){ // ?????
+			    oldSpans[i].animate(
 				{
-				    top: list[j].line.css('top'),
+				    top: nodeList[j].span.css('top'),
 				    color: '#fff',
 				    opacity: 0.1
 				},
@@ -200,24 +200,24 @@ var display = function(newlist){ // calc()で計算したリストを表示
 		    }
 		}
 		else { // 即座に消す
-		    oldnode.line.hide();
+		    oldnode.span.hide();
 		}
 	    }
 	}
-	for(i in list){ // 新たに出現するもの
-	    var newnode = list[i];
-	    k = hashIndex(oldlist,newnode);
+	for(i in nodeList){ // 新たに出現するもの
+	    var newnode = nodeList[i];
+	    k = hashIndex(oldNodeList,newnode);
 	    if(k == null){
 		parent = newnode.parent;
 		if(parent && !shrinking){ // 親の位置から出現する
-		    j = hashIndex(list,parent);
+		    j = hashIndex(nodeList,parent);
 		    if(j != null){
-			if(newnode.line){
-			    var dest = newnode.line.css('top');
-			    newnode.line.show();
-			    newnode.line.css('opacity',0);
-			    newnode.line.css('top',intValue(parent.line.css('top'))+20);
-			    newnode.line.animate(
+			if(newnode.span){
+			    var dest = newnode.span.css('top');
+			    newnode.span.show();
+			    newnode.span.css('opacity',0);
+			    newnode.span.css('top',intValue(parent.span.css('top'))+20);
+			    newnode.span.animate(
 				{
 				    top: dest,
 				    color: '#000',
@@ -238,20 +238,20 @@ var display = function(newlist){ // calc()で計算したリストを表示
     }
 };
 
-var calc = function(centernode){ // centernodeを中心にlistを再計算して表示
+var calc = function(centerNode){ // centerNodeを中心にnodeListを再計算して表示
     var node;
     var i;
-    var newlist = {}; // 毎回富豪的にリストを生成
-    newlist[0] = centernode;
-    node = centernode;
+    var newNodeList = {}; // 毎回富豪的にリストを生成
+    newNodeList[0] = centerNode;
+    node = centerNode;
     for(i=1;node = nextNode(node);i++){
-	newlist[i] = node;
+	newNodeList[i] = node;
     }
-    node = centernode;
+    node = centerNode;
     for(i= -1;node = prevNode(node);i--){
-	newlist[i] = node;
+	newNodeList[i] = node;
     }
-    display(newlist);
+    display(newNodeList);
 };
 
 var nextNode = function(node){
@@ -277,15 +277,15 @@ $(window).keydown(function(e){
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
 	timeout = setTimeout(expand,ExpandTimeout);
 	shrinking = false;
-	if(list[1]){
-	    calc(list[1]);
+	if(nodeList[1]){
+	    calc(nodeList[1]);
 	}
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
 	timeout = setTimeout(expand,ExpandTimeout);
 	shrinking = true;
-	if(list[-1]){
-	    calc(list[-1]);
+	if(nodeList[-1]){
+	    calc(nodeList[-1]);
 	}
     }
     return false;
