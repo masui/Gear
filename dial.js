@@ -1,17 +1,24 @@
 //
-// 回転ダイヤルであらゆるコンテンツを閲覧する
+// 回転ダイヤルで階層的コンテンツを閲覧する
 // 2013/12/1 増井
 // pitecan.com:/home/masui/git/DialLens.git
 // 
 // Issues:
-//  * 早送り/ページ送りも回転で制御する
-//  * 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする
-//  * キーワードからの写真検索
-//  * 富豪的実装のスリム化
-//  * Wikipedia, 辞書などコンテンツ増強
-//  * 行の高さやインデントなどを定数で指定する
-//  * コンテンツを動的に取得する (2013/12/03 09:27:03)
-//  * しょぼいCSSをなんとかする (2013/12/03 09:28:32)
+//  * 仕様
+//   - 早送り/ページ送りも回転で制御する
+//   - 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする
+//  * 実装
+//   - 富豪的実装のスリム化
+//   - 行の高さやインデントなどを定数で指定する
+//   - しょぼいCSSをなんとかする (2013/12/03 09:28:32)
+//  * コンテンツ増強
+//   - ニュースコンテンツを動的に取得する (2013/12/03 09:27:03)
+//   - SmartNews的にする (2013/12/03 12:14:48)
+//   - Wikipedia, 辞書など
+//   - キーワードからの写真検索
+//  * 特許案件
+//   - 回転(or スイッチ2個)だけで階層をたどる基本的方法
+//   - 時間による展開
 // 
 // Contributions: (2013/12/03 09:26:37)
 //  * ダイヤル回すだけで階層をたどるアイデアは増井俊之が長くあたためてたもの
@@ -23,7 +30,7 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = false;  // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -42,8 +49,8 @@ if(showContents){
     win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 }
 
-$(function() { // jQueryのready関数. 最初に呼ばれる
-    $.getJSON("data.json",function(data) {
+$(function() { // 最初に呼ばれるjQueryのready関数
+    $.getJSON("data.json",function(data){
 	initdata(data,null,0);
 	calc(data[0]);
 	timeout = setTimeout(expand,ExpandTimeout);
@@ -87,7 +94,7 @@ var cssWidth = function(entry){
     return intValue(entry.css('width'));
 };
 
-var refresh = function(){ // ゴミDOMを始末する. 富豪的すぎるかも?
+var refresh = function(){ // 不要DOMを始末する. 富豪的すぎるかも?
     var i;
     for(i in spans) spans[i].show();
     for(i in oldSpans) oldSpans[i].remove();
