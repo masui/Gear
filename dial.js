@@ -1,6 +1,6 @@
 //
-// 回転ダイヤルで階層的コンテンツを閲覧する
-// 2013/12/1 増井
+// dial.js - 回転ダイヤルで階層的コンテンツを閲覧する
+// (C) 増井俊之 2013/12/1
 // pitecan.com:/home/masui/git/DialLens.git
 // 
 // Issues:
@@ -51,13 +51,13 @@ if(showContents){
 
 $(function() { // 最初に呼ばれるjQueryのready関数
     $.getJSON("data.json",function(data){
-	initdata(data,null,0);
+	initData(data,null,0);
 	calc(data[0]);
 	timeout = setTimeout(expand,ExpandTimeout);
     });
 });
 
-var initdata = function(nodes,parent,level){
+var initData = function(nodes,parent,level){
     for(var i=0;i<nodes.length;i++){
 	var node = nodes[i];
 	node.number = i;
@@ -66,7 +66,7 @@ var initdata = function(nodes,parent,level){
 	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
 	node.parent = parent;
 	if(node.children){
-	    initdata(node.children,node,level+1);
+	    initData(node.children,node,level+1);
 	}
     }
 };
