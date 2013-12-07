@@ -34,7 +34,7 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = false;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
