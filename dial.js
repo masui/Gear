@@ -34,7 +34,7 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = false;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -101,7 +101,9 @@ var cssWidth = function(entry){
 var refresh = function(){ // 不要DOMを始末する. 富豪的すぎるかも?
     var i;
     for(i in spans) spans[i].show();
-    for(i in oldSpans) oldSpans[i].remove();
+    for(i in oldSpans){
+	oldSpans[i].remove();
+    }
 };
 
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
@@ -111,7 +113,7 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
     span.attr('class','line');
     span.css('width',String(cssWidth(parent)-left));
     span.css('left',String(left));
-    span.css('color',color);
+    //span.css('color',color);
     span.css('top',String(top));
     if(bold) span.css('font-weight','bold');
     span.text('・' + node.title);
@@ -156,18 +158,18 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 
     // 新しいノードの表示位置計算
     node = nodeList[0];
-    dispLine(node, 0, center, '#00f', true, body, node.children);
+    dispLine(node, 0, center, '#0000ff', true, body, node.children);
     for(i=1;nodeList[i];i++){
 	top = center + i * 20;
 	if(top > browserHeight() - 40) break;
 	node = nodeList[i];
-	dispLine(node, i, top, '#000', false, body, false);
+	dispLine(node, i, top, '#000000', false, body, false);
     }
     for(i= -1;nodeList[i];i--){
 	top = center + i * 20;
 	if(top < 0) break;
 	node = nodeList[i];
-	dispLine(node, i, top, '#000', false, body, false);
+	dispLine(node, i, top, '#000000', false, body, false);
     }
 
     // アニメーション表示
@@ -185,7 +187,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 			    {
 				duration: AnimationTime,
 				complete: function(){
-				    this.remove();
+				    //this.remove();
 				    refresh();
 				}
 			    }
@@ -206,7 +208,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 			    oldSpans[i].animate(
 				{
 				    top: nodeList[j].span.css('top'),
-				    color: '#fff',
+				    color: '#ffffff',
 				    opacity: 0.1
 				},
 				{
@@ -241,7 +243,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 			    newnode.span.animate(
 				{
 				    top: dest,
-				    color: '#000',
+				    color: '#000000',
 				    opacity: 1.0
 				},
 				{
