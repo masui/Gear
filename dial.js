@@ -113,7 +113,7 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
     span.attr('class','line');
     span.css('width',String(cssWidth(parent)-left));
     span.css('left',String(left));
-    //span.css('color',color);
+    span.css('color',color);
     span.css('top',String(top));
     if(bold) span.css('font-weight','bold');
     span.text('・' + node.title);
