@@ -1,0 +1,24 @@
+* aozora.ltsv
+
+name:青空文庫
+ name:あ
+  name:あ
+   name:アーヴィング ワシントン
+    url:http://www.aozora.gr.jp/cards/001257/card56078.html	name:駅伝馬車
+    url:http://www.aozora.gr.jp/cards/001257/card56033.html	name:クリスマス・イーヴ
+    ...
+ name:な
+  name:な
+   name:夏目 漱石
+    url:http://www.aozora.gr.jp/cards/000148/card776.html	name:草枕
+    url:http://www.aozora.gr.jp/cards/000148/card761.html	name:虞美人草
+    ...
+
+* stations.ltsv
+
+name:駅データベース
+ name:JR函館本線(函館〜長万部)
+  url:https://maps.google.co.jp/maps?ll=41.773709,140.726413	name:函館
+  url:https://maps.google.co.jp/maps?ll=41.803557,140.733539	name:五稜郭
+  url:https://maps.google.co.jp/maps?ll=41.846457,140.722952	name:桔梗
+  ...

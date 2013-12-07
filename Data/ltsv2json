@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# -*- ruby -*-
+#
+# ltsvデータをJSONに変換
+# issue #21 対応
+#
+
+require 'rubygems'
+require 'json'
+
+root = {}
+parents = []
+parents[0] = root
+
+ARGF.each { |line|
+  line.chomp!
+  next if line =~ /^\s*$/
+  next if line =~ /^#/
+
+  line.sub!(/^(\s*)/,'')
+  indent = $&.length
+
+  node = {}
+  parents[indent+1] = node
+  if parents[indent]['children'].nil? then
+    parents[indent]['children'] = []
+  end
+  parents[indent]['children'] << node
+  line.split(/\t/).each { |entry|
+    entry =~ /^([a-zA-Z_]+):(\s*)(.*)$/
+    node[$1] = $3
+  }
+}
+
+puts root['children'].to_json

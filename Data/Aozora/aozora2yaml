@@ -1,0 +1,39 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+#
+# 青空文庫のCSVをFlatindex用テキストに変換
+# http://www.aozora.gr.jp/index_pages/list_person_all.zip
+#
+require 'jcode'
+$KCODE = 'u'
+
+curauthor = ''
+
+puts '青空文庫'
+File.open("list_person_all.csv"){ |f|
+  f.each { |line|
+    line.chomp!
+    a = line.split(/,/)
+    authorid = a[0]
+    next if authorid !~ /^\d/
+    a[1] =~ /^"(.*)"$/
+    author = $1
+    if curauthor != author then
+      puts "   #{author}"
+      curauthor = author
+    end
+    workid = a[2]
+    workid.to_s.sub!(/^0+/,'') # 先頭のゼロを消す
+    a[3] =~ /^"(.*)"$/
+    title = $1
+    title.to_s.sub!(/^\s+/,'') # 先頭に空白が入っていることがあるので
+    t = "[#{title}]"
+    if title =~ /^([「『"〔])(.*)$/ then
+      t = "#{$1}[#{$2}]"
+    end
+    puts "    http://www.aozora.gr.jp/cards/#{authorid}/card#{workid}.html\t#{title}"
+  }
+}
+
+
+

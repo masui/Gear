@@ -1,0 +1,35 @@
+# -*- coding: utf-8 -*-
+#
+# 駅データを変換
+# http://www.ekidata.jp/download/index.htm
+# CSVはUTF8にしておく。
+# 11,11101,1110101,11101,1110101,1110101,1,JR,JR函館本線(函館〜長万部),函館,1,140.726413,41.773709,1
+# 11,11101,1110102,11101,1110102,1110102,1,JR,JR函館本線(函館〜長万部),五稜郭,1,140.733539,41.803557,1
+#
+require 'jcode'
+$KCODE = 'u'
+
+curline = ''
+
+puts 'name:駅データベース'
+File.open("stations.csv"){ |f|
+  f.each { |line|
+    line.chomp!
+    a = line.split(/,/)
+    next if a[0] !~ /^\d/
+    station = a[9]
+    line = a[8]
+    latitude = a[12]
+    longitude = a[11]
+    if curline != line then
+      puts " name:#{line}"
+      curline = line
+    end
+    puts "  url:https://maps.google.co.jp/maps?ll=#{latitude},#{longitude}\tname:#{station}"
+  }
+}
+
+
+
+
+

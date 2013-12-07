@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+#
+# 青空文庫のテキストURLを取得する
+#
+require 'open-uri'
+
+ARGF.each { |line|
+  line.chomp!
+  if line =~ /^(.*)url:(http:\/\/www.aozora.gr.jp\/cards\/(\d+)\/card\d+.html)(.*)$/ then
+    pre = $1
+    tocurl = $2
+    id = $3
+    post = $4
+    newurl = ''
+    begin
+      open(tocurl){ |f|
+        f.each { |line|
+          if line =~ /files\/[\d_]+\.html/ then
+            newurl = "http://www.aozora.gr.jp/cards/#{id}/#{$&}"
+            break
+          end
+        }
+      }
+    rescue
+      newurl = tocurl
+    end
+    line = "#{pre}url:#{newurl}#{post}"
+  end
+  puts line
+}
+

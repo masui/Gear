@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# -*- ruby -*-
+#
+
+require './rss'
+
+puts "title:ニュース"
+
+list = feeds('http://www.itmedia.co.jp/')
+puts " title:朝日新聞"
+list.each { |entry|
+  puts "  #{entry}"
+}
+
+
