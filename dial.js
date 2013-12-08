@@ -13,12 +13,11 @@
 //   - 行の高さやインデントなどを定数で指定する
 //   - しょぼいCSSをなんとかする (2013/12/03 09:28:32)
 //   - 音楽の連続再生 (2013/12/07 16:30:28)
-//   - 時々data.jsonを更新ロードする (2013/12/07 16:45:03)
 //   - よく訪れるサイトを訪問しやすくする (2013/12/07 17:32:18)
 //    - ヒストリ表示するだけでいい
+//   - ニュースコンテンツを動的に取得する (2013/12/03 09:27:03)
 // 
 //  * コンテンツ増強
-//   - ニュースコンテンツを動的に取得する (2013/12/03 09:27:03)
 //   - SmartNews的にする (2013/12/03 12:14:48)
 //   - Wikipedia, 辞書など
 //   - キーワードからの写真検索
@@ -29,6 +28,9 @@
 //   - 時間による展開
 //  * 論文案件
 //   - CHIとか
+// 
+//  * Done
+//   - 時々data.jsonを更新ロードする (2013/12/07 16:45:03) => (done 2013/12/08 09:21:10)
 // 
 // Contributions: (2013/12/03 09:26:37)
 //  * ダイヤル回すだけで階層をたどるアイデアは増井俊之が長くあたためてたもの
@@ -60,12 +62,17 @@ if(showContents){
 }
 
 $(function() { // 最初に呼ばれるjQueryのready関数
+    loadData();
+});
+
+var loadData = function(){
     $.getJSON("data.json",function(data){
 	initData(data,null,0);
 	calc(data[0]);
 	timeout = setTimeout(expand,ExpandTimeout);
     });
-});
+    setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
+};
 
 var initData = function(nodes,parent,level){
     for(var i=0;i<nodes.length;i++){
