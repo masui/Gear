@@ -3,9 +3,11 @@ all:
 dat:
 	cd Data; make
 	mv Data/data.json .
-scp:
-	scp data.json dial.js dial.css index.html jque* loading.gif pitecan.com:/www/www.pitecan.com/tmp/DialLens
+
+pitecan:
+	ssh pitecan.com 'cd /www/www.pitecan.com/tmp/DialLens; git pull'
+
+#	scp data.json dial.js dial.css index.html jque* loading.gif pitecan.com:/www/www.pitecan.com/tmp/DialLens
 
 push:
 	git push
-
