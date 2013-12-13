@@ -307,6 +307,33 @@ var prevNode = function(node){
     return prevnode;
 };
 
+$(window).mousewheel(function(event, delta, deltaX, deltaY) {
+    refresh();
+    clearTimeout(timeout);
+    if(delta > 0){
+	timeout = setTimeout(expand,ExpandTimeout);
+	shrinking = true;
+	if(nodeList[-1]){
+	    calc(nodeList[-1]);
+	}
+    }
+    else{
+	timeout = setTimeout(expand,ExpandTimeout);
+	shrinking = false;
+	if(nodeList[1]){
+	    calc(nodeList[1]);
+	}
+    }
+    return false;
+    
+    //var contentTop = $('.content').eq(navNum).offset().top;
+    //$('html,body')
+    //.stop()
+    //.animate({ scrollTop: contentTop }, 'slow');
+    //event.stopPropagation();
+    //event.preventDefault();
+});
+
 $(window).keydown(function(e){
     refresh();
     clearTimeout(timeout);
