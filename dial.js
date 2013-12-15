@@ -6,9 +6,6 @@
 // Issues:
 //  * 仕様
 //   - 早送り/ページ送りも回転で制御する
-//   - 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする
-//     1秒以内なら可逆的に戻れるようにするとか
-//     短い時間だけ使えるスタックを用意しておき、その時間内に逆操作するとスタック内で戻るようにするとか
 //   - 別の木構造に戻れるようにできないか?
 //    - キーワードから写真を選択した後で日付の木構造に戻るとか
 //   - 富豪的実装のスリム化
@@ -33,6 +30,9 @@
 // 
 //  * Done
 //   - 時々data.jsonを更新ロードする (2013/12/07 16:45:03) => (done 2013/12/08 09:21:10)
+//   - 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする (done 2013/12/15 15:28:32)
+//     1秒以内なら可逆的に戻れるようにするとか
+//     短い時間だけ使えるスタックを用意しておき、その時間内に逆操作するとスタック内で戻るようにするとか
 // 
 // Contributions: (2013/12/03 09:26:37)
 //  * ダイヤル回すだけで階層をたどるアイデアは増井俊之が長くあたためてたもの
@@ -54,13 +54,13 @@ var oldSpans;              // アニメーション前のspans
 var shrinking = false;     // 回転方向
 
 var timeout;
-var StepTimeout = 1000;    // 段階的展開のタイムアウト
-var ExpandTimeout = 1500;  // 無操作時展開のタイムアウト
+var StepTime = 1000;       // 段階的展開のタイムアウト時間
+var ExpandTime = 1500;     // 無操作時展開のタイムアウト時間
 var AnimationTime = 300;   // ズーミングのアニメーション時間
 
-var undoStack = [];
-var undoTimeout;
-var UndoTime = 1000;
+var undoStack = [];        // undoのためにヒストリを覚えておく
+var undoTimeout;           // 
+var UndoTime = 1000;       // この時間以内ならundoを許す
 
 var win;
 if(showContents){
@@ -75,7 +75,7 @@ var loadData = function(){
     $.getJSON("data.json",function(data){
 	initData(data,null,0);
 	calc(data[0]);
-	timeout = setTimeout(expand,ExpandTimeout);
+	timeout = setTimeout(expand,ExpandTime);
     });
     setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
 };
@@ -105,7 +105,7 @@ var expand = function(){ // 注目してるエントリの子供を段階的に�
     shrinking = false;
     if(nodeList[0].children){
 	calc(nodeList[0].children[0]);
-	timeout = setTimeout(expand,StepTimeout);
+	timeout = setTimeout(expand,StepTime);
     }
 };
 
@@ -320,7 +320,7 @@ var clearUndoStack = function(){
 var move = function(delta){ // 視点移動
     refresh();
     clearTimeout(timeout);
-    timeout = setTimeout(expand,ExpandTimeout);
+    timeout = setTimeout(expand,ExpandTime);
     clearTimeout(undoTimeout);
     undoTimeout = setTimeout(clearUndoStack,UndoTime);
     shrinking = true;
