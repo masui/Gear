@@ -307,49 +307,27 @@ var prevNode = function(node){
     return prevnode;
 };
 
-$(window).mousewheel(function(event, delta, deltaX, deltaY) {
+var move = function(delta){ // 視点移動
     refresh();
     clearTimeout(timeout);
-    if(delta > 0){
-	timeout = setTimeout(expand,ExpandTimeout);
-	shrinking = true;
-	if(nodeList[-1]){
-	    calc(nodeList[-1]);
-	}
-    }
-    else{
-	timeout = setTimeout(expand,ExpandTimeout);
-	shrinking = false;
-	if(nodeList[1]){
-	    calc(nodeList[1]);
-	}
+    timeout = setTimeout(expand,ExpandTimeout);
+    shrinking = true;
+    if(nodeList[delta]){
+	calc(nodeList[delta]);
     }
     return false;
-    
-    //var contentTop = $('.content').eq(navNum).offset().top;
-    //$('html,body')
-    //.stop()
-    //.animate({ scrollTop: contentTop }, 'slow');
-    //event.stopPropagation();
-    //event.preventDefault();
+};
+
+$(window).mousewheel(function(event, delta, deltaX, deltaY) {
+    return move(delta < 0 ? 1 : -1);
 });
 
 $(window).keydown(function(e){
-    refresh();
-    clearTimeout(timeout);
     if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
-	timeout = setTimeout(expand,ExpandTimeout);
-	shrinking = false;
-	if(nodeList[1]){
-	    calc(nodeList[1]);
-	}
+	return move(1);
     }
     else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
-	timeout = setTimeout(expand,ExpandTimeout);
-	shrinking = true;
-	if(nodeList[-1]){
-	    calc(nodeList[-1]);
-	}
+	return move(-1);
     }
     return false;
 });
