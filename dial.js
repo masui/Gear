@@ -8,6 +8,7 @@
 //   - 早送り/ページ送りも回転で制御する
 //   - 階層の最後から次のカテゴリに移動したとき可逆的に戻れるようにする
 //     1秒以内なら可逆的に戻れるようにするとか
+//     短い時間だけ使えるスタックを用意しておき、その時間内に逆操作するとスタック内で戻るようにするとか
 //   - 別の木構造に戻れるようにできないか?
 //    - キーワードから写真を選択した後で日付の木構造に戻るとか
 //   - 富豪的実装のスリム化
@@ -56,6 +57,10 @@ var timeout;
 var StepTimeout = 1000;    // 段階的展開のタイムアウト
 var ExpandTimeout = 1500;  // 無操作時展開のタイムアウト
 var AnimationTime = 300;   // ズーミングのアニメーション時間
+
+var undoStack = [];
+var undoTimeout;
+var UndoTime = 1000;
 
 var win;
 if(showContents){
@@ -308,13 +313,27 @@ var prevNode = function(node){
     return prevnode;
 };
 
+var clearUndoStack = function(){
+    undoStack = [];
+};
+
 var move = function(delta){ // 視点移動
     refresh();
     clearTimeout(timeout);
     timeout = setTimeout(expand,ExpandTimeout);
+    clearTimeout(undoTimeout);
+    undoTimeout = setTimeout(clearUndoStack,UndoTime);
     shrinking = true;
-    if(nodeList[delta]){
-	calc(nodeList[delta]);
+    if(delta > 0){
+	undoStack.push(nodeList[0]);
+    }
+    if(delta < 0 && undoStack.length > 0){ // undo可能
+	calc(undoStack.pop());
+    }
+    else {
+	if(nodeList[delta]){
+	    calc(nodeList[delta]);
+	}
     }
     return false;
 };
