@@ -15,9 +15,9 @@ CONTENTS = \
 	Geta/geta.ltsv \
 	Stations/stations.ltsv
 
+
 json: getnews
-	ruby ltsv2json ${CONTENTS} | jq . > data.json
-#	bundle exec ruby ltsv2json ${CONTENTS} | jq . > data.json
+	~masui/.rbenv/shims/bundle exec ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
 
 getnews:
 	cd News; make

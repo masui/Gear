@@ -6,17 +6,19 @@
 # issue #21 対応
 #
 
-require 'rubygems'
+# require 'rubygems'
 require 'json'
+require 'kconv'
 
 root = {}
 parents = []
 parents[0] = root
 
 ARGF.each { |line|
+  line = Kconv.kconv(line, Kconv::UTF8, Kconv::AUTO)
   line.chomp!
-  next if line =~ /^\s*$/
-  next if line =~ /^#/
+  next if line =~ /^\s*$/m
+  next if line =~ /^#/m
 
   line.sub!(/^(\s*)/,'')
   indent = $&.length

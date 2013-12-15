@@ -1,2 +1,2 @@
 news:
-	ruby getnews > news.ltsv
+	~masui/.rbenv/shims/bundle exec ruby getnews > news.ltsv
