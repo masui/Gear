@@ -1,2 +1,5 @@
 data.json
-Data/News/news.ltsv
+news.ltsv
+.ruby-version
+*.save*
+
