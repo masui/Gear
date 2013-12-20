@@ -1,7 +1,6 @@
 //
 // dial.js - 回転ダイヤルで階層的コンテンツを閲覧する
 // (C) 増井俊之 2013/12/1
-// pitecan.com:/home/masui/git/DialLens.git
 // 
 // IssuesはGitHubに書く
 // http://GitHub.com/masui/Dial
