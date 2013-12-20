@@ -4,6 +4,7 @@
 // pitecan.com:/home/masui/git/DialLens.git
 // 
 // IssuesはGitHubに書く
+// http://GitHub.com/masui/Dial
 //
 // Contributions: (2013/12/03 09:26:37)
 //  * ダイヤル回すだけで階層をたどるアイデアは増井俊之が長くあたためてたもの
