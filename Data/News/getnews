@@ -47,7 +47,11 @@ def feeds(url)
       end
       if rss then
         rss.items.each { |u|
-          next if u.title =~ /^PR:/ || u.title =~ /^【PR】/ || u.title =~ /^【広告特集】/ || u.title =~ /^AD:/
+          next if u.title =~ /^PR:/ ||
+          u.title =~ /^【PR】/ ||
+          u.title =~ /^【広告特集】/ ||
+          u.title =~ /^AD:/ ||
+          u.title =~ /^\s*$/
           list << "url:#{u.link}\ttitle:#{u.title}"
         }
       else
