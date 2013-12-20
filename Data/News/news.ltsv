@@ -1,83 +1,86 @@
 title:ニュース
  title:朝日新聞	url:http://www.asahi.com/
-  url:http://www.asahi.com/articles/TKY201312150167.html?ref=rss	title:「黒子のバスケ」事件、３６歳男逮捕　威力業務妨害容疑
-  url:http://www.asahi.com/articles/SEB201312150035.html?ref=rss	title:南海トラフ地震想定、九州初の広域訓練　宮崎に９千人
-  url:http://www.asahi.com/articles/OSK201312150058.html?ref=rss	title:ボーイスカウトの子ら１３人下山せず　滋賀・京都県境
-  url:http://www.asahi.com/articles/SEB201312150030.html?ref=rss	title:消費増税・ＴＰＰ、アートで風刺　長崎商業高校の作品展
-  url:http://www.asahi.com/articles/TKY201312150064.html?ref=rss	title:北日本や北陸で猛吹雪の恐れ　東京都心もこの冬最低気温
-  url:http://www.asahi.com/articles/TKY201312150074.html?ref=rss	title:皇后さま、「奇跡の一本松コカリナ」の演奏会を鑑賞
-  url:http://www.asahi.com/articles/TKY201312130019.html?ref=rss	title:仮設住宅に光のアーチ　３年目の今回で最後　仙台
-  url:http://www.asahi.com/articles/SEB201312140058.html?ref=rss	title:「メリーズが、ない」　中国へ転売される紙おむつ
-  url:http://www.asahi.com/articles/OSK201312130001.html?ref=rss	title:被爆建物守れるか　広島８６件　重い維持費、解体も視野
-  url:http://www.asahi.com/articles/TKY201312140048.html?ref=rss	title:ネット通じて渋谷を変えよう　参加型民主主義をマンガに
-  url:http://japan.cnet.com/news/society/35041366/?tag=as.rss	title:＜CNET Japan＞［ウェブサービスレビュー］読み方が分からない外国人名を国名から調べられる「Hear Names」
-  url:http://www.asahi.com/articles/TKY201312150175.html?ref=rss	title:女子リレー主力、磨き合ってソチへ　ショートトラック
-  url:http://www.asahi.com/articles/NGY201312150025.html?ref=rss	title:重圧なんの、いきなりＧ難度　王者・内村、ミス最小限
-  url:http://www.asahi.com/articles/TKY201312150145.html?ref=rss	title:無名の主将、初Ｖ引き寄せる　デンソー５区の高島
-  url:http://www.asahi.com/articles/TKY201312150139.html?ref=rss	title:粘った日本「負けは負け」　カーリング、五輪へ残り１枠
-  url:http://www.asahi.com/articles/TKY201312150136.html?ref=rss	title:上村の「師匠」遠藤、刺激受け３位　モーグルＷ杯
-  url:http://japan.zdnet.com/business-application/analysis/35041348/?tag=as.rss	title:＜ZDNet Japan＞富士通と井関農機、農業生産者向けサービスで協業開始
-  url:http://www.asahi.com/articles/TKY201312150053.html?ref=rss	title:損保ジャパン、英損保を１千億円で買収へ　販路拡大狙う
-  url:http://www.asahi.com/articles/TKY201312140294.html?ref=rss	title:コーヒー店、駅前から郊外へ　ゆったり、狙いは団塊世代
-  url:http://www.asahi.com/articles/SEB201312140046.html?ref=rss	title:禁断の豚骨ラーメン、インドネシアで行列　進出相次ぐ
-  url:http://www.asahi.com/articles/OSK201312130148.html?ref=rss	title:うどん発電、うどん県で始めます　香川・高松、廃棄麺で
-  url:http://www.asahi.com/articles/SEB201312120046.html?ref=rss	title:この温泉水、まさに財宝　通販全国トップ　鹿児島
-  url:http://japan.cnet.com/news/society/35041418/?tag=as.rss	title:＜CNET Japan＞米陸軍レーザー兵器、実験で好成績--迫撃砲弾や無人航空機と交戦
-  url:http://www.asahi.com/articles/TKY201312150174.html?ref=rss	title:「江田氏に１３名連れて行かれた」渡辺・みんな代表
-  url:http://www.asahi.com/articles/TKY201312150104.html?ref=rss	title:首相動静―１２月１５日
-  url:http://www.asahi.com/articles/TKY201312150057.html?ref=rss	title:「安倍内閣として、安保体制をつくらなければ」石破氏
-  url:http://www.asahi.com/articles/TKY201312150055.html?ref=rss	title:安倍首相、ベトナム首相と会談　巡視船提供の協議入りへ
-  url:http://www.asahi.com/articles/TKY201312150044.html?ref=rss	title:「北朝鮮はマフィア国家」古屋拉致問題相、張氏処刑受け
+  url:http://www.asahi.com/articles/ASF0TKY201312170404.html?ref=rss	title:「相続」話し合ってますか？　切り出すコツ・伝えるツボ
+  url:http://www.asahi.com/articles/ASF0OSK201312190147.html?ref=rss	title:社長を待ち伏せし銃撃か　拳銃４発発射　餃子の王将事件
+  url:http://www.asahi.com/articles/ASF0OSK201312150006.html?ref=rss	title:迷わないよう…　迷子地蔵、無縁仏の見守り役に　大阪
+  url:http://www.asahi.com/articles/ASF0TKY201312190146.html?ref=rss	title:首都直下地震、死者２万３千人想定　Ｍ８なら７万人
+  url:http://www.asahi.com/articles/ASF0OSK201312190143.html?ref=rss	title:部下に長時間「アホ、ボケ、カス」　警察局職員を処分
+  url:http://www.asahi.com/articles/ASF0OSK201312190144.html?ref=rss	title:屋台店主、起訴内容認める　福知山爆発事故
+  url:http://www.asahi.com/articles/ASF0TKY201312190362.html?ref=rss	title:火事２千カ所、４１万棟焼失…首都直下地震の被害想定
+  url:http://www.asahi.com/articles/ASF0OSK201312190137.html?ref=rss	title:店舗で全裸になり写真投稿、９人に略式命令　金沢簡裁
+  url:http://www.asahi.com/articles/ASF0OSK201312180004.html?ref=rss	title:夜の植物園はクリスマスムード　ポインセチア１２０種
+  url:http://www.asahi.com/articles/ASF0OSK201312190129.html?ref=rss	title:「犯人、まったく思い当たる節ない」　王将幹部が会見
+  url:http://japan.cnet.com/news/business/35041686/?tag=as.rss	title:＜CNET Japan＞DISH、T-Mobile USの買収を検討か
+  url:http://www.asahi.com/articles/ASF0JJT201312190006.html?ref=rss	title:ＤｅＮＡ・金城、１０００万円アップ　契約更改
+  url:http://www.asahi.com/articles/ASF0OSK201312190110.html?ref=rss	title:オリ・金子、８千万円増　「危機感持つため単年契約」
+  url:http://www.asahi.com/articles/ASF0TKY201312190310.html?ref=rss	title:明大スポーツが最優秀賞　東京五大学新聞コンテスト
+  url:http://www.asahi.com/articles/ASF0OSK201312190066.html?ref=rss	title:セ大阪内定の１７歳丸岡、ドルトムントへ期限付き移籍
+  url:http://www.asahi.com/articles/ASF0OSK201312190067.html?ref=rss	title:野球の新独立リーグ設立を発表　関西の２球団
+  url:http://japan.zdnet.com/mobile/sp_13mobilefirst/35041548/?tag=as.rss	title:＜ZDNet Japan＞2014年、開発は「モバイルファースト」に
+  url:http://www.asahi.com/articles/ASF0TKY201312200005.html?ref=rss	title:日経平均、６８円安で始まる
+  url:http://www.asahi.com/articles/ASF0TKY201312200003.html?ref=rss	title:マック、業績また下方修正　ヒット商品なし、客数減続く
+  url:http://www.asahi.com/articles/ASF0TKY201312190400.html?ref=rss	title:スマホも「つなカール」　ソフトバンクと明治がコラボ
+  url:http://www.asahi.com/articles/ASF0TKY201312190387.html?ref=rss	title:国債、過去最大の１８０兆円規模に　１４年度発行計画
+  url:http://www.asahi.com/articles/ASF0TKY201312190393.html?ref=rss	title:首都圏鉄道１１社、ＩＣカードは１円刻み新運賃
+  url:http://japan.cnet.com/news/business/35041685/?tag=as.rss	title:＜CNET Japan＞FacebookとM・ザッカーバーグCEO、保有株売却へ
+  url:http://www.asahi.com/articles/ASF0TKY201312190405.html?ref=rss	title:猪瀬知事、辞職の裏に服務紀律と百条委　石原氏も促す
+  url:http://www.asahi.com/articles/ASF0TKY201312190333.html?ref=rss	title:真相解明は？　都議会自公、百条委設置見送りへ
+  url:http://www.asahi.com/articles/ASF0TKY201312190262.html?ref=rss	title:首相動静―１２月１９日
+  url:http://www.asahi.com/articles/ASF0TKY201312190294.html?ref=rss	title:猪瀬知事辞職、残る５千万円の謎　特捜、告発受け捜査へ
+  url:http://www.asahi.com/articles/ASF0TKY201312190284.html?ref=rss	title:ロシア哨戒機、日本列島を周回飛行　スクランブルで警戒
   url:?tag=as.rss	title:
-  url:http://www.asahi.com/articles/TKY201312150137.html?ref=rss	title:マンデラ元大統領、故郷で葬儀　家族と同じ墓地に埋葬
-  url:http://www.asahi.com/articles/TKY201312150077.html?ref=rss	title:米小学校の銃乱射事件から１年　各地で追悼行事
-  url:http://www.asahi.com/articles/TKY201312150085.html?ref=rss	title:韓国の拡大防空圏が発効　現地報道「空軍が監視飛行」
-  url:http://www.asahi.com/articles/TKY201312150091.html?ref=rss	title:イエメンで日本人外交官襲われけが　武装集団、車奪う
-  url:http://www.asahi.com/articles/TKY201312150041.html?ref=rss	title:サッカーＷ杯会場建設現場で作業員２人死亡　ブラジル
+  url:http://www.asahi.com/articles/ASF0TKY201312200004.html?ref=rss	title:ロンドンの劇場で天井崩落　８０人けが、７人重傷
+  url:http://www.asahi.com/articles/ASF0TKY201312190423.html?ref=rss	title:開城工業団地を視察団訪問　張氏処刑後も「支障なし」
+  url:http://www.asahi.com/articles/ASF0TKY201312190425.html?ref=rss	title:中国外務省、ＮＹタイムズ特派員らに記者証発給
+  url:http://www.asahi.com/articles/ASF0TKY201312190291.html?ref=rss	title:平壌にロッドマン氏　処刑直後、金正恩氏と会見か
+  url:http://www.asahi.com/articles/ASF0TKY201312190287.html?ref=rss	title:シリアで誘拐横行　政権側も反政府側も　国連調査委報告
   url:http://www.tetsudo.com/news/945/?tag=as.rss	title:＜鉄道コム＞来春の値上げ鉄道運賃、端数扱いで各社に差
-  url:http://www.asahi.com/articles/TKY201312150048.html?ref=rss	title:ＡＫＢ４８、ＣＤ年間売り上げ４年連続１位　オリコン
-  url:http://www.asahi.com/articles/NGY201312130001.html?ref=rss	title:天守閣、木造再建かコンクリ改修か　シンボル巡り議論
-  url:http://www.asahi.com/articles/SEB201312120043.html?ref=rss	title:居酒屋店主は吉本芸人　夢追う３８歳、まだまだこれから
-  url:http://www.asahi.com/articles/TKY201312150003.html?ref=rss	title:中国の無人探査車「玉兎」、月面へ　新華社通信報道
-  url:http://www.asahi.com/articles/TKY201312140338.html?ref=rss	title:中国の月面探査、権益狙いか　核融合発電用のヘリウム３
-  url:http://www.asahi.com/articles/TKY201312140259.html?ref=rss	title:中国無人探査機が月面着陸　米ソに続き３カ国目
-  url:http://www.asahi.com/articles/TKY201312150040.html?ref=rss	title:東大名誉教授の國重純二さん死去
-  url:http://www.asahi.com/articles/OSK201312140152.html?ref=rss	title:唐招提寺８６世長老、堀木教恩さん死去
-  url:http://www.asahi.com/articles/OSK201312140003.html?ref=rss	title:放送作家の尾上たかしさん死去　「新婚さん…」など担当
+  url:http://www.asahi.com/articles/ASF0TKY201312190397.html?ref=rss	title:芥川・直木賞候補作決まる　１月１６日に選考会
+  url:http://www.asahi.com/articles/ASF0TKY201312190330.html?ref=rss	title:「あぶさん」、４１年の連載に幕　主人公退団で完結
+  url:http://www.asahi.com/articles/ASF0TKY201312190328.html?ref=rss	title:河野九段が初戦勝利　囲碁名人戦挑戦者決定リーグ戦
+  url:http://www.asahi.com/articles/ASF0TKY201312190407.html?ref=rss	title:地球は何色？　ロボット宇宙飛行士、若田さんと会話実験
+  url:http://www.asahi.com/articles/ASF0TKY201312170405.html?ref=rss	title:カーネーションの全ゲノム解読　観賞用の花で世界初
+  url:http://www.asahi.com/articles/ASF0TKY201312180557.html?ref=rss	title:英科学誌「来年の顔」に日本女性　ｉＰＳ研究の高橋さん
+  url:http://www.asahi.com/articles/ASF0TKY201312190314.html?ref=rss	title:俳人の本宮哲郎さん死去　「日本海」で俳人協会賞
+  url:http://www.asahi.com/articles/ASF0TKY201312190199.html?ref=rss	title:銀座ルノアール創業者　小宮山正九郎さん死去
+  url:http://www.asahi.com/articles/ASF0OSK201312180147.html?ref=rss	title:水痘ワクチンを開発、高橋理明・阪大名誉教授が死去
  title:日本経済新聞	url:http://www.nikkei.com/
  title:読売新聞	url:http://www.yomiuri.co.jp/
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/5e9a26b76fa981fb9a86b6562901dbac?ul=VtKdEFGdKOXQKukh_jvXMmB2as4XLMrHxYQ9sOUj6X.r4gNC2NlOzX_ahPuYuUgBm80i3lxOQ_Km0xHNzDVwFdaGQ.Xkwxl18PmjBVXyI9lmeryVOM42Fwo1rCHKLCKzwz_aH2j	title:「黒子のバスケ」脅迫事件、大阪の３６歳男逮捕
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/5796e59d944ec5fe03e784edf6161022?ul=cEzF1RaQso70Uoc7KT9StLsAdOw74VllfCsj4.U_NeWGaEbXkLQ0wyzs.LRh0X4WUBtzuFAjJrLQ_6H_.._rPbl435BT1QjUkY1xCUl4JYWjY5IehcU5p082P5qXFfZteW4qdQb	title:日米関係「良い」５５％に上昇、日本が米を逆転
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/8586c59679bba1b05538eab7124a247f?ul=pajsCayV7W1rYyDmo.QFgDD_WJDtKYIFdn2XYRWxECj1PmU_5k2yqinv9HvE5IpuqwMIzqBYz8JnWlqMnIZHRcaKn5ig4LKtv2O58MlW9smv0bwwc	title:疑惑の「宇宙猿」再び生還…次はペルシャ猫？
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/2989ab49727438544c44c5ee54362854?ul=8lKEhOqdX24hSO_SAN4fRcC7MWjSrDL4r3izoDu2oYF0d46C5diwlaSaDzOG2idDgrc0nnIlnDacVyvQfX0i0oRamc1cEJ92S1y6O_IsDcE6ezgOO	title:安倍首相の防空圏巡る発言、中国「強烈な不満」
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/7f086d613e128a4f9d9f066d8a5d738d?ul=jS06hK_DsHN0ZOktFxZHGyHnvgqmrxI_o_Hl33p4hX6vCyGJZmHrm6BtcSel6E7uuGo4WxWP1pbsZXf4UziRpGXql_BCvrAe7tbFIlhdcGwoYTgcL	title:日本の「けん制」失敗…中国、主張強める可能性
-  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/7e9f86ef7aa4604790e7965c175358b3?ul=2KRuIuNN.536oJljRDjBw.tgvtC__y_pADo8zOOx4T_JvXBMcUi5OviZChvoBsYEGDNyGkYWpd2LDfe8Io_lYwkltWHcNg6IRCHVeFunpf4eRtf55	title:川内優輝、１５秒差で２位…防府読売マラソン
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/ed27d00ddec1463b625fc21fab4255a6?ul=Y0jCWb.YYHGA1bfzXuTItGSd4XIHQBy61KW4kEYLnoWRgA1SoftDYsHaKW_N5dhrEK.tWXBJy9tjBtpoWsQar1bxvTnyLUJDwOV1E38WsJl_kqxhcMsZAXROH0doVU20_ae8k1b	title:最後は首相判断？…五輪組織委、トップ人事急ぐ
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/aa781bec63dbc5f8a06cf20f4657f615?ul=qvU0fLMkAZtpMaBMjIK527OILLCvDWzWxk6mhUYWvfHL6YxuqUsNxRZpTKen3lwmaTpLMf.a0I1KR1C62axOn_jPHZa1QbHkPj4m0R7b_qbcbYyUEKBnPTkwOt4pNEsgIJPkoHP	title:「後出しじゃんけん」も…都知事選もつれるか
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/f1748157ae292fe199a54d865e612313?ul=FCT93Yrf_5LC.BYGrHJbWIBvOpYuiCRbO0qrbVFAqaNZmyAxDAbItw4c_WIh6awZNrTw4htnKzykrezNeLxnVJpOr9TW_YkZpaLk5Ploa9enRzTqc	title:性被害、声上げ始めた印女性…農村女性なお沈黙
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/191fb8e81c90306a11445ced412010e8?ul=cm.afCLF0HLet.jvMG_TqP1.b6hCzVxOLhrNDKrb.aeBopZ0tTnYfIAWaFILOTRMksZLAlK..xZKm9zeV2uAkIDaiE5wwKzmQ5D3dEpVLYMj22f5R	title:米、逮捕したインド女性副総領事を裸で身体検査
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/f8840a924231f39d0957be2abe2f4df1?ul=LiwSIJJLOeNohKxpxuyL5lbj_P4hKqwud9ock2y3YsUkTZgyLHiD5pD_a0xaBjH6OJ8RMwB14rchP4BgBMYOVS2TrTllQmEiLU3WHWaNNEU_p6y3cjYEnSq64ChIU98wvyCrBwk	title:江田氏、集団的自衛権で「完全否定」としたのは
+  url:http://rss.rssad.jp/rss/artclk/z0r9SvPmQy3H/7f9af1f9404ba8e05f0bc92e79819f84?ul=CEM24rd005UoMdXwgORFmBuHQIWdxHC1RpFi_ecIszlwhoFTmWPGt9zy02kkv.HfKjMQ2qg9J4DVVoBCpPOw1rxVhF9nl97f9rZa8Swd_41AOINBF	title:北朝鮮の開城工業団地、英仏など１４か国が視察
  title:毎日新聞	url:http://mainichi.jp/
  title:産経新聞	url:http://sankei.jp.msn.com
-  url:http://sankei.jp.msn.com/world/news/131215/kor13121521570006-n1.htm	title:強まる存在感　北朝鮮の崔竜海氏　“代を継ぐ忠誠”を強調
-  url:http://sankei.jp.msn.com/affairs/news/131215/crm13121521410003-n1.htm	title:「黒子のバスケ」脅迫事件で３６歳男逮捕　「負けました」と容疑認める
-  url:http://sankei.jp.msn.com/politics/news/131215/stt13121522080003-n1.htm	title:江田新党、展望見えぬ「３段ロケット」構想　維新、民主と合流？
-  url:http://sankei.jp.msn.com/politics/news/131215/stt13121521210002-n1.htm	title:アントニオ猪木氏、１月通常国会前に訪朝へ
-  url:http://sankei.jp.msn.com/world/news/131215/kor13121520300005-n1.htm	title:「皆、おびえている」　北朝鮮の貿易業者証言　張成沢元国防副委員長処刑で
-  url:http://sankei.jp.msn.com/etc/news/131214/etc13121407010000-n1.htm	title:客を“選別”していた食材偽装・高級ホテルの“おもてなし”…週末プレミアム目次
+  url:http://sankei.jp.msn.com/world/news/131220/chn13122007430001-n1.htm	title:中国が新型ミサイル試射　ＩＣＢＭ「東風４１」　北米全域ほぼ射程に　米情報サイト
+  url:http://sankei.jp.msn.com/sports/news/131220/oth13122009190004-n1.htm	title:【東京五輪】知事辞任で国の権限強まる恐れ　スポーツ界と都は地盤地下か
+  url:http://sankei.jp.msn.com/world/news/131220/erp13122009190003-n1.htm	title:収監１０年、ホドルコフスキー氏釈放へ　ロ大統領が政敵に恩赦　「彼には病気の母もいる」
+  url:http://sankei.jp.msn.com/world/news/131220/erp13122009250004-n1.htm	title:「愛してるよ」英王子のラブコールを盗聴　英大衆紙、婚前のキャサリン妃標的
+  url:http://sankei.jp.msn.com/economy/news/131220/biz13122009240004-n1.htm	title:「安全な車」ホンダが首位、米調査　２２車中日本車が１６車種
+  url:http://sankei.jp.msn.com/affairs/news/131220/crm13122008460006-n1.htm	title:「ヤクザの経済的安定は許さない」　米財務省、山口組幹部４人を経済制裁対象に追加
+  url:http://sankei.jp.msn.com/affairs/news/131220/crm13122007470005-n1.htm	title:「気付いたら裸だった」　警視庁巡査部長、児童買春認める　２０日送検、処分
+  url:http://sankei.jp.msn.com/life/news/131220/trd13122009220009-n1.htm	title:広がる除雪ボランティア　雪国の労苦を知るツアーも
  title:ITmedia	url:http://www.itmedia.co.jp
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f287c04afb954c3f835de3e6acbc760a?ul=OPX2o4aDkSEo5wATcijGGMeIQYhCIso6jc8HjGpRnk42FLUfWQlzRCW0Q6AzONB904iMngbLYY8YaGCd.Bd55.5eK3cIBn8e651XFScy9Hg.61EwqHZKz7KehEjYa2pe.w0nRPb	title:あの“赤NUC”が9980円で買える！
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/cc410ed328b79d634284f0fc875a6d00?ul=MjoH7ZevaS_nnmh8fDD0UiuukApdz.pGeBchzNg66oYOh8QHrQbpF2hKnZJOn6eBklaTJSg.6eOItUhu6z0TZsqqIgcU5fpdqUR0bLCFKTOGM.a0NO5f6scMxp7bQlLVn4C6rwR	title:UIの刷新とクラウド化で生まれ変わった「ドコモメール」の狙いとは
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/209a57c9912ca78759fb02c6c4f73e5d?ul=.1chE5iW6JXeUJIjy7JXNhEIOoGVCXjwm6hkJRGJaRXNmPbNfRZvz1wxndkP7FUYJV9vJcTHMqGYXNyLLJKC53wimeAlXl.R5XwcDptPYFlOCQ.PM	title:Apple Storeでおなじみ　“iPad／iPhoneレジ”はこう実現している
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/ced4fcfe975f9b29725483f7c30c8c29?ul=nlZpwroquqMfiy38MrovWujwbveF_Ax_PaJjy52ZAARrygvSJtFC4X.v3PQqMbiD7wD9wYLK_IN1h_4luHjlL2zyKA7l_oZuDZESfD0bWbj7Vq.YL5ta6ulYSlUp6WLqDkMHMgY	title:東京オリンピック開催でさらに重要となる「カード決済の安全性」
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/9f07161984d1336a680c25f640cb17c2?ul=zw__5Mc1fijZDkVUX1m7xi2GuAuLeeuln533GE_._4NwAhnHD3olM2fKusUFGBht4b4J7lxWsAPpX4fjOzkQh7i6nJr0DmAi0pNyPtPvYz2lnR8KnvzKg1O6yk_pX9ELOjsxMIx	title:「このメーカー、同じような製品出しすぎ？」の裏で起きている争い
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/835ea066644d9900e6a4c03981a67143?ul=PYr.bPg6IEPSEa0SJHfwOnA8_giasn3gsgDsxzo4Y7l6V5sRMAQiuGpJo20iBPhcUKGiSXRbl6EP6Ee0.sy.nsRYBFH0cnwkYyKDPvkvomUofd1daUKN.mX6r.mLis4PLGnZgrl	title:第171回　夜景とイルミネーションと雰囲気の関係
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/d189ae81053b772a2a546084d899b50f?ul=UjOaEGuIaBS.Bag9n6FhwF5z6R6Ax98wcU0NuK70eYx1PUuNaX1dyT6hRuFOJOla2X2JSFvfxOoSCowX__.qX7rcOQgwR28qCpN7xEgWYfXEqrU1uLHxVbXq86epGysvCfkbvze	title:ハチの背中に超小型RFIDチップ――生物多様性保全のためのユビキタス
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f49f20d23d1ddb34a0c0ef7af341a51d?ul=HvkhLvVyO8MtzPl9P7YDPQbAoy2e3iL5eso2wEQjrBv06GoVXYyqRV6pFMdgxE4j1H1QG2p9UWZ__JZJEckByD79W_PhnfQo6UymP0qBT_iXTFmLommUKQ9vfFE.Tw3WsQ4CT43	title:「人生、どうなるか分からない」　出発点はお絵かき掲示板　41歳で単行本デビューした主婦「るなツー」さん
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/22c58b676af2dbfc2190869df14f6a84?ul=HlbbMi_mMHibPv8_T0gAhO4SpsgHVNRhHa00lVFGAv0EAxdSmhL_T2zcqhYi15bHjoSqMGEC_r9IPe_OvNb2_g8YKCNk9H8TycukTXa3vBzGlZvZDgecNaJWXHdMk1G8X8uuBMh	title:成田空港の旅客サービスを変えたiPad導入の舞台裏
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/3dc9134f06ae95d18863bb254bc1c839?ul=jSvDWyfGw79CEY24uPIP1WOSZMeNiNrMfDH2DBo5gb7Xzigox.8J3nY3sGhW5uM.t.MOZWJg8JkkwjCemiUuC6VeIR.YizPrdih5OkHeJ_z5Q6c9.t6BrshodFLbdxONq5QbPQP	title:ジオングが！ マリオが！ ミクさんが！ さまざまで楽しいモノづくりの形
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/81d4b1bd623411bd69a9f49b8a595f50?ul=NvY7U_tNf_9zUjDNb69onecj4jLje3fzurjlPloBxIX2XRqfy4hojWZMx84Q6p8Ll2wA6haqVmy2b.81j0Dz84bcz9OQ7Pq3ub2._zb8g3vKBD4h6vH00iY.F.6zzTcd0pNToeW	title:Amazonの新型タブレット端末「Kindle Fire HDX 8.9」を使ってみた
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/1599cf958e08f8a5b9455b99ab77ecf8?ul=MhJ4wM5GXEk.SSmUeK3FmnGLEvgpYdL2fZve442IKRfkLJcY05hORg6vgstA407EC5B.hnib0uSNaH2e2fygoxmtyVreQeu5anMYgNgG5PnFUd.D_17W8phc8MoDxepxtLtXF3k	title:洗濯物と牛の監視が注目を集める！ センサー＆クラウドで監視装置をビルドアップ
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/3101e206b62e21147f96b097ccf9ede9?ul=s7yolLG58Uw8PtQw61jaWqt_psNpC8V1hNigdvisKdVZtVw.j6X_EWNnyOrZPi3sRT30NHiTK3pKmhQcSnL038E2Evcc6FdEFkakGOqJtdMVhiKNF8gpR8eZ7VEIH58imUxQPeb	title:忘年会から年賀状まで　年末年始お役立ちアプリ10選
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/5fb4982f55b31326e21e619f2fbe9ce9?ul=fZ1qZgNURni05c1zVCoVS.dZD7pxQSCAqgic0sGmHwiRFGftUdP7PxsdTctt6wEvNmJ70agEGApBCuijcDSsCds194ocl5lxy6ZD8_8aj1lHauSKx	title:「物理キーボードなんていらない」――私物iPadを使いこなす女子中学生
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/21008a7f001dcaabf328795dc2ba0a06?ul=6xOC1Kb7.BdKAa4Dm51DcHN8x78wH_2K9yH6pBoWLgAWuG1XPlwH8e3yizRZ6XAV8b8o17FzRqctAmNPeIOL7CWYfu4p0aKfAfnavBPfPGmLs3Puf29iPpLxGdkYzwhasF3Yjzs	title:2013年のセキュリティ事件簿・SNSやスマホの「秘密」をめぐるお作法
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/fff15ac37af0cbd56b85a401bbf8c493?ul=Teo6cmZfz0qKAv0PRwN_wJUphyZyJcYGBzHksqV90IJlfrPsLewFZx9dxoSEYfKKqaii8eEL9nnl8rQ1EGbzxiUyPXzc3bK60776su1xzc96SDZTSDbsG7OYsgHDxe5447c5PhO	title:「いちばん影響力が強いメディアはWebでもTVでもありませんでした」――サッポロビールのO2Oマーケティング戦略
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/d0bdff96ed909d369450d930471dc518?ul=cQv5fROLZZGdBi088aJmlMvv4171ta1OS3CyCgIKj6t4xNUkk99gBBB1lvD4ByeWoxOdQWIDj7d.nY0PEv8dEjQQT9uAZNrVABSTfYcW_m__x7ju_pKN2jm3CgMIF_tMDsshGvV	title:大幅リニューアルでサービス強化　富士通のシニア向けSNS「らくらくコミュニティ」とは
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/70363c9f5f2ac4b2f051f6813742bc3b?ul=TS8BcBhv9PehnVE7AsOnwW17nr0z13fAxQgYsM_UQhGgU2oh89E.QOOzn3WcqMudapj7eRmlCrfdajCTSTVfv87n7qKLlBAUfpgu4ulkf.fWwzcaYSrvhKpn8.hdaXZXSRTcQ9m	title:「dynabook Tab VT484」──「映像／テレビ系機能」に優れる8型Windows 8.1タブレット
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/8a53f638e851137d8356f591b46062fb?ul=5AcddJ1VYh_FUgmm08ikTgoP0gBpCnYRgKoEFPzRUoVnSBF5VEI_fdNn2sHQgsx2Brytck8UbdEM1eZt2QcJ7EWUSmyVaHo0twezq4xHpAI_QhLrrL8wDgqqsVRC82LUGIbzWrh	title:「Xbox One」も最速で200万台突破　PS4とそろって好調な滑り出しだが──今後は未知数
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/0430f85493f0575ec1441501c9f53820?ul=UV3va6BPrr2cUTmyihWukXvVdOERfdN8BalVSlzC2gT0ygBOCeIl.phkd6KBNbpZ0jS8HTAXzOfeQS1maoTU9gGbffVY8t1TLdG_hcna5wfUvXEOYOfWC7Db9A5eQ.QIaFyB.hA	title:アキバで人気のSSDにmSATA版が登場――「Samsung SSD 840 EVO mSATA」徹底検証
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/48d5037c032645f5724b215c3e0c169d?ul=mbkgp7wDEGTlP85kwM6WEoMnSCuqZQZdNhfZwkAy8iT4cOdNICe1_.KFF0.DPwFdKkbWJCDg7kQUSDF6zMOjuQo_8Lt2_FkHCqe6u_jFWXBAyVLd0	title:Info: 【アイティメディアのeBook】海外速報部ログ2007（上）を発売しました
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/047e818a23e01468304307cf5155a589?ul=I2Jihw45T31yLZkdCKFEGWsYMpOLU5LuSTZt1xYiXi1XqBGE3_aawkDFkKIFDovy27Ga1uT.9sZbx.uFXooUQJunmlfgN93Ik3qwm1OTFf_peKckd	title:「Google Glass」が医療現場で使われるまであと1年
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/266de7fed1d7571affc1d4f4e7ee1bef?ul=Hfk33RM.9hRFolkjOHYxWLtfgw7qBmWWKNo.coiek9dgQVTb7li5zCO5DHIaiEcXMfDw3.1KZ.4MoFQLPak6j7H4LiFTtPJWSuLr4qShE.THv7z1.jPxZDPcn3RqBCoeBCp9Qv.	title:海外のサイバー事件から占う2014年の脅威と日本
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/9a15e28283a05f77c675958c3a916859?ul=urCPyLa4Ll4ARLwLSg2C96TJODXdlFomQFRFdAyRWG4pOeBWe2bE4WCuv1jYjRJTI1BEdJWlCQHvxIT0GALSO0_P5j_XwBcIazhqLblxQzcXz3veX	title:金融機関もほれ込むクラウド型セキュリティ「Security as a Service」の魅力
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f3c6796d0fe0920407c4d7c45e73d0b5?ul=NxXnX8WzKPn8TTHo32byYfvHmCVaYJXfsOGZzq2Ih61kqH9zYKyghpnybTMwmpOvVlASX.a.n4ceTSdCpXXT_00uvkoU3mUO9zlq7cJ1cVFBofhSlOX15X4ZeQRXlKHekGenzCa	title:学生が開発した「自作クラウド」を全学生8000人向けに本格稼働　東京工科大の挑戦
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/77e0b33b112497c252584011834bb595?ul=ph0QcD4I2l9E5Ya2x2rjmxP6zmOoSK2jJaaJe7npHNA9DEoeOGlDG_TOs1z95JRt7UU1tSnsHrcRCAaGLYS1xCJwtqeXIbamWIL14T0b1wIuyOo1q1RE6CNKUsPGkP7NFAfH3N2	title:中国メーカーの海外進出が見えてきた2013年
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/00d3e4aba81bcce710f92da7715c603c?ul=8zI_jzwDJhq7Jgnj3BD5zW_PD0P6wLA1zhWK2tMFmZYP5KbN.rwRO73cD7mSE_vsfwCse3LeF018z7e3KtSh9BUhGS6Ub32j_J8rDlcn4ZItwWq3Z_vykyAh.oi8zuXfKaJwOkL	title:あれ、「SIMフリー時代」が本格的に来てしまったかも
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/bf212502ae00c4f424dfb858d66f9449?ul=tdP0TzY2rWfvzX5Gch_jsUy6Jjzq_b231axee5_8HuZVstm1nbccxCHoSC9QnOda26k4TOrmjyXhF2xIasbHjRX5MuTidraYezj83DBku1q3GNU2ZKvtXUFdDHjlPPjjqiN1g2N	title:ゼロデイ脆弱性やランサムウェアの台頭――シマンテックが2013年の脅威を総括
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/d13c8b190b1111514186b2427eda92ea?ul=YPt5WvuX9y2QJnyCKJnkXHF2qpJLowbs_BYP6cS_1qf0pr17urjt00T5qID8xOs9kCody9i.OpYAvxDIbKbXkfKfQPWl3GKNf0UanscGSLNCjU5V2PQzJ5Ifv5nAv8HfbW7M0li	title:冬ボで欲しいアップル製品――「iPad mini Retinaディスプレイモデル」編
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/8af639a3a8c3adb770bb2395db701938?ul=Hd8FstFcnsPdHt8SG2ZXNGcxGHui4CRZ1VNKaJ_a8fjZGyd_qbWi6FYd4PCZHiBmJ0TEOw_L8lajT58C5OPESNbeD9s9Kjr4MjB8PjiGFkvoolOYQ8IebNHYym4hBh.ggPmc0y4	title:カナダにみるNFCとモバイルペイメントの最新事情――北米は業界トレンドのリーダーになれるか？
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/ad77ff9141e43fcd4c9262ac162c26cb?ul=edtQZOscpC76HSxkEEF6SsMNF7SvGYCh7iVTsGpIyAHsD_NPyxurI6kYH2lmR8VchwyYIJdGQY75CJclQqbfsCch6EoKipLzKUnmnV.XgXhqpEpQnudk_WNCcyIuMi1cnOpI2V.	title:「半導体業界の共通の課題は微細化、協業で解決すべき」――専門家が討論
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/0c31cc0cc6b14d0f53f2ed96d887cccd?ul=OehPatiO7CpavP.0C8B50fxvtzql4AVA9JeDxaJH_pZHb4zvBS30q5TtOZESXr3xZiPcaICnAtuPP_ByVDMwR8HBqp8EJjUTpPv1Ciy1Ij0k_w3baFzAYfUxvfg7eOlw6A_nAkm	title:入力内容がそのまま外部に？ オンラインIMEの利用にIIJ-SECTが注意喚起
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/b18fa293d0a32946f694fbc22a861da4?ul=oIFwIiXWlEb4jBlerkXBX0nIqLw0Wpfvy4dyPrOftUWJS_NVXI4txHsnTKiJjEjZ092Ef7O5tQ2e4XlRe2CETXTOAHYpynLLSxAM.DJgEhofrGgFT0NhEXGFbMCwoliiZKg.Wj_	title:楽しく使いこなせるアプリや周辺機器が大豊作の2013年
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/ddcabb660aa46bf835cc736f20e5b800?ul=jQa4OxgqjlwiL4Yh0GhRmhPgLDSO1M1nCNYExsZDYGww3qFfyJqw3py.x7LPl0WwajuwxvqE4eu6g.R.uDpkiRFFb2VupeOjT77nV8naSpi21jObA	title:Appleの影響力は半減――Gartnerが2020年の勢力予想図を公開
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/61fa4b5a4e875c7f0d044cb66fedacf9?ul=UJPL61RLp2.SdLsjoYTIFIqe99U7oRdKlWET73gj4kcD3bfzHFRCkwa.64uKPfcqSRzV6EpAQHh3dM2.feP6DF34N1sJ_hCo3bEunleQen3c691Ii0V.ol0008U1pl0BD2tmz6t	title:米小売大手で100万件超のカード情報流出か、過去最大規模になる恐れ
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/a02fd384aa33751ade01cb4303881ba1?ul=p1OBiaxZ3fCx8t7BKqt9sUjmPMAKxumONULXUl1COnOqQQHn_DwnjH3OkrKOMmko91GWj_l6NqC4RPsyJc20UTucAZHsM8RKfgwGqS7kUkB2N2Z5aEHpntRHXDUXr8aoXKjeqzc	title:AIの“苦悩”――どこまで人間の脳に近づけるのか
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/d68b903f7b89645b93f59df80d6349cb?ul=l2NxhV1jOWEdyVgRE8RE3TskyYy0mSa9Um34VpDllrJsXvMMDdW1qSjhyeNhT0X6XSSJK_tM9YfkZmAb2I9ZaFuFwV8gyzEXpZ0DI7kfbGk6Me.834jadhJF55lkZ8lB2yChqvt	title:「Mac Pro」受注開始、12月19日から
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/62dccff6b7de225eb12840e8d52a470d?ul=56wtpBrKGWUIYht_nSVGEYT62pwyuFGlA4BCvFNqNBABbIXpGx6wLEGz20mCSDW28ovX5myCcppdfS2Q_cMcU0Rw19bnRr2INGtMIGccPJAQO7uHC2WAnxlw4i.df4dt_Rf0Lgy	title:「Inspiron 14 7000」――これが“コードレスパソコン”の正体だ
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f9784960715ee345452dd585f31dcb27?ul=zZHMzU9bFShAs2RWNlaG0e.WwRsvoMW98iRgHz3qxZtiRsxAvO9dw7c6Z8ZpCyi6.CO0zqkVbAwRESEqeeTcWasnUZcjYytQH5YJ4cusB5ewp0vuTxK2FeZFvuN4vYa.EJqRnCj	title:Android OSに深刻な脆弱性、任意のコード実行やパスワード読み取りの恐れも
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/8e895ff27a283322ca4992f27f48d70a?ul=LAigH3_qT2BWDwD5ZkL9JNLQHlSRgl2zQpGTv2sHBCfwk3NhAbDnfMZF2r.U_Yl.aQ2bnJYhRYLsUftD42kMS48xrkjy9ikZgSNyzgabiff3v5cmBFs_3wJXwH.wlWgeYB9jROK	title:4Kテレビ、ホントのところ
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/c6e94d13308db7317d454c05552cb816?ul=WXMRPozW7fIKFmpS7QF55CP0kuzUn4PkBS3bXbZeb1OsA.t6_lrGwwV3PtT7fUaXqhDJlNQ8jjVrIcsbY6M6Izj8dm42Ny8sFx7ZRAvALbI82FzfyeYiiCAGNI5YkDC0POTL1WG	title:IGZO搭載Windows 8.1タブレット「Mebius Pad」、シャープが発売　LTE対応、15時間半駆動
