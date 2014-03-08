@@ -135,7 +135,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 
     if(nodeList[0].url && showContents){ // 別ウィンドウにコンテンツ表示
     	win.location.href = nodeList[0].url;
-	win.focus(); // 前面に持ってくる
+	window.focus(); // 前面に持ってくる
     }
 
     // 新しいノードの表示位置計算
