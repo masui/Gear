@@ -5,6 +5,7 @@
 
 CONTENTS = \
 	News/news.ltsv \
+	Bookmarks/bookmarks.ltsv \
 	Music/music.ltsv \
 	Radio/radio.ltsv \
 	YouTube/youtube.ltsv \

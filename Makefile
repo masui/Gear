@@ -1,8 +1,8 @@
 all:
 	echo make dat / make scp
 dat:
-	cd Data; make; cd ..
-	mv Data/data.json .
+	cd /www/www.pitecan.com/tmp/Dial/Data; make; cd /www/www.pitecan.com/tmp/Dial
+	mv /www/www.pitecan.com/tmp/Dial/Data/data.json /www/www.pitecan.com/tmp/Dial
 
 push:
 	git push
