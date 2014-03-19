@@ -13,6 +13,40 @@ require 'hpricot'
 # フィードが無い場合は空配列を返す。
 # 指定したURLが無効な場合はnilを返す。
 #
+
+def process_rss(rss,list)
+  content = ''
+  open(rss){ |f|
+    content = f.read
+  }
+      
+  rss = nil
+  begin
+    rss = RSS::Parser::parse(content)
+  rescue RSS::InvalidRSSError
+    rss = RSS::Parser::parse(content,false)
+  end
+  if rss then
+    rss.items.each { |u|
+      next if u.title =~ /^PR:/ ||
+      u.title =~ /^【PR】/ ||
+      u.title =~ /^【広告特集】/ ||
+      u.title =~ /^AD:/ ||
+      u.title =~ /^\s*$/
+      list << "url:#{u.link}\ttitle:#{u.title}"
+    }
+  else
+    content.each_with_index { |line,i|
+      while line.sub!(/<link>([^<]*)<\/link>/,'') do
+        list << "url:#{$1}\t記事#{i}"
+      end
+      while line.sub!(/<link.*href="(.*?)"/,'') do
+        list << "url:#{$1}\t記事#{i}"
+      end
+    }
+  end
+end
+
 def feeds(url)
   list = []
   begin
@@ -34,44 +68,22 @@ def feeds(url)
           rss = url + '/' + rss.sub(/^\.\//,'')
         end
       end
-      content = ''
-      open(rss){ |f|
-        content = f.read
-      }
-      
-      rss = nil
-      begin
-        rss = RSS::Parser::parse(content)
-      rescue RSS::InvalidRSSError
-        rss = RSS::Parser::parse(content,false)
-      end
-      if rss then
-        rss.items.each { |u|
-          next if u.title =~ /^PR:/ ||
-          u.title =~ /^【PR】/ ||
-          u.title =~ /^【広告特集】/ ||
-          u.title =~ /^AD:/ ||
-          u.title =~ /^\s*$/
-          list << "url:#{u.link}\ttitle:#{u.title}"
-        }
-      else
-        content.each_with_index { |line,i|
-          while line.sub!(/<link>([^<]*)<\/link>/,'') do
-            list << "url:#{$1}\t記事#{i}"
-          end
-          while line.sub!(/<link.*href="(.*?)"/,'') do
-            list << "url:#{$1}\t記事#{i}"
-          end
-        }
-      end
+
+      process_rss(rss,list)
+
       break
     end
   }
   return list
 end
 
-def news(title,url)
-  list = feeds(url)
+def getnews(title,url,rss=false)
+  list = []
+  if rss then
+    process_rss(url,list)
+  else
+    list = feeds(url)
+  end
   puts " title:#{title}\turl:#{url}"
   if list then
     list.each { |entry|
@@ -81,12 +93,11 @@ def news(title,url)
 end
 
 puts "title:ニュース"
-
-news('朝日新聞','http://www.asahi.com/')
-news('日本経済新聞','http://www.nikkei.com/')
-news('読売新聞','http://www.yomiuri.co.jp/')
-news('毎日新聞','http://mainichi.jp/')
-news('産経新聞','http://sankei.jp.msn.com')
-news('ITmedia','http://www.itmedia.co.jp')
-
-
+getnews('朝日新聞','http://www.asahi.com/')
+getnews('日本経済新聞','http://www.nikkei.com/')
+getnews('読売新聞','http://www.yomiuri.co.jp/')
+getnews('毎日新聞','http://mainichi.jp/')
+getnews('産経新聞','http://sankei.jp.msn.com')
+getnews('ITmedia','http://www.itmedia.co.jp')
+getnews('はてな人気記事','http://feeds.feedburner.com/hatena/b/hotentry',true)
+getnews('はてな一般記事','http://b.hatena.ne.jp/hotentry.rss?mode=general',true)
