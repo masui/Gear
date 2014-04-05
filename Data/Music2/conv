@@ -16,6 +16,7 @@ ARGF.each { |line|
   next if line =~ /DS_Store/
   next if line !~ /\//
   line.sub!(/^\./,'')
+  line.gsub!(/\#/,'%23')
   slashes = line.gsub(/[^\/]/,'').length
   indent = slashes
   line =~ /\/([^\/]+)$/
