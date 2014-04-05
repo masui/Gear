@@ -7,6 +7,7 @@ CONTENTS = \
 	News/news.ltsv \
 	Bookmarks/bookmarks.ltsv \
 	Music/music.ltsv \
+	Music2/music.ltsv \
 	Radio/radio.ltsv \
 	YouTube/youtube.ltsv \
 	GIF/gif.ltsv \

@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+# .
+# ./.DS_Store
+# ./A
+# ./A/.DS_Store
+# ./A/Ahmad Jamal
+# ./A/Ahmad Jamal/Poinciana
+# ./A/Ahmad Jamal/Poinciana/01 Old Devil Moon.mp3
+# ./A/Ahmad Jamal/Poinciana/02 Ahmad's Blues.mp3
+# ./A/Ahmad Jamal/Poinciana/03 Poinciana.mp3
+# ...
+
+puts "title:音楽2"
+ARGF.each { |line|
+  line.chomp!
+  next if line =~ /DS_Store/
+  next if line !~ /\//
+  line.sub!(/^\./,'')
+  slashes = line.gsub(/[^\/]/,'').length
+  indent = slashes
+  line =~ /\/([^\/]+)$/
+  name = $1
+  if name =~ /mp3$/i then
+    puts ' ' * indent + "title:#{name}\turl:http://localhost/~masui/Music#{line}"
+  else
+    puts ' ' * indent + "title:#{name}"
+  end
+}
+

@@ -53,17 +53,24 @@
  Tech store
   PC store
   Mobile Phone store
- Grocery
+ Groceries
   Supermarket
   Small shops
    Fish market
    Meat store
  Toy market
  Restaurants
+  Pizza
+  Burger
+  Ethnic
+   Thai
+   Vietnamese
+   Japanese
 
 ■ 実装
 
  Webブラウザ上にJSで実装
+  KBふたつだけなので簡単
  マウス中ボタンでダイヤル、それを改造したものでも大丈夫
  PowerMateで回転でもできる
 
@@ -82,7 +89,11 @@
 
  どうやるべきか?
   デカいデータからどれぐらい簡単に捜すことができるか?
+  遅いことは確かなのだが
+   どれぐらい遅いか計測すべき?
  どれぐらい嬉しいか
   これは評価むずかしい
+ どれぐらい嬉しいかを評価したいところだが
+ ザッピングの嬉しさとか評価できるのか?
 
 
