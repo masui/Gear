@@ -1,147 +1,281 @@
 Strotor: A minimalistic approach to navigating large hierarchical data.
 
+�� Abstract
 
-■ Abstract
+We introduce a new simple interaction technique
+that enables users to navigate through large hierarchical data gstructure
+using only two keys or one rotating device.
 
-2個のキーだけを利用して大規模な階層データを効果的にナビゲーションする手法を提案する。
-キーを使って階層的に構成されたデータをナビゲーションする場合、
-ひとつの階層内の要素を選択する操作と階層を上下する操作のため、
-階層内移動と階層上下移動に4個のキーが使われることが多いが、
-Strotor
+Using the disk-based implementation called "Strotor",
+users can find data from a huge hierarchical database
+only by rotating a disk.
 
-■ Intro
+Strotor can be easily installed in sofas, kitchens, cars, etc.
+where standard keyboards and remote controllers are difficult to use.
 
-階層的データ構造は大きなデータを表現するのによく使われている
- 多量のコンテンツは大抵階層的に表現されており、階層をたどることによって検索される
-  Unixのファイルシステム
+
+2�ĤΥ������������Ѥ����絬�Ϥʳ��إǡ��������Ū�˥ʥӥ�������󤹤��ˡ����Ƥ��롣
+������ȤäƳ���Ū�˹������줿�ǡ�����ʥӥ�������󤹤��硢
+�ҤȤĤγ���������Ǥ����򤹤����ȳ��ؤ�岼�������Τ��ᡢ
+�������ư�ȳ��ؾ岼��ư��4�ĤΥ������Ȥ��뤳�Ȥ�¿������
+���ذ�ư�˹��פ򤹤뤳�Ȥˤ�ꡢ
+2�ĤΥ���������Ȥ����Ȥ���ǽ�Ǥ���
+
+�� Introduction
+
+Huge data are often represented as a hierarchical data structure, and
+various navigation methods are provided for handling it.
+For example, files on Unix are structured hierarchically, and
+various commands (cd, ls, etc.) and APIs are provided for navigating through the file system.
+Many information visualization techniques for showing huge hierarchical data
+have been proposed[Treemap,etc.] and used ...
+
+When a user cannot use a pointing device or a standard keyboard,
+sekection-based(?) interaction techniques are widely used for
+navigating through hierarchical data.
+
+���֤ˤ�뤳�Ȥ�¿����
+
+For example, a user can hierarchically find a mp3 file by
+selecting an artist from the list of artist names,
+selecting an album title from the title list,
+and selecting an mp3 file from the song list.
+Users can do these jobs by using a mouse,
+but they can also do the same job by using arrow keys.
+
+For example,
+users can use two keys for choosing an entry from the list
+(e.g. selecting an artist from the artist list),
+and another key is used for selecting an entry and show the next level
+(e.g. selecting an artist and show album titles).
+It is sometimes necessary to use one more key for going back to the previous state
+(e.g. showing the artist list for artist selection).
+
+This 4-way navigation is popular on small devices.
+AppleRemote[] has 4 buttons for content navigation,
+and many small MP3 players (e.g. Rio) have 4 buttons for
+selecting a song from the hierarchical data.
+The technique is also available on desktop software like the Finder program on Mac.
+
+Using 4 keys might be okay in many cases, but it would be much better
+if we could do the same navigation task using only 2 keys.
+In that case, 
+we can use a rotating device like a disk or a cylinder and
+only by moving the devise clockwise/counterclockwise
+
+We have developed a new technique where only two keys are required
+for navigating through large data.
+
+(�츻)
+Navigating large structured data through rotation.
+
+** Method and Examples
+
+(1) Display the selected element, its siblings, its ancestors and their siblings.
+highlight the selected element.
+(2) If the selected element has children, wait for 1 second, select the
+first child, and perform (1).
+As a result, all the siblings of the newly selected element appear in the list.
+(3) When a user types U or D, select the element that is displayed next to the currently
+selected element and perform (1).
+If the depth of the newly selected element is different from the currently
+selected element, siblings of the currently selected element will disappear.
+
+
+
+
+����Ū�ǡ�����¤���礭�ʥǡ�����ɽ������Τˤ褯�Ȥ��Ƥ���
+ ¿�̤Υ���ƥ�Ĥ�������Ū��ɽ������Ƥ��ꡢ���ؤ򤿤ɤ뤳�Ȥˤ�äƸ��������
+  Unix�Υե����륷���ƥ�
   iTunes
- 辞書や日付なども一種の階層構造で扱うことが多いので
-  階層データは相当広い範囲で使われている
-このため、階層をたどったり検索したりするインタフェースも沢山ある
- Unixのシェル
+ ��������դʤɤ���γ��ع�¤�ǰ������Ȥ�¿���Τ�
+  ���إǡ��������������ϰϤǻȤ��Ƥ���
+
+���Τ��ᡢ���ؤ򤿤ɤä��긡�������ꤹ�륤�󥿥ե���������������
+ Unix�Υ�����
   cd abc; cd ..; ls
- フォルダのウィンドウ
-  いくつかの異なる方法が用意されている
- 階層メニュー
- WindowsのTreeView
- 階層情報を視覚化する様々な手法[][]が昔から提案されている
+ �ե�����Υ�����ɥ�
+  �����Ĥ��ΰۤʤ���ˡ���Ѱդ���Ƥ���
+  ���إ�˥塼
+  ����Ū�˳��ؤ򤿤ɤ�Windows��TreeView�ߤ����ʤΤ⤢�롣
+ ���ؾ�����в������͡��ʼ�ˡ[][]���Τ�����Ƥ���Ƥ���
 
-デカい階層の必要部分をコンパクトに表示し、ノードをトラバースして段階的にたどることが多い
- (簡単に検索)
- 階層のトラバース
-  子供を選択
-  兄弟に移動
-  親に戻る
+�ޥ������Ȥ���Ȥ��Ϥ�����ʻ�в���ˡ/GUI��ˡ�����뤬��
+ �ե������Treemap��
+ �Ҷ��򥯥�å��������򤹤�Ȥ�[����Τ��]�������ߥ󥰤ǳ����Ȥ�[LensBar]���̥�����ɥ��򳫤��Ȥ���
 
-このために普通はどうするか
- マウスが使えるときはいろんな視覚化手法/GUI手法がある
-  フォルダ、Treemap、
-  子供をクリックして選択するとか[大抵のもの]、ズーミングで開くとか[LensBar]、別ウィンドウを開くとか、
- ボタンやキーボードだけでやりたい場合は以下のような操作をよく使う
-  下位階層を選択し開く操作
-  隣の要素に移る操作
-  上位階層に戻る操作
-  を用意するのが一般的であり、
- たとえばRioのようなMP3プレーヤやAppleRemote[]ではこのようなやり方
-  テレビのリモコンでもこうやって選ぶものは多いと思う
-  このためには4個の操作=4個のボタンが使われるのが普通であり、操作に手間がかかったり使えない場所が多かったりする
-  ジョグダイヤルだけで選ぶことはできない
- 本論文では、2個の操作だけで階層構造をトラバースして任意のコンテンツをブラウズする方法(Strotor)を示す。
-  上下ボタンを押すだけ、あるいはダイヤルを左右に回転するだけであらゆるコンテンツをブラウジングできる
+  ���������ݥ���ƥ��󥰥ǥХ�����Ȥ��ʤ�����¿��
+  ��⥳�������ܥ�������������Τ�����
+   �֤α�ž���������ݥ���ƥ��󥰥ǥХ����ϻȤ��ˤ��������ڥ���ƥ�Ĥ����򤷤������ȤϤ���
+   �����ˤ�����������ʤ����꤬����Ȥ��ϥ����䥹���å������ǻȤ���ȴ򤷤���
 
-■ 例を用いて手法を説明する。
+�ݥ���ƥ��󥰥ǥХ������Ȥ��ʤ���硢
+�Ρ��ɤ�ȥ�С��������ʳ�Ū�ˤ��ɤ뤳�Ȥ�¿��
+ ���ؤΥȥ�С���
+  �Ҷ�������
+  ����˰�ư
+  �Ƥ����
 
-Strotorでは以下の手法をとることによって階層データのナビゲーションを可能にしている。
+ �ܥ���䥭���ܡ��ɤ����Ǥ�ꤿ�����ϰʲ��Τ褦������褯�Ȥ�
+  ���̳��ؤ����򤷳������
+  �٤����Ǥ˰ܤ����
+  ��̳��ؤ�������
+  ���Ѱդ���Τ�����Ū�Ǥ��ꡢ
+ ���Ȥ���Rio�Τ褦��MP3�ץ졼���AppleRemote[]�ǤϤ��Τ褦�ʤ����
+  �ƥ�ӤΥ�⥳��Ǥ⤳����ä����֤�Τ�¿���Ȼפ�
+  ���Τ���ˤ�4�Ĥ����=4�ĤΥܥ��󤬻Ȥ���Τ����̤Ǥ��ꡢ���˼�֤������ä���Ȥ��ʤ���꤬¿���ä��ꤹ��
+  �⤷���������ѤΥ��祰�������ȳ����ѤΥܥ�����Ѱդ��뤳�Ȥ⤢��
+ ����ʸ�Ǥϡ�2�Ĥ��������ǳ��ع�¤��ȥ�С�������Ǥ�դΥ���ƥ�Ĥ�֥饦��������ˡ(Strotor)�򼨤���
+  �岼�ܥ���򲡤����������뤤�ϥ������򺸱��˲�ž��������Ǥ����륳��ƥ�Ĥ�֥饦���󥰤Ǥ���
+
+�� ����åԥ󥰥⡼���Ź������Ѥ��Ƽ�ˡ���������롣
+
+Strotor�Ǥϰʲ��μ�ˡ��Ȥ뤳�Ȥˤ�äƳ��إǡ����Υʥӥ����������ǽ�ˤ��Ƥ��롣
+
+(1. Depth-first�ǳ������Τ�ꥹ��ɽ������)
+2. �������ǤȤ�������η����ꥹ��ɽ������
+3. �������Ǥ˻Ҥ�¸�ߤ����硢������֤��Ƥ���Ĺ�ˤ����򤷤�2.��ɽ����Ԥʤ���
+   ���η�̡�������ָ�ˤҤȤĲ��γ��ؤޤ�ɽ������뤳�Ȥˤʤ�
+4. �����򲡤����������Ǥ�岼�˰�ư������2.��¹Ԥ��롣
+   ���η�̡���ư�褬��̤γ��ؤΤȤ�������ޤǸ����Ƥ������ؤ���ɽ���ˤʤ�
+
+3.�Τ��ᡢ���γ��ؤϼ�ưŪ��ɽ�������
+4.�Τ��ᡢ��γ��ؤؤΰ�ư�ϴ�ñ�Ǥ��롣
+
+Examples
+
+We will show how these works, using a hierarchical data structure
+of the shops in a shopping mall shown in Figure ???.
+Rectangles with thick border represent categories, and
+other rectangles represent individual shops.
+
+When the system is started, only the shops and categories
+at the top level are displayed (Figure 2).
+When the user types the Down key,
+the second element (Stationery store) is selected (Figure 3) and so on.
+
+If the user types D two more times, 
+Food/drink category is selected (Figure 4).
+If the user stops typing keys and waits for one secound, the shops under the Food/drink
+category are displayed and the first entry (Liquor shop) is automatically
+selected (Figure 5).
+
+When the user types D twice and stops typing,
+``Fresh grocery'' category is selected (Figure 6), and
+the shops under the category is automatically selected (Figure 7).
+
+When the user types U here, ``Fresh grocery'' is selected,
+the shops under ``Fresh grocery'' disappears (Figure 6).
+If the user types U two more times, the display changes to Figure 5,
+and one more typing U will generate? Figure 4.
+
+If the user types D after Figure 4, the next visible entry
+(Clothing) is selected (Figure 8), and
+then change to Figure 9.
+
+When the user types D twice after Figure 7,
+``Clothing'' is selected, and Figure 8 appears.
+
+In this way, users can navigate through the hierarchical structure
+only by typing U/D keys at the right timing.
 
 
-「U」キーと「D」キーだけを利用する
-  階層構造はリストとして表現し、ひとつのノード
-  * U/Dで選択ノードを移動させる
-  * 同じ階層のノードがリストされているときはこれをU/Dで選択する
-  * リストの端でU/Dを押したときは、現在表示されている上位階層のノードに移動し、
 
 
-  * 同じ階層のリストの一番上を選択した状態でUを押すと親ノードを選択して子供は全部とじる
-  * 同じ階層のリストの一番下を選択した状態でDを押すと親ノードの次のノードを選択し、子供は全部とじる
-    親ノードがその階層で一番下にあるときは...
-  (1) 兄弟の選択操作中、リストの端より先に移動しようとしたら上位階層に移動し、下位階層は閉じる。
-  * 選択したのエントリに子供階層が存在するとき、一定時間がたてば自動的に下位階層を開いて先頭エントリを選択する
 
-■ Example
+��U�ץ����ȡ�D�ץ������������Ѥ��롣
+�ꥹ�Ȥ�����ܤ����򤹤�Τ����Ѥ��뤬�����ؤξ岼��ư�ˤ����Ѥ��롣
 
- 例えばショッピングモールの案内
- Furniture store
- Flower shop
- Locksmith
- Stationary shops
- Bookstore
- Bank
- Tech store
-  PC store
-  Mobile Phone store
- Groceries
-  Supermarket
-  Small shops
-   Fish market
-   Meat store
- Toy market
- Restaurants
-  Pizza
-  Burger
-  Ethnic
-   Thai
-   Vietnamese
-   Japanese
+  * ���ع�¤�ϥꥹ�ȤȤ���ɽ������
+  * U/D������Ρ��ɤ��ư������
+  * Ʊ�����ؤΥΡ��ɤ��ꥹ�Ȥ���Ƥ���Ȥ��Ϥ����U/D�����򤹤�
+  * �ꥹ�Ȥ�ü��U/D�򲡤����Ȥ��ϡ�����ɽ������Ƥ����̳��ؤΥΡ��ɤ˰�ư����
+    �����Ƥ������ؤ��Ĥ���
+  * �Ҷ��Ρ��ɤ�¸�ߤ���Ρ��ɤ����򤷤Ƥ����硢������ָ�˻Ҷ��γ��ؤ�ưŪ�˳�����
 
-■ 実装
 
- Webブラウザ上にJSで実装
-  KBふたつだけなので簡単
- マウス中ボタンでダイヤル、それを改造したものでも大丈夫
- PowerMateで回転でもできる
+  * Ʊ�����ؤΥꥹ�Ȥΰ��־�����򤷤����֤�U�򲡤��ȿƥΡ��ɤ����򤷤ƻҶ��������Ȥ���
+  * Ʊ�����ؤΥꥹ�Ȥΰ��ֲ������򤷤����֤�D�򲡤��ȿƥΡ��ɤμ��ΥΡ��ɤ����򤷡��Ҷ��������Ȥ���
+    �ƥΡ��ɤ����γ��ؤǰ��ֲ��ˤ���Ȥ���...
+  (1) �������������桢�ꥹ�Ȥ�ü�����˰�ư���褦�Ȥ������̳��ؤ˰�ư�������̳��ؤ��Ĥ��롣
+  * ���򤷤��Υ���ȥ�˻Ҷ����ؤ�¸�ߤ���Ȥ���������֤����Ƥм�ưŪ�˲��̳��ؤ򳫤�����Ƭ����ȥ�����򤹤�
 
- 音楽ソース、ニュースソース、動画、Wikipediaなどあらゆるものをダイヤルやペダルだけで検索できる
 
-■ 既存の手法
+** Implementation
 
- Introでも言っているが
- 2つのボタンだけで操作できるものは存在しない(と思う)
+A prototype system was built in JavaScript and the system
+runs on any modern browser.
+Huge list of of movies, animes, musics, and e-books are listed in one
+window, and the content is shown in another browser window.
+Users can hit two arrow keys or use the PowerMate
+device for the navigation.
 
- ソニーのインフォキャリー
+Selecting a content only by rotating a dial is very �������ɤ���
+
+
+
+�� ����
+
+ Web�֥饦�����JS�Ǽ���
+  KB�դ��Ĥ����ʤΤǴ�ñ
+ �ޥ�����ܥ���ǥ�����롢������¤������ΤǤ������
+ PowerMate�ǲ�ž�Ǥ�Ǥ���
+
+ ���ڥ��������˥塼����������ư�衢Wikipedia�ʤɤ������Τ��������ڥ�������Ǹ����Ǥ���
+
+�� ��¸�μ�ˡ
+
+ Mac�Υե�������Ǥ�4�ĤΥ�����Ȥ�
+
+ Intro�Ǥ���äƤ��뤬
+ 2�ĤΥܥ�����������Ǥ����Τ�¸�ߤ��ʤ�(�Ȼפ�)
+
+ ���祰������������ܥ����Ȥ���ΤϤ褯���롣
+
+ ���ˡ��Υ���ե�����꡼
   http://www.watch.impress.co.jp/mobile/column/stapa/2000/02/07/
-  ジョグダイヤルと押しボタンが使われていた
+  ���祰�������Ȳ����ܥ��󤬻Ȥ��Ƥ���
   http://153.127.244.43/pdf/2013-01-07/45499.pdf
-  読んだ後は目次に戻ってしまう
+  �ɤ������ܼ�����äƤ��ޤ�
 
- 階層メニュー
-  下の階層が自動的に開くところはStrotorと同じだが、
-  1段は自動的に開くがマウスを右に動かして選択する必要がある
+ ���إ�˥塼
+  ���γ��ؤ���ưŪ�˳����Ȥ�����Strotor��Ʊ��������
+  1�ʤϼ�ưŪ�˳������ޥ����򱦤�ư���������򤹤�ɬ�פ�����
 
- 視覚化の研究としてもいろいろ試みられている
+ ��в��θ���Ȥ��Ƥ⤤��������ߤ��Ƥ���
   Hyperbolic Tree[]
   Treemap[]
   Sunburst[Stasko]
   LensBar[]
-  TreemapやSunburstは最近ポピュラーになりつつある
+  Treemap��Sunburst�ϺǶ�ݥԥ�顼�ˤʤ�ĤĤ���
 
-■ 議論
+�� ����
 
- マウスが使えるときはマウスとかを使えばよい
- ほとんど何も使えないところでも、ダイヤルとかペダルとかだけで階層情報をたどれるのが良いところ
+ �ޥ������Ȥ���Ȥ��ϥޥ����Ȥ���Ȥ��Ф褤
+ �ۤȤ�ɲ���Ȥ��ʤ��Ȥ����Ǥ⡢�������Ȥ��ڥ���Ȥ������ǳ��ؾ���򤿤ɤ��Τ��ɤ��Ȥ���
 
- 操作にタイミングが必要なのは良くない
+ ���˥����ߥ󥰤�ɬ�פʤΤ��ɤ��ʤ�
 
- 辞書でも何でもソートできるものはすべて階層データとして扱えるから応用は広い
+ ����Ǥⲿ�Ǥ⥽���ȤǤ����ΤϤ��٤Ƴ��إǡ����Ȥ��ư����뤫����ѤϹ���
+
+�ե����ɥХå��Ȥ��Ʋ��������Ѥ���С��ǥ����ץ쥤�ʤ��Ƥ�Ȥ��롣
+���������Τ򥹥ԡ�������Ф�������Ǥ��롣
+
+�� �桼��ɾ��
+
+�Ҵ�Ūɾ���ϤǤ��Ƥ��ʤ���
+�ȤǤ��äȻȤäƤ���ΤǴ��ۤ�������Ȥ��Ǥ��롣
+
+�Ȥˤ����󤹤��Ȥ����Ǥ��ʤ��Τ������¤����Ȥ��ۤȤ�ɤʤ���
+���Τ����Ǥ���褦�ˤʤ��ΤǤ���
 
 
-■ ユーザ評価
 
- どうやるべきか?
-  デカいデータからどれぐらい簡単に捜すことができるか?
-  遅いことは確かなのだが
-   どれぐらい遅いか計測すべき?
- どれぐらい嬉しいか
-  これは評価むずかしい
- どれぐらい嬉しいかを評価したいところだが
- ザッピングの嬉しさとか評価できるのか?
-
+ �ɤ����٤���?
+  �ǥ����ǡ�������ɤ줰�餤��ñ���ܤ����Ȥ��Ǥ��뤫?
+  �٤����ȤϳΤ��ʤΤ���
+   �ɤ줰�餤�٤�����¬���٤�?
+ �ɤ줰�餤�򤷤���
+  �����ɾ���ऺ������
+ �ɤ줰�餤�򤷤�����ɾ���������Ȥ�������
+ ���åԥ󥰤δ򤷤��Ȥ�ɾ���Ǥ���Τ�?
