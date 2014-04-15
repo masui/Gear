@@ -21,6 +21,8 @@
 \long\def\tsf#1{\textsf{\small{#1}}}
 \long\def\tit#1{\textit{\small{#1}}}
 
+\long\def\ST{\textsf{\small{Strotor}}}
+
 \usepackage{graphicx}
 % mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
 % http://www.ns.musashi-tech.ac.jp/~inoue/Pages/TeX/mediabb.sty.html
@@ -30,7 +32,7 @@
 
 \begin{document}
 \title{Strotor: A Minimalistic Approach to \\
-Exploring Large Hierarchical Data}
+Exploring Hierarchical Data}
 \author{
 \begin{tabular}{l}
 \parbox{5.5cm}{
@@ -52,11 +54,11 @@ that enables users to explore large hierarchical data structure
 using only two keys or one rotating device that can generate
 two different signals based on the rotation direction.
 %
-Using the disk-based system called "Strotor",
+Using the rotation-based input device called ``\ST'',
 users can find an entry in a huge hierarchical database easily
 only by rotating a disk or a cylinder in two directions.
 %
-Strotor can be easily installed in sofas, kitchens, cars, etc.
+{\ST} can be easily installed in sofas, kitchens, cars, etc.
 where standard keyboards and remote controllers do not fit.
 
 \keywords Help systems, Approximate pattern matching, Generate-and-filter
@@ -127,7 +129,7 @@ since the device can generate two key signals based on the direction of the rota
 % for exploring large hierarchical data, and implemented the system on
 % a rotating device ``Strotor''.
 %
-We have developed a new navigation technique and device called ``Strotor'',
+We have developed a new navigation technique and device called ``{\ST}'',
 where users can explore large hierarchical database by simple rotating operation.
 
 
@@ -142,34 +144,34 @@ where users can explore large hierarchical database by simple rotating operation
 
 \section*{Navigation Method and Examples}
 
-Stroter's behavior is based on the following simple principles.
+{\ST}'s behavior is based on the following simple principles.
 Two types of input, ``U'' (up) and ``D'' (down), are used for the navigation.
-They can be generated either by rotating the Strotor device or typing a keyboard.
+They can be generated either by rotating the {\ST} device or typing a keyboard.
 
 \begin{enumerate}
-\item A portion of a hierarchical data is shown to the user.
+\item A portion of the data is shown to the user as a list.
 
-\item Always one element in the hierarchical data is selected and highlighted.
+\item Always one element in the list is selected and highlighted.
 
 % \item Display the selected element, its siblings, its ancestors and their siblings.
 
 \item When an elemented is selected, its siblings, its ancestors and their siblings are displayed
 around the selected elememt.
 
-\item Users can generate U to select the new element above the currently selected element,
-and generate D to select the new element below the selected element.
+\item Users can generate U to select the element above the currently selected element,
+or generate D to select the element below the selected element.
 Whenever the selection is changed, 3. is performed.
 If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element will disappear.
 
-\item When a newly selected element has children and the user does no further operations,
-the first child of the selected elemented is selected, and 3. is performed.
+\item When a newly selected element has children and the user performs no further action,
+the first child of the selected elemented is newly selected and 3. is performed.
 As a result, all the siblings of the newly selected element
 (the first child of the currently selected elmeent) appear in the list.
 
 \end{enumerate}
 
-We show how Strotor works, using a hierarchical data structure of
+We show how {\ST} works, using a hierarchical data structure of
 shops list in a shopping mall shown in Figure \ref{fig1}.
 Rectangles with thick border represent categories, and
 other rectangles represent individual shops.
@@ -215,16 +217,27 @@ category are displayed, and the first entry (\tsf{Liquor shop}) is automatically
 \label{fig5}
 \end{figure}
 
-When the user generates D twice and stops the operation,
-\tsf{Fresh grocery} category is selected (Figure \ref{fig6}), and
-after a short moment,
-the shops under the category is automatically selected (Figure \ref{fig7}).
+When the user generates D twice,
+\tsf{Fresh grocery} category is selected (Figure \ref{fig6}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig6.pdf}}
 \caption{Initial display.}
 \label{fig6}
 \end{figure}
+
+If the user keeps generating D, 
+the list will change to Figure \ref{fig8},
+without expanding the children of \tsf{Fresh grocery}.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig8.pdf}}
+\caption{Initial display.}
+\label{fig8}
+\end{figure}
+
+If the use stops generating D at Figure \ref{fig6},
+the shops under category \tsf{Fresh grocery} is automatically selected (Figure \ref{fig7}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 292]{figures/fig7.pdf}}
@@ -233,19 +246,13 @@ the shops under the category is automatically selected (Figure \ref{fig7}).
 \end{figure}
 
 When the user generates U here, \tsf{Fresh grocery} is selected,
-the shops under \tsf{Fresh grocery} disappears (Figure \ref{fig6}).
+and the shops under \tsf{Fresh grocery} disappears (Figure \ref{fig6}).
 If the user generates U two more times, the display changes to the state
 shown in Figure \ref{fig5},
-and one more U will yield Figure \ref{fig4}.
+and one more U will set the system to Figure \ref{fig4}.
 
 If the user generates D in Figure \ref{fig4}, the next visible entry
 (\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig8.pdf}}
-\caption{Initial display.}
-\label{fig8}
-\end{figure}
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 211]{figures/fig9.pdf}}
@@ -254,21 +261,23 @@ If the user generates D in Figure \ref{fig4}, the next visible entry
 \end{figure}
 
 When the user generates D twice in Figure \ref{fig7},
-\tsf{Clothing} is selected, and the display changes to Figure \ref{fig8}.
+\tsf{Clothing} is selected, and the category will be expanded (Figure \ref{fig8}).
 
 In this way, users can explore the hierarchical structure
 only by generating U/D keys at the right timing.
 
 \section*{Implementation}
 
-A prototype system was built in JavaScript and the system runs on modern browsers.
+A prototype system was built in JavaScript and runs on modern browsers.
 Huge list of of news articles, movies, anime films, musics, and e-books are listed in one browser window
 and the content is displayed in another window.
 Users can hit two arrow keys or use the PowerMate device for the navigation.
 
+ここにスクリーンショット
+
 \begin{figure}[H]
-\centerline{\includegraphics[width=50mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
-\caption{PowerMate device used for the Strotor prototype.}
+\centerline{\includegraphics[width=30mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
+\caption{A PowerMate used for the prototype.}
 \label{powermate}
 \end{figure}
 
@@ -284,12 +293,12 @@ the push button is used for moving to the next level.
 PowerMate is equipped with a push button which can used for such purposes.
 % As far as we know,
 To the best of the authors' knowledge,
-Strotor is the only interaction method for exploring hierarchical data structure
+{\ST} is the only interaction method for exploring hierarchical data structure
 with one rotating device.
 
 Using a conventional hierarchical menu, children elements are displayed automatically
 when the parent element is selected by a mouse.
-The ``automatic expansion'' feature is Strotorと同じ。
+The ``automatic expansion'' feature is {\ST}と同じ。
 
 \subsection{Comparison with InfoVis techniques}
 
@@ -306,7 +315,7 @@ for exploring the whole data.
 
 LensBar\cite{Masui:1998:LVB:647341.721215}
 is also a ZUI system for handling large hierarchical data,
-but the same data structure used in LensBar can be used for Strotor.
+but the same data structure used in LensBar can be used for {\ST}.
 Users can use a pointing devices when it is appropriate,
 and use two keys or a disk device when pointing devices is not available.
 
@@ -315,11 +324,11 @@ and use two keys or a disk device when pointing devices is not available.
 
 \subsection{Subjective Evaluations}
 
-No formal evaluation have been done yet, but Strotor has been used in the authors'
+No formal evaluation have been done yet, but {\ST} has been used in the authors'
 living room for several months, and the author's family members are using it
 everyday for watching anime films and listening to music.
 
-Since the only thing a user can do with Strotor is rotating the device,
+Since the only thing a user can do with {\ST} is rotating the device,
 a user can use the device and see what happens without thinking about
 other interactions.
 Using a disk device for data navigation might be a new experience for
