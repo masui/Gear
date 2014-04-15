@@ -119,50 +119,72 @@ for selecting a song from the hierarchical data.
 % 4 buttons for selecting a song from the hierarchical data.
 
 Using 4 keys might be okay on these devices, but it would be much better
-if we could do the navigation task using only 2 keys.
+if we could perform the navigation task using only 2 keys.
 In that case, we can use a rotating device like a disk or a cylinder for the navigation,
 since the device can generate two key signals based on the direction of the rotation.
 %
-We have developed a new navigation technique where only two keys are required
-for exploring large hierarchical data, and implemented the system on
-a rotating device ``Strotor''.
+% We have developed a new navigation technique where only two keys are required
+% for exploring large hierarchical data, and implemented the system on
+% a rotating device ``Strotor''.
+%
+We have developed a new navigation technique and device called ``Strotor'',
+where users can explore large hierarchical database by simple rotating operation.
+
 
 % (語源)
 % Navigating large structured data through rotation.
 
+\begin{figure}[H]
+\centerline{\includegraphics[width=70mm,bb=0 0 306 110]{figures/rotation.pdf}}
+\caption{Using a rotation device for generating key events.}
+\label{rotation}
+\end{figure}
+
 \section*{Navigation Method and Examples}
 
-Stroter's behavior is based on the following simple principles:
+Stroter's behavior is based on the following simple principles.
+Two types of input, ``U'' (up) and ``D'' (down), are used for the navigation.
+They can be generated either by rotating the Strotor device or typing a keyboard.
 
 \begin{enumerate}
-\item Display the selected element, its siblings, its ancestors and their siblings,
-and highlight the selected element.
-\item If the selected element has children, wait for a little moment,
-select the first child, and perform 1.
-As a result, all the siblings of the newly selected element appear in the list.
-\item When a user types U or D, select the element that is displayed next to the currently
-selected element and perform 1.
+\item A portion of a hierarchical data is shown to the user.
+
+\item Always one element in the hierarchical data is selected and highlighted.
+
+% \item Display the selected element, its siblings, its ancestors and their siblings.
+
+\item When an elemented is selected, its siblings, its ancestors and their siblings are displayed
+around the selected elememt.
+
+\item Users can generate U to select the new element above the currently selected element,
+and generate D to select the new element below the selected element.
+Whenever the selection is changed, 3. is performed.
 If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element will disappear.
+
+\item When a newly selected element has children and the user does no further operations,
+the first child of the selected elemented is selected, and 3. is performed.
+As a result, all the siblings of the newly selected element
+(the first child of the currently selected elmeent) appear in the list.
+
 \end{enumerate}
 
-We will show how these works, using a hierarchical data structure of
-shops in a shopping mall shown in Figure 1.
+We show how Strotor works, using a hierarchical data structure of
+shops list in a shopping mall shown in Figure \ref{fig1}.
 Rectangles with thick border represent categories, and
 other rectangles represent individual shops.
-We use two keys, "U" (up key) and "D" (down key), for the navigation.
 
 \begin{figure}[H]
 % \includegraphics[width=70mm]{figures/fig1.pdf}
-\centerline{\includegraphics[width=70mm,bb=0 0 490 490]{figures/fig1.pdf}}
-\caption{Shops in a shopping mall.}
+\centerline{\includegraphics[width=80mm,bb=0 0 490 490]{figures/fig1.pdf}}
+\caption{Sample data: shops in a shopping mall.}
 \label{fig1}
 \end{figure}
 
-When the system starts, only the shops and categories
-at the top level are displayed (Figure 2).
-When the user types D,
-the second element (Stationery store) is selected (Figure 3).
+When the user starts the exploration, only the shops and categories
+at the top level are displayed (Figure \ref{fig2}).
+When the user generates D,
+the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig2.pdf}}
@@ -176,10 +198,10 @@ the second element (Stationery store) is selected (Figure 3).
 \label{fig3}
 \end{figure}
 
-If the user types D two more times, 
-\tsf{Food/drink} category is selected (Figure 4).
-If the user stops typing keys and waits for a moment, the shops under the \tsf{Food/drink}
-category are displayed, and the first entry (\tsf{Liquor shop}) is automatically selected (Figure 5).
+If the user generates D two more times, 
+\tsf{Food/drink} category is selected (Figure \ref{fig4}).
+If the user stops the operation and waits for a moment, the shops under the \tsf{Food/drink}
+category are displayed, and the first entry (\tsf{Liquor shop}) is automatically selected (Figure \ref{fig5}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig4.pdf}}
@@ -193,9 +215,10 @@ category are displayed, and the first entry (\tsf{Liquor shop}) is automatically
 \label{fig5}
 \end{figure}
 
-When the user types D twice and stops typing,
-\tsf{Fresh grocery} category is selected (Figure 6), and
-the shops under the category is automatically selected (Figure 7).
+When the user generates D twice and stops the operation,
+\tsf{Fresh grocery} category is selected (Figure \ref{fig6}), and
+after a short moment,
+the shops under the category is automatically selected (Figure \ref{fig7}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig6.pdf}}
@@ -209,13 +232,14 @@ the shops under the category is automatically selected (Figure 7).
 \label{fig7}
 \end{figure}
 
-When the user types U here, \tsf{Fresh grocery} is selected,
-the shops under \tsf{Fresh grocery} disappears (Figure 6).
-If the user types U two more times, the display changes to Figure 5,
-and one more typing U will generate? Figure 4.
+When the user generates U here, \tsf{Fresh grocery} is selected,
+the shops under \tsf{Fresh grocery} disappears (Figure \ref{fig6}).
+If the user generates U two more times, the display changes to the state
+shown in Figure \ref{fig5},
+and one more U will yield Figure \ref{fig4}.
 
-If the user types D in Figure 4, the next visible entry
-(\tsf{Clothing}) is selected (Figure 8), and then change to Figure 9.
+If the user generates D in Figure \ref{fig4}, the next visible entry
+(\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig8.pdf}}
@@ -229,11 +253,11 @@ If the user types D in Figure 4, the next visible entry
 \label{fig9}
 \end{figure}
 
-When the user types D twice in Figure 7,
-\tsf{Clothing} is selected, and Figure 8 appears.
+When the user generates D twice in Figure \ref{fig7},
+\tsf{Clothing} is selected, and the display changes to Figure \ref{fig8}.
 
-In this way, users can navigate through the hierarchical structure
-only by typing U/D keys at the right timing.
+In this way, users can explore the hierarchical structure
+only by generating U/D keys at the right timing.
 
 \section*{Implementation}
 
@@ -241,6 +265,12 @@ A prototype system was built in JavaScript and the system runs on modern browser
 Huge list of of news articles, movies, anime films, musics, and e-books are listed in one browser window
 and the content is displayed in another window.
 Users can hit two arrow keys or use the PowerMate device for the navigation.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=50mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
+\caption{PowerMate device used for the Strotor prototype.}
+\label{powermate}
+\end{figure}
 
 \section*{DISCUSSIONS}
 
@@ -252,9 +282,10 @@ Many mobile phones and PDAs are equipped with a jog dial with a push button,
 where the dial is used for selecting an item from a list and 
 the push button is used for moving to the next level.
 PowerMate is equipped with a push button which can used for such purposes.
-As far as we know,
+% As far as we know,
+To the best of the authors' knowledge,
 Strotor is the only interaction method for exploring hierarchical data structure
-with only two keys or one rotating device.
+with one rotating device.
 
 Using a conventional hierarchical menu, children elements are displayed automatically
 when the parent element is selected by a mouse.
@@ -301,9 +332,10 @@ Selecting a content only by rotating a dial is very 気持ち良い。
 
 \section*{CONCLUSIONS}
 
-
+\small{
 \bibliographystyle{plain}
 \bibliography{paper}
+}
 
 \end{document}
 
