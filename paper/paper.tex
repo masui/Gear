@@ -22,6 +22,8 @@
 \long\def\tit#1{\textit{\small{#1}}}
 
 \long\def\ST{\textsf{\small{Strotor}}}
+\long\def\U{\textsf{\small{U}}}
+\long\def\D{\textsf{\small{D}}}
 
 \usepackage{graphicx}
 % mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
@@ -69,7 +71,7 @@ where standard keyboards and remote controllers do not fit.
 
 \section*{INTRODUCTION}
 
-Huge data are often represented as a hierarchical data structure, and
+Large data are often represented as a hierarchical data structure, and
 various navigation methods are provided for exploring the data.
 For example, files on Unix are structured hierarchically, and
 various commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
@@ -77,15 +79,15 @@ Large dictionary database can also be treated as a large
 hierarchical data, since the name of the entry can be treated hierarchically:
 e.g. an entry for ``dictionary'' can be stored under ``d'' and ``d/i''.
 
-Many information visualization techniques and navigation techniques for huge hierarchical data
-have been proposed.
+Many information visualization techniques and navigation techniques
+have been proposed for handling large hierarchical data.
 On personal computers,
 multiple GUI methods are provided for
 exploring the hierarchical file structure, because
 there is no best interaction technique for all the users and situations.
 % there is no single interaction technique that is always good for any situation.
 
-When a user cannot use a pointing device or a standard keyboard,
+When a user cannot use a pointing device,
 selection-based interaction techniques are used for
 finding information in hierarchical data.
 For example, a user can hierarchically find a music file by
@@ -96,15 +98,15 @@ and selecting a music file from the song list.
 % For exaple,
 Users can use two keys for choosing an entry from the list
 (e.g. selecting an artist from the artist list),
-and another key is used for selecting an entry and show the next level
+and often another key is used for selecting an entry and showing the next level
 (e.g. selecting an artist and show album titles).
 It is also necessary to provide a way to go back to the previous state, and
-another key can be used for that task
+yet another key can be used for that task
 (e.g. showing the artist list for artist selection).
 %
 This 4-way navigation is popular on small mp3 players\footnote{
-  e.g. http://www.iriver.com/product/view.asp?pCode=003\&pNo=37
-} and remote controllers like AppleRemote\footnote{http://en.wikipedia.org/wiki/Apple\_Remote}
+  e.g. \textsf{http://www.iriver.com/product/view.asp?pCode=003\&pNo=37}
+} and remote controllers like AppleRemote\footnote{\textsf{http://en.wikipedia.org/wiki/Apple\_Remote}}
 for selecting a song from the hierarchical data.
 4-way navigation is also available on desktop software like Finder.app on Mac.
 
@@ -123,29 +125,29 @@ for selecting a song from the hierarchical data.
 Using 4 keys might be okay on these devices, but it would be much better
 if we could perform the navigation task using only 2 keys.
 In that case, we can use a rotating device like a disk or a cylinder for the navigation,
-since the device can generate two key signals based on the direction of the rotation.
+since the device can generate 2 signals based on the direction of the rotation (Figure \ref{rotation}).
 %
 % We have developed a new navigation technique where only two keys are required
 % for exploring large hierarchical data, and implemented the system on
 % a rotating device ``Strotor''.
 %
 We have developed a new navigation technique and device called ``{\ST}'',
-where users can explore large hierarchical database by simple rotating operation.
+where users can explore large hierarchical database by simple rotating operations.
 
 
 % (語源)
 % Navigating large structured data through rotation.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=70mm,bb=0 0 306 110]{figures/rotation.pdf}}
+\centerline{\includegraphics[width=60mm,bb=0 0 294 110]{figures/rotation.pdf}}
 \caption{Using a rotation device for generating key events.}
 \label{rotation}
 \end{figure}
 
-\section*{Navigation Method and Examples}
+\section*{NAVIGATION METHOD AND EXAMPLES}
 
 {\ST}'s behavior is based on the following simple principles.
-Two types of input, ``U'' (up) and ``D'' (down), are used for the navigation.
+Two types of input, ``{\U}'' (up) and ``{\D}'' (down), are used for the navigation.
 They can be generated either by rotating the {\ST} device or typing a keyboard.
 
 \begin{enumerate}
@@ -158,8 +160,8 @@ They can be generated either by rotating the {\ST} device or typing a keyboard.
 \item When an elemented is selected, its siblings, its ancestors and their siblings are displayed
 around the selected elememt.
 
-\item Users can generate U to select the element above the currently selected element,
-or generate D to select the element below the selected element.
+\item Users can generate {\U} to select the element above the currently selected element,
+or generate {\D} to select the element below the selected element.
 Whenever the selection is changed, 3. is performed.
 If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element will disappear.
@@ -185,7 +187,7 @@ other rectangles represent individual shops.
 
 When the user starts the exploration, only the shops and categories
 at the top level are displayed (Figure \ref{fig2}).
-When the user generates D,
+When the user generates {\D},
 the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3}).
 
 \begin{figure}[H]
@@ -196,62 +198,64 @@ the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig3.pdf}}
-\caption{Initial display.}
+\caption{Typing {\D}.}
 \label{fig3}
 \end{figure}
 
-If the user generates D two more times, 
+If the user generates {\D} two more times, 
 \tsf{Food/drink} category is selected (Figure \ref{fig4}).
 If the user stops the operation and waits for a moment, the shops under the \tsf{Food/drink}
-category are displayed, and the first entry (\tsf{Liquor shop}) is automatically selected (Figure \ref{fig5}).
+category are automatically displayed,
+and the first entry (\tsf{Liquor shop}) is selected (Figure \ref{fig5}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig4.pdf}}
-\caption{Initial display.}
+\caption{Selecting Food/drink.}
 \label{fig4}
 \end{figure}
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig5.pdf}}
-\caption{Initial display.}
+\caption{Selecting Liquor shop.}
 \label{fig5}
 \end{figure}
 
-When the user generates D twice,
+When the user generates {\D} twice,
 \tsf{Fresh grocery} category is selected (Figure \ref{fig6}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig6.pdf}}
-\caption{Initial display.}
+\caption{Selecting Fresh grocery.}
 \label{fig6}
 \end{figure}
 
-If the user keeps generating D, 
+If the user keeps generating {\D}, 
 the list will change to Figure \ref{fig8},
 without expanding the children of \tsf{Fresh grocery}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig8.pdf}}
-\caption{Initial display.}
+\caption{Selecting Clothing.}
 \label{fig8}
 \end{figure}
 
-If the use stops generating D at Figure \ref{fig6},
+If the use stops generating {\D} at Figure \ref{fig6},
 the shops under category \tsf{Fresh grocery} is automatically selected (Figure \ref{fig7}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 292]{figures/fig7.pdf}}
-\caption{Initial display.}
+\caption{Selecting Fish store.}
 \label{fig7}
 \end{figure}
 
-When the user generates U here, \tsf{Fresh grocery} is selected,
-and the shops under \tsf{Fresh grocery} disappears (Figure \ref{fig6}).
-If the user generates U two more times, the display changes to the state
+When the user generates {\U} here, \tsf{Fresh grocery} is selected,
+and the shops under \tsf{Fresh grocery} disappears, 
+resulting in the same state as Figure \ref{fig6}.
+If the user generates {\U} two more times, the display changes to the state
 shown in Figure \ref{fig5},
-and one more U will set the system to Figure \ref{fig4}.
+and one more {\U} will set the system to the state of Figure \ref{fig4}.
 
-If the user generates D in Figure \ref{fig4}, the next visible entry
+If the user generates {\D} in Figure \ref{fig4}, the next visible entry
 (\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
 
 \begin{figure}[H]
@@ -260,15 +264,15 @@ If the user generates D in Figure \ref{fig4}, the next visible entry
 \label{fig9}
 \end{figure}
 
-When the user generates D twice in Figure \ref{fig7},
+When the user generates {\D} twice in Figure \ref{fig7},
 \tsf{Clothing} is selected, and the category will be expanded (Figure \ref{fig8}).
 
 In this way, users can explore the hierarchical structure
-only by generating U/D keys at the right timing.
+only by generating {\U}/{\D} keys at the right timing.
 
 \section*{Implementation}
 
-A prototype system was built in JavaScript and runs on modern browsers.
+A prototype system was built in JavaScript and the system runs on modern browsers.
 Huge list of of news articles, movies, anime films, musics, and e-books are listed in one browser window
 and the content is displayed in another window.
 Users can hit two arrow keys or use the PowerMate device for the navigation.
