@@ -1,47 +1,53 @@
-Strotor: A minimalistic approach to navigating large hierarchical data.
+Strotor: A minimalistic approach to exploring large hierarchical data.
 
-¢£ Abstract
+* Abstract
 
 We introduce a new simple interaction technique
-that enables users to navigate through large hierarchical data gstructure
-using only two keys or one rotating device.
+that enables users to explore large hierarchical data structure
+using only two keys or one rotating device that can generate
+two different signals based on the rotation direction.
 
-Using the disk-based implementation called "Strotor",
-users can find data from a huge hierarchical database
-only by rotating a disk.
+Using the disk-based system called "Strotor",
+users can locate an entry in a huge hierarchical database easily
+only by rotating a disk in two directions.
 
 Strotor can be easily installed in sofas, kitchens, cars, etc.
-where standard keyboards and remote controllers are difficult to use.
+where standard keyboards and remote controllers do not fit.
 
 
-2¸Ä¤Î¥­¡¼¤À¤±¤òÍøÍÑ¤·¤ÆÂçµ¬ÌÏ¤Ê³¬ÁØ¥Ç¡¼¥¿¤ò¸ú²ÌÅª¤Ë¥Ê¥Ó¥²¡¼¥·¥ç¥ó¤¹¤ë¼êË¡¤òÄó°Æ¤¹¤ë¡£
-¥­¡¼¤ò»È¤Ã¤Æ³¬ÁØÅª¤Ë¹½À®¤µ¤ì¤¿¥Ç¡¼¥¿¤ò¥Ê¥Ó¥²¡¼¥·¥ç¥ó¤¹¤ë¾ì¹ç¡¢
-¤Ò¤È¤Ä¤Î³¬ÁØÆâ¤ÎÍ×ÁÇ¤òÁªÂò¤¹¤ëÁàºî¤È³¬ÁØ¤ò¾å²¼¤¹¤ëÁàºî¤Î¤¿¤á¡¢
-³¬ÁØÆâ°ÜÆ°¤È³¬ÁØ¾å²¼°ÜÆ°¤Ë4¸Ä¤Î¥­¡¼¤¬»È¤ï¤ì¤ë¤³¤È¤¬Â¿¤¤¤¬¡¢
-³¬ÁØ°ÜÆ°¤Ë¹©É×¤ò¤¹¤ë¤³¤È¤Ë¤è¤ê¡¢
-2¤Ä¤Î¥­¡¼¤À¤±¤ò»È¤¦¤³¤È¤¬²ÄÇ½¤Ç¤¢¤ë
 
-¢£ Introduction
+% 2å€‹ã®ã‚­ãƒ¼ã ã‘ã‚’åˆ©ç”¨ã—ã¦å¤§è¦æ¨¡ãªéšå±¤ãƒ‡ãƒ¼ã‚¿ã‚’åŠ¹æœçš„ã«ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹æ‰‹æ³•ã‚’ææ¡ˆã™ã‚‹ã€‚
+% ã‚­ãƒ¼ã‚’ä½¿ã£ã¦éšå±¤çš„ã«æ§‹æˆã•ã‚ŒãŸãƒ‡ãƒ¼ã‚¿ã‚’ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ã™ã‚‹å ´åˆã€
+% ã²ã¨ã¤ã®éšå±¤å†…ã®è¦ç´ ã‚’é¸æŠã™ã‚‹æ“ä½œã¨éšå±¤ã‚’ä¸Šä¸‹ã™ã‚‹æ“ä½œã®ãŸã‚ã€
+% éšå±¤å†…ç§»å‹•ã¨éšå±¤ä¸Šä¸‹ç§»å‹•ã«4å€‹ã®ã‚­ãƒ¼ãŒä½¿ã‚ã‚Œã‚‹ã“ã¨ãŒå¤šã„ãŒã€
+% éšå±¤ç§»å‹•ã«å·¥å¤«ã‚’ã™ã‚‹ã“ã¨ã«ã‚ˆã‚Šã€
+% 2ã¤ã®ã‚­ãƒ¼ã ã‘ã‚’ä½¿ã†ã“ã¨ãŒå¯èƒ½ã§ã‚ã‚‹
+
+* Introduction
 
 Huge data are often represented as a hierarchical data structure, and
-various navigation methods are provided for handling it.
+various navigation methods are provided for exploring the data.
 For example, files on Unix are structured hierarchically, and
-various commands (cd, ls, etc.) and APIs are provided for navigating through the file system.
+various commands (cd, ls, etc.) and APIs are provided for exploring the file system.
+Large dictionary database can also be treated as a large
+hierarchical data, since the name of the entry can be treated hierarchically:
+e.g. an entry for ``dictionary'' can be stored under ``d'' and ``d/i''.
+
+
 Many information visualization techniques for showing huge hierarchical data
-have been proposed[Treemap,etc.] and used ...
+have been proposed[Treemap,etc.] and used for exploring the data.
+Multiple GUI methods are usually provided for
+exploring the hierarchical file structure on personal computers, because
+there is no single interaction technique that is always good for any situation.
 
 When a user cannot use a pointing device or a standard keyboard,
-sekection-based(?) interaction techniques are widely used for
-navigating through hierarchical data.
-
-½çÈÖ¤Ë¤ä¤ë¤³¤È¤¬Â¿¤¤¡£
-
-For example, a user can hierarchically find a mp3 file by
+selection-based interaction techniques are used for
+finding information in hierarchical data.
+For example, a user can hierarchically find a music file by
 selecting an artist from the list of artist names,
 selecting an album title from the title list,
-and selecting an mp3 file from the song list.
-Users can do these jobs by using a mouse,
-but they can also do the same job by using arrow keys.
+and selecting a music file from the song list.
+Users can do these jobs either by using a mouse or by using arrow keys.
 
 For example,
 users can use two keys for choosing an entry from the list
@@ -51,23 +57,24 @@ and another key is used for selecting an entry and show the next level
 It is sometimes necessary to use one more key for going back to the previous state
 (e.g. showing the artist list for artist selection).
 
-This 4-way navigation is popular on small devices.
-AppleRemote[] has 4 buttons for content navigation,
-and many small MP3 players (e.g. Rio) have 4 buttons for
-selecting a song from the hierarchical data.
-The technique is also available on desktop software like the Finder program on Mac.
+This 4-way navigation is popular on small devices (e.g. small MP3 players) and remote controllers (e.g. AppleRemote), and
+
+Small devices like Rio MP3 player and remote controllers like AppleRemote have
+4 buttons for selecting a song from the hierarchical data.
+4-way navigation is also available on software like Finder.app on Mac.
 
 Using 4 keys might be okay in many cases, but it would be much better
 if we could do the same navigation task using only 2 keys.
-In that case, 
-we can use a rotating device like a disk or a cylinder and
-only by moving the devise clockwise/counterclockwise
+In that case, we can use a rotating device like a disk or a cylinder for the navigation,
+since it can generate two key events based on the direction of the rotation.
 
-We have developed a new technique where only two keys are required
-for navigating through large data.
+% only by moving the devise clockwise/counterclockwise
 
-(¸ì¸»)
-Navigating large structured data through rotation.
+We have developed a new navigation technique where only two keys are required
+for exploring large hierarchical data.
+
+% (èªæº)
+% Navigating large structured data through rotation.
 
 ** Method and Examples
 
@@ -82,83 +89,82 @@ If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element will disappear.
 
 
+% éšå±¤çš„ãƒ‡ãƒ¼ã‚¿æ§‹é€ ã¯å¤§ããªãƒ‡ãƒ¼ã‚¿ã‚’è¡¨ç¾ã™ã‚‹ã®ã«ã‚ˆãä½¿ã‚ã‚Œã¦ã„ã‚‹
+%  å¤šé‡ã®ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã¯å¤§æŠµéšå±¤çš„ã«è¡¨ç¾ã•ã‚Œã¦ãŠã‚Šã€éšå±¤ã‚’ãŸã©ã‚‹ã“ã¨ã«ã‚ˆã£ã¦æ¤œç´¢ã•ã‚Œã‚‹
+%   Unixã®ãƒ•ã‚¡ã‚¤ãƒ«ã‚·ã‚¹ãƒ†ãƒ 
+%   iTunes
+%  è¾æ›¸ã‚„æ—¥ä»˜ãªã©ã‚‚ä¸€ç¨®ã®éšå±¤æ§‹é€ ã§æ‰±ã†ã“ã¨ãŒå¤šã„ã®ã§
+%   éšå±¤ãƒ‡ãƒ¼ã‚¿ã¯ç›¸å½“åºƒã„ç¯„å›²ã§ä½¿ã‚ã‚Œã¦ã„ã‚‹
+% 
+% ã“ã®ãŸã‚ã€éšå±¤ã‚’ãŸã©ã£ãŸã‚Šæ¤œç´¢ã—ãŸã‚Šã™ã‚‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹ã‚‚æ²¢å±±ã‚ã‚‹
+%  Unixã®ã‚·ã‚§ãƒ«
+%   cd abc; cd ..; ls
+%  ãƒ•ã‚©ãƒ«ãƒ€ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
+%   ã„ãã¤ã‹ã®ç•°ãªã‚‹æ–¹æ³•ãŒç”¨æ„ã•ã‚Œã¦ã„ã‚‹
+%   éšå±¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼
+%   æ˜ç¤ºçš„ã«éšå±¤ã‚’ãŸã©ã‚‹Windowsã®TreeViewã¿ãŸã„ãªã®ã‚‚ã‚ã‚‹ã€‚
+%  éšå±¤æƒ…å ±ã‚’è¦–è¦šåŒ–ã™ã‚‹æ§˜ã€…ãªæ‰‹æ³•[][]ãŒæ˜”ã‹ã‚‰ææ¡ˆã•ã‚Œã¦ã„ã‚‹
+% 
+% ãƒã‚¦ã‚¹ãŒä½¿ãˆã‚‹ã¨ãã¯ã„ã‚ã‚“ãªè¦–è¦šåŒ–æ‰‹æ³•/GUIæ‰‹æ³•ãŒã‚ã‚‹ãŒã€
+%  ãƒ•ã‚©ãƒ«ãƒ€ã€Treemapã€
+%  å­ä¾›ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦é¸æŠã™ã‚‹ã¨ã‹[å¤§æŠµã®ã‚‚ã®]ã€ã‚ºãƒ¼ãƒŸãƒ³ã‚°ã§é–‹ãã¨ã‹[LensBar]ã€åˆ¥ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‹ãã¨ã‹ã€
+% 
+%   ã—ã‹ã—ã€ãƒã‚¤ãƒ³ãƒ†ã‚£ãƒ³ã‚°ãƒ‡ãƒã‚¤ã‚¹ã‚’ä½¿ãˆãªã„å ´åˆã‚‚å¤šã„
+%   ãƒªãƒ¢ã‚³ãƒ³ã¯å¤§æŠµãƒœã‚¿ãƒ³ã ã‘ã§æ“ä½œã™ã‚‹ã‚‚ã®ã ã—ã€
+%    è»Šã®é‹è»¢ä¸­ã‚„æ–™ç†ä¸­ãƒã‚¤ãƒ³ãƒ†ã‚£ãƒ³ã‚°ãƒ‡ãƒã‚¤ã‚¹ã¯ä½¿ã„ã«ãã„ãŒéŸ³æ¥½ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’é¸æŠã—ãŸã„ã“ã¨ã¯ã‚ã‚‹
+%    å°å‹ã«ã—ãŸã„å ´åˆã‚„ä¾¡æ ¼ã®å•é¡ŒãŒã‚ã‚‹ã¨ãã¯ã‚­ãƒ¼ã‚„ã‚¹ã‚¤ãƒƒãƒã ã‘ã§ä½¿ãˆã‚‹ã¨å¬‰ã—ã„ã€‚
+% 
+% ãƒã‚¤ãƒ³ãƒ†ã‚£ãƒ³ã‚°ãƒ‡ãƒã‚¤ã‚¹ãŒä½¿ãˆãªã„å ´åˆã€
+% ãƒãƒ¼ãƒ‰ã‚’ãƒˆãƒ©ãƒãƒ¼ã‚¹ã—ã¦æ®µéšçš„ã«ãŸã©ã‚‹ã“ã¨ãŒå¤šã„
+%  éšå±¤ã®ãƒˆãƒ©ãƒãƒ¼ã‚¹
+%   å­ä¾›ã‚’é¸æŠ
+%   å…„å¼Ÿã«ç§»å‹•
+%   è¦ªã«æˆ»ã‚‹
+% 
+%  ãƒœã‚¿ãƒ³ã‚„ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰ã ã‘ã§ã‚„ã‚ŠãŸã„å ´åˆã¯ä»¥ä¸‹ã®ã‚ˆã†ãªæ“ä½œã‚’ã‚ˆãä½¿ã†
+%   ä¸‹ä½éšå±¤ã‚’é¸æŠã—é–‹ãæ“ä½œ
+%   éš£ã®è¦ç´ ã«ç§»ã‚‹æ“ä½œ
+%   ä¸Šä½éšå±¤ã«æˆ»ã‚‹æ“ä½œ
+%   ã‚’ç”¨æ„ã™ã‚‹ã®ãŒä¸€èˆ¬çš„ã§ã‚ã‚Šã€
+%  ãŸã¨ãˆã°Rioã®ã‚ˆã†ãªMP3ãƒ—ãƒ¬ãƒ¼ãƒ¤ã‚„AppleRemote[]ã§ã¯ã“ã®ã‚ˆã†ãªã‚„ã‚Šæ–¹
+%   ãƒ†ãƒ¬ãƒ“ã®ãƒªãƒ¢ã‚³ãƒ³ã§ã‚‚ã“ã†ã‚„ã£ã¦é¸ã¶ã‚‚ã®ã¯å¤šã„ã¨æ€ã†
+%   ã“ã®ãŸã‚ã«ã¯4å€‹ã®æ“ä½œ=4å€‹ã®ãƒœã‚¿ãƒ³ãŒä½¿ã‚ã‚Œã‚‹ã®ãŒæ™®é€šã§ã‚ã‚Šã€æ“ä½œã«æ‰‹é–“ãŒã‹ã‹ã£ãŸã‚Šä½¿ãˆãªã„å ´æ‰€ãŒå¤šã‹ã£ãŸã‚Šã™ã‚‹
+%   ã‚‚ã—ãã¯é¸æŠç”¨ã®ã‚¸ãƒ§ã‚°ãƒ€ã‚¤ãƒ¤ãƒ«ã¨ç¢ºå®šç”¨ã®ãƒœã‚¿ãƒ³ã‚’ç”¨æ„ã™ã‚‹ã“ã¨ã‚‚ã‚ã‚‹
+%  æœ¬è«–æ–‡ã§ã¯ã€2å€‹ã®æ“ä½œã ã‘ã§éšå±¤æ§‹é€ ã‚’ãƒˆãƒ©ãƒãƒ¼ã‚¹ã—ã¦ä»»æ„ã®ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’ãƒ–ãƒ©ã‚¦ã‚ºã™ã‚‹æ–¹æ³•(Strotor)ã‚’ç¤ºã™ã€‚
+%   ä¸Šä¸‹ãƒœã‚¿ãƒ³ã‚’æŠ¼ã™ã ã‘ã€ã‚ã‚‹ã„ã¯ãƒ€ã‚¤ãƒ¤ãƒ«ã‚’å·¦å³ã«å›è»¢ã™ã‚‹ã ã‘ã§ã‚ã‚‰ã‚†ã‚‹ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã‚’ãƒ–ãƒ©ã‚¦ã‚¸ãƒ³ã‚°ã§ãã‚‹
+% 
+% â–  ã‚·ãƒ§ãƒƒãƒ”ãƒ³ã‚°ãƒ¢ãƒ¼ãƒ«ã®åº—ã®ä¾‹ã‚’ç”¨ã„ã¦æ‰‹æ³•ã‚’èª¬æ˜ã™ã‚‹ã€‚
+% 
+% Strotorã§ã¯ä»¥ä¸‹ã®æ‰‹æ³•ã‚’ã¨ã‚‹ã“ã¨ã«ã‚ˆã£ã¦éšå±¤ãƒ‡ãƒ¼ã‚¿ã®ãƒŠãƒ“ã‚²ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å¯èƒ½ã«ã—ã¦ã„ã‚‹ã€‚
+% 
+% (1. Depth-firstã§éšå±¤å…¨ä½“ã‚’ãƒªã‚¹ãƒˆè¡¨ç¾ã™ã‚‹)
+% 2. é¸æŠè¦ç´ ã¨ãã®ç¥–å…ˆã®å…„å¼Ÿã‚’ãƒªã‚¹ãƒˆè¡¨ç¤ºã™ã‚‹
+% 3. é¸æŠè¦ç´ ã«å­ãŒå­˜åœ¨ã™ã‚‹å ´åˆã€ä¸€å®šæ™‚é–“ã—ã¦ã‹ã‚‰é•·ç”·ã‚’é¸æŠã—ã¦2.ã®è¡¨ç¤ºã‚’è¡Œãªã†ã€‚
+%    ã“ã®çµæœã€ä¸€å®šæ™‚é–“å¾Œã«ã²ã¨ã¤ä¸‹ã®éšå±¤ã¾ã§è¡¨ç¤ºã•ã‚Œã‚‹ã“ã¨ã«ãªã‚‹
+% 4. ã‚­ãƒ¼ã‚’æŠ¼ã™ã¨é¸æŠè¦ç´ ã‚’ä¸Šä¸‹ã«ç§»å‹•ã•ã›ã¦2.ã‚’å®Ÿè¡Œã™ã‚‹ã€‚
+%    ã“ã®çµæœã€ç§»å‹•å…ˆãŒä¸Šä½ã®éšå±¤ã®ã¨ãã€ã“ã‚Œã¾ã§è¦‹ãˆã¦ã„ãŸéšå±¤ã¯éè¡¨ç¤ºã«ãªã‚‹
+% 
+% 3.ã®ãŸã‚ã€ä¸‹ã®éšå±¤ã¯è‡ªå‹•çš„ã«è¡¨ç¤ºã•ã‚Œã‚‹
+% 4.ã®ãŸã‚ã€ä¸Šã®éšå±¤ã¸ã®ç§»å‹•ã¯ç°¡å˜ã§ã‚ã‚‹ã€‚
+% 
 
+* Examples
 
-³¬ÁØÅª¥Ç¡¼¥¿¹½Â¤¤ÏÂç¤­¤Ê¥Ç¡¼¥¿¤òÉ½¸½¤¹¤ë¤Î¤Ë¤è¤¯»È¤ï¤ì¤Æ¤¤¤ë
- Â¿ÎÌ¤Î¥³¥ó¥Æ¥ó¥Ä¤ÏÂçÄñ³¬ÁØÅª¤ËÉ½¸½¤µ¤ì¤Æ¤ª¤ê¡¢³¬ÁØ¤ò¤¿¤É¤ë¤³¤È¤Ë¤è¤Ã¤Æ¸¡º÷¤µ¤ì¤ë
-  Unix¤Î¥Õ¥¡¥¤¥ë¥·¥¹¥Æ¥à
-  iTunes
- ¼­½ñ¤äÆüÉÕ¤Ê¤É¤â°ì¼ï¤Î³¬ÁØ¹½Â¤¤Ç°·¤¦¤³¤È¤¬Â¿¤¤¤Î¤Ç
-  ³¬ÁØ¥Ç¡¼¥¿¤ÏÁêÅö¹­¤¤ÈÏ°Ï¤Ç»È¤ï¤ì¤Æ¤¤¤ë
-
-¤³¤Î¤¿¤á¡¢³¬ÁØ¤ò¤¿¤É¤Ã¤¿¤ê¸¡º÷¤·¤¿¤ê¤¹¤ë¥¤¥ó¥¿¥Õ¥§¡¼¥¹¤âÂô»³¤¢¤ë
- Unix¤Î¥·¥§¥ë
-  cd abc; cd ..; ls
- ¥Õ¥©¥ë¥À¤Î¥¦¥£¥ó¥É¥¦
-  ¤¤¤¯¤Ä¤«¤Î°Û¤Ê¤ëÊıË¡¤¬ÍÑ°Õ¤µ¤ì¤Æ¤¤¤ë
-  ³¬ÁØ¥á¥Ë¥å¡¼
-  ÌÀ¼¨Åª¤Ë³¬ÁØ¤ò¤¿¤É¤ëWindows¤ÎTreeView¤ß¤¿¤¤¤Ê¤Î¤â¤¢¤ë¡£
- ³¬ÁØ¾ğÊó¤ò»ë³Ğ²½¤¹¤ëÍÍ¡¹¤Ê¼êË¡[][]¤¬ÀÎ¤«¤éÄó°Æ¤µ¤ì¤Æ¤¤¤ë
-
-¥Ş¥¦¥¹¤¬»È¤¨¤ë¤È¤­¤Ï¤¤¤í¤ó¤Ê»ë³Ğ²½¼êË¡/GUI¼êË¡¤¬¤¢¤ë¤¬¡¢
- ¥Õ¥©¥ë¥À¡¢Treemap¡¢
- »Ò¶¡¤ò¥¯¥ê¥Ã¥¯¤·¤ÆÁªÂò¤¹¤ë¤È¤«[ÂçÄñ¤Î¤â¤Î]¡¢¥º¡¼¥ß¥ó¥°¤Ç³«¤¯¤È¤«[LensBar]¡¢ÊÌ¥¦¥£¥ó¥É¥¦¤ò³«¤¯¤È¤«¡¢
-
-  ¤·¤«¤·¡¢¥İ¥¤¥ó¥Æ¥£¥ó¥°¥Ç¥Ğ¥¤¥¹¤ò»È¤¨¤Ê¤¤¾ì¹ç¤âÂ¿¤¤
-  ¥ê¥â¥³¥ó¤ÏÂçÄñ¥Ü¥¿¥ó¤À¤±¤ÇÁàºî¤¹¤ë¤â¤Î¤À¤·¡¢
-   ¼Ö¤Î±¿Å¾Ãæ¤äÎÁÍıÃæ¥İ¥¤¥ó¥Æ¥£¥ó¥°¥Ç¥Ğ¥¤¥¹¤Ï»È¤¤¤Ë¤¯¤¤¤¬²»³Ú¥³¥ó¥Æ¥ó¥Ä¤òÁªÂò¤·¤¿¤¤¤³¤È¤Ï¤¢¤ë
-   ¾®·¿¤Ë¤·¤¿¤¤¾ì¹ç¤ä²Á³Ê¤ÎÌäÂê¤¬¤¢¤ë¤È¤­¤Ï¥­¡¼¤ä¥¹¥¤¥Ã¥Á¤À¤±¤Ç»È¤¨¤ë¤È´ò¤·¤¤¡£
-
-¥İ¥¤¥ó¥Æ¥£¥ó¥°¥Ç¥Ğ¥¤¥¹¤¬»È¤¨¤Ê¤¤¾ì¹ç¡¢
-¥Î¡¼¥É¤ò¥È¥é¥Ğ¡¼¥¹¤·¤ÆÃÊ³¬Åª¤Ë¤¿¤É¤ë¤³¤È¤¬Â¿¤¤
- ³¬ÁØ¤Î¥È¥é¥Ğ¡¼¥¹
-  »Ò¶¡¤òÁªÂò
-  ·»Äï¤Ë°ÜÆ°
-  ¿Æ¤ËÌá¤ë
-
- ¥Ü¥¿¥ó¤ä¥­¡¼¥Ü¡¼¥É¤À¤±¤Ç¤ä¤ê¤¿¤¤¾ì¹ç¤Ï°Ê²¼¤Î¤è¤¦¤ÊÁàºî¤ò¤è¤¯»È¤¦
-  ²¼°Ì³¬ÁØ¤òÁªÂò¤·³«¤¯Áàºî
-  ÎÙ¤ÎÍ×ÁÇ¤Ë°Ü¤ëÁàºî
-  ¾å°Ì³¬ÁØ¤ËÌá¤ëÁàºî
-  ¤òÍÑ°Õ¤¹¤ë¤Î¤¬°ìÈÌÅª¤Ç¤¢¤ê¡¢
- ¤¿¤È¤¨¤ĞRio¤Î¤è¤¦¤ÊMP3¥×¥ì¡¼¥ä¤äAppleRemote[]¤Ç¤Ï¤³¤Î¤è¤¦¤Ê¤ä¤êÊı
-  ¥Æ¥ì¥Ó¤Î¥ê¥â¥³¥ó¤Ç¤â¤³¤¦¤ä¤Ã¤ÆÁª¤Ö¤â¤Î¤ÏÂ¿¤¤¤È»×¤¦
-  ¤³¤Î¤¿¤á¤Ë¤Ï4¸Ä¤ÎÁàºî=4¸Ä¤Î¥Ü¥¿¥ó¤¬»È¤ï¤ì¤ë¤Î¤¬ÉáÄÌ¤Ç¤¢¤ê¡¢Áàºî¤Ë¼ê´Ö¤¬¤«¤«¤Ã¤¿¤ê»È¤¨¤Ê¤¤¾ì½ê¤¬Â¿¤«¤Ã¤¿¤ê¤¹¤ë
-  ¤â¤·¤¯¤ÏÁªÂòÍÑ¤Î¥¸¥ç¥°¥À¥¤¥ä¥ë¤È³ÎÄêÍÑ¤Î¥Ü¥¿¥ó¤òÍÑ°Õ¤¹¤ë¤³¤È¤â¤¢¤ë
- ËÜÏÀÊ¸¤Ç¤Ï¡¢2¸Ä¤ÎÁàºî¤À¤±¤Ç³¬ÁØ¹½Â¤¤ò¥È¥é¥Ğ¡¼¥¹¤·¤ÆÇ¤°Õ¤Î¥³¥ó¥Æ¥ó¥Ä¤ò¥Ö¥é¥¦¥º¤¹¤ëÊıË¡(Strotor)¤ò¼¨¤¹¡£
-  ¾å²¼¥Ü¥¿¥ó¤ò²¡¤¹¤À¤±¡¢¤¢¤ë¤¤¤Ï¥À¥¤¥ä¥ë¤òº¸±¦¤Ë²óÅ¾¤¹¤ë¤À¤±¤Ç¤¢¤é¤æ¤ë¥³¥ó¥Æ¥ó¥Ä¤ò¥Ö¥é¥¦¥¸¥ó¥°¤Ç¤­¤ë
-
-¢£ ¥·¥ç¥Ã¥Ô¥ó¥°¥â¡¼¥ë¤ÎÅ¹¤ÎÎã¤òÍÑ¤¤¤Æ¼êË¡¤òÀâÌÀ¤¹¤ë¡£
-
-Strotor¤Ç¤Ï°Ê²¼¤Î¼êË¡¤ò¤È¤ë¤³¤È¤Ë¤è¤Ã¤Æ³¬ÁØ¥Ç¡¼¥¿¤Î¥Ê¥Ó¥²¡¼¥·¥ç¥ó¤ò²ÄÇ½¤Ë¤·¤Æ¤¤¤ë¡£
-
-(1. Depth-first¤Ç³¬ÁØÁ´ÂÎ¤ò¥ê¥¹¥ÈÉ½¸½¤¹¤ë)
-2. ÁªÂòÍ×ÁÇ¤È¤½¤ÎÁÄÀè¤Î·»Äï¤ò¥ê¥¹¥ÈÉ½¼¨¤¹¤ë
-3. ÁªÂòÍ×ÁÇ¤Ë»Ò¤¬Â¸ºß¤¹¤ë¾ì¹ç¡¢°ìÄê»ş´Ö¤·¤Æ¤«¤éÄ¹ÃË¤òÁªÂò¤·¤Æ2.¤ÎÉ½¼¨¤ò¹Ô¤Ê¤¦¡£
-   ¤³¤Î·ë²Ì¡¢°ìÄê»ş´Ö¸å¤Ë¤Ò¤È¤Ä²¼¤Î³¬ÁØ¤Ş¤ÇÉ½¼¨¤µ¤ì¤ë¤³¤È¤Ë¤Ê¤ë
-4. ¥­¡¼¤ò²¡¤¹¤ÈÁªÂòÍ×ÁÇ¤ò¾å²¼¤Ë°ÜÆ°¤µ¤»¤Æ2.¤ò¼Â¹Ô¤¹¤ë¡£
-   ¤³¤Î·ë²Ì¡¢°ÜÆ°Àè¤¬¾å°Ì¤Î³¬ÁØ¤Î¤È¤­¡¢¤³¤ì¤Ş¤Ç¸«¤¨¤Æ¤¤¤¿³¬ÁØ¤ÏÈóÉ½¼¨¤Ë¤Ê¤ë
-
-3.¤Î¤¿¤á¡¢²¼¤Î³¬ÁØ¤Ï¼«Æ°Åª¤ËÉ½¼¨¤µ¤ì¤ë
-4.¤Î¤¿¤á¡¢¾å¤Î³¬ÁØ¤Ø¤Î°ÜÆ°¤Ï´ÊÃ±¤Ç¤¢¤ë¡£
-
-Examples
-
-We will show how these works, using a hierarchical data structure
-of the shops in a shopping mall shown in Figure ???.
+We will show how these works, using a hierarchical data structure of
+shops in a shopping mall shown in Figure 1.
 Rectangles with thick border represent categories, and
 other rectangles represent individual shops.
+We use two keys, "U" (up key) and "D" (down key), for the navigation.
 
-When the system is started, only the shops and categories
+When the system starts, only the shops and categories
 at the top level are displayed (Figure 2).
-When the user types the Down key,
-the second element (Stationery store) is selected (Figure 3) and so on.
+When the user types D,
+the second element (Stationery store) is selected (Figure 3).
 
 If the user types D two more times, 
-Food/drink category is selected (Figure 4).
-If the user stops typing keys and waits for one secound, the shops under the Food/drink
-category are displayed and the first entry (Liquor shop) is automatically
-selected (Figure 5).
+``Food/drink category'' is selected (Figure 4).
+If the user stops typing keys and waits for a moment, the shops under the Food/drink
+category are displayed, and the first entry (Liquor shop) is automatically selected (Figure 5).
 
 When the user types D twice and stops typing,
 ``Fresh grocery'' category is selected (Figure 6), and
@@ -169,113 +175,162 @@ the shops under ``Fresh grocery'' disappears (Figure 6).
 If the user types U two more times, the display changes to Figure 5,
 and one more typing U will generate? Figure 4.
 
-If the user types D after Figure 4, the next visible entry
-(Clothing) is selected (Figure 8), and
-then change to Figure 9.
+If the user types D in Figure 4, the next visible entry
+(Clothing) is selected (Figure 8), and then change to Figure 9.
 
-When the user types D twice after Figure 7,
+When the user types D twice in Figure 7,
 ``Clothing'' is selected, and Figure 8 appears.
 
 In this way, users can navigate through the hierarchical structure
 only by typing U/D keys at the right timing.
 
 
-
-
-
-¡ÖU¡×¥­¡¼¤È¡ÖD¡×¥­¡¼¤À¤±¤òÍøÍÑ¤¹¤ë¡£
-¥ê¥¹¥È¤«¤é¹àÌÜ¤òÁªÂò¤¹¤ë¤Î¤ËÍøÍÑ¤¹¤ë¤¬¡¢³¬ÁØ¤Î¾å²¼°ÜÆ°¤Ë¤âÍøÍÑ¤¹¤ë¡£
-
-  * ³¬ÁØ¹½Â¤¤Ï¥ê¥¹¥È¤È¤·¤ÆÉ½¸½¤¹¤ë
-  * U/D¤ÇÁªÂò¥Î¡¼¥É¤ò°ÜÆ°¤µ¤»¤ë
-  * Æ±¤¸³¬ÁØ¤Î¥Î¡¼¥É¤¬¥ê¥¹¥È¤µ¤ì¤Æ¤¤¤ë¤È¤­¤Ï¤³¤ì¤òU/D¤ÇÁªÂò¤¹¤ë
-  * ¥ê¥¹¥È¤ÎÃ¼¤ÇU/D¤ò²¡¤·¤¿¤È¤­¤Ï¡¢¸½ºßÉ½¼¨¤µ¤ì¤Æ¤¤¤ë¾å°Ì³¬ÁØ¤Î¥Î¡¼¥É¤Ë°ÜÆ°¤·¡¢
-    ³«¤¤¤Æ¤¤¤¿³¬ÁØ¤ÏÊÄ¤¸¤ë
-  * »Ò¶¡¥Î¡¼¥É¤¬Â¸ºß¤¹¤ë¥Î¡¼¥É¤òÁªÂò¤·¤Æ¤¤¤ë¾ì¹ç¡¢°ìÄê»ş´Ö¸å¤Ë»Ò¶¡¤Î³¬ÁØ¤ò¼«Æ°Åª¤Ë³«¤¯¡£
-
-
-  * Æ±¤¸³¬ÁØ¤Î¥ê¥¹¥È¤Î°ìÈÖ¾å¤òÁªÂò¤·¤¿¾õÂÖ¤ÇU¤ò²¡¤¹¤È¿Æ¥Î¡¼¥É¤òÁªÂò¤·¤Æ»Ò¶¡¤ÏÁ´Éô¤È¤¸¤ë
-  * Æ±¤¸³¬ÁØ¤Î¥ê¥¹¥È¤Î°ìÈÖ²¼¤òÁªÂò¤·¤¿¾õÂÖ¤ÇD¤ò²¡¤¹¤È¿Æ¥Î¡¼¥É¤Î¼¡¤Î¥Î¡¼¥É¤òÁªÂò¤·¡¢»Ò¶¡¤ÏÁ´Éô¤È¤¸¤ë
-    ¿Æ¥Î¡¼¥É¤¬¤½¤Î³¬ÁØ¤Ç°ìÈÖ²¼¤Ë¤¢¤ë¤È¤­¤Ï...
-  (1) ·»Äï¤ÎÁªÂòÁàºîÃæ¡¢¥ê¥¹¥È¤ÎÃ¼¤è¤êÀè¤Ë°ÜÆ°¤·¤è¤¦¤È¤·¤¿¤é¾å°Ì³¬ÁØ¤Ë°ÜÆ°¤·¡¢²¼°Ì³¬ÁØ¤ÏÊÄ¤¸¤ë¡£
-  * ÁªÂò¤·¤¿¤Î¥¨¥ó¥È¥ê¤Ë»Ò¶¡³¬ÁØ¤¬Â¸ºß¤¹¤ë¤È¤­¡¢°ìÄê»ş´Ö¤¬¤¿¤Æ¤Ğ¼«Æ°Åª¤Ë²¼°Ì³¬ÁØ¤ò³«¤¤¤ÆÀèÆ¬¥¨¥ó¥È¥ê¤òÁªÂò¤¹¤ë
+% ã€ŒUã€ã‚­ãƒ¼ã¨ã€ŒDã€ã‚­ãƒ¼ã ã‘ã‚’åˆ©ç”¨ã™ã‚‹ã€‚
+% ãƒªã‚¹ãƒˆã‹ã‚‰é …ç›®ã‚’é¸æŠã™ã‚‹ã®ã«åˆ©ç”¨ã™ã‚‹ãŒã€éšå±¤ã®ä¸Šä¸‹ç§»å‹•ã«ã‚‚åˆ©ç”¨ã™ã‚‹ã€‚
+% 
+%   * éšå±¤æ§‹é€ ã¯ãƒªã‚¹ãƒˆã¨ã—ã¦è¡¨ç¾ã™ã‚‹
+%   * U/Dã§é¸æŠãƒãƒ¼ãƒ‰ã‚’ç§»å‹•ã•ã›ã‚‹
+%   * åŒã˜éšå±¤ã®ãƒãƒ¼ãƒ‰ãŒãƒªã‚¹ãƒˆã•ã‚Œã¦ã„ã‚‹ã¨ãã¯ã“ã‚Œã‚’U/Dã§é¸æŠã™ã‚‹
+%   * ãƒªã‚¹ãƒˆã®ç«¯ã§U/Dã‚’æŠ¼ã—ãŸã¨ãã¯ã€ç¾åœ¨è¡¨ç¤ºã•ã‚Œã¦ã„ã‚‹ä¸Šä½éšå±¤ã®ãƒãƒ¼ãƒ‰ã«ç§»å‹•ã—ã€
+%     é–‹ã„ã¦ã„ãŸéšå±¤ã¯é–‰ã˜ã‚‹
+%   * å­ä¾›ãƒãƒ¼ãƒ‰ãŒå­˜åœ¨ã™ã‚‹ãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã¦ã„ã‚‹å ´åˆã€ä¸€å®šæ™‚é–“å¾Œã«å­ä¾›ã®éšå±¤ã‚’è‡ªå‹•çš„ã«é–‹ãã€‚
+%
+%
+%  * åŒã˜éšå±¤ã®ãƒªã‚¹ãƒˆã®ä¸€ç•ªä¸Šã‚’é¸æŠã—ãŸçŠ¶æ…‹ã§Uã‚’æŠ¼ã™ã¨è¦ªãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã¦å­ä¾›ã¯å…¨éƒ¨ã¨ã˜ã‚‹
+%  * åŒã˜éšå±¤ã®ãƒªã‚¹ãƒˆã®ä¸€ç•ªä¸‹ã‚’é¸æŠã—ãŸçŠ¶æ…‹ã§Dã‚’æŠ¼ã™ã¨è¦ªãƒãƒ¼ãƒ‰ã®æ¬¡ã®ãƒãƒ¼ãƒ‰ã‚’é¸æŠã—ã€å­ä¾›ã¯å…¨éƒ¨ã¨ã˜ã‚‹
+%    è¦ªãƒãƒ¼ãƒ‰ãŒãã®éšå±¤ã§ä¸€ç•ªä¸‹ã«ã‚ã‚‹ã¨ãã¯...
+%  (1) å…„å¼Ÿã®é¸æŠæ“ä½œä¸­ã€ãƒªã‚¹ãƒˆã®ç«¯ã‚ˆã‚Šå…ˆã«ç§»å‹•ã—ã‚ˆã†ã¨ã—ãŸã‚‰ä¸Šä½éšå±¤ã«ç§»å‹•ã—ã€ä¸‹ä½éšå±¤ã¯é–‰ã˜ã‚‹ã€‚
+%  * é¸æŠã—ãŸã®ã‚¨ãƒ³ãƒˆãƒªã«å­ä¾›éšå±¤ãŒå­˜åœ¨ã™ã‚‹ã¨ãã€ä¸€å®šæ™‚é–“ãŒãŸã¦ã°è‡ªå‹•çš„ã«ä¸‹ä½éšå±¤ã‚’é–‹ã„ã¦å…ˆé ­ã‚¨ãƒ³ãƒˆãƒªã‚’é¸æŠã™ã‚‹
 
 
 ** Implementation
 
-A prototype system was built in JavaScript and the system
-runs on any modern browser.
-Huge list of of movies, animes, musics, and e-books are listed in one
-window, and the content is shown in another browser window.
-Users can hit two arrow keys or use the PowerMate
-device for the navigation.
+A prototype system was built in JavaScript and the system runs on modern browsers.
+Huge list of of news articles, movies, anime films, musics, and e-books are listed in one browser window
+and the content is displayed in another window.
+Users can hit two arrow keys or use the PowerMate device for the navigation.
 
-Selecting a content only by rotating a dial is very µ¤»ı¤ÁÎÉ¤¤¡£
+% â–  å®Ÿè£…
+%  Webãƒ–ãƒ©ã‚¦ã‚¶ä¸Šã«JSã§å®Ÿè£…
+%   KBãµãŸã¤ã ã‘ãªã®ã§ç°¡å˜
+%  ãƒã‚¦ã‚¹ä¸­ãƒœã‚¿ãƒ³ã§ãƒ€ã‚¤ãƒ¤ãƒ«ã€ãã‚Œã‚’æ”¹é€ ã—ãŸã‚‚ã®ã§ã‚‚å¤§ä¸ˆå¤«
+%  PowerMateã§å›è»¢ã§ã‚‚ã§ãã‚‹
+
+Selecting a content only by rotating a dial is very æ°—æŒã¡è‰¯ã„ã€‚
+
+% éŸ³æ¥½ã‚½ãƒ¼ã‚¹ã€ãƒ‹ãƒ¥ãƒ¼ã‚¹ã‚½ãƒ¼ã‚¹ã€å‹•ç”»ã€Wikipediaãªã©ã‚ã‚‰ã‚†ã‚‹ã‚‚ã®ã‚’ãƒ€ã‚¤ãƒ¤ãƒ«ã‚„ãƒšãƒ€ãƒ«ã ã‘ã§æ¤œç´¢ã§ãã‚‹
+
+* Discussions
+
+** Comparison with existing methods
+
+4-way navigation are quite common for exploring hierarchical data structure,
+and modern computer users have no problem using it.
+Many mobile phones and PDAs are equipped with a jog dial with a push button,
+where the dial is used for selecting an item from a list and 
+the push button is used for moving to the next level.
+PowerMate is equipped with a push button which can used for such purposes.
+As far as we know,
+Strotor is the only interaction method for exploring hierarchical data structure
+with only two keys or one rotating device.
+
+Using a conventional hierarchical menu, children elements are displayed automatically
+when the parent element is selected by a mouse.
+The ``automatic expansion'' feature is Strotorã¨åŒã˜ã€‚
+
+** Comparison with InfoVis techniques
+
+Various information techniques like
+Treemap[],
+Hyperbolic Tree[],
+and Sunburst[]
+have been proposed for visualizing large hierarchical data.
+Zooming interface (ZUI) systems like Pad[], Pad++[]
+have also been used for handling ...
+All of these systems are useful for understanding the structure of
+large hierarchical data, but users of these systems have to use a pointing device
+for exploring the whole data.
+
+LensBar[] is also a ZUI system for handling large hierarchical data,
+but the same data structure used in LensBar can be used for Strotor.
+Users can use a pointing devices when it is appropriate,
+and use two keys or a disk device when pointing devices is not available.
+
+æ™‚é–“ã‚’ä½¿ã£ã¦ã„ã‚‹ã®ã¯å•é¡Œ
+å¯é€†çš„ã§ãªã„ã‹ã‚‰
+
+** Subjective Evaluations
+
+No formal evaluation have been done yet, but Strotor has been used in the authors'
+living room for several months, and the author's family members are using it
+everyday for watching anime films and listening to music.
+
+Since the only thing a user can do with Strotor is rotating the device,
+a user can use the device and see what happens without thinking about
+other interactions.
+Using a disk device for data navigation might be a new experience for
+most of the users, but the hard restriction of the usage seems to be a
+good thing.
 
 
 
-¢£ ¼ÂÁõ
-
- Web¥Ö¥é¥¦¥¶¾å¤ËJS¤Ç¼ÂÁõ
-  KB¤Õ¤¿¤Ä¤À¤±¤Ê¤Î¤Ç´ÊÃ±
- ¥Ş¥¦¥¹Ãæ¥Ü¥¿¥ó¤Ç¥À¥¤¥ä¥ë¡¢¤½¤ì¤ò²şÂ¤¤·¤¿¤â¤Î¤Ç¤âÂç¾æÉ×
- PowerMate¤Ç²óÅ¾¤Ç¤â¤Ç¤­¤ë
-
- ²»³Ú¥½¡¼¥¹¡¢¥Ë¥å¡¼¥¹¥½¡¼¥¹¡¢Æ°²è¡¢Wikipedia¤Ê¤É¤¢¤é¤æ¤ë¤â¤Î¤ò¥À¥¤¥ä¥ë¤ä¥Ú¥À¥ë¤À¤±¤Ç¸¡º÷¤Ç¤­¤ë
-
-¢£ ´ûÂ¸¤Î¼êË¡
-
- Mac¤Î¥Õ¥¡¥¤¥ó¥À¤Ç¤Ï4¸Ä¤Î¥­¡¼¤ò»È¤¦
-
- Intro¤Ç¤â¸À¤Ã¤Æ¤¤¤ë¤¬
- 2¤Ä¤Î¥Ü¥¿¥ó¤À¤±¤ÇÁàºî¤Ç¤­¤ë¤â¤Î¤ÏÂ¸ºß¤·¤Ê¤¤(¤È»×¤¦)
-
- ¥¸¥ç¥°¥À¥¤¥ä¥ë¤ÈÁªÂò¥Ü¥¿¥ó¤ò»È¤¦¤â¤Î¤Ï¤è¤¯¤¢¤ë¡£
-
- ¥½¥Ë¡¼¤Î¥¤¥ó¥Õ¥©¥­¥ã¥ê¡¼
-  http://www.watch.impress.co.jp/mobile/column/stapa/2000/02/07/
-  ¥¸¥ç¥°¥À¥¤¥ä¥ë¤È²¡¤·¥Ü¥¿¥ó¤¬»È¤ï¤ì¤Æ¤¤¤¿
-  http://153.127.244.43/pdf/2013-01-07/45499.pdf
-  ÆÉ¤ó¤À¸å¤ÏÌÜ¼¡¤ËÌá¤Ã¤Æ¤·¤Ş¤¦
-
- ³¬ÁØ¥á¥Ë¥å¡¼
-  ²¼¤Î³¬ÁØ¤¬¼«Æ°Åª¤Ë³«¤¯¤È¤³¤í¤ÏStrotor¤ÈÆ±¤¸¤À¤¬¡¢
-  1ÃÊ¤Ï¼«Æ°Åª¤Ë³«¤¯¤¬¥Ş¥¦¥¹¤ò±¦¤ËÆ°¤«¤·¤ÆÁªÂò¤¹¤ëÉ¬Í×¤¬¤¢¤ë
-
- »ë³Ğ²½¤Î¸¦µæ¤È¤·¤Æ¤â¤¤¤í¤¤¤í»î¤ß¤é¤ì¤Æ¤¤¤ë
-  Hyperbolic Tree[]
-  Treemap[]
-  Sunburst[Stasko]
-  LensBar[]
-  Treemap¤äSunburst¤ÏºÇ¶á¥İ¥Ô¥å¥é¡¼¤Ë¤Ê¤ê¤Ä¤Ä¤¢¤ë
-
-¢£ µÄÏÀ
-
- ¥Ş¥¦¥¹¤¬»È¤¨¤ë¤È¤­¤Ï¥Ş¥¦¥¹¤È¤«¤ò»È¤¨¤Ğ¤è¤¤
- ¤Û¤È¤ó¤É²¿¤â»È¤¨¤Ê¤¤¤È¤³¤í¤Ç¤â¡¢¥À¥¤¥ä¥ë¤È¤«¥Ú¥À¥ë¤È¤«¤À¤±¤Ç³¬ÁØ¾ğÊó¤ò¤¿¤É¤ì¤ë¤Î¤¬ÎÉ¤¤¤È¤³¤í
-
- Áàºî¤Ë¥¿¥¤¥ß¥ó¥°¤¬É¬Í×¤Ê¤Î¤ÏÎÉ¤¯¤Ê¤¤
-
- ¼­½ñ¤Ç¤â²¿¤Ç¤â¥½¡¼¥È¤Ç¤­¤ë¤â¤Î¤Ï¤¹¤Ù¤Æ³¬ÁØ¥Ç¡¼¥¿¤È¤·¤Æ°·¤¨¤ë¤«¤é±şÍÑ¤Ï¹­¤¤
-
-¥Õ¥£¡¼¥É¥Ğ¥Ã¥¯¤È¤·¤Æ²»À¼¤òÍøÍÑ¤¹¤ì¤Ğ¡¢¥Ç¥£¥¹¥×¥ì¥¤¤Ê¤¯¤Æ¤â»È¤¨¤ë¡£
-º£Áª¤ó¤À¤â¤Î¤ò¥¹¥Ô¡¼¥Á¤¹¤ì¤Ğ¤¤¤¤¤«¤é¤Ç¤¢¤ë¡£
-
-¢£ ¥æ¡¼¥¶É¾²Á
-
-µÒ´ÑÅªÉ¾²Á¤Ï¤Ç¤­¤Æ¤¤¤Ê¤¤¤¬
-²È¤Ç¤º¤Ã¤È»È¤Ã¤Æ¤¤¤ë¤Î¤Ç´¶ÁÛ¤ò¸À¤¦¤³¤È¤¬¤Ç¤­¤ë¡£
-
-¤È¤Ë¤«¤¯²ó¤¹¤³¤È¤·¤«¤Ç¤­¤Ê¤¤¤Î¤ÇÁàºî¤òÌÂ¤¦¤³¤È¤¬¤Û¤È¤ó¤É¤Ê¤¯¡¢
-¤½¤Î¤¦¤Á¤Ç¤­¤ë¤è¤¦¤Ë¤Ê¤ë¤â¤Î¤Ç¤¢¤ë
 
 
 
- ¤É¤¦¤ä¤ë¤Ù¤­¤«?
-  ¥Ç¥«¤¤¥Ç¡¼¥¿¤«¤é¤É¤ì¤°¤é¤¤´ÊÃ±¤ËÁÜ¤¹¤³¤È¤¬¤Ç¤­¤ë¤«?
-  ÃÙ¤¤¤³¤È¤Ï³Î¤«¤Ê¤Î¤À¤¬
-   ¤É¤ì¤°¤é¤¤ÃÙ¤¤¤«·×Â¬¤¹¤Ù¤­?
- ¤É¤ì¤°¤é¤¤´ò¤·¤¤¤«
-  ¤³¤ì¤ÏÉ¾²Á¤à¤º¤«¤·¤¤
- ¤É¤ì¤°¤é¤¤´ò¤·¤¤¤«¤òÉ¾²Á¤·¤¿¤¤¤È¤³¤í¤À¤¬
- ¥¶¥Ã¥Ô¥ó¥°¤Î´ò¤·¤µ¤È¤«É¾²Á¤Ç¤­¤ë¤Î¤«?
+
+% â–  æ—¢å­˜ã®æ‰‹æ³•
+% 
+%  Macã®ãƒ•ã‚¡ã‚¤ãƒ³ãƒ€ã§ã¯4å€‹ã®ã‚­ãƒ¼ã‚’ä½¿ã†
+% 
+%  Introã§ã‚‚è¨€ã£ã¦ã„ã‚‹ãŒ
+%  2ã¤ã®ãƒœã‚¿ãƒ³ã ã‘ã§æ“ä½œã§ãã‚‹ã‚‚ã®ã¯å­˜åœ¨ã—ãªã„(ã¨æ€ã†)
+% 
+%  ã‚¸ãƒ§ã‚°ãƒ€ã‚¤ãƒ¤ãƒ«ã¨é¸æŠãƒœã‚¿ãƒ³ã‚’ä½¿ã†ã‚‚ã®ã¯ã‚ˆãã‚ã‚‹ã€‚
+% 
+%  ã‚½ãƒ‹ãƒ¼ã®ã‚¤ãƒ³ãƒ•ã‚©ã‚­ãƒ£ãƒªãƒ¼
+%   http://www.watch.impress.co.jp/mobile/column/stapa/2000/02/07/
+%   ã‚¸ãƒ§ã‚°ãƒ€ã‚¤ãƒ¤ãƒ«ã¨æŠ¼ã—ãƒœã‚¿ãƒ³ãŒä½¿ã‚ã‚Œã¦ã„ãŸ
+%   http://153.127.244.43/pdf/2013-01-07/45499.pdf
+%   èª­ã‚“ã å¾Œã¯ç›®æ¬¡ã«æˆ»ã£ã¦ã—ã¾ã†
+% 
+%  éšå±¤ãƒ¡ãƒ‹ãƒ¥ãƒ¼
+%   ä¸‹ã®éšå±¤ãŒè‡ªå‹•çš„ã«é–‹ãã¨ã“ã‚ã¯Strotorã¨åŒã˜ã ãŒã€
+%   1æ®µã¯è‡ªå‹•çš„ã«é–‹ããŒãƒã‚¦ã‚¹ã‚’å³ã«å‹•ã‹ã—ã¦é¸æŠã™ã‚‹å¿…è¦ãŒã‚ã‚‹
+% 
+%  è¦–è¦šåŒ–ã®ç ”ç©¶ã¨ã—ã¦ã‚‚ã„ã‚ã„ã‚è©¦ã¿ã‚‰ã‚Œã¦ã„ã‚‹
+%   Hyperbolic Tree[]
+%   Treemap[]
+%   Sunburst[Stasko]
+%   LensBar[]
+%   Treemapã‚„Sunburstã¯æœ€è¿‘ãƒãƒ”ãƒ¥ãƒ©ãƒ¼ã«ãªã‚Šã¤ã¤ã‚ã‚‹
+
+% â–  è­°è«–
+% 
+%  ãƒã‚¦ã‚¹ãŒä½¿ãˆã‚‹ã¨ãã¯ãƒã‚¦ã‚¹ã¨ã‹ã‚’ä½¿ãˆã°ã‚ˆã„
+%  ã»ã¨ã‚“ã©ä½•ã‚‚ä½¿ãˆãªã„ã¨ã“ã‚ã§ã‚‚ã€ãƒ€ã‚¤ãƒ¤ãƒ«ã¨ã‹ãƒšãƒ€ãƒ«ã¨ã‹ã ã‘ã§éšå±¤æƒ…å ±ã‚’ãŸã©ã‚Œã‚‹ã®ãŒè‰¯ã„ã¨ã“ã‚
+% 
+%  æ“ä½œã«ã‚¿ã‚¤ãƒŸãƒ³ã‚°ãŒå¿…è¦ãªã®ã¯è‰¯ããªã„
+% 
+%  è¾æ›¸ã§ã‚‚ä½•ã§ã‚‚ã‚½ãƒ¼ãƒˆã§ãã‚‹ã‚‚ã®ã¯ã™ã¹ã¦éšå±¤ãƒ‡ãƒ¼ã‚¿ã¨ã—ã¦æ‰±ãˆã‚‹ã‹ã‚‰å¿œç”¨ã¯åºƒã„
+% 
+% ãƒ•ã‚£ãƒ¼ãƒ‰ãƒãƒƒã‚¯ã¨ã—ã¦éŸ³å£°ã‚’åˆ©ç”¨ã™ã‚Œã°ã€ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ãªãã¦ã‚‚ä½¿ãˆã‚‹ã€‚
+% ä»Šé¸ã‚“ã ã‚‚ã®ã‚’ã‚¹ãƒ”ãƒ¼ãƒã™ã‚Œã°ã„ã„ã‹ã‚‰ã§ã‚ã‚‹ã€‚
+% 
+% â–  ãƒ¦ãƒ¼ã‚¶è©•ä¾¡
+% 
+% å®¢è¦³çš„è©•ä¾¡ã¯ã§ãã¦ã„ãªã„ãŒ
+% å®¶ã§ãšã£ã¨ä½¿ã£ã¦ã„ã‚‹ã®ã§æ„Ÿæƒ³ã‚’è¨€ã†ã“ã¨ãŒã§ãã‚‹ã€‚
+% 
+% ã¨ã«ã‹ãå›ã™ã“ã¨ã—ã‹ã§ããªã„ã®ã§æ“ä½œã‚’è¿·ã†ã“ã¨ãŒã»ã¨ã‚“ã©ãªãã€
+% ãã®ã†ã¡ã§ãã‚‹ã‚ˆã†ã«ãªã‚‹ã‚‚ã®ã§ã‚ã‚‹
+% 
+% 
+% 
+%  ã©ã†ã‚„ã‚‹ã¹ãã‹?
+%   ãƒ‡ã‚«ã„ãƒ‡ãƒ¼ã‚¿ã‹ã‚‰ã©ã‚Œãã‚‰ã„ç°¡å˜ã«æœã™ã“ã¨ãŒã§ãã‚‹ã‹?
+%   é…ã„ã“ã¨ã¯ç¢ºã‹ãªã®ã ãŒ
+%    ã©ã‚Œãã‚‰ã„é…ã„ã‹è¨ˆæ¸¬ã™ã¹ã?
+%  ã©ã‚Œãã‚‰ã„å¬‰ã—ã„ã‹
+%   ã“ã‚Œã¯è©•ä¾¡ã‚€ãšã‹ã—ã„
+%  ã©ã‚Œãã‚‰ã„å¬‰ã—ã„ã‹ã‚’è©•ä¾¡ã—ãŸã„ã¨ã“ã‚ã ãŒ
+%  ã‚¶ãƒƒãƒ”ãƒ³ã‚°ã®å¬‰ã—ã•ã¨ã‹è©•ä¾¡ã§ãã‚‹ã®ã‹?
