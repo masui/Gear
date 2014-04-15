@@ -29,7 +29,8 @@
 % \usepackage{ascmac}
 
 \begin{document}
-\title{Strotor: A Minimalistic Approach to Exploring Large Hierarchical Data}
+\title{Strotor: A Minimalistic Approach to \\
+Exploring Large Hierarchical Data}
 \author{
 \begin{tabular}{l}
 \parbox{5.5cm}{
@@ -50,11 +51,11 @@ We introduce a new simple information navigation technique
 that enables users to explore large hierarchical data structure
 using only two keys or one rotating device that can generate
 two different signals based on the rotation direction.
-
+%
 Using the disk-based system called "Strotor",
 users can find an entry in a huge hierarchical database easily
 only by rotating a disk or a cylinder in two directions.
-
+%
 Strotor can be easily installed in sofas, kitchens, cars, etc.
 where standard keyboards and remote controllers do not fit.
 
@@ -74,12 +75,12 @@ Large dictionary database can also be treated as a large
 hierarchical data, since the name of the entry can be treated hierarchically:
 e.g. an entry for ``dictionary'' can be stored under ``d'' and ``d/i''.
 
-Many information visualization and navigation techniques for huge hierarchical data
-have been proposed[Treemap,etc].
+Many information visualization techniques and navigation techniques for huge hierarchical data
+have been proposed.
 On personal computers,
-multiple GUI methods are usually provided for
+multiple GUI methods are provided for
 exploring the hierarchical file structure, because
-there is no best interaction technique for any situation.
+there is no best interaction technique for all the users and situations.
 % there is no single interaction technique that is always good for any situation.
 
 When a user cannot use a pointing device or a standard keyboard,
@@ -89,10 +90,9 @@ For example, a user can hierarchically find a music file by
 selecting an artist from the list of artist names,
 selecting an album title from the title list,
 and selecting a music file from the song list.
-
-Users can do the selection jobs either by using a mouse or by using arrow keys.
-For exaple,
-users can use two keys for choosing an entry from the list
+% Users can do the selection jobs either by using a mouse or by using arrow keys.
+% For exaple,
+Users can use two keys for choosing an entry from the list
 (e.g. selecting an artist from the artist list),
 and another key is used for selecting an entry and show the next level
 (e.g. selecting an artist and show album titles).
@@ -100,13 +100,15 @@ It is also necessary to provide a way to go back to the previous state, and
 another key can be used for that task
 (e.g. showing the artist list for artist selection).
 %
-This 4-way navigation is popular on small devices (e.g. small MP3 players) and remote controllers like AppleRemote\footnote{http://en.wikipedia.org/wiki/Apple\_Remote}
+This 4-way navigation is popular on small mp3 players\footnote{
+  e.g. http://www.iriver.com/product/view.asp?pCode=003\&pNo=37
+} and remote controllers like AppleRemote\footnote{http://en.wikipedia.org/wiki/Apple\_Remote}
 for selecting a song from the hierarchical data.
 4-way navigation is also available on desktop software like Finder.app on Mac.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 547 179]{figures/4buttons.png}}
-\caption{4-button controllers}
+\caption{4-button controllers on a small mp3 player and AppleRemote.}
 \label{u10}
 \end{figure}
 
@@ -116,7 +118,7 @@ for selecting a song from the hierarchical data.
 % Small devices like Rio MP3 player and remote controllers like AppleRemote have
 % 4 buttons for selecting a song from the hierarchical data.
 
-Using 4 keys might be okay in many cases, but it would be much better
+Using 4 keys might be okay on these devices, but it would be much better
 if we could do the navigation task using only 2 keys.
 In that case, we can use a rotating device like a disk or a cylinder for the navigation,
 since the device can generate two key signals based on the direction of the rotation.
@@ -130,7 +132,7 @@ a rotating device ``Strotor''.
 
 \section*{Navigation Method and Examples}
 
-Stroter is based on the following simple principles:
+Stroter's behavior is based on the following simple principles:
 
 \begin{enumerate}
 \item Display the selected element, its siblings, its ancestors and their siblings,
