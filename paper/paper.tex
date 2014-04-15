@@ -1,0 +1,76 @@
+%
+%
+%
+\long\def\comment#1{}
+\newif\ifcover
+
+% \documentstyle[times,chi2003ea]{article}
+% \documentclass[nocopyrightspace,times]{chiproceedings-nospace}
+% \documentclass[nocopyrightspace]{chiproceedings-nospace}
+
+% パタンはtt
+% 出力文字列はsf
+
+\documentclass{article}
+\usepackage{times}
+\usepackage{uist04}
+
+\usepackage{here} % [H]とするとその場所に配置されるらしい
+
+\long\def\ttt#1{\texttt{\small #1}}
+\long\def\tsf#1{\textsf{\small{#1}}}
+\long\def\tit#1{\textit{\small{#1}}}
+
+\usepackage{graphicx}
+% mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
+% http://www.ns.musashi-tech.ac.jp/~inoue/Pages/TeX/mediabb.sty.html
+%
+% \usepackage{mediabb}
+% \usepackage{ascmac}
+
+\begin{document}
+\title{ExpandHelp: A Flexible Help Architecture \\For the Rest of Us}
+\author{
+\begin{tabular}{l}
+\parbox{5.5cm}{
+\begin{center}
+%Toshiyuki Masui\\
+%Keio University\\
+%masui@pitecan.com
+~ \\
+~ \\
+~
+\end{center}
+}
+\end{tabular}
+}
+\maketitle
+\abstract
+
+\keywords Help systems, Approximate pattern matching, Generate-and-filter
+
+\tolerance=400 
+  % makes some lines with lots of white space, but 	
+  % tends to prevent words from sticking out in the margin
+
+\section*{INTRODUCTION}
+
+\subsubsection*{Vocabulary mismatch}
+
+\subsubsection*{Model mismatch}
+
+%\begin{figure}[H]
+%\includegraphics[width=70mm]{figures/43d82e015388a040ce9b854ab064e60f.png}
+%\caption{Clicking the ExHelp icon to show a query window of ExpandHelp.}
+%\label{exhelp-init}
+%\end{figure}
+
+\section*{CONCLUSIONS}
+
+
+\bibliographystyle{plain}
+\bibliography{paper}
+
+\end{document}
+
+

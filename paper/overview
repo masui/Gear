@@ -2,14 +2,14 @@ Strotor: A minimalistic approach to exploring large hierarchical data.
 
 * Abstract
 
-We introduce a new simple interaction technique
+We introduce a new simple information navigation technique
 that enables users to explore large hierarchical data structure
 using only two keys or one rotating device that can generate
 two different signals based on the rotation direction.
 
 Using the disk-based system called "Strotor",
-users can locate an entry in a huge hierarchical database easily
-only by rotating a disk in two directions.
+users can find an entry in a huge hierarchical database easily
+only by rotating a disk or a cylinder in two directions.
 
 Strotor can be easily installed in sofas, kitchens, cars, etc.
 where standard keyboards and remote controllers do not fit.
@@ -33,12 +33,13 @@ Large dictionary database can also be treated as a large
 hierarchical data, since the name of the entry can be treated hierarchically:
 e.g. an entry for ``dictionary'' can be stored under ``d'' and ``d/i''.
 
-
-Many information visualization techniques for showing huge hierarchical data
-have been proposed[Treemap,etc.] and used for exploring the data.
-Multiple GUI methods are usually provided for
-exploring the hierarchical file structure on personal computers, because
-there is no single interaction technique that is always good for any situation.
+Many information visualization and navigation techniques for huge hierarchical data
+have been proposed[Treemap,etc].
+On personal computers,
+multiple GUI methods are usually provided for
+exploring the hierarchical file structure, because
+there is no best interaction technique for any situation.
+% there is no single interaction technique that is always good for any situation.
 
 When a user cannot use a pointing device or a standard keyboard,
 selection-based interaction techniques are used for
@@ -47,36 +48,39 @@ For example, a user can hierarchically find a music file by
 selecting an artist from the list of artist names,
 selecting an album title from the title list,
 and selecting a music file from the song list.
-Users can do these jobs either by using a mouse or by using arrow keys.
 
-For example,
+Users can do the selection jobs either by using a mouse or by using arrow keys.
+For exaple,
 users can use two keys for choosing an entry from the list
 (e.g. selecting an artist from the artist list),
 and another key is used for selecting an entry and show the next level
 (e.g. selecting an artist and show album titles).
-It is sometimes necessary to use one more key for going back to the previous state
+It is also necessary to provide a way to go back to the previous state, and
+another key can be used for that task
 (e.g. showing the artist list for artist selection).
+%
+This 4-way navigation is popular on small devices (e.g. small MP3 players) and remote controllers like AppleRemote
+for selecting a song from the hierarchical data.
+4-way navigation is also available on desktop software like Finder.app on Mac.
 
-This 4-way navigation is popular on small devices (e.g. small MP3 players) and remote controllers (e.g. AppleRemote), and
-
-Small devices like Rio MP3 player and remote controllers like AppleRemote have
-4 buttons for selecting a song from the hierarchical data.
-4-way navigation is also available on software like Finder.app on Mac.
+% Small devices like Rio MP3 player and remote controllers like AppleRemote have
+% 4 buttons for selecting a song from the hierarchical data.
 
 Using 4 keys might be okay in many cases, but it would be much better
-if we could do the same navigation task using only 2 keys.
+if we could do the navigation task using only 2 keys.
 In that case, we can use a rotating device like a disk or a cylinder for the navigation,
-since it can generate two key events based on the direction of the rotation.
-
-% only by moving the devise clockwise/counterclockwise
-
+since the device can generate two key signals based on the direction of the rotation.
+%
 We have developed a new navigation technique where only two keys are required
-for exploring large hierarchical data.
+for exploring large hierarchical data, and implemented the system on
+a rotating device ``Strotor''.
 
 % (語源)
 % Navigating large structured data through rotation.
 
-** Method and Examples
+* Navigation Method and Examples
+
+Stroter is based on the following simple principles:
 
 (1) Display the selected element, its siblings, its ancestors and their siblings.
 highlight the selected element.
@@ -87,7 +91,6 @@ As a result, all the siblings of the newly selected element appear in the list.
 selected element and perform (1).
 If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element will disappear.
-
 
 % 階層的データ構造は大きなデータを表現するのによく使われている
 %  多量のコンテンツは大抵階層的に表現されており、階層をたどることによって検索される
