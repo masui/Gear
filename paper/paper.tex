@@ -147,13 +147,13 @@ where users can explore large hierarchical database by simple rotating operation
 \section*{NAVIGATION METHOD AND EXAMPLES}
 
 {\ST}'s behavior is based on the following simple principles.
-Two types of input, ``{\U}'' (up) and ``{\D}'' (down), are used for the navigation.
+Two types of operations, ``{\U}'' (up) and ``{\D}'' (down), are used for the navigation.
 They can be generated either by rotating the {\ST} device or typing a keyboard.
 
 \begin{enumerate}
-\item A portion of the data is shown to the user as a list.
+\item A portion of the data is listed to the user.
 
-\item Always one element in the list is selected and highlighted.
+\item One element in the list is selected and highlighted.
 
 % \item Display the selected element, its siblings, its ancestors and their siblings.
 
@@ -164,17 +164,17 @@ around the selected elememt.
 or generate {\D} to select the element below the selected element.
 Whenever the selection is changed, 3. is performed.
 If the depth of the newly selected element is different from the currently
-selected element, siblings of the currently selected element will disappear.
+selected element, siblings of the currently selected element disappear.
 
 \item When a newly selected element has children and the user performs no further action,
-the first child of the selected elemented is newly selected and 3. is performed.
+the first child of the selected elemented is newly selected, and 3. is performed.
 As a result, all the siblings of the newly selected element
 (the first child of the currently selected elmeent) appear in the list.
 
 \end{enumerate}
 
 We show how {\ST} works, using a hierarchical data structure of
-shops list in a shopping mall shown in Figure \ref{fig1}.
+shops list in a shopping mall shown in Figure \ref{fig1} as example data.
 Rectangles with thick border represent categories, and
 other rectangles represent individual shops.
 
@@ -260,7 +260,7 @@ If the user generates {\D} in Figure \ref{fig4}, the next visible entry
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 211]{figures/fig9.pdf}}
-\caption{Initial display.}
+\caption{Selecting Shoed store.}
 \label{fig9}
 \end{figure}
 
@@ -272,12 +272,25 @@ only by generating {\U}/{\D} keys at the right timing.
 
 \section*{Implementation}
 
-A prototype system was built in JavaScript and the system runs on modern browsers.
-Huge list of of news articles, movies, anime films, musics, and e-books are listed in one browser window
-and the content is displayed in another window.
-Users can hit two arrow keys or use the PowerMate device for the navigation.
+A prototype system was built using JavaScript and it runs on modern browsers.
+A large list of news articles, movies, anime films, musics, and e-book titles are listed in one browser window
+and the content is displayed in another window (Figure \ref{screenshot}).
 
-ここにスクリーンショット
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 671 464]{figures/95cf2fec71c52ead6fdbcb7f79aca654.png}}
+\caption{Selecting an Internet radio station.}
+\label{screenshot}
+\end{figure}
+
+We used
+PowerMate\footnote{
+  \textsf{http://griffintechnology.com/support/powermate}
+} from Griffin Technology for the rotating device.
+PowerMate generates standard keyboard events when rotated,
+and no special programming techniques are required.
+%
+Users can explore all the contents just by
+rotating the device clockwise and counterclockwise.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=30mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
@@ -290,57 +303,92 @@ Users can hit two arrow keys or use the PowerMate device for the navigation.
 \subsection{Comparison with existing methods}
 
 4-way navigation are quite common for exploring hierarchical data structure,
-and modern computer users have no problem using it.
-Many mobile phones and PDAs are equipped with a jog dial with a push button,
-where the dial is used for selecting an item from a list and 
-the push button is used for moving to the next level.
-PowerMate is equipped with a push button which can used for such purposes.
+and it is familiar to computer users.
+Some mobile phones and PDAs are equipped with a jog dial with a push button,
+where the dial is used for choosing an item from a list and 
+the push button is used for fixing the selection.
+% PowerMate is equipped with a push button which can used for such purposes.
 % As far as we know,
-To the best of the authors' knowledge,
+All the existing methods require more than 2 keys/buttons, and
+to the best of the authors' knowledge,
 {\ST} is the only interaction method for exploring hierarchical data structure
 with one rotating device.
 
-Using a conventional hierarchical menu, children elements are displayed automatically
-when the parent element is selected by a mouse.
-The ``automatic expansion'' feature is {\ST}と同じ。
+Using a conventional hierarchical menu,
+child elements are displayed automatically when their parent element is selected by a mouse.
+The behavior is common to computer users,
+and {\ST}'s automatic transition (e.g. from Figure \ref{fig4} to Figure \ref{fig5})
+looks familiar to users.
 
 \subsection{Comparison with InfoVis techniques}
 
-Various information techniques like
+Various information visualization techniques like
 Treemap\cite{Johnson:1991:TSA:949607.949654},
 Hyperbolic Tree\cite{Lamping:1995:FTB:223904.223956},
 and Sunburst\cite{Stasko:2000:FDN:857190.857683}
 have been proposed for visualizing large hierarchical data.
-Zooming interface (ZUI) systems like Pad[], Pad++[]
-have also been used for handling ...
-All of these systems are useful for understanding the structure of
+Zooming user interface (ZUI) systems like
+Pad\cite{Perlin:1993:PAA:166117.166125} and
+Pad++\cite{Bederson:1994:PZG:192426.192435}
+can also been used for handling large hierarchical data laid out on a 2D space.
+%
+These visualization techniques and descendent technologies have become popular these days and
+all of these systems are useful for understanding the structure of
 large hierarchical data, but users of these systems have to use a pointing device
-for exploring the whole data.
+to take full advantage of their advantages.
 
-LensBar\cite{Masui:1998:LVB:647341.721215}
-is also a ZUI system for handling large hierarchical data,
-but the same data structure used in LensBar can be used for {\ST}.
-Users can use a pointing devices when it is appropriate,
-and use two keys or a disk device when pointing devices is not available.
+% More conventional visualization techniques like TreeView\footnote{
+%   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
+% } by replacing 4-way navigation to our approach.
 
-時間を使っているのは問題
-可逆的でないから
+% {\ST} can be adopted to more conventional visualization techniques like
+% TreeView\footnote{
+%   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
+% } by replacing 4-way navigation to our approach.
 
-\subsection{Subjective Evaluations}
+It seems to be a good idea to use {\ST} on more conventional visualization techniques like
+TreeView\footnote{
+  \textsf{http://en.wikipedia.org/wiki/Tree\_view}
+}, by replacing 4-way navigation to {\ST}.
 
-No formal evaluation have been done yet, but {\ST} has been used in the authors'
-living room for several months, and the author's family members are using it
+% LensBar\cite{Masui:1998:LVB:647341.721215}
+% is also a ZUI system for handling large hierarchical data,
+% but the same data structure used in LensBar can be used for {\ST}.
+% Users can use a pointing devices when it is appropriate,
+% and use two keys or a disk device when pointing devices is not available.
+
+\subsection{Timing control}
+
+The biggest disadvantage of {\ST} is that
+the behavior of {\ST} depends on the speed of the user's operations.
+In Figure \ref{fig4},
+if a user wanted to select \tsf{Clothing} but couldn't generate {\D}
+quickly enough, he will see Figure \ref{fig5} instead of Figure \ref{fig7}.
+This is a tradeoff between usability and simplicty, and
+the best parameter should be set based on the user and the {\ST} device.
+
+\section*{EVALUATION}
+
+No formal evaluation have been done yet, but {\ST} has been used in the author's
+living room for six months, and the author's family members are using it
 everyday for watching anime films and listening to music.
+Besides PowerMate, a wireless mouse is preferred,
+since we can carry the mouse anywhere and select
+a film or a music just by rotating the mouse wheel.
 
+We displayed {\ST} at an exhibition
+held in November 2013, and asked more than 100 people to try it.
+%
 Since the only thing a user can do with {\ST} is rotating the device,
-a user can use the device and see what happens without thinking about
-other interactions.
-Using a disk device for data navigation might be a new experience for
-most of the users, but the hard restriction of the usage seems to be a
-good thing.
+users seemed to be able to understand the behavior of {\ST} with trials and errors.
+% 
+% a user can use the device and see what happens without thinking about
+% other interactions.
+% 
+Using only one rotating device for data navigation is a new experience for
+all the users, but the hard restriction of the device seems to have worked in this case.
 
-Selecting a content only by rotating a dial is very 気持ち良い。
-
+% Selecting a content only by rotating a dial is very 気持ち良い。
 % 音楽ソース、ニュースソース、動画、Wikipediaなどあらゆるものをダイヤルやペダルだけで検索できる
 
 \section*{CONCLUSIONS}

@@ -43,17 +43,17 @@ var loadData = function(){
 };
 
 var initData = function(nodes,parent,level){
-    for(var i=0;i<nodes.length;i++){
-	var node = nodes[i];
-	node.number = i;
-	node.level = level;
-	node.elder = (i > 0 ? nodes[i-1] : null);
-	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
-	node.parent = parent;
-	if(node.children){
-	    initData(node.children,node,level+1);
-	}
+  for(var i=0;i<nodes.length;i++){
+    var node = nodes[i];
+    node.number = i;
+    node.level = level;
+    node.elder = (i > 0 ? nodes[i-1] : null);
+    node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
+    node.parent = parent;
+    if(node.children){
+      initData(node.children,node,level+1);
     }
+  }
 };
 
 var browserHeight = function(){ // jQuery式の標準関数がありそうだが?

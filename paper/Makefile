@@ -5,5 +5,6 @@ all:
 	platex -kanji=utf8 paper
 	dvipdfmx paper
 	open paper.pdf
-bib:
-	jbibtex paper
+upload:
+	scp paper.pdf pitecan.com:/www/www.pitecan.com/tmp/strotor.pdf
+
