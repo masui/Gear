@@ -8,3 +8,6 @@ all:
 upload:
 	scp paper.pdf pitecan.com:/www/www.pitecan.com/tmp/strotor.pdf
 
+paperdata.json: paperdata.ltsv
+	~masui/.rbenv/shims/bundle exec ruby ../Data/ltsv2json paperdata.ltsv | /usr/local/bin/jq . > paperdata.json
+
