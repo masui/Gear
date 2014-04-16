@@ -1,0 +1,15 @@
+# -*- coding: utf-8 -*-
+#
+title:Book store
+title:Stationery store
+title:Toy store
+title:Food/drink
+ title:Liquor shop
+ title:Candy shop
+ title:Fresh grocery
+  title:Fish store
+  title:Meat store
+title:Clothing
+ title:Shoes store
+ title:Apparel shop
+

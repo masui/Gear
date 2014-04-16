@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Book store"
+  },
+  {
+    "title": "Stationery store"
+  },
+  {
+    "title": "Toy store"
+  },
+  {
+    "children": [
+      {
+        "title": "Liquor shop"
+      },
+      {
+        "title": "Candy shop"
+      },
+      {
+        "children": [
+          {
+            "title": "Fish store"
+          },
+          {
+            "title": "Meat store"
+          }
+        ],
+        "title": "Fresh grocery"
+      }
+    ],
+    "title": "Food/drink"
+  },
+  {
+    "children": [
+      {
+        "title": "Shoes store"
+      },
+      {
+        "title": "Apparel shop"
+      }
+    ],
+    "title": "Clothing"
+  }
+]
