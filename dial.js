@@ -34,12 +34,12 @@ $(function() { // 最初に呼ばれるjQueryのready関数
 });
 
 var loadData = function(){
-    $.getJSON("data.json",function(data){
-	initData(data,null,0);
-	calc(data[0]);
-	timeout = setTimeout(expand,ExpandTime);
-    });
-    setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
+  $.getJSON("data.json",function(data){
+    initData(data,null,0);
+    calc(data[0]);
+    timeout = setTimeout(expand,ExpandTime);
+  });
+  setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
 };
 
 var initData = function(nodes,parent,level){
@@ -57,9 +57,9 @@ var initData = function(nodes,parent,level){
 };
 
 var browserHeight = function(){ // jQuery式の標準関数がありそうだが?
-    if(window.innerHeight){ return window.innerHeight; }  
-    else if(document.body){ return document.body.clientHeight; }  
-    return 0;  
+  if(window.innerHeight){ return window.innerHeight; }  
+  else if(document.body){ return document.body.clientHeight; }  
+  return 0;  
 };
 
 var expand = function(){ // 注目してるエントリの子供を段階的に展開する
@@ -280,25 +280,38 @@ var clearUndoStack = function(){
     undoStack = [];
 };
 
+var lasttime = new Date();
 var move = function(delta){ // 視点移動
-    refresh();
-    clearTimeout(timeout);
-    timeout = setTimeout(expand,ExpandTime);
-    clearTimeout(undoTimeout);
-    undoTimeout = setTimeout(clearUndoStack,UndoTime);
-    shrinking = true;
-    if(delta > 0){
-	undoStack.push(nodeList[0]);
+  refresh();
+  clearTimeout(timeout);
+  timeout = setTimeout(expand,ExpandTime);
+  clearTimeout(undoTimeout);
+  undoTimeout = setTimeout(clearUndoStack,UndoTime);
+  shrinking = true;
+
+  // キー連打/ダイヤル高速回転したときは階層移動しない
+  curtime = new Date();
+  timediff = curtime - lasttime;
+  lasttime = curtime;
+  if(timediff < 300){
+    if(delta > 0 && !nodeList[0].younger ||
+       delta < 0 && !nodeList[0].elder){
+      return false;
     }
-    if(delta < 0 && undoStack.length > 0){ // undo可能
-	calc(undoStack.pop());
+  }
+
+  if(delta > 0){
+    undoStack.push(nodeList[0]);
+  }
+  if(delta < 0 && undoStack.length > 0){ // undo可能
+    calc(undoStack.pop());
+  }
+  else {
+    if(nodeList[delta]){
+      calc(nodeList[delta]);
     }
-    else {
-	if(nodeList[delta]){
-	    calc(nodeList[delta]);
-	}
-    }
-    return false;
+  }
+  return false;
 };
 
 $(window).mousewheel(function(event, delta, deltaX, deltaY) {
@@ -314,3 +327,41 @@ $(window).keydown(function(e){
     }
     return false;
 });
+
+
+//
+// Linda接続
+//
+//var socket = io.connect('http://node-linda-base.herokuapp.com:80');
+var socket = io.connect('http://localhost:3000');
+var linda = new Linda().connect(socket);
+
+var ts = linda.tuplespace('paddle');
+
+var keytimer;
+
+linda.io.on('connect', function(){
+  ts.watch({type:"paddle"}, function(err, tuple){
+    if(err) return;
+    if(tuple.data['name'] == 'key'){
+      move(tuple.data['value']);
+      clearInterval(keytimer);
+    }
+    if(tuple.data['name'] == 'press'){ // 長押し
+      value = 0 + tuple.data['value'];
+      if(value > 0){
+        clearInterval(keytimer);
+        keytimer = setInterval('move(1)',100);
+      }
+      else {
+        clearInterval(keytimer);
+        keytimer = setInterval('move(-1)',100);
+      }
+    }
+    if(tuple.data['name'] == 'stop'){
+      clearInterval(keytimer);
+    }
+  });
+});
+
+
