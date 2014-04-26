@@ -349,12 +349,17 @@ linda.io.on('connect', function(){
     }
     if(tuple.data['name'] == 'press'){ // 長押し
       value = 0 + tuple.data['value'];
-      if(value > 0){
-        clearInterval(keytimer);
+      clearInterval(keytimer);
+      if(value > 800){
+        keytimer = setInterval('move(1)',200);
+      }
+      else if(value > 0){
         keytimer = setInterval('move(1)',100);
       }
+      else if(value < -800){
+        keytimer = setInterval('move(-1)',200);
+      }
       else {
-        clearInterval(keytimer);
         keytimer = setInterval('move(-1)',100);
       }
     }
