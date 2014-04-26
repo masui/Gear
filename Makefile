@@ -6,3 +6,7 @@ dat:
 
 push:
 	git push
+
+paddle:
+	open index.html
+	ruby paddle.rb
