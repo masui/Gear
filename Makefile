@@ -9,4 +9,4 @@ push:
 
 paddle:
 	open index.html
-	ruby paddle.rb
+#	ruby paddle.rb

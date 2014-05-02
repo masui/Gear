@@ -6,7 +6,7 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = false;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -308,6 +308,9 @@ var move = function(delta){ // 視点移動
   }
   else {
     if(nodeList[delta]){
+      if(!step1){
+        step1 = nodeList[delta]; // 1ステップ移動先
+      }
       calc(nodeList[delta]);
     }
   }
@@ -335,39 +338,82 @@ $(window).keydown(function(e){
 //var socket = io.connect('http://node-linda-base.herokuapp.com:80');
 var socket = io.connect('http://localhost:3000');
 var linda = new Linda().connect(socket);
-
 var ts = linda.tuplespace('paddle');
 
-var keytimer;
+var direction = 'None';
+var value = 0;
+var step1 = null;
 
-linda.io.on('connect', function(){
+var starttime = null;
+var movetimer = null;  // move()をsetTimeout()で呼ぶ
+var nexttime = null;   // 次のmove()予定時刻
+
+// waitだけ待ってfuncを起動し、その後はintervalごとにfuncを起動
+function fire(wait,interval,func){
+  //console.log("filre");
+  //console.log(wait);
+  //console.log(interval);
+  curtime = new Date();
+  if(wait == 0){
+    func();
+    nexttime = Number(curtime) + interval;
+    movetimer = setTimeout(repeatedfunc(interval,func),interval);
+  }
+  else {
+    nexttime = Number(curtime) + wait;
+    movetimer = setTimeout(repeatedfunc(interval,func),wait);
+  }
+}
+
+var repeatedfunc = function(interval,func){
+  return function(){
+    fire(0,interval,func);
+  };
+};
+
+var movefunc = function(delta){
+  return function(){
+    move(delta);
+  };
+};
+
+// linda.io.on('connect', function(){
+socket.on('connect', function(){
+  //alert("connect!!!");
   ts.watch({type:"paddle"}, function(err, tuple){
     if(err) return;
     window.focus();
-    if(tuple.data['name'] == 'key'){
-      move(tuple.data['value']);
-      clearInterval(keytimer);
+    direction = tuple.data['direction'];
+    value = tuple.data['value'];
+    curtime = new Date();
+    clearTimeout(movetimer);
+    if(value < 10){
+      direction = 'None';
+      if(curtime - starttime < 300 && step1){ // 1ステップだけ動かす
+        refresh();
+        calc(step1);
+      }
+      starttime = null;
+      nexttime = null;
+      step1 = null;
     }
-    if(tuple.data['name'] == 'press'){ // 長押し
-      value = 0 + tuple.data['value'];
-      clearInterval(keytimer);
-      if(value > 800){
-        keytimer = setInterval('move(1)',200);
+    else {
+      var interval = 
+            value > 500 ? 30 :
+            value > 400 ? 50 :
+            value > 300 ? 100 :
+            value > 200 ? 200 :
+            value > 150 ? 300 :
+            value > 80 ? 400 : 600 ;
+      if(starttime == null){
+        starttime = curtime;
+        nexttime = starttime;
       }
-      else if(value > 0){
-        keytimer = setInterval('move(1)',100);
-      }
-      else if(value < -800){
-        keytimer = setInterval('move(-1)',200);
-      }
-      else {
-        keytimer = setInterval('move(-1)',100);
-      }
-    }
-    if(tuple.data['name'] == 'stop'){
-      clearInterval(keytimer);
+      //console.log("nexttime = " + Number(nexttime) + ", curtime = " + Number(curtime));
+      //if(nexttime >= curtime){
+        fire(nexttime-curtime,interval,movefunc(direction == "left" ? 1 : -1));
+      //}
     }
   });
 });
-
 

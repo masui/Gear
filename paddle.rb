@@ -45,8 +45,8 @@ class Paddle
           @@state = STOP
           @@ts.write type:"paddle", name:"stop"
         else
-          if curtime - @@starttime > 700 then # 長押し
-            if curtime - @@lasttime > 300 then
+          if curtime - @@starttime > 300 then # 長押し
+            if curtime - @@lasttime > 200 then
               @@lasttime = curtime
               puts "up #{value}"
               @@ts.write type:"paddle", name:"press", value:-value
