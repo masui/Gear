@@ -64,13 +64,13 @@ socket.on('connect', function(){
     clearTimeout(movetimer);
     if(value < 10){
       direction = 'None';
-//      if(curtime - starttime < 300 && step1){ // 1ステップだけ動かす
-//        refresh();
-//        calc(step1);
-//      }
+      if(curtime - starttime < 300 && menuwin.$.step1){ // 1ステップだけ動かす
+        refresh();
+        calc(menuwin.$.step1);
+      }
       starttime = null;
       nexttime = null;
-//      step1 = null;
+      menuwin.$.step1 = null;
       repcount = 0;
     }
     else {
