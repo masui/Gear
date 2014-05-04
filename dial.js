@@ -6,7 +6,7 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = false;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -26,7 +26,13 @@ var UndoTime = 1000;       // この時間以内ならundoを許す
 
 var win;
 if(showContents){
-  win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
+  var height = screen.availHeight;
+  var menuwidth = screen.availWidth / 5;
+  if(menuwidth > 300) menuwidth = 300;
+  var width = screen.availWidth - menuwidth;
+  var param = "top=0,left="+menuwidth+",height="+height+",width="+width;
+  win = window.open("","Contents",param);
+  // win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 }
 
 $(function() { // 最初に呼ばれるjQueryのready関数
@@ -36,6 +42,7 @@ $(function() { // 最初に呼ばれるjQueryのready関数
 var loadData = function(){
   $.getJSON("data.json",function(data){
     initData(data,null,0);
+    refresh();
     calc(data[0]);
     timeout = setTimeout(expand,ExpandTime);
   });
@@ -280,8 +287,10 @@ var clearUndoStack = function(){
   undoStack = [];
 };
 
+var repcount = 0;
 var lasttime = new Date();
-var move = function(delta){ // 視点移動
+//var move = function(delta){ // 視点移動
+$.move = function(delta){ // 視点移動
   refresh();
   clearTimeout(timeout);
   timeout = setTimeout(expand,ExpandTime);
@@ -296,11 +305,20 @@ var move = function(delta){ // 視点移動
   if(timediff < 300){
     if(delta > 0 && !nodeList[0].younger ||
        delta < 0 && !nodeList[0].elder){
-      return false;
+      // 階層の端まで行ったときはそれ以上移動しない。
+      // ただししつこく呼んだ場合は移動する
+      if(repcount < 15){
+        repcount += 1;
+        return false;
+      }
+      else {
+        repcount = 0;
+      }
     }
   }
   
   if(delta > 0){
+    //undoTimeout = setTimeout(clearUndoStack,UndoTime);
     undoStack.push(nodeList[0]);
   }
   if(delta < 0 && undoStack.length > 0){ // undo可能
@@ -308,9 +326,9 @@ var move = function(delta){ // 視点移動
   }
   else {
     if(nodeList[delta]){
-      if(!step1){
-        step1 = nodeList[delta]; // 1ステップ移動先
-      }
+//      if(!step1){
+//        step1 = nodeList[delta]; // 1ステップ移動先
+//      }
       calc(nodeList[delta]);
     }
   }
@@ -318,102 +336,103 @@ var move = function(delta){ // 視点移動
 };
 
 $(window).mousewheel(function(event, delta, deltaX, deltaY) {
-  return move(delta < 0 ? 1 : -1);
+  return $.move(delta < 0 ? 1 : -1);
 });
 
 $(window).keydown(function(e){
   if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
-    return move(1);
+    return $.move(1);
   }
   else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
-    return move(-1);
+    return $.move(-1);
   }
   return false;
 });
 
 
+////
+//// Linda接続
+////
+////var socket = io.connect('http://node-linda-base.herokuapp.com:80');
+//var socket = io.connect('http://localhost:3000');
+//var linda = new Linda().connect(socket);
+//var ts = linda.tuplespace('paddle');
 //
-// Linda接続
+//var direction = 'None';
+//var value = 0;
+//var step1 = null;
 //
-//var socket = io.connect('http://node-linda-base.herokuapp.com:80');
-var socket = io.connect('http://localhost:3000');
-var linda = new Linda().connect(socket);
-var ts = linda.tuplespace('paddle');
-
-var direction = 'None';
-var value = 0;
-var step1 = null;
-
-var starttime = null;
-var movetimer = null;  // move()をsetTimeout()で呼ぶ
-var nexttime = null;   // 次のmove()予定時刻
-
-// waitだけ待ってfuncを起動し、その後はintervalごとにfuncを起動
-function fire(wait,interval,func){
-  //console.log("filre");
-  //console.log(wait);
-  //console.log(interval);
-  curtime = new Date();
-  if(wait == 0){
-    func();
-    nexttime = Number(curtime) + interval;
-    movetimer = setTimeout(repeatedfunc(interval,func),interval);
-  }
-  else {
-    nexttime = Number(curtime) + wait;
-    movetimer = setTimeout(repeatedfunc(interval,func),wait);
-  }
-}
-
-var repeatedfunc = function(interval,func){
-  return function(){
-    fire(0,interval,func);
-  };
-};
-
-var movefunc = function(delta){
-  return function(){
-    move(delta);
-  };
-};
-
-// linda.io.on('connect', function(){
-socket.on('connect', function(){
-  //alert("connect!!!");
-  ts.watch({type:"paddle"}, function(err, tuple){
-    if(err) return;
-    window.focus();
-    direction = tuple.data['direction'];
-    value = tuple.data['value'];
-    curtime = new Date();
-    clearTimeout(movetimer);
-    if(value < 10){
-      direction = 'None';
-      if(curtime - starttime < 300 && step1){ // 1ステップだけ動かす
-        refresh();
-        calc(step1);
-      }
-      starttime = null;
-      nexttime = null;
-      step1 = null;
-    }
-    else {
-      var interval = 
-            value > 500 ? 30 :
-            value > 400 ? 50 :
-            value > 300 ? 100 :
-            value > 200 ? 200 :
-            value > 150 ? 300 :
-            value > 80 ? 400 : 600 ;
-      if(starttime == null){
-        starttime = curtime;
-        nexttime = starttime;
-      }
-      //console.log("nexttime = " + Number(nexttime) + ", curtime = " + Number(curtime));
-      //if(nexttime >= curtime){
-        fire(nexttime-curtime,interval,movefunc(direction == "left" ? 1 : -1));
-      //}
-    }
-  });
-});
-
+//var starttime = null;
+//var movetimer = null;  // move()をsetTimeout()で呼ぶ
+//var nexttime = null;   // 次のmove()予定時刻
+//
+//// waitだけ待ってfuncを起動し、その後はintervalごとにfuncを起動
+//function fire(wait,interval,func){
+  ////console.log("filre");
+//  //console.log(wait);
+  ////console.log(interval);
+//  curtime = new Date();
+//  if(wait == 0){
+//    func();
+//    nexttime = Number(curtime) + interval;
+//    movetimer = setTimeout(repeatedfunc(interval,func),interval);
+//  }
+//  else {
+//    nexttime = Number(curtime) + wait;
+//    movetimer = setTimeout(repeatedfunc(interval,func),wait);
+//  }
+//}
+//
+//var repeatedfunc = function(interval,func){
+//  return function(){
+//    fire(0,interval,func);
+//  };
+//};
+//
+//var movefunc = function(delta){
+//  return function(){
+//    move(delta);
+//  };
+//};
+//
+//// linda.io.on('connect', function(){
+//socket.on('connect', function(){
+//  ts.watch({type:"paddle"}, function(err, tuple){
+//    if(err) return;
+//    window.focus();
+//    win.focus();
+//    direction = tuple.data['direction'];
+//    value = tuple.data['value'];
+//    curtime = new Date();
+//    clearTimeout(movetimer);
+//    if(value < 10){
+//      direction = 'None';
+//      if(curtime - starttime < 300 && step1){ // 1ステップだけ動かす
+//        refresh();
+//        calc(step1);
+//      }
+//      starttime = null;
+//      nexttime = null;
+//      step1 = null;
+//      repcount = 0;
+//    }
+//    else {
+//      // このあたりのパラメタは結構重要
+//      var interval = 
+//            value > 500 ? 30 :
+//            value > 400 ? 50 :
+//            value > 300 ? 100 :
+//            value > 200 ? 200 :
+//            value > 150 ? 300 :
+//            value > 80 ? 400 : 400 ;
+//      if(starttime == null){
+//        starttime = curtime;
+//        nexttime = starttime;
+//      }
+//      //console.log("nexttime = " + Number(nexttime) + ", curtime = " + Number(curtime));
+//      //if(nexttime >= curtime){
+//        fire(nexttime-curtime,interval,movefunc(direction == "left" ? 1 : -1));
+//      //}
+//    }
+//  });
+//});
