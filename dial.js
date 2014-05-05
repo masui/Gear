@@ -24,14 +24,15 @@ var undoStack = [];        // undoのためにヒストリを覚えておく
 var undoTimeout;           // 
 var UndoTime = 1000;       // この時間以内ならundoを許す
 
-var win;
+//var win;
 if(showContents){
   var height = screen.availHeight;
   var menuwidth = screen.availWidth / 5;
   if(menuwidth > 300) menuwidth = 300;
   var width = screen.availWidth - menuwidth;
-  var param = "top=0,left="+menuwidth+",height="+height+",width="+width+",scrollbars=yes";
-  win = window.open("","Contents",param);
+  param = "top=0,left="+menuwidth+",height="+height+",width="+width+",scrollbars=yes";
+  contentswin = window.open("","Contents",param);
+    $.contentswin = contentswin;
   // win = window.open();  // YouTube, クックパッド等がiframeで表示できないので別ウィンドウを開く
 }
 
@@ -42,11 +43,16 @@ $(function() { // 最初に呼ばれるjQueryのready関数
 var loadData = function(){
   $.getJSON("data.json",function(data){
     initData(data,null,0);
-    refresh();
-    calc(data[0]);
+    $.refresh();
+    $.calc(data[0]);
     timeout = setTimeout(expand,ExpandTime);
   });
   setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
+};
+
+$.allfocus = function(){
+    window.focus();
+    contentswin.focus();
 };
 
 var initData = function(nodes,parent,level){
@@ -73,7 +79,7 @@ var expand = function(){ // 注目してるエントリの子供を段階的に�
   timeout = null;
   shrinking = false;
   if(nodeList[0].children){
-    calc(nodeList[0].children[0]);
+    $.calc(nodeList[0].children[0]);
     timeout = setTimeout(expand,StepTime);
   }
 };
@@ -86,7 +92,7 @@ var cssWidth = function(entry){
   return intValue(entry.css('width'));
 };
 
-var refresh = function(){ // 不要DOMを始末する. 富豪的すぎるかも?
+$.refresh = function(){ // 不要DOMを始末する. 富豪的すぎるかも?
   var i;
   for(i in spans) spans[i].show();
   for(i in oldSpans){
@@ -141,8 +147,11 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
   }
   
   if(nodeList[0].url && showContents){ // 別ウィンドウにコンテンツ表示
-    win.location.href = nodeList[0].url;
-    window.focus(); // 前面に持ってくる
+      contentswin.location.href = nodeList[0].url;
+      console.log(contentswin);
+      console.log("focus");
+      contentswin.opener.blur();
+      contentswin.focus(); // 前面に持ってくる
   }
   
   // 新しいノードの表示位置計算
@@ -177,7 +186,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 		duration: AnimationTime,
 		complete: function(){
 		  //this.remove();
-		  refresh();
+		  $.refresh();
 		}
 	      }
 	    );
@@ -204,7 +213,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 		  duration: AnimationTime,
 		  complete: function(){
 		    this.remove();
-		    refresh();
+		    $.refresh();
 		  }
 		}
 	      );
@@ -238,7 +247,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 		{
 		  duration: AnimationTime,
 		  complete: function(){
-		    refresh();
+		    $.refresh();
 		  }
 		}
 	      );
@@ -250,7 +259,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
   }
 };
 
-var calc = function(centerNode){ // centerNodeを中心にnodeListを再計算して表示
+$.calc = function(centerNode){ // centerNodeを中心にnodeListを再計算して表示
   var node;
   var i;
   var newNodeList = {}; // 毎回富豪的にリストを生成
@@ -291,7 +300,7 @@ var repcount = 0;
 var lasttime = new Date();
 //var move = function(delta){ // 視点移動
 $.move = function(delta){ // 視点移動
-  refresh();
+  $.refresh();
   clearTimeout(timeout);
   timeout = setTimeout(expand,ExpandTime);
   clearTimeout(undoTimeout);
@@ -322,14 +331,14 @@ $.move = function(delta){ // 視点移動
     undoStack.push(nodeList[0]);
   }
   if(delta < 0 && undoStack.length > 0){ // undo可能
-    calc(undoStack.pop());
+    $.calc(undoStack.pop());
   }
   else {
     if(nodeList[delta]){
       if(!$.step1){
         $.step1 = nodeList[delta]; // 1ステップ移動先
       }
-      calc(nodeList[delta]);
+      $.calc(nodeList[delta]);
     }
   }
   return false;
@@ -399,7 +408,7 @@ var movefunc = function(delta){
 socket.on('connect', function(){
   ts.watch({type:"paddle"}, function(err, tuple){
     if(err) return;
-    window.focus();
+    //window.focus();
     win.focus();
     direction = tuple.data['direction'];
     value = tuple.data['value'];
@@ -408,8 +417,8 @@ socket.on('connect', function(){
     if(value < 10){
       direction = 'None';
       if(curtime - starttime < 300 && $.step1){ // 1ステップだけ動かす
-        refresh();
-        calc($.step1);
+        $.refresh();
+        $.calc($.step1);
       }
       starttime = null;
       nexttime = null;

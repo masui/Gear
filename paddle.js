@@ -28,6 +28,7 @@ function fire(wait,interval,func){
   //console.log("filre");
   //console.log(wait);
   //console.log(interval);
+  //menuwin.$.contentswin.focus();
   curtime = new Date();
   if(wait == 0){
     func();
@@ -52,12 +53,16 @@ var movefunc = function(delta){
   };
 };
 
-menuwin.focus();
+//menuwin.focus();
 
 // linda.io.on('connect', function(){
 socket.on('connect', function(){
   ts.watch({type:"paddle"}, function(err, tuple){
     if(err) return;
+      //menuwin.focus();
+      //menuwin.$.contentswin.focus();
+      menuwin.$.allfocus();
+
     direction = tuple.data['direction'];
     value = tuple.data['value'];
     curtime = new Date();
@@ -65,8 +70,8 @@ socket.on('connect', function(){
     if(value < 10){
       direction = 'None';
       if(curtime - starttime < 300 && menuwin.$.step1){ // 1ステップだけ動かす
-        refresh();
-        calc(menuwin.$.step1);
+        menuwin.$.refresh();
+        menuwin.$.calc(menuwin.$.step1);
       }
       starttime = null;
       nexttime = null;
