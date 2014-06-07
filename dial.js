@@ -6,7 +6,20 @@
 //
 
 var useAnimation = true;   // アニメーションを使うかどうか
-var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+
+//var showContents = true;   // コンテンツを別ウィンドウで表示 (デバッグ時false)
+if(typeof(showContents) == 'undefined'){
+  var showContents = true;
+}
+if(typeof(autoexpand) == 'undefined'){
+  var autoexpand = true;
+}
+if(typeof(json) == 'undefined'){
+  var json = "data.json";
+}
+if(typeof(pauseAtLevelChange) == 'undefined'){
+  var pauseAtLevelChange = true;
+}
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -41,11 +54,17 @@ $(function() { // 最初に呼ばれるjQueryのready関数
 });
 
 var loadData = function(){
-  $.getJSON("data.json",function(data){
+//  $.getJSON("data.json",function(data){
+  $.getJSON(json,function(data){
     initData(data,null,0);
     $.refresh();
     $.calc(data[0]);
-    timeout = setTimeout(expand,ExpandTime);
+    if(autoexpand){
+      timeout = setTimeout(expand,ExpandTime);
+    }
+    else {
+      expand();
+    }
   });
   setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
 };
@@ -53,6 +72,25 @@ var loadData = function(){
 $.allfocus = function(){
   window.focus();
   contentswin.focus();
+};
+
+var singleDescendant = function(node){
+  //alert(node.title);
+  if(node.children){
+    if(node.children.length != 1){
+      return null;
+    }
+    else {
+      //alert("one child");
+      //alert(node.title);
+      return singleDescendant(node.children[0]);
+    }
+  }
+  else {
+    //alert("no children");
+    //alert(node.title);
+    return node;
+  }
 };
 
 var initData = function(nodes,parent,level){
@@ -64,7 +102,14 @@ var initData = function(nodes,parent,level){
     node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
     node.parent = parent;
     if(node.children){
-      initData(node.children,node,level+1);
+      var desc = singleDescendant(node);
+      if(desc){
+        node.children = null;
+        node.title = desc.title;
+      }
+      else {
+        initData(node.children,node,level+1);
+      }
     }
   }
 };
@@ -80,7 +125,9 @@ var expand = function(){ // 注目してるエントリの子供を段階的に�
   shrinking = false;
   if(nodeList[0].children){
     $.calc(nodeList[0].children[0]);
-    timeout = setTimeout(expand,StepTime);
+    if(autoexpand){
+      timeout = setTimeout(expand,StepTime);
+    }
   }
 };
 
@@ -100,6 +147,18 @@ $.refresh = function(){ // 不要DOMを始末する. 富豪的すぎるかも?
   }
 };
 
+var ancestor = function(a,c){ // aがcの祖先か
+  //while(a){
+  //  if(a == c.parent) return true;
+  //  a = a.parent;
+  //}
+  //return false;
+  var p = c.parent;
+  if(!p) return false;
+  if(a == p) return true;
+  return ancestor(a,p);
+};
+
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
   var span;
   var left = 5 + node.level * 20;
@@ -110,12 +169,32 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
   span.css('color',color);
   span.css('top',String(top));
   if(bold) span.css('font-weight','bold');
-  span.text('・' + node.title);
-  if(showloading){ // ローディングGIFアニメ表示
-    // http://preloaders.net/ で作成したロード中アイコンを利用
-    span.append($(' <span>&nbsp;</span>'));
-    span.append($('<img src="loading.gif" style="height:12pt;">'));
+  //span.text('・' + node.title);
+  span.text('・');
+
+  if(node.children){
+    if(ancestor(node,nodeList[0])){
+      span.append($('<span style="font-size:10pt;color:#060;">▼&nbsp;</span>'));
+    }
+    else {
+      span.append($('<span style="font-size:10pt;color:#060;">▶&nbsp;</span>'));
+    }
   }
+
+  span.append($('<span>' + node.title + '</span>'));
+
+  if(showloading){ // ローディングGIFアニメ表示
+    if(autoexpand){
+      // http://preloaders.net/ で作成したロード中アイコンを利用
+      span.append($(' <span>&nbsp;</span>'));
+      span.append($('<img src="loading.gif" style="height:12pt;">'));
+    }
+    else {
+      span.append($(' <span>&nbsp;</span>'));
+      span.append($(' <span style="color:#0d0;">▶</span>'));
+    }
+  }
+
   parent.append(span);
   
   if(useAnimation) span.hide();
@@ -300,27 +379,31 @@ var lasttime = new Date();
 //var move = function(delta){ // 視点移動
 $.move = function(delta){ // 視点移動
   $.refresh();
-  clearTimeout(timeout);
-  timeout = setTimeout(expand,ExpandTime);
+  if(autoexpand){
+    clearTimeout(timeout);
+    timeout = setTimeout(expand,ExpandTime);
+  }
   clearTimeout(undoTimeout);
   undoTimeout = setTimeout(clearUndoStack,UndoTime);
   shrinking = true;
   
-  // キー連打/ダイヤル高速回転したときは階層移動しない
-  curtime = new Date();
-  timediff = curtime - lasttime;
-  lasttime = curtime;
-  if(timediff < 300){
-    if(delta > 0 && !nodeList[0].younger ||
-       delta < 0 && !nodeList[0].elder){
-      // 階層の端まで行ったときはそれ以上移動しない。
-      // ただししつこく呼んだ場合は移動する
-      if(repcount < 15){
-        repcount += 1;
-        return false;
-      }
-      else {
-        repcount = 0;
+  if(pauseAtLevelChange){
+    // キー連打/ダイヤル高速回転したときは階層移動しない
+    curtime = new Date();
+    timediff = curtime - lasttime;
+    lasttime = curtime;
+    if(timediff < 300){
+      if(delta > 0 && !nodeList[0].younger ||
+         delta < 0 && !nodeList[0].elder){
+        // 階層の端まで行ったときはそれ以上移動しない。
+        // ただししつこく呼んだ場合は移動する
+        if(repcount < 15){
+          repcount += 1;
+          return false;
+        }
+        else {
+          repcount = 0;
+        }
       }
     }
   }
@@ -348,11 +431,26 @@ $(window).mousewheel(function(event, delta, deltaX, deltaY) {
 });
 
 $(window).keydown(function(e){
-  if(e.keyCode == 40 || e.keyCode == 39){ // 39 = 右, 40 = 下
-    return $.move(1);
+  // 39 = 右, 40 = 下
+  // 37 = 左, 38 = 上
+  if(autoexpand){
+    if(e.keyCode == 40 || e.keyCode == 39){
+      return $.move(1);
+    }
+    else if(e.keyCode == 38 || e.keyCode == 37){
+      return $.move(-1);
+    }
   }
-  else if(e.keyCode == 38 || e.keyCode == 37){ // 37 = 左, 38 = 上
-    return $.move(-1);
+  else {
+    if(e.keyCode == 40){ // 40 = 下
+      return $.move(1);
+    }
+    else if(e.keyCode == 38){ // 38 = 上
+      return $.move(-1);
+    }
+    else if(e.keyCode == 39){ // 39 = 右
+      expand();
+    }
   }
   return false;
 });
