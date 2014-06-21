@@ -1,0 +1,11 @@
+(0..23).each { |hour|
+  printf "title:%02d:00:00\n",hour
+  (0..60).each { |min|
+    printf " title:%02d:%02d:00\n",hour,min
+    (0..60).each { |sec|
+      printf "  title:%02d:%02d:%02d\n",hour,min,sec
+    }
+  }
+}
+
+

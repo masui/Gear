@@ -1,0 +1,36 @@
+#
+#
+#
+#  ab
+#  ac
+#  b
+#  bcd
+#
+
+puts "title:Dictoinary"
+
+level = 0
+chars = []
+ARGF.each { |line|
+  word = line.chomp
+  # word.gsub!(/[^a-zA-Z]/,'')
+  word.downcase!
+  len = word.length
+  w = word.downcase
+  puts w
+  next
+  (0...len).each { |i|
+    #puts "w = #{w}"
+    #puts "chars = #{chars[0..i].join}"
+    if w[0..i] == chars[0..i].join then
+    else
+      chars[i] = w[i]
+      chars[i+1] = ''
+      #(i+1..100).each { |j|
+      #  chars[j] = ''
+      #}
+      puts " " * (i+1) + "title:" + word[0..i]
+    end
+  }
+  puts " " * (len+1) + "title:" + word + ""
+}

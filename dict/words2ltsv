@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+#
+#
+
+puts "title:Dictoinary"
+
+level = 0
+chars = []
+ARGF.each { |line|
+  word = line.chomp
+  word.sub!(/\t.*$/,'') # ejdic-hand の日本語部分を削除
+  word.sub!(/, .*$/,'') # 複数読みを並べてある場合があるので
+  len = word.length
+  wd = word.downcase
+  wd.gsub!(/^[a-zA-Z]/,'')
+  (0...len).each { |i|
+    #puts "w = #{w}"
+    #puts "chars = #{chars[0..i].join}"
+    if wd[0..i] == chars[0..i].join then
+    else
+      chars[i] = wd[i]
+      chars[i+1] = ''
+      puts " " * (i+1) + "title:" + wd[0..i]
+    end
+  }
+  puts " " * (len+1) + "title:" + word + ""
+}
