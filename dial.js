@@ -20,6 +20,9 @@ if(typeof(json) == 'undefined'){
 if(typeof(pauseAtLevelChange) == 'undefined'){
   var pauseAtLevelChange = true;
 }
+if(typeof(dontShowSingleNode) == 'undefined'){
+  var dontShowSingleNode = false;
+}
 
 var nodeList = {};         // 表示可能ノードのリスト. nodeList[0]を中心に表示する
 var oldNodeList;           // アニメーション前のnodeList
@@ -103,7 +106,7 @@ var initData = function(nodes,parent,level){
     node.parent = parent;
     if(node.children){
       var desc = singleDescendant(node);
-      if(desc){
+      if(desc && dontShowSingleNode){
         node.children = null;
         node.title = desc.title;
       }
@@ -180,8 +183,12 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
       span.append($('<span style="font-size:10pt;color:#060;">▶&nbsp;</span>'));
     }
   }
-
-  span.append($('<span>' + node.title + '</span>'));
+  
+  s = $('<span>' + node.title + '</span>');
+  if(node.children){
+    // s.css('font-weight','bold');
+  }
+  span.append(s);
 
   if(showloading){ // ローディングGIFアニメ表示
     if(autoexpand){
