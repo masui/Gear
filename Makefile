@@ -8,5 +8,8 @@ push:
 	git push
 
 paddle:
-	open index.html
-#	ruby paddle.rb
+	npm start & sleep 2; open 'http://localhost:3000/paddle.html'
+
+kill:
+	killall node
+
