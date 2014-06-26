@@ -2,3 +2,7 @@ data.json
 .ruby-version
 *.save*
 Data/News/news.ltsv
+node_modules
+*.log
+*~
+*#*

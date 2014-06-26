@@ -6,16 +6,13 @@ width = screen.availWidth / 5;
 if(width > 300) width = 300;
 param = "top=0,left=0,height="+height+",width="+width;
 menuwin = window.open("index.html","menu",param);
-alert(newwin);
 
 //
 // Linda接続
 //
-// var socket = io.connect('http://node-linda-base.herokuapp.com:80');
-var socket = io.connect('http://localhost:3000');
-alert(socket);
+
+var socket = io.connect(location.protocol + "//" + location.host);
 var linda = new Linda().connect(socket);
-alert(linda);
 var ts = linda.tuplespace('paddle');
 
 var direction = 'None';
@@ -53,13 +50,13 @@ var movefunc = function(delta){
 
 //menuwin.focus();
 
-// linda.io.on('connect', function(){
-socket.on('connect', function(){
+linda.io.on('connect', function(){
   ts.watch({type:"paddle"}, function(err, tuple){
     if(err) return;
-      //menuwin.focus();
-      //menuwin.$.contentswin.focus();
-      menuwin.$.allfocus();
+    console.log(tuple.data);
+    //menuwin.focus();
+    //menuwin.$.contentswin.focus();
+    menuwin.$.allfocus();
 
     direction = tuple.data['direction'];
     value = tuple.data['value'];
