@@ -20,7 +20,7 @@ CONTENTS = \
 
 
 json: getnews
-	~masui/.rbenv/shims/bundle exec ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
+	~/.rbenv/shims/bundle exec ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
 
 getnews:
 	cd News; make
