@@ -1,8 +1,12 @@
-express    = require 'express'
-path       = require 'path'
+express = require 'express'
+path    = require 'path'
+Firmata =
+  if process.env.BLE?
+    require 'ble-firmata'
+  else
+    require 'arduino-firmata'
 
 process.env.PORT ||= 3000
-
 
 ## HTTP, Socket.IO, Linda ##
 app = express()
@@ -16,18 +20,7 @@ console.log "server start - port:#{process.env.PORT}"
 
 
 ## Arduino ##
-if process.env.BLE?
-  Firmata = require 'ble-firmata'
-  arduino = new Firmata()
-  arduino.connect process.env.BLE
-else if process.env.ARDUINO?
-  Firmata = require 'arduino-firmata'
-  arduino = new Firmata()
-  arduino.connect process.env.ARDUINO
-else
-  console.error 'read README.md, set ENV variable "ARDUINO" or "BLE"'
-  process.exit 1
-
+arduino = new Firmata()
 arduino.once 'connect', ->
   arduino.on 'analogChange', (e) ->
     return if e.pin > 1
@@ -38,5 +31,4 @@ arduino.once 'connect', ->
     console.log data
     ts.write data
 
-
-
+arduino.connect process.env.BLE or process.env.ARDUINO
