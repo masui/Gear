@@ -467,7 +467,7 @@ if(false){
   // Linda接続
   //
   //var socket = io.connect('http://node-linda-base.herokuapp.com:80');
-  var socket = io.connect('http://localhost:3000');
+  var socket = io.connect(location.protocol + "//" + location.host);
   var linda = new Linda().connect(socket);
   var ts = linda.tuplespace('paddle');
   
@@ -508,8 +508,7 @@ if(false){
     };
   };
   
-  // linda.io.on('connect', function(){
-  socket.on('connect', function(){
+  linda.io.on('connect', function(){
     ts.watch({type:"paddle"}, function(err, tuple){
       if(err) return;
       //window.focus();

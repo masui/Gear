@@ -1,0 +1,28 @@
+{
+  "name": "dial",
+  "version": "0.0.0",
+  "description": "回転ダイヤルや単純なパドル(トグルスイッチ)で大規模階層情報をブラウジングする",
+  "main": "dial.js",
+  "scripts": {
+    "start": "coffee server.coffee"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/masui/Dial.git"
+  },
+  "author": [
+    "Toshiyuki Masui",
+    "Sho Hashimoto"
+  ],
+  "bugs": {
+    "url": "https://github.com/masui/Dial/issues"
+  },
+  "homepage": "https://github.com/masui/Dial",
+  "dependencies": {
+    "ble-firmata": "^0.1.2",
+    "coffee-script": "^1.7.1",
+    "express": "^4.4.4",
+    "linda": "^1.0.1",
+    "socket.io": "^1.0.6"
+  }
+}
