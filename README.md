@@ -2,6 +2,17 @@
 
 回転ダイヤルや単純なパドル(トグルスイッチ)で大規模階層情報をブラウジングする
 
+## 準備
+
+### data.jsonを作る
+
+Rubyが必要
+
+    % cd Data
+    % make
+    % cp data.json ../
+
+
 ## 起動
 
 ### マウスホイール/KBだけ使う場合
@@ -22,6 +33,7 @@ dial.js で制御する
 
 #### サーバー起動
 
+- Node.jsが必要
 - 環境変数ARDUINOを指定 : USB接続のArduinoを使う
 - 環境変数BLEを指定 : BLE接続のBlendMicroを使う
 
