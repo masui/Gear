@@ -25,6 +25,7 @@ dial.js で制御する
 
 圧力センサ付きパドルをBlendMicroで制御している。BlendMicroは圧力値を[ble-firmata](https://www.npmjs.org/package/ble-firmata)でMacのnode.jsに送っていて、そのnodeプログラムがHTTPとLindaのサーバーにもなっている。
 
+nodeが使うモジュールなどは package.json に記述されている。
 
 必要なnodeモジュールをインストール
 
@@ -46,7 +47,7 @@ blendmicroは[ファームウェア書き込み時](https://github.com/shokai/no
     % PORT=[ポート番号] BLE=[blendmicroの名前] npm start
     % PORT=3000 BLE=paddle npm start
 
-=> http://localhost:3000/paddle.html
+=> [http://localhost:3000/paddle.html]()
 
 USB接続のArduinoを使う場合、`arduinoは/dev/tty*` のデバイス名で指定する
 
