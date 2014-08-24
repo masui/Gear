@@ -8,7 +8,9 @@ push:
 	git push
 
 paddle:
-	npm start & sleep 2; open 'http://localhost:3000/paddle.html'
+	PORT=3000 BLE=paddle npm start & sleep 2; open 'http://localhost:3000/paddle.html'
+#	npm start & sleep 2; open 'http://localhost:3000/paddle.html'
+
 
 kill:
 	killall node

@@ -77,6 +77,21 @@ $.allfocus = function(){
   contentswin.focus();
 };
 
+var say = function(node){
+  text = node.title;
+  if(text){
+    //if(! node.children){
+    //  text = text.substring(0,6);
+    //}
+    $.ajax({
+      type: "GET",
+      async: true,
+      url: "http://localhost/~masui/say.cgi?text=" + text + "&level=" + node.level
+    });
+  }
+
+};
+
 var singleDescendant = function(node){
   //alert(node.title);
   if(node.children){
@@ -127,6 +142,7 @@ var expand = function(){ // 注目してるエントリの子供を段階的に�
   timeout = null;
   shrinking = false;
   if(nodeList[0].children){
+    say(nodeList[0].children[0]);
     $.calc(nodeList[0].children[0]);
     if(autoexpand){
       timeout = setTimeout(expand,StepTime);
@@ -233,7 +249,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
   }
   
   if(nodeList[0].url && showContents){ // 別ウィンドウにコンテンツ表示
-    contentswin.focus(); // 前面に持ってくる
+    //contentswin.focus(); // 前面に持ってくる なんでこうしたんだっけ?
     contentswin.location.href = nodeList[0].url;
     console.log(contentswin);
     console.log("focus");
@@ -430,6 +446,9 @@ $.move = function(delta){ // 視点移動
       $.calc(nodeList[delta]);
     }
   }
+
+  say(nodeList[0]);
+
   return false;
 };
 

@@ -265,7 +265,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{1406.551025390625, 1239.1817626953125}, {316, 452}}</string>
+			<string>{{1406.551025390625, 1245}, {316, 452}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -355,7 +355,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{1345, 1051}, {288, 418.18181818181813}}</string>
+			<string>{{1387, 1059}, {288, 418.18181818181813}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -58727,7 +58727,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-06-29 01:30:39 +0000</string>
+	<string>2014-07-09 08:55:21 +0000</string>
 	<key>Modifier</key>
 	<string>増井 俊之</string>
 	<key>NotesVisible</key>
@@ -58803,7 +58803,7 @@
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
-		<string>{{-1, -14}, {1110, 878}}</string>
+		<string>{{79, -1}, {1110, 878}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -58817,7 +58817,7 @@
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{1224, -5}, {961, 724}}</string>
+		<string>{{1303, 1066}, {961, 724}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>
