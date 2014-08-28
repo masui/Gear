@@ -78,6 +78,7 @@ $.allfocus = function(){
 };
 
 var say = function(node){
+  return;
   text = node.title;
   if(text){
     //if(! node.children){
