@@ -16,13 +16,14 @@
 
 \def\GEAR{\textsf{Gear}}
 \def\GB{\textsf{GearBrowser}}
+\def\figwidth{50mm}
 
 % \def\▲{\textcolor{green}{▲}}
 % \def\▼{\textcolor{green}{▼}}
-\def\uptriangle{\includegraphics[width=3mm,bb=0 0 36 36]{figures/uptriangle.pdf}}
-\def\downtriangle{\includegraphics[width=3mm,bb=0 0 36 36]{figures/downtriangle.pdf}}
-\def\righttriangle{\includegraphics[width=3mm,bb=0 0 36 36]{figures/righttriangle.pdf}}
-\def\lefttriangle{\includegraphics[width=3mm,bb=0 0 36 36]{figures/lefttriangle.pdf}}
+\def\uptriangle{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/uptriangle.pdf} }
+\def\downtriangle{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/downtriangle.pdf} }
+\def\righttriangle{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/righttriangle.pdf} }
+\def\lefttriangle{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/lefttriangle.pdf} }
 \long\def\comment#1{}
 
 \journalhead{「超」ナビゲーション}
@@ -33,7 +34,8 @@
 \etitle{} %2012年では英文タイトルは廃止されました．記入しないでください
 % Supernavigation
 
-\author{増井 俊之\affil{Toshiyuki Masui, 慶應義塾大学 環境情報学部}}
+% \author{増井 俊之\affil{Toshiyuki Masui, 慶應義塾大学 環境情報学部}}
+\author{■■ ■■\affil{■■■ ■■■}}
 
 \begin{abstract}
 単純な装置で大規模な階層データを効率的にナビゲーションする手法を提案する。
@@ -42,8 +44,8 @@
 大規模な階層データから項目を選ぶ場合、
 % 階層を上下に移動したり同じ階層内の選択項目を移動したりするのが普通である。
 階層を移動したり階層内の選択項目を移動したりすることによって目的の項目を検索するのが一般的である。
-たとえば日本の住所リストから「神奈川県藤沢市遠藤」を検索する場合、
-都道府県リストから神奈川県を選択し/神奈川県の市町村リストから藤沢市を選択し/
+たとえば日本の住所リストから「■■県●●市▲▲」を検索する場合、
+都道府県リストから■■県を選択し/■■県の市町村リストから●●市を選択し/
 といった操作を繰り返して目的の項目に到達する。
 別の県や市町村の住所を選択する場合は上位層に移動してから同様の操作を行なう。
 %
@@ -159,19 +161,16 @@ Web、
 \label{screenshot1}
 \end{figure}
 
-\subsection*{Macのファインダ上での階層情報ナビゲーション}
+\subsection{Macのファインダ上での階層情報ナビゲーション}
 
 Macのファインダでは
-{\uptriangle},
-{\downtriangle},
-{\lefttriangle},
-{\righttriangle}という4個の矢印キーで
+{\uptriangle}{\downtriangle}{\lefttriangle}{\righttriangle}という4個の矢印キーで
 ファイルシステムのナビゲーションを行なうことができる。
 
 「店リスト」をファインダで表示して「本屋」を選択すると、表示は以下のようになる。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/9b121bec45e5b480e5ac64fdd0f82592.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/9b121bec45e5b480e5ac64fdd0f82592.png}}
 \caption{店リストから「本屋」を選択}
 \label{screenshot2}
 \end{figure}
@@ -180,7 +179,7 @@ Macのファインダでは
 ここで{\downtriangle}を押すと、次の「文房具屋」が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/f43016d1b524baf414f2c32c48fe9588.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/f43016d1b524baf414f2c32c48fe9588.png}}
 \caption{ssss}
 \label{「文房具屋」を選択}
 \end{figure}
@@ -189,7 +188,7 @@ Macのファインダでは
 さらに二回{\downtriangle}を押すと、以下のように「食料品店」が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/c074cd6daec3da0341125d1492b8a09c.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/c074cd6daec3da0341125d1492b8a09c.png}}
 \caption{「食料品店」を選択}
 \label{screenshot4}
 \end{figure}
@@ -199,7 +198,7 @@ Macのファインダでは
 {\righttriangle}キーを押すことによって以下のように下位階層が表示される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/51d867d4721f65c18e84172c8818e137.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/51d867d4721f65c18e84172c8818e137.png}}
 \caption{「食料品店」の下位階層を展開して表示}
 \label{screenshot5}
 \end{figure}
@@ -210,7 +209,7 @@ Macのファインダでは
 さらに下位階層を表示することができる。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 298]{figures/ce3ee682612de44d6c663a7323c262a6.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 298]{figures/ce3ee682612de44d6c663a7323c262a6.png}}
 \caption{「生鮮食料品店」の下位階層を表示}
 \label{screenshot6}
 \end{figure}
@@ -223,7 +222,7 @@ Macのファインダでは
 階層データのナビゲーションを行なうことができる。
 テレビのリモコンやジョグダイヤルでもほぼ同様の手法が利用されている。
 
-\subsection*{{\GEAR}によるナビゲーション}
+\subsection{{\GEAR}によるナビゲーション}
 
 {\GEAR}では{\uptriangle}と{\downtriangle}というふたつのキーだけを
 利用してナビゲーションを行なう。
@@ -237,13 +236,13 @@ Macのファインダでは
 図\ref{screenshot7}のようにその最初の要素が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/c074cd6daec3da0341125d1492b8a09c.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/c074cd6daec3da0341125d1492b8a09c.png}}
 \caption{「食料品店」を選択}
 \label{screenshot42}
 \end{figure}
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 272]{figures/2387e402f81dbe7917e04df82b0a659c.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/2387e402f81dbe7917e04df82b0a659c.png}}
 \caption{「食料品店」の下位階層を自動展開}
 \label{screenshot7}
 \end{figure}
@@ -254,7 +253,7 @@ Macのファインダでは
 下位層が自動的に展開され、最初の要素である「魚屋」が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 304]{figures/1b1955309d3baefda8e1b614cf06df62.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 304]{figures/1b1955309d3baefda8e1b614cf06df62.png}}
 \caption{「生鮮食料品店」の下位階層を自動展開}
 \label{screenshot8}
 \end{figure}
@@ -268,7 +267,7 @@ Macのファインダでは
 下位層は展開されず、次の「衣料品店」が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 304]{figures/c5c757d8f79d5a8a9c85eef25600ba66.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 304]{figures/c5c757d8f79d5a8a9c85eef25600ba66.png}}
 \caption{「衣料品店」を選択}
 \label{screenshot9}
 \end{figure}
@@ -278,7 +277,7 @@ Macのファインダでは
 下位層が自動的に展開されて「靴屋」が選択される。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 344 304]{figures/fddd5777d39924ea3f0220ae39a604c1.png}}
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 304]{figures/fddd5777d39924ea3f0220ae39a604c1.png}}
 \caption{「靴屋」を選択}
 \label{screenshot10}
 \end{figure}
@@ -309,10 +308,10 @@ Macのファインダでは
 「{\GB}」を図\ref{gearbrowser}に示す。
 ニュース、動画、音楽、電子書籍、レシピ、地図など
 ブラウザで表示可能な多数のコンテンツの目次を{\GEAR}ウィンドウとして左側に表示し、
-右側に内容を表示するようにしている。
+右側にコンテンツを表示している。
 
 \begin{figure*}
-\centerline{\includegraphics[width=140mm,bb=0 0 1401 872]{figures/ab4ff7c2d44f4af2bb94fae76589f495.png}}
+\centerline{\includegraphics[width=160mm,bb=0 0 1401 872]{figures/ab4ff7c2d44f4af2bb94fae76589f495.png}}
 \caption{\textsf{GearBrowser}}
 \label{gearbrowser}
 \end{figure*}
@@ -322,21 +321,26 @@ Macのファインダでは
 マウスホイールの回転も{\uptriangle}と{\downtriangle}として利用できるので、
 ワイヤレスマウスをリモコンのように利用することができる。
 
-%著者は自宅の居間で{\GB}を半年以上利用している。
-%ワイヤレスマウスを
+著者は自宅の居間の大型テレビに接続したMac miniで{\GB}を半年以上利用している。
+筆者宅にはデジタル地上波が届かないこともあり、
+{\GB}だけを利用して各種のコンテンツを楽しんでいる。
 
 \section{議論}
 
-\subsection*{適用可能なデータのサイズ}
+\subsection{適用可能なデータのサイズ}
 
 \ref{description}章では小さな階層データを利用して{\GEAR}の動作の説明を行なったが、
 {\GEAR}で巨大なデータを扱うことに問題はない。
 ファインダで扱えるように適切な階層構造が構築されていれば
 {\GEAR}でも同様にナビゲーションが可能である。
 
-{\GB}ではすべての青空文庫コンテンツや1万本以上のアニメ動画が含まれているが、
+{\GB}ではすべての青空文庫コンテンツや1万本以上のアニメ動画を
+問題なくナビゲーションしている。
 
-\subsection*{音声の利用}
+%   普通にあらゆるデータに使えるといえるだろう
+%   10レベルで6階層あれば10\^6のコンテンツに対応できるとか
+
+\subsection{音声の利用}
 
 {\GEAR}は階層構造表示しながら利用するのが基本であるが、
 項目を選択したときタイトルを読みあげることにより、
@@ -345,7 +349,11 @@ Macのファインダでは
 表示装置を利用できない状況でも
 音楽コンテンツを選択可能になるので便利である。
 
-\subsection*{操作の数}
+\subsection{入力装置いろいろ}
+
+PowerMate、円板、ローラー、パドル
+
+\subsection{操作の数}
 
 図\ref{screenshot2}の状態から
 図\ref{screenshot8}の状態に移動する場合、
@@ -356,7 +364,7 @@ Macのファインダでは
 運動障害のあるユーザや
 操作をしにくい環境において有効と考えられる。
 
-\subsection*{木構造しか使えないのでは?}
+\subsection{扱えるデータ構造}
 
 辞書のようなデータは読みや綴りで階層的に分類できるし、
 時刻情報のような連続的なものでも
@@ -368,7 +376,7 @@ SNSの友達関係のようなネットワーク構造も
 木構造的に表現することは可能なので、
 ほぼあらゆるデータは木構造で表現可能だといえる。
 
-\subsection*{想定される利用者}
+\subsection{想定される利用者}
 
 著者のひとりは{\GEAR}を通常の家庭環境で利用しているが、
 
@@ -378,32 +386,64 @@ SNSの友達関係のようなネットワーク構造も
   FinderとかExplorerとかの基本ソフトで使う
   これ以外にはキーワード検索とかもあるけど
 
-\subsection*{ザッピング}
+\subsection{ザッピング}
 
-受動的な人でも楽しめるということ
+% 決定ボタンを押す方式だと、単に回転するだけでは次のページに移ることができない
 
-決定ボタンを押す方式だと、単に回転するだけでは次のページに移ることができない
+\begin{figure}[H]
+\centerline{\includegraphics[width=\figwidth,bb=0 0 344 318]{figures/9a8615b0242c9ba4deb77ca30ab94d7c.png}}
+\caption{1巻の最終ページ}
+\label{manga1}
+\end{figure}
 
-\subsection*{操作が超シンプルだというのはどういうことか}
+{\GB}では、コンテンツを単純な操作で連続的に楽しむことができる。
+%
+図\ref{manga1}のような漫画の1巻の最終ページから
+次の巻の最初のページに移りたいとき、
+ファインダのように上下左右キーを利用する場合は
+
+\begin{itemize}
+\item {\lefttriangle}で1巻を閉じる
+\item {\downtriangle}で2巻を選択する
+\item {\righttriangle}で2巻の要素を開く
+\item {\downtriangle}で2巻の先頭要素を選択する
+\end{itemize}
+
+\noindent
+という操作が必要であるが、{\GB}では
+
+\begin{itemize}
+\item {\downtriangle}を押す
+\end{itemize}
+
+\noindent
+だけでよい。
+図\ref{manga1}の状態で{\downtriangle}を押すと
+1巻の下位要素は閉じられ、
+2巻の下位要素が自動的に開いて最初の要素が表示されるからである。
+
+つまり、{\GB}では
+何も考えずに
+{\downtriangle}を押すだけでコンテンツを順番に楽しむことができることになる。
+何も考えずに単純な操作を繰り返すだけでコンテンツを検索できるということは
+従来のテレビのチャンネルを回す「ザッピング」と似ており、
+受動的な人でも楽しめるということだろう。
+
+\subsection{操作が超シンプルだというのはどういうことか}
 
   かなりの運動障害があっても使える
   操作が少ないので、誰でも試行錯誤でなんとかなるだろう
   一方、筆者は毎日食卓から{\GEAR}を使ってニュースを見たり音楽を聞いたりしている
   障害があってもなくても同じように便利だというのが理想である
 
-\subsection*{テレビとWebの融合が失敗した理由}
+\subsection{テレビとWebの融合が失敗した理由}
    そもそも姿勢が違うのである
    前かがみになって入力装置を操作するのはテレビには向いいない
 
-\subsection*{ひとつの階層に沢山のデータを置いてはいけない。スクロールの速度にもよるが、20個以下程度が妥当と思われる。}
+\subsection{ひとつの階層に沢山のデータを置いてはいけない。スクロールの速度にもよるが、20個以下程度が妥当と思われる。}
    読みの場合は「あ」「か」「さ」
 
-\subsection*{どれぐらい大きなデータに使えるか}
-
-   普通にあらゆるデータに使えるといえるだろう
-   10レベルで6階層あれば10\^6のコンテンツに対応できるとか
-
-\subsection*{どういうデータに使えるか}
+\subsection{どういうデータに使えるか}
    {\GEAR}は木構造にしか適用できない
    専門的に管理されているデータは木構造が多く、
    そうでないものはタグなどを利用してネットワーク構造にするのが良いと思われる
@@ -413,25 +453,26 @@ SNSの友達関係のようなネットワーク構造も
    同じデータがあちこちに出てきてもよい
      日付による分類とキーワードによる分類
 
-\subsection*{ザッピングについて}
+\subsection{ザッピングについて}
    下矢印だけで次頁に移動できる!
    最下位の層でザッピングできる
    単に「次」を押していけば漫画や順番に
    「前」の場合はそうはならないが、「次」の方が圧倒的に多いはずだから大丈夫
 
-\subsection*{どういうデバイスを使うか}
+\subsection{どういうデバイスを使うか}
+
   「次」「前」だけでいいから2個のスイッチだけでよい
    圧力センサやローラーなど、各週の実装が可能である
    (写真いろいろ)
 
-\subsection*{障害対応}
+\subsection{障害対応}
 
 「障害者」用の装置を作っては駄目で、障害が有ってもなくても使える装置を作るべきだろう。
 
 同様に、初心者用/老人用/子供用のシステムを作るよりも、初心者でも老人で
 も子供でも使えるシステムを作る方がスジが良いと思う。
 
-\subsection*{時間を使うことはどうなのか}
+\subsection{時間を使うことはどうなのか}
 
 ALS用文字入力システムではタイミングで選択操作を行なっている
   何と呼ぶのだっけ?
@@ -439,7 +480,7 @@ ALS用文字入力システムではタイミングで選択操作を行なっ�
     そういう症状は多い
 e.g. Pete
 
-\subsection*{選択以外の操作}
+\subsection{選択以外の操作}
 
 普通のWebページだとスクロール操作が必要になるが
   スクロールはなんとか大丈夫
@@ -450,25 +491,33 @@ e.g. Pete
      別になっている方が一般に望ましいだろう
        だからiPhoneでもAndroidでも音量だけは別操作になっていてメニューで選んだりしない
 
-\subsection*{速度について}
+\subsection{速度について}
    もちろんパソコン上の操作より遅い
    装置が簡単だということがメリットだろう
      トレードオフである
    マウスが使える状況では無理に{\GEAR}を使う必要などないだろう
      ズーミングでもなんでも使えばいい
 
-\subsection*{手法の新規性について}
-
-{\GEAR}を開発してから
-9ヶ月にわたって何十人もの研究者や開発者に意見/感想を求めているが、
-{\GEAR}と同じ手法の存在は確認できていない。
-
-手法が単純であり、
-一度使い方を知ってしまえば問題なく使えることは確認できている。
-
-\subsection*{Lindaで実装}
+\subsection{Lindaで実装}
 
 \section{結論}
+
+非常に単純な入力装置を利用して大規模な階層構造データをナビゲーションする
+手法「{\GEAR}」を提案した。
+
+{\GEAR}の使い方は単純であり、
+一度慣れてしまえば問題なく使えることは確認できている。
+
+{\GEAR}はあまりにも単純な手法であるため、
+同じ手法がこれまでに存在した可能性を否定することはできないが、
+半年以上の間、多くのHI研究者や開発者に意見/感想を求めたところ
+{\GEAR}と同じ手法の存在は確認できていないので、
+少なくとも近年同様のシステムが存在した可能性は低いと思われる。
+
+{\GEAR}のように実装も操作法も簡単で有用なシステムは、
+誰もがいつでもどこでも計算機やネットワークを活用する
+ユビキタスコンピューティング社会において
+重要な存在になるであろう。
 
 {\scriptsize
 \bibliographystyle{jwiss}
