@@ -65,15 +65,13 @@
 
 \section{はじめに}
 
-% 大量のデータを扱うために階層的に整理する手法がよく利用されている。
-
 Web、
 ファイルシステム、
 住所のような
 大規模データの多くは階層構造として表現されており、
 階層構造を利用して情報を検索するインタラクション手法が広く利用されている。
 階層的なデータを扱うための様々な情報視覚化手法が提案されているが
-(\cite{Johnson:1991:TSA:949607.949654}\cite{Lamping:1995:FTB:223904.223956}\cite{Stasko:2000:FDN:857190.857683}\cite{Perlin:1993:PAA:166117.166125}など)、
+(\cite{Johnson:1991:TSA:949607.949654}\cite{Lamping:1995:FTB:223904.223956}\cite{Perlin:1993:PAA:166117.166125}\cite{Stasko:2000:FDN:857190.857683}など)、
 これらはまだ一般的には普及しておらず、
 現在のパソコンや携帯機器では、
 シンプルなマウス操作やキー操作で階層構造をたどる手法が広く使われている。
@@ -96,8 +94,14 @@ Web、
 このような手法でナビゲーションを行なうためには、
 通常3個以上のキーやスイッチが必要になる。
 %
-ファインダやテレビのリモコンなどでは
-上下左右4方向のキーで階層データのナビゲーションを行なうようになっている。
+Macのファインダ、
+AppleRemote\footnote{
+  \textsf{http://en.wikipedia.org/wiki/Apple\_Remote}
+}のようなリモコン、
+小型の携帯プレーヤ\footnote{
+  \textsf{http://www.iriver.com/product/view.asp?pCode=003\&pNo=37}
+}などでは
+上下左右4方向のキーで階層データのナビゲーションを行なうようになっているものが多い(図\ref{4buttons})。
 またジョグダイヤルを登載した携帯電話や携帯端末では、
 ダイヤルを回す操作とダイヤルを押す操作を組み合わせて
 項目を選択したり階層を移動したりするものが多い。
@@ -110,13 +114,21 @@ Web、
 本論文では、2個のスイッチだけを使って
 階層構造を効率的にナビゲーションする「{\GEAR}」システムについて述べる。
 
+\begin{figure}[H]
+% \centerline{\includegraphics[width=80mm,bb=0 0 547 179]{figures/4buttons.png}}
+\centerline{\includegraphics[width=50mm,bb=0 0 279 375]{figures/4buttons.pdf}}
+\caption{携帯プレーヤu10(上)とAppleRemoe(下)の4方向ボタン}
+\label{4buttons}
+\end{figure}
+
 \section{{\GEAR}のナビゲーション}
 \label{description}
 
 以下のような階層をもつファイルシステムのナビゲーションを考える。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=70mm,bb=0 0 509 502]{figures/ae9216b00626f9c4eea44cc380f25886.png}}
+% \centerline{\includegraphics[width=70mm,bb=0 0 509 502]{figures/ae9216b00626f9c4eea44cc380f25886.png}}
+\centerline{\includegraphics[width=70mm,bb=0 0 491 491]{figures/shops.pdf}}
 \caption{階層的に表現されたショッピングモールの店リスト}
 \label{screenshot1}
 \end{figure}
@@ -140,8 +152,8 @@ Macのファインダでは
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=\figwidth,bb=0 0 344 272]{figures/f43016d1b524baf414f2c32c48fe9588.png}}
-\caption{ssss}
-\label{「文房具屋」を選択}
+\caption{「文房具屋」を選択}
+\label{screenshot3}
 \end{figure}
 
 \noindent
@@ -272,7 +284,7 @@ Macのファインダでは
 右側にコンテンツを表示している。
 
 \begin{figure*}
-\centerline{\includegraphics[width=160mm,bb=0 0 1401 872]{figures/ab4ff7c2d44f4af2bb94fae76589f495.png}}
+\centerline{\includegraphics[width=180mm,bb=0 0 1401 872]{figures/ab4ff7c2d44f4af2bb94fae76589f495.png}}
 \caption{\textsf{GearBrowser}}
 \label{gearbrowser}
 \end{figure*}
@@ -294,7 +306,7 @@ Macのファインダでは
 少なくともファインダで扱えるサイズのデータであれば
 {\GEAR}でナビゲーションが可能である。
 %
-筆者宅の{\GB}ではすべての青空文庫コンテンツや1万本以上のアニメ動画を
+著者宅の{\GB}ではすべての青空文庫コンテンツや1万本以上のアニメ動画を
 {\GEAR}で選択して閲覧している。
 
 %   普通にあらゆるデータに使えるといえるだろう
@@ -308,11 +320,13 @@ Macのファインダでは
 圧力センサや回転ダイヤルなどを利用した各種の実装が可能である。
 %
 図\ref{disk}は、回転円板による{\GEAR}の実装である。
-左右の回転を{\up}{\down}に割り当てている。
+左に回転したとき{\up}が出力され、
+右に回転したとき{\down}が出力されるようになっており、
+左右に回転するだけでコンテンツを選択できるようになっている。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=50mm,bb=0 0 362 354]{figures/ff2d18e66f9a4655dbb5e22e0bb9a0ae.png}}
-\caption{回転板}
+\centerline{\includegraphics[width=54mm,bb=0 0 362 354]{figures/ff2d18e66f9a4655dbb5e22e0bb9a0ae.png}}
+\caption{回転板デバイス}
 \label{disk}
 \end{figure}
 
@@ -320,7 +334,7 @@ Macのファインダでは
 パドルに貼った2個の圧力センサの値を{\up}{\down}に割り当てている。
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=50mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
+  \centerline{\includegraphics[width=54mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
 \caption{左右にはじく「パドル」デバイス}
 \label{paddle}
 \end{figure}
@@ -386,7 +400,7 @@ Macのファインダでは9回キー操作を行なう必要があるが
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=\figwidth,bb=0 0 344 318]{figures/9a8615b0242c9ba4deb77ca30ab94d7c.png}}
-\caption{1巻の最終ページ}
+\caption{1巻の最終ページを選択している状態}
 \label{manga1}
 \end{figure}
 
@@ -415,9 +429,8 @@ Macのファインダでは9回キー操作を行なう必要があるが
 1巻の下位要素は閉じられ、
 2巻の下位要素が自動的に開いて最初の要素が表示されるからである。
 
-つまり、{\GB}では
-何も考えずに
-{\down}を押すだけでコンテンツを順番に楽しむことができることになる。
+つまり、{\GB}では{\down}を押すだけで
+コンテンツを連続的に楽しむことができることになる。
 何も考えずに単純な操作を繰り返すだけでコンテンツを検索できるということは
 従来のテレビのチャンネルを回す「ザッピング」と似ており、
 能動的に計算機を利用することが不得手なユーザでも
@@ -466,7 +479,7 @@ Macのファインダでは9回キー操作を行なう必要があるが
 \subsection{時間待ちについて}
 
 {\GEAR}では、下位層が存在する項目を選択した状態で時間待ちすると
-その項目を選択して下位層を展開するようになっているが、
+下位層を自動展開するようになっているが、
 時間によって動作が変わることを気にするユーザは多いようである。
 %
 一般に、タイミングによって挙動が変わるインタフェースは望ましくないと考えられているが、
@@ -501,15 +514,15 @@ Macのファインダでは9回キー操作を行なう必要があるが
 
 {\GEAR}によるナビゲーションは
 パソコン上でマウスやキーボードを利用するナビゲーションよりも遅いことは間違いないが、
-マウスやキーボードに比べると装置が圧倒的に単純で良いため、
-そういった装置を使いにくい環境で利用することに意味があるだろう。
+マウスやキーボードに比べると装置が圧倒的に単純ですむため、
+複雑な装置を使いにくい環境で利用することに意味があるだろう。
 ユビキタスコンピューティング時代には、
-パソコンで一般的な入力装置を使えない場合の方が多いと思われるため、
+パソコンでよく使われている入力装置を使えない場合の方が多いと思われるため、
 {\GEAR}のような手法が有効である機会は多くなるだろう。
 
 % \subsection{Lindaで実装}
 
-\subsection{関連研究}
+\section{関連研究}
 
 階層データのナビゲーション手法は長年広く利用されているが、
 現在普及している手法よりも良い方法が有ると期待されていないためか、
@@ -524,7 +537,7 @@ Macのファインダでは9回キー操作を行なう必要があるが
 今のところ{\GEAR}が再発明なのか新発明なのか断言することはできないが、
 このようなナビゲーション手法は
 現在のユビキタスコンピューティング環境で最も必要とされる技術の
-ひとつには違いないと思われる。
+ひとつであることは間違いない。
 
 \section{結論}
 
@@ -532,7 +545,7 @@ Macのファインダでは9回キー操作を行なう必要があるが
 手法「{\GEAR}」を提案した。
 {\GEAR}の使い方は単純であり、
 一度慣れてしまえば問題なく利用できる。
-
+%
 {\GEAR}のように実装も操作法も簡単で有用なシステムは、
 誰もがいつでもどこでも計算機やネットワークを活用する
 ユビキタスコンピューティング社会において

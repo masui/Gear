@@ -229,7 +229,7 @@
 \put(896,0){\line(0,1){8}}
 \put(894,0){\line(0,1){8}}
 \put(892,0){\line(0,1){8}}
-\put(920,0){\textsf{\tiny WISS2013}}
+\put(920,0){\textsf{\tiny WISS2014}}
 \end{picture}
 
 \begin{flushleft}
@@ -264,7 +264,7 @@
 \def\journalhead#1{\gdef\title@j{#1}}
 \journalhead{\@etitle}
 \def\booktitle#1{\gdef\head@j{#1}}
-\booktitle{WISS 2013}
+\booktitle{WISS 2014}
 \def\etitle#1{\gdef\@etitle{#1}}
 
 \def\ps@headings{\def\@oddfoot{}\def\@evenfoot{}
