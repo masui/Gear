@@ -1,5 +1,5 @@
 //
-// Lindaで受け取った圧力センサ値をもとにしてdial.jsを制御する
+// Lindaで受け取った圧力センサ値をもとにしてgear.jsを制御する
 //
 height = screen.availHeight;
 width = screen.availWidth / 5;

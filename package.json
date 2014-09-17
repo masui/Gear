@@ -1,23 +1,23 @@
 {
-  "name": "dial",
-  "version": "0.0.0",
-  "description": "回転ダイヤルや単純なパドル(トグルスイッチ)で大規模階層情報をブラウジングする",
+  "name": "Gear",
+  "version": "0.1.0",
+  "description": "回転ダイヤルや単純なパドル(トグルスイッチ)で大規模階層情報をブラウジング",
   "main": "dial.js",
   "scripts": {
     "start": "coffee server.coffee"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/masui/Dial.git"
+    "url": "git://github.com/masui/Gear.git"
   },
   "author": [
     "Toshiyuki Masui",
     "Sho Hashimoto"
   ],
   "bugs": {
-    "url": "https://github.com/masui/Dial/issues"
+    "url": "https://github.com/masui/Gear/issues"
   },
-  "homepage": "https://github.com/masui/Dial",
+  "homepage": "https://github.com/masui/Gear",
   "dependencies": {
     "arduino-firmata": "^0.3.1",
     "ble-firmata": "^0.1.2",
