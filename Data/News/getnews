@@ -84,7 +84,8 @@ def getnews(title,url,rss=false)
   else
     list = feeds(url)
   end
-  puts " title:#{title}\turl:#{url}"
+  #puts " title:#{title}\turl:#{url}"
+  puts " title:#{title}"
   if list then
     list.each { |entry|
       puts "  #{entry}"

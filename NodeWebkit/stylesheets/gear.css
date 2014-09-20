@@ -1,0 +1,16 @@
+body {
+	/* background-color: #ddddff; */
+	background-color: #ffffff;
+}
+
+span {
+	font-size: 11pt;
+}
+
+.line {
+	position: absolute;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+

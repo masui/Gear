@@ -1,0 +1,17 @@
+{
+  "name": "Gear",
+  "main": "index.html",
+  "webkit": {
+    "plugin": true,
+    "java": true,
+    "page-cache": true
+  },
+  "window": {
+    "title": "Gear",
+    "icon": "img/icon.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 480
+  }
+}

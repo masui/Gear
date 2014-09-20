@@ -15,7 +15,7 @@ if(typeof(autoexpand) == 'undefined'){
   var autoexpand = true;
 }
 if(typeof(json) == 'undefined'){
-  var json = "data.json";
+  var json = "Data/data.json";
 }
 if(typeof(pauseAtLevelChange) == 'undefined'){
   var pauseAtLevelChange = true;
