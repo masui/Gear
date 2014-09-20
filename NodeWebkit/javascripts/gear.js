@@ -187,6 +187,9 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 	if(url.match(/twitter\.com/)){
 	    // 無視
 	}
+	else if(url.match(/www\.ted\.com/)){
+	    // 無視
+	}
 	else if(url.match(/(gif|jpg|jpeg|png)$/i)){
 	    iframe.css('display','none');
 	    image.css('display','block');
