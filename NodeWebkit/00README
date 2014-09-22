@@ -1,1 +1,5 @@
-Dialをnode-webkitで実装しようとして断念したものだと思う
+* Dialをnode-webkitで実装しようとして断念したものを復活 (2014/9)
+* 動画にはまだ対応できていない
+  - https://github.com/rogerwang/node-webkit/wiki の Using MP3 & MP4 (H.264) using the video & audio tags. あたりに情報があるらしい
+  - ここと、 https://github.com/mllrsohn/grunt-node-webkit-builder/wiki/How-to-automate-node-webkit-support-for-MP3-&-H264-in-video-&-audio-tags-with-grunt-contrib-copy
+    ここのIssueを参考にやったらできました。 https://github.com/rogerwang/node-webkit/issues/1423

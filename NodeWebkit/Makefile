@@ -1,4 +1,4 @@
-make:
+app:
 	cp ../Data/data.json .
 	zip Gear.app/Contents/Resources/app.nw \
 		package.json \
@@ -10,6 +10,10 @@ make:
 		data.json \
 		loading.gif
 
-dmg:
+dmg: app
 	/bin/rm -f Gear.dmg
 	hdiutil create -srcfolder Gear.app -volname Gear Gear.dmg
+
+upload: dmg
+	scp Gear.dmg pitecan.com:/www/www.pitecan.com/tmp
+

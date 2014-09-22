@@ -27,6 +27,7 @@ var AnimationTime = 300;   // ズーミングのアニメーション時間
 var win;
 var iframe;
 var image;
+var menu;
 
 var typeCount = 0; // 連打したかどうか: 連打されてたら表示を行なう
 var typeCountTimeout = null;
@@ -56,6 +57,13 @@ $(function() { // 最初に呼ばれるjQueryのready関数
     image.css('max-height','100%');
     image.css('max-width','100%');
     image.css('background-pozsition','center center');
+
+    menu = $('#menu');
+    menu.css('position','absolute');
+    menu.css('top','0pt');
+    menu.css('left','200pt');
+    menu.css('height','100%');
+    menu.css('width','50%');
 
     loadData();
 });
@@ -129,17 +137,22 @@ var hideLines = function(){
 
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
     //if(typeCount < 2 && timeout == null) return;
-    //if(typeCount < 2 && !nodeList[0].children) return;
+    if(typeCount < 2 && !nodeList[0].children){
+	return;
+    }
 
     var span;
     var left = 5 + node.level * 20;
     span = $('<span>');
-    span.attr('class','line');
+    span.attr('class','line'); // absoluteになってる
     span.css('width',String(cssWidth(parent)-left));
     span.css('left',String(left));
     span.css('color',color);
     //span.css('background-color',"rgba(255,255,255,0.5)");
-    span.css('background-color',"rgba(255,255,255,0.4)");
+    //span.css('background-color',"rgba(255,255,255,0.4)");
+    span.css('text-shadow','3px 3px 2px #ffff80, -3px 3px 2px #ffff80, 3px -3px 2px #ffff80, -3px -3px 2px #ffff80');
+    //span.css('text-shadow','3px 3px 2px #d0d0d0');
+
     span.css('top',String(top));
     span.css('font-family','Helvetica, Arial, Hiragino Kaku Gothic ProN, ヒラギノ角ゴ ProN W3, Meiryo, メイリオ, sans-serif');
     if(bold) span.css('font-weight','bold');
@@ -205,18 +218,19 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 
     // 新しいノードの表示位置計算
     node = nodeList[0];
-    dispLine(node, 0, center, '#0000ff', true, body, node.children);
+    menu = $('#menu');
+    dispLine(node, 0, center, '#0000ff', true, menu, node.children);
     for(i=1;nodeList[i];i++){
-	top = center + i * 20;
+	top = center + i * 30;
 	if(top > browserHeight() - 40) break;
 	node = nodeList[i];
-	dispLine(node, i, top, '#000000', false, body, false);
+	dispLine(node, i, top, '#000000', false, menu, false);
     }
     for(i= -1;nodeList[i];i--){
-	top = center + i * 20;
+	top = center + i * 30;
 	if(top < 0) break;
 	node = nodeList[i];
-	dispLine(node, i, top, '#000000', false, body, false);
+	dispLine(node, i, top, '#000000', false, menu, false);
     }
 
     // アニメーション表示
@@ -398,6 +412,29 @@ var move = function(delta){ // 視点移動
 };
 
 var movex = function(delta){ // 視点移動
+    if(typeCount == 0){
+	clearTimeout(typeCountTimeout);
+	typeCount = 1;
+	typeCountTimeout = setTimeout(function(){
+	    typeCount = 0;
+	},1000);
+    }
+    else if(typeCount == 1){
+	clearTimeout(typeCountTimeout);
+	typeCount = 2;
+	typeCountTimeout = setTimeout(function(){
+	    typeCount = 0;
+	},1000);
+    }
+    else if(typeCount == 2){
+	clearTimeout(typeCountTimeout);
+	typeCount = 2;
+	typeCountTimeout = setTimeout(function(){
+	    typeCount = 0;
+	},1000);
+    }
+
+
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(hideLines,1600);
 
