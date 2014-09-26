@@ -1,3 +1,7 @@
+html { 
+    -ms-touch-action: none; /* Direct all pointer events to JavaScript code. */
+}
+
 body {
 	/* background-color: #ddddff; */
 	background-color: #ffffff;

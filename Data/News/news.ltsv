@@ -1,139 +1,141 @@
 title:ニュース
  title:朝日新聞
-  url:http://www.asahi.com/articles/ASG9N4VCLG9NPTIL00G.html?ref=rss	title:宅地急増、危険知らぬまま　広島土砂災害１カ月
-  url:http://www.asahi.com/articles/ASG9M7SK1G9MUHNB017.html?ref=rss	title:「日本一短い鉄道トンネル」引退へ　群馬のＪＲ吾妻線
-  url:http://www.asahi.com/articles/ASG9M5JMQG9MTIPE01V.html?ref=rss	title:狙われる希少動植物、条例と監視強化で対抗　奄美大島
-  url:http://www.asahi.com/articles/ASG9N7KWJG9NUTIL01N.html?ref=rss	title:東武東上線、人身事故で一時運転見合わせ　池袋ー小川町
-  url:http://www.asahi.com/articles/ASG9N76DVG9NPTIL01N.html?ref=rss	title:「岩窟めぐり」で転落死か　大阪の神社で女性死亡
-  url:http://www.asahi.com/articles/ASG9M3D9LG9MONFB001.html?ref=rss	title:「四日市公害、悲惨さ語り継ぐ」　市が初の慰霊祭共催
-  url:http://www.asahi.com/articles/ASG9M65KWG9MTOLB00Z.html?ref=rss	title:夜空彩る２万発、長崎のハウステンボスで花火大会
-  url:http://www.asahi.com/articles/ASG9N7317G9NPLPB006.html?ref=rss	title:一部部品が飛行中に落下か　全日空、羽田発高知行き
-  url:http://www.asahi.com/articles/ASG9N5TNKG9NPIHB00Z.html?ref=rss	title:神戸小１女児不明、最多２７２人態勢で捜索　兵庫県警
-  url:http://www.asahi.com/articles/ASG9N656LG9NTPOB001.html?ref=rss	title:辺野古で５５００人が抗議　沖縄、飛行場移設反対し集会
-  url:http://japan.cnet.com/news/society/35053831/?tag=as.rss	title:＜CNET Japan＞［ブックレビュー］一点集中型で超多忙な毎日を乗り切る--「ワン・シング」
-  url:http://www.asahi.com/articles/ASG9P1Q04G9PUTQP001.html?ref=rss	title:「シンジ」対決は岡崎が勝利　サッカー・ドイツ１部
-  url:http://www.asahi.com/articles/GCO2014092001001916.html?ref=rss	title:サウサンプトン吉田は前半で退く　プレミアリーグ
-  url:http://www.asahi.com/articles/GCO2014092001001906.html?ref=rss	title:ドイツ１部、長谷部らフル出場
-  url:http://www.asahi.com/articles/GCO2014092001001900.html?ref=rss	title:セーリング、松永、吉田組６位　世界選手権
-  url:http://www.asahi.com/articles/GCO2014092001001891.html?ref=rss	title:スキージャンプＧＰ、清水が２位　男子個人第６戦
-  url:http://japan.zdnet.com/cio/sp_12matsuoka/35054046/?tag=as.rss	title:＜ZDNet Japan＞日本IBM幹部が語るクラウドマーケットプレイスの勘所
-  url:http://www.asahi.com/articles/ASG9N56HKG9NULFA009.html?ref=rss	title:ドイツを念頭、欧州に景気対策求める　Ｇ２０財務相会議
-  url:http://www.asahi.com/articles/ASG9N4K71G9NTIPE01D.html?ref=rss	title:九電、再生エネ買い取り事実上中断へ　太陽光発電急増で
-  url:http://www.asahi.com/articles/ASG9N4JDJG9NULFA007.html?ref=rss	title:シティバンク、大手４行程度と交渉へ　個人向け業務売却
-  url:http://www.asahi.com/articles/ASG9J633LG9JULZU010.html?ref=rss	title:「機能性表示食品」どんなもの？　新制度が来年スタート
-  url:http://www.asahi.com/articles/ASG9N326TG9NULFA001.html?ref=rss	title:停滞気味の世界経済、てこ入れ策は　Ｇ２０会議始まる
-  url:http://japan.cnet.com/news/society/35054002/?tag=as.rss	title:＜CNET Japan＞BMWやメルセデスの名車が一堂に--ドイツ車イベント「Legends of the Autobahn」
-  url:http://www.asahi.com/articles/ASG9N5V9ZG9NUTFK00B.html?ref=rss	title:首相動静―９月２０日
-  url:http://www.asahi.com/articles/ASG9N5DGYG9NUTFK005.html?ref=rss	title:地域活性化に「霞が関の若い職員出す」　石破地方創生相
-  url:http://www.asahi.com/articles/ASG9N3RKWG9NPTIL00B.html?ref=rss	title:大阪都構想「対案」条例案提出へ　自民府連が各議会に
-  url:http://www.asahi.com/articles/ASG9N3K72G9NUTFK002.html?ref=rss	title:消費増税、ＧＤＰ２次速報値見て判断　菅官房長官
-  url:http://www.asahi.com/articles/ASG9M5T16G9MUTFK012.html?ref=rss	title:首相動静―９月１９日
-  url:http://www.asahi.com/articles/ASG9N514KG9NUHBI00P.html?ref=rss	title:仏サルコジ氏、表舞台に復帰へ　２０１７年大統領選視野
-  url:http://www.asahi.com/articles/ASG9N3RPYG9NUHBI009.html?ref=rss	title:ＮＺ総選挙、与党が歴史的勝利　キー首相は３期目続投へ
-  url:http://www.asahi.com/articles/ASG9N4JTYG9NUHBI00J.html?ref=rss	title:北朝鮮「米政府にも責任」　米国人に労働教化刑判決で
-  url:http://www.asahi.com/articles/ASG9N5JR1G9NUHBI00V.html?ref=rss	title:「イスラム国」、拘束のトルコ人４９人解放
-  url:http://www.asahi.com/articles/ASG9N5D47G9NUHBI00R.html?ref=rss	title:カタルーニャ州、住民投票法可決　スペインから独立問う
-  url:http://www.tetsudo.com/news/1154/?tag=as.rss	title:＜鉄道コム＞フリーゲージトレイン実験線を開設、JR西
-  url:http://www.asahi.com/articles/ASG9N4G2SG9NUCLV006.html?ref=rss	title:漱石「こころ」１００年、大江健三郎さんら講演
-  url:http://www.asahi.com/articles/ASG9K758QG9KPTFC015.html?ref=rss	title:板彫十二神将像、平安時代の配置で展示　奈良・興福寺
-  url:http://www.asahi.com/articles/ASG9J54MGG9JPTIL01G.html?ref=rss	title:波乱の人生、創作狂言に　「おっちゃん」が挑む
-  url:http://www.asahi.com/articles/ASG9M56Q4G9MPTFC00W.html?ref=rss	title:河野挑戦者が勝ってタイに　囲碁名人戦第２局２日目
-  url:http://www.asahi.com/articles/ASG9M4VPMG9MUOHB00S.html?ref=rss	title:水族館育ちのノドグロ幼魚を公開　新潟のマリンピア
-  url:http://www.asahi.com/articles/ASG9M11S6G9LULBJ01L.html?ref=rss	title:暗黒物質、現時点で発見の結論には至らず　国際研究組織
-  url:http://www.asahi.com/articles/ASG9L5H5HG9LULBJ00R.html?ref=rss	title:ＡＬＳ治療にも光か　筋無力症マウスの遺伝子治療に成功
-  url:http://www.asahi.com/articles/ASG9N6QR6G9NUTIL019.html?ref=rss	title:東京女子大名誉教授の平野邦雄さん死去　日本古代史
-  url:http://www.asahi.com/articles/ASG9M61ZLG9MUTFL00J.html?ref=rss	title:賀川記念館館長の賀川督明さんが死去
-  url:http://www.asahi.com/articles/ASG9M7QKVG9MUHBI031.html?ref=rss	title:児童文学者ユルク・シュービガーさん死去
+  url:http://www.asahi.com/articles/ASG9P0TQRG9NUCLV00K.html?ref=rss	title:「認知症では」不明の母、捜す息子の後悔　大介護時代
+  url:http://www.asahi.com/articles/ASG9T2JQGG9TPTIL002.html?ref=rss	title:ＪＲ和歌山線、大雨で運転見合わせ　五条―高田駅間
+  url:http://www.asahi.com/articles/ASG9T2HB5G9TOIPE001.html?ref=rss	title:地下鉄名古屋駅、大雨で浸水　一部区間で運転見合わせ
+  url:http://www.asahi.com/articles/ASG9S5F2BG9SPTIL02J.html?ref=rss	title:「こいつ誰や」ふらつく映像端緒　遺棄容疑者いまだ黙秘
+  url:http://www.asahi.com/articles/ASG9S4JHTG9SOHGB00J.html?ref=rss	title:岐阜県職員の自殺は労災　「パワハラ・残業が原因」認定
+  url:http://www.asahi.com/articles/ASG9S6RDXG9SUTIL042.html?ref=rss	title:報道と人権委、本格審理入り　「吉田調書」報道検証
+  url:http://www.asahi.com/articles/ASG9S4RRTG9SUHNB00G.html?ref=rss	title:八ツ場ダムに沈む川原湯温泉駅、ファンらが別れ惜しむ
+  url:http://www.asahi.com/articles/ASG9S7W4GG9STOLB00X.html?ref=rss	title:バットで殴られた父、関係者に口止め　佐世保同級生殺害
+  url:http://www.asahi.com/articles/ASG9S5KN1G9SUBUB00S.html?ref=rss	title:秋田弁護士刺殺は無期懲役　差し戻し審、地裁判決を破棄
+  url:http://www.asahi.com/articles/ASG9S5SBXG9SPTIL032.html?ref=rss	title:女児の後ろ歩く不審な男、防犯カメラに　遺棄容疑者か
+  url:http://japan.cnet.com/interview/35054191/?tag=as.rss	title:＜CNET Japan＞フリマ元祖「Fril」が10億円調達--メルカリとは「真っ向勝負しない」
+  url:http://www.asahi.com/articles/ASG9T0PD5G9SUTQP035.html?ref=rss	title:日本、３―１でベルギーに勝利　世界女子バレー
+  url:http://www.asahi.com/articles/ASG9S76GMG9STIPE037.html?ref=rss	title:Ｍ点灯、７度目挑戦も失敗　タカ摂津が大量失点
+  url:http://www.asahi.com/articles/ASG9S5RHZG9SUTQP01W.html?ref=rss	title:３５歳中川、日本勢対決で貫禄勝ち　アジア大会自転車
+  url:http://www.asahi.com/articles/ASG9S7KKVG9SUTQP02W.html?ref=rss	title:ヘジャブ禁止、カタールがバスケ試合放棄　アジア大会
+  url:http://www.asahi.com/articles/ASG9S7718G9SUTQP02N.html?ref=rss	title:石井治作さん死去　元関西プロゴルフ協会長
+  url:http://japan.zdnet.com/it-management/analysis/35054210/?tag=as.rss	title:＜ZDNet Japan＞支持されるのは「プライム」であるIT企業--ノークリサーチ調査
+  url:http://www.asahi.com/articles/ASG9S7D4XG9SULFA033.html?ref=rss	title:ダイエーの看板に未練なし　イオン、垣根越えた再建急ぐ
+  url:http://www.asahi.com/articles/ASG9S6R60G9STIPE02N.html?ref=rss	title:再生エネ買い取り、九州で新規契約中断　九電
+  url:http://www.asahi.com/articles/ASG9S6HH0G9SULFA02Q.html?ref=rss	title:消える「ダイエー」　イオンが店名統一を表明
+  url:http://www.asahi.com/articles/ASG9S4G3GG9SULFA00J.html?ref=rss	title:キリン「よなよな」に出資　地ビール市場で地盤固め
+  url:http://www.asahi.com/articles/ASG9S521VG9SULFA013.html?ref=rss	title:日経平均終値、２営業日連続の下落
+  url:http://japan.cnet.com/news/business/35054235/?tag=as.rss	title:＜CNET Japan＞アマゾンの秘密開発部門「Lab126」、スマートホーム製品を開発中か--米報道
+  url:http://www.asahi.com/articles/ASG9T2GPHG9TUTFK001.html?ref=rss	title:ＴＰＰ日米閣僚会談、物別れ　年内合意不透明に
+  url:http://www.asahi.com/articles/ASG9S4GQPG9SUTFK00B.html?ref=rss	title:消費増税巡り駆け引き　首相、臨時国会での補正予算否定
+  url:http://www.asahi.com/articles/ASG9S5G36G9SUTFK00H.html?ref=rss	title:日本政府、ロシアに追加制裁　大手銀の証券発行禁止
+  url:http://www.asahi.com/articles/ASG9S552WG9SUTFK00F.html?ref=rss	title:首相動静―９月２４日
+  url:http://www.asahi.com/articles/ASG9S5DCCG9STPOB001.html?ref=rss	title:沖縄知事選、喜納昌吉氏が立候補表明　移設「撤回する」
+  url:http://www.asahi.com/articles/ASG9S63BBG9SUHBI02P.html?ref=rss	title:「イスラム国」参加のフランス人、一時不明に
+  url:http://www.asahi.com/articles/ASG9S142PG9RUHBI035.html?ref=rss	title:エボラ出血熱対策で連携強化　ＥＵ各国、支援増も決定
+  url:http://www.asahi.com/articles/ASG9S5K6WG9SUHBI026.html?ref=rss	title:発見の小型無人機、北朝鮮製と確認　韓国国防省
+  url:http://www.asahi.com/articles/ASG9T0040G9SUHBI03X.html?ref=rss	title:朴大統領が国連で演説　日韓関係改善の雰囲気に配慮か
+  url:http://www.asahi.com/articles/ASG9B1RS2G9BUHBI001.html?ref=rss	title:成人３割がエイズ感染の王国　一夫多妻の風習、温床に
+  url:http://www.tetsudo.com/news/1158/?tag=as.rss	title:＜鉄道コム＞207系をリニューアル、JR西
+  url:http://www.asahi.com/articles/ASG9S3SN1G9SUCVL00K.html?ref=rss	title:囲碁名人戦、きょうから札幌で第３局
+  url:http://www.asahi.com/articles/ASG9Q7FRHG9QPTFC029.html?ref=rss	title:将棋プロ編入試験、４１歳アマの今泉さんが初戦制す
+  url:http://www.asahi.com/articles/ASG8Y7FV8G8YUHBI02T.html?ref=rss	title:８７歳「歳月は数えない」　歌手のジュリエット・グレコ
+  url:http://www.asahi.com/articles/ASG9D64N1G9DPTFC01Q.html?ref=rss	title:不屈２７年、異例試験でプロへ挑戦　将棋アマの今泉さん
+  url:http://www.asahi.com/articles/ASG9R4DR9G9RUHBI00Y.html?ref=rss	title:ＮＡＳＡ火星探査機、周回軌道に　環境変化の解明目指す
+  url:http://www.asahi.com/articles/ASG9L2DZ0G9LULBJ001.html?ref=rss	title:２１００年の世界人口は最大１２３億人　米大など推計
+  url:http://www.asahi.com/articles/ASG945JY2G94UTIL03B.html?ref=rss	title:ＩＴ企業、学校に「進出」　若者のアイデア取り込みも
+  url:http://www.asahi.com/articles/ASG9S4TN6G9SPLFA00D.html?ref=rss	title:故柳生勝さんのお別れの会　ダイヘン会長
+  url:http://www.asahi.com/articles/ASG9S55DFG9SULFA01K.html?ref=rss	title:日本バルカー工業元専務の佐々木五郎さん死去
+  url:http://www.asahi.com/articles/ASG9S5KP4G9SULFA029.html?ref=rss	title:元ときわ相互銀行専務取締役、黒田実さん死去
  title:日本経済新聞
  title:読売新聞
  title:毎日新聞
  title:産経新聞
-  url:http://sankei.jp.msn.com/economy/news/140921/biz14092108040006-n1.htm	title:マンション「一括受電」競争激化、大手相次ぎ参入
-  url:http://sankei.jp.msn.com/world/news/140921/erp14092107490002-n1.htm	title:ローマ映画祭で三池崇史監督に特別賞、日本人初
-  url:http://sankei.jp.msn.com/economy/news/140921/biz14092107240005-n1.htm	title:広がれ朝型勤務　政府が指針改定を検討　長時間労働ストップへ
-  url:http://sankei.jp.msn.com/science/news/140921/scn14092100550001-n1.htm	title:豚のコラーゲンで角膜組織再生　生物研などが新素材、１０年以内に実用化も　　
-  url:http://sankei.jp.msn.com/life/news/140920/trd14092021190009-n1.htm	title:百田尚樹氏「朝日は日本人をおとしめる」　九州「正論」懇話会
-  url:http://sankei.jp.msn.com/life/news/140920/bdy14092023180003-n1.htm	title:【エボラ熱】感染、最悪５０万人超　米機関試算、来年１月末で
+  url:http://sankei.jp.msn.com/politics/news/140925/plc14092505000001-n1.htm	title:【阿比留瑠比の極言御免】元慰安婦への聞き取り映像を一部公開した韓国団体の計算と思惑
+  url:http://sankei.jp.msn.com/affairs/news/140924/crm14092422040029-n1.htm	title:【神戸小１女児遺棄】深夜に「ドスドス」と階段上り下りする音　ネコが接点の可能性も
+  url:http://sankei.jp.msn.com/life/news/140925/art14092508290004-n1.htm	title:【きょうの人】「中国と距離置くほど日本はうまくいく」　石平さん（５２）　山本七平賞を受賞　　　
+  url:http://sankei.jp.msn.com/affairs/news/140924/crm14092420470026-n1.htm	title:【神戸小１女児遺棄】君野容疑者、近隣と騒音トラブル絶えず　元自衛官、下着姿で周辺徘徊も
+  url:http://sankei.jp.msn.com/world/news/140925/mds14092505060004-n1.htm	title:【産経抄】怪物を育てた温床　９月２５日
+  url:http://sankei.jp.msn.com/entertainments/news/140925/ent14092500430004-n1.htm	title:宮沢りえさんの母、光子さん死去　「りえママ」として敏腕ふるう
+  url:http://sankei.jp.msn.com/world/news/140925/chn14092508320001-n1.htm	title:中国一の大富豪　次は米進出　アリババのジャック・マー会長、アマゾンと共同事業も
  title:ITmedia
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/107e89bb523c01e65e03f2473f287e0e?ul=.DaKk5V5X8ceJ732yrWB8heDcjwViF8Qm852rRJhq.cNs1vcfSRaj14S9MpPlXSfJhearcKAcxupTvwXZqKgsDJm9w6fMFeGvMjMkRRBvJ5HoGnGe	title:Windows管理者でもパニックにならない、「Mac」のトラブル解決ハック10選
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/24d4ab93c73206a413db356a2335ca28?ul=w0bThM9jZYKtJYJ5ikYJe_gRyp_TCwTkUjTbSFr9b6DCyxhzgWOPgTyJ.Pil2AyVZFoOXJXKHH9X8wxbYM8ajMjy5iF5qm5nJxAaJlivFSK.dO6mg7Ros_aG52cgGuMJR3mzpZC	title:Oculus VR、ヘッドフォン付きのHMDの新プロトタイプを発表
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/9478fdd9227e3523340f2e19a51d2285?ul=6Ao8nnsCTawzPa_WKfxJWPlP729Fd59r4kVMbhgKikwNs9uE5FoGg.CXsNb0HWUKWP36hA4BF23NPUsVH4UzteERai6PBzPj8W7QZ7SeXW3VbyDZl	title:「International Party＋Indie Night」参加者に話を聞いた
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/c37231d4ddfe8c17202352ae4f868c83?ul=_WDD2FQob5c6.7sGoTtGs1Dq4bvZXwTRssccU93YHReASLYW1BkNVpmv4L7mfu_vtOZgWcJNnL3oe7x1wunMNUTKOmOA6mUkn8qqOdDuPt.EDCHlrxWy3f5QpPaO2GaY8ksQVXJ	title:なかなか出ない“プチコン3号”を見てきた――東京ゲームショウ2014
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/645c91ff9b329ddb9d3bd96ff4db5a3d?ul=_fYmN1aQWz_tXG1Xw4wU2CrJLGKRCRhI6w5vxavh.o_O2H_0MiY3kVlTrfMdd9zKyeflFrLtkGsOX8SR5.ien73.IH72vnmdNvQVqoksPpoIiJuli	title:仮想空間を歩ける装置も！　ゲームショウはVR機器が花盛り
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/7cddc3fffbfe52a1d49e33ca816ff0bc?ul=CQRazwP.6PUDrLCsX1w2dH9aSDGOg3w.k_IKkYNlZJRPlUQAmCrmM3dol_BdI_Pm.iVJzvxLaRPfrJKgtxRLibTi84cJZ1Xma4Rz2eXkrX_Kxgs5rxmZ2MoH_ms5k_IIo8_wM5P	title:宇宙とITの交差点に巨額の投資マネーが動く
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/7d4120089d05f01cf41ab9ee21adbb1f?ul=L5qDhAce94NaDLqpQbI2xHXCVH58gREhZTKJFnW4hU2dkDFz7BAvAMOcVnKnoJ2_ztJNT7GHMnHMKLGSGUGoQ8RYKL0dwNtiJS35uFqEaLvO6IbXOgLdPX8SSO6.UkJIcJBIAkG	title:DDR4メモリの品薄は徐々に改善――最大32Gバイトのセットが特価対象に
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/8dd898a3b87b155e3b0e7bb4cb95f7ec?ul=pwbbbPQe69XtM8V8N4l2PlksyyM97WftsVY1MB5VHoXBTIocBRgAQWZLpuN5wvO_89hAMj4sAeLqcEZgcP2nft0kbKZelWHxGF0dbBbDcEW6swyxr	title:Windows管理者のためのMac用語「超」基礎知識
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/a820176bfb8a3bbf8e3014ca543de839?ul=YT7rXWoGKCi978N9MzP0UxHtXblWxWC_T6MwZuhbBqiofSe20M7BSUbMsQgMqKcCq8FEVZ8ElbFo73liPvD2jmkmb5IwqhdcqH84zaGhFX.wABe2F	title:“Ingress紳士”に夜の国立競技場前で出会った話　世界最高レベルのエージェントに聞くその極意
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/036cb12e07694b226b20eab600864a34?ul=D9LCL19emfN887Bt8YOvUqcDnujJ3ce0PEpaxoS7NVYaKTR76fRqbzB14ALBxrKCEsWqvQA3VsewzwCZM4VMIRYGS8exOKnGihd2b7HJWgzyGqCBs1vGS9Oek70wVkGoJeEJOR6	title:自分撮りと夜景が楽しくなるカジュアルカメラ――オリンパス「PEN Lite E-PL7」
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/cbc6d4ef8e00839620d5d6d0aa88f88f?ul=yJiTF5DdSyFqdp7NuAPGa7NftaY6xeC7Iv4wjqtnLLFoFLg6Zlib2uXke7JO_ibHTHM1T63YNapod8QQ3TsDywSQhEGxS5nmDFzBrdDqP7dvp1CKb	title:日本のユーザーはゲーム実況に消極的？　KADOKAWA浜村氏が語る「ゲーム実況」の現状と課題
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/3941df727154d49b8a8ef0c14aba6c2d?ul=uCZIj3ut56duYNtVBFzqcN7CD2vMure7t60QdZ5gOBhFXySWnkq3kBvcU4QFYEVaAmvTbY5ef7DNacAvX2yzGHcs4yBaDW87sh9elYtaYUmJ69Iex01JTRen9iwdJAIAbMGlpkK	title:「iPhone 6／6 Plus」を買う前に要確認！　LINEアカウントを引き継ぐ方法
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f388df42b0335baab4aadd523dc788f3?ul=RNxMjgd4yVCk6ErNkcq1ksfk299ghui8BYWHrnTMViQxB4ot14AbiIsV2DZFxFHSPOGRDPRuxDXmuED2to.IaHjSYzOxzw9XNxyOs5f87UWa15bqEsuBLEXZ9.8dOJ1a93fSimR	title:iPhone 6発売で“ハイタッチ”を疑似体験!? そうアップルストア表参道でね
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/6b053446fe82cad1b4ca5322e9faf2db?ul=0I6xC6y3knfoQYm6jNMOoyffZYYSTWXtTVfGnLjbi9N7H3Kv.4Jj69haZMqpUCM_vga7DwiWpMHu7YufUm.MxixxDot7cm.YZ08IRa6ZC2xVniNeYF1nf7eNLFDLYXjB0xsb6Ri	title:各社、「GeForce GTX 980」「GeForce GTX 970」搭載グラフィックスカード発表
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/6fbdb21f3b0fd5072a8d63a683f56ec5?ul=jlGmgyp1OOIC6KsYuoEQ3WAF0S8Ncd.Kfb0i4BLRpxZXnolgxDWLDVIo4JRX6Z4bL2BtUhLxZ_ndbfNuIQLPLgoqmjYS7Pm0p934ZCqexqri5y_ap.rVBsxJ3UFbR5f.qys6XQz	title:SIMフリー「iPhone 6」にキャリア各社のSIMを挿してみた【速攻チェック編】
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/c1eeb2a9e76120d35e09d28b531c552c?ul=QG3WZ7qSoC3.OsJMR4CUPMlkYFBURRiUgm7mMga_qq1PHmlp.9SUYfkCq3saZ8zfGHLoOojmKynPWlz1LtgiCrnWGkJatFbz7QebcOSq8sD3kMT1Y9Y9XstuuND.rhVkAIoIxMX	title:ブラウザで本が読める「Kindle Cloud Reader」が利用可能に
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/971f09eba68b3dd50c18ba0557d8a964?ul=eVzgfk_0K.J6RATzHjTGwrjY_GAvox3.qOGy.lACRaMssqUiMQXNdIGs_sUxPF8U5mIs1mc7Hs9QfARGrGmkKR1tJwps0JpUOTe88uX9WlW8ecADGNEecdkIleBugzJnRiZDdyc	title:「iOS 8」のちょっとした不満を解決するTips集
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/c03be3af71c5a740bbcad320a113458b?ul=QZcl.j31r7DakgmLeeDvqFMOEkvAlw4BarJVuLy5JepiPzyeLOvaGGQzqhwVutrf_OQfpFLfxvQ4DqUcRVpKiVlmUwpz3ad8kiCbDtTTCflKlDFGmZ4T5e08OcmUQCXoDg9qM_T	title:ソニーがスマホ連動メガネ型端末「SmartEyeglass」のSDKを先行公開
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/1d5261b5920c32026155b62591043235?ul=151B2GZhAXTgKvxgH.xbpzIYhRukIeFzqUoubj0aWxniVIqdNcFQJfpLiOFdUbuHxK2qJymvsAkebZoz8hC.dybgjlDTZD0si3GGJl4oDF_2075zU5jXuYj0VTD5b7kH6BrFBAT	title:「iPhone 6 Plus」を分解
-  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/9f0236c83700289484c2cd7bdee31568?ul=SIL9nNJgtrEUDCozCOjWgEyKyvJ6x.t73ZRBRnKimNEYkFlIumiGkq5ZV3uVe_A6cPlGR2PhLi1zqyUJdBZ0GKmdEIOv03QumtXgxYQb65qktvFVs	title:スマートフォン医療で病院の「待ち時間ゼロ」が現実に
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/c6270551e1bfcc46398e536cf440605f?ul=t6ngh_WluKMuHW_asZE7_A8zZEXZ4DLCC9URfIMqBC3tZRrvi4pOj8jnCyYgp38J3l63OK9752DtkRnZEegZrG85TpHVgbNwRoQk1QeHSeMOg_K2N4grq0.oJx4oPwQhrm74wy.	title:第44回　IKEAがアップル製品発表会直前に公開した動画が再生回数「1000万」間近
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/ae4d8b99ca14286a0e1a78cc5fd2655c?ul=TvBneFekadojny_4mNdBn4zdx7hd1m6dkOY0l02Hkof6Uu9Q5vuHHIBphIygGRGu7DjQuZCN7Ac6aupZbKqatOzDqq5M29mrDYXYn7VePGpI2QPo0LqT2_iWTN.pWXLP.qljiwi	title:Info: ITmedia マーケティング夏の終わりの感謝キャンペーン実施中！
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/ca94cdc2ec494b12f0bdfaf8720057a5?ul=48hSufa9iPHQOAShoSOLHrb8jKbYbXLJH.K4A_PKT3HpE4OL3XCz7oOXRlkO1QCgdKszAQAr_t2N0PT.1VP0dXqKQPjzZRN03BUI1af0zwLstyoDo	title:iCloudプライベート写真流出で議論　悪いのはApple？　それともセレブ？
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/e132236397e56c0c0e5185fc5879a15d?ul=1Z9RIiS6zZF0AaA2CGXi1vP4Vn5DwoljfhjLwyRVCSqxXB6AuzCxH.V_8KfoCFXNnC34QUxI3.bIpo4E5UI1bi7Sia39tDOg06nx85AuxGpxL0dUfIMJ9vsRipuXE_JygdYblrI	title:Apple、「iOS 8.0.1」アップデートを撤回　「問題を調査中」
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/717234e812df76914da0068d5cfc53bc?ul=8OG_ja45chXO9_nl2fw5zMSX80R160AMAkQK2iQ3AZyydxb76AUDfZjEozWx_J30vtJkj_tuUT_q9n8CC1Go8eJnPmMoIWoiIiUBGrT8ozhOL676IaheB6lqNhCVVeFYosy9dKZ	title:Windows 9（仮）はこうなる？　発表前予想の総まとめ
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/1cc9dd4fcbbbf6daf84d1539aba91bd7?ul=GHy2c7ZswA0wSEqhvrXaO04qycLyv5BpV1oKJKTLjfKaOBzcILHSDs1RYo.aS1hd5hVLxpTlRZhZlWNo8M8_FvzcLYfVMfEOI9S.XhB8E7kWFiXLVLMFlT0DlrQUG95NTzfb_DF	title:第59回 iOS 8のカメラと写真機能はこんなに変わった！――写真アプリ編
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/2988809684c07c36c95369510f4ae425?ul=I2HGhuw8aSO8tIbOum2u32_ao4lsUBnJUSW9AwM6TAjjB.ZTI9BFecz5hzcl234vO4vsyTEl5IYOcBTLic6tmuuewoIhhnvEIm7Ft8g.GBJ2ypDztBx8O2LfwjbCsH56mobx_eJ	title:Ingressを観光振興に　岩手県が初の試み　「エージェントのみなさん、ポータル申請しに遊びに来て」
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/f7c1966790123ce99dcf703728145203?ul=Fitplfpk7alppI05dYaS6iAXQqS3JMQ0zldIEae4pKxm9ZOv_snSkpkKpt1BBAJgMLro8GFpMQUmV2JFZZoff6nIPhPB4Xo4yc0FMX54uq2GMzghtC4DWb6mqkZpXJMahOuWFiV	title:今年は本＆ゲーム＆報酬の組み合わせがアツい？　注目したい2つの動き
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/9d1b7f44788ee9dd06b71ccae6cbe41f?ul=OgD6NuNROl8FICKfh56LTAloDR_K54XgkPP93WsDFOC1sAlT.s9pxiHZBwFA6M3CrHlpYjWUVfg40xjDdd7HDKKEHngCs87lBHucrLJH8.mNrNwPloTMOZMRNG.4ejm0LuZE5K6	title:サファリでニコン「D810」の進化を試す
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/2b10f36d24adbd8cef2b2083b22630ff?ul=nNXPZt46SHRJ_jMrGWdUFCRr2SlIiIz45eOD4D5jCdMXzwQV9hyxKgLxaZd7DPdSqw5uA508XLCnNIBtZCEyLtEIujeHZBeu3Myt5MhJ8MXv48yPvZNb5CqzupfeIMlRWBWXsi7	title:iPhone 6の原価は200〜247ドル　高い利益率維持
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/5d1d605d94a9051fc8703d92c399e8b3?ul=VJV6QnU1RfBW7G8.g_lgToOxT04YUdwxPqaK9yyCUKFuPNSbflntmpfjnx8gKzFy5KMylWMFmwAqidkaNVmdNnSW9RmAWNVGOAuoRK2Ev1VoFemRaFBkWoj999j3uYyS8vJYbiZ	title:“Lotus Notesの父”のレイ・オジー氏、音声ソーシャルアプリ「Talko」をリリース
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/d07d725824c986f2fd20053f21487b2c?ul=RFfo5IMZIcYWq_jG_pF2laS8z7K4ScxVbQoffjgJZ5dh18A4smLlNg.PzM6r2S9IM1KrOAcQDMzEQ_K9OAOZWmkhFJRhWL0Xt0jrR2fsZggjRkqeSHtx2ut4AOmz7OOHQPxUNHc	title:妙に店頭でプッシュされる製品、果たしてベストな選択なのか？
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/6a30510cc9abbbadf807271348dcb38c?ul=0oF5JlXYjOkBDH2swWCQMB6oxFjY0.lF6eZeOsHahmnRts9XxA2SL5OqaLdxEvfvR9ECGQ2j5fKZN.hQeBXjXlNgHptyj7_DVSiT82Np94OPBeruwDat.Bs1HYUaLx5efwqwVGb	title:夏を終わらせたくない一心でタブレットで「DJ入門」してみた
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/90e63c2e6606f852d3e869cd41f8d705?ul=ICsfaiF03mwJhiXUx8UMWjxpVdW4VpLdoq.QqOLxe52RIh5ANiNL8pR_VW3SDPjpa4Gc3F15BW4lNidm8zy6StfF1ksRLVE58CcERxbl9mtgerkwXXviET2HHFDrJIKtOwkp8h1	title:モバイルゲーミングの傑作機「NEXTGEAR-NOTE i420」徹底レビュー（前編）
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/16f9e278909ad8463c6f76dd58bbfe6c?ul=nEn7TNNbBH2N.x.s5x0jVHep1DTe5Byxiab3msFTW22W3EEmufIW6y86PZyAJ6v5UQ5WmGmuYGQG7t.M3QFu7QXpKwrxMyFOuuahaZZnA9XvrHLY5	title:「Windows」がなくてもWindowsアプリが動く？　モバイル向け新技術の狙いは
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/6928ea32ed20f9318e4f92be6a3698b4?ul=uS9l1W9a1TRUns5hC2LNmdxVgv4szgoIousYQhRE6Fceg0kKAmGPMfYbzPn7x3944rQ.MSLAGCJFBDRIDj0GlSyYe9zn2FSuv33tODviqhzXX1v.KGA8qKNj27z4BJG4mYbI3HG	title:iPhoneの歴史――12の転機（後編）
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/5f11240b891ad07b63d7ba3809a3437d?ul=PIpumrRn_E8jQDs9xQvyPsqXIg.gnmjsv_C4339lx7c8OA0ukGEMq0tm62nxmE6L8SormGxefqlXQ1kx5NpPbpbjjIMu9UfsS0TiC5mKUxJmK_bd_KLb5qN6Oc.TB7SSjrZ0KD7	title:iPhone 6 / 6 Plusが変えるビジネスのミライ
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/8af3cc6afa696075673110ce66856ed9?ul=eHRHvGHOeBgtbXyyxumhCbuR3hUo1uzdVFEn_OtGt92WwKXEYnNPE3O_iYW4qV18OrgasTyDoQJuSuv5GScbFGiivs336FxQA6avdrGFu9idgkAWDWsOAbMfvX8yax6YtLyTZj_	title:Google、検索結果に製品スペックなどを表示する「Structured Snippets」を追加
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/bef7a8833f78ff192fa0d21bf94c1174?ul=9dA2k2bfpn8OFQvH5zU3_UfFfWyqctgOr_dw86A1OCMX3cGAFWpkaQ66ai_TqSZvPN.bHLNByksG5p.xirDh6S9nt8GEa1CdsyPxvRtrMtsrugzGjDRYuNmWzv_XmFrFpk0_p.J	title:6年ぶりの本格ユニバーサルプレーヤーを速攻レビュー、パイオニア「BDP-LX88」
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/e6b4e6978950d88beb826ee9ededd316?ul=CBXYneiTvNUhrqfb4G135_n9NnGfgABCAeugXh6klwRXl6tnO1wmARsUIWfHhDRqlbmUvMMuz.TsUASH.XDpPetjJSFcsKxkiYpoyB8Q8mqAkQojpmzVC_qpJTq0sa6_i8Ptfgo	title:iOS 8、リリース4日後の適用率は46％
+  url:http://rss.rssad.jp/rss/artclk/yd3DyH_6aPig/335b64383964f081b3c177b4ce23e6dc?ul=uKtFoa.QjKaf1MG3w9Y6JbiRv8IoIxLgPCEnTEziwgpdN2Hw3jC3t4BGVDFMx3lrpN6A.KMMWCRdi2qPMVHdXViwuznHEJyw1rIipgrg_1ILvRZzZZHP22YKf.zs2O6QXROtyDY	title:米国企業の平均寿命は61年から18年へ……、生き残る企業の条件とは
  title:はてな人気記事
-  url:http://anond.hatelabo.jp/20140920164256	title:はてなエンジニアランチの運営がクソだった
-  url:http://markehack.jp/internet-advertising-rates/	title:インターネット広告の料金一覧｜相場や媒体まとめ【2014年版】
-  url:http://miyearnzzlabo.com/archives/19538	title:宇多丸 為末大『日本人にHIPHOPは馴染まない』ツイートに反論する
-  url:http://2chcopipe.com/archives/51954632.html	title:日本人にとっては不思議に思えるけど、色々と複雑な事情があるんだよ : 2chコピペ保存道場
-  url:http://www.lifehacker.jp/2014/09/140920_crapware.html	title:Windows PCから余計なソフトやツールバーを一掃する方法を徹底解説 ｜ ライフハッカー［日本版］
-  url:http://dobonkai.hatenablog.com/entry/%E8%B2%A7%E5%9B%B0%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88%E7%8F%BE%E9%87%91%E5%8C%96	title:電気屋勤務時代に見た　クレジットの現金化の手口 - ネットの海の渚にて
-  url:http://kultur2.blog.fc2.com/blog-entry-2404.html	title:PS4版「アイドルマスター」は完全新作 開発は始まったばかり - Kultur
-  url:http://finalvent.cocolog-nifty.com/fareastblog/2014/09/post-8e1b.html	title:ウクライナ情勢は今どうなっているか: 極東ブログ
-  url:http://headlines.yahoo.co.jp/hl?a=20140919-00000358-oric-ent	title:“危ない”企画だった実写『ルパン三世』、興行常識を覆す大ヒットの背景 （オリコン） - Yahoo!ニュース
-  url:http://wired.jp/2014/09/20/post-neuromancer/	title:『ニューロマンサー』からの30年。サイバーパンクは現実を先取りした « WIRED.jp
-  url:http://find-travel.jp/article/3559	title:息を呑むほど美しい…。関東にあった「THE 絶景」25選 - Find Travel
-  url:http://xxxx7.com/2014/09/20/222805	title:はてなランチイベント行ってきました！（追記あり） | xxxx7
-  url:http://blog.livedoor.jp/dqnplus/archives/1810685.html	title:痛いニュース(ﾉ∀`) : ニート株式会社、倒産間近？ 「ニート達の能力が低すぎて、取引先企業の仕事を請けても失敗する」 - ライブドアブログ
-  url:http://www.4gamer.net/games/999/G999905/20140920058/	title:［TGS 2014］どーんと620枚，コンパニオンさんの艶姿を今年もZIPで固めてうｐしてみた。東京ゲームショウ2014コンパニオン写真集公開 - 4Gamer.net
-  url:http://asimino.hatenablog.com/entry/2014/09/20/205957	title:ミスチルのおすすめ好きな曲ランキングベスト１００ - あしみの 日記
-  url:http://ch.nicovideo.jp/indies-game/blomaga/ar626342	title:ファミコンって"自作ゲーム"みたいだったよね――元ファミ通編集長・浜村弘一が目撃したゲーム業界の「カオスな時代」:ニコニコ自作ゲームフェス
-  url:http://homare-temujin.hatenablog.com/entry/2014/09/20/210719	title:あったかサラダレシピ〜ゴロゴロ野菜のフライドサラダ - 今日、なに食べよう？〜有機野菜の畑から～
-  url:http://blog.livedoor.jp/nwknews/archives/4747598.html	title:知らない町って散歩するとめっちゃ楽しい:哲学ニュースnwk
-  url:http://matome.naver.jp/odai/2141120852771850501	title:【画像集】新宿駅の山手線で高齢者による朝日新聞反対デモ⇒邪魔すぎると乗客ら非難の声殺到 - NAVER まとめ
-  url:http://anond.hatelabo.jp/20140919235816	title:同じ靴ばっかり履くあなたへ
-  url:http://anond.hatelabo.jp/20140920220218	title:喪女だけど可愛くなりたい
-  url:http://tocana.jp/2014/09/post_4871_entry.html	title:人類はどんどん頭が悪くなっていることが判明！ 各国で止まらない知能指数低下の謎｜TOCANA
-  url:http://blogos.com/article/94847/	title:"徴兵制のリアリティを日本の若者に感じて欲しい"〜兵役を拒否し亡命中のイ・イェダ氏が会見
-  url:http://gadget-shot.com/news/column/21082	title:iPhone 6 Plusの画面は1242×2208を1080×1920に縮小表示する仕様。ドットバイドット表示は不可
-  url:http://futureinsight.info/entry/2014/09/20/120152	title:iPhone 6 Plusというスマートフォンの行き詰まり - FutureInsight.info
-  url:http://mainichi.jp/select/news/20140920k0000m010067000c.html	title:自民党:委員会「慰安婦、首相の正しい主張求める」決議 - 毎日新聞
-  url:http://www.adm.fukuoka-u.ac.jp/fu844/home2/Ronso/Jinbun/L39-3/L3903_0705.pdf	title:柿原武史「少数言語復興に日本アニメが果たす役割 スペイン・ガリシア自治州の場合」 福岡大学人文論叢第39巻第3号
-  url:http://wired.jp/2014/09/20/akb48-sailor-zombie/	title:ゾンビ化したAKB48メンバーを撃つゲームに米国記者「抵抗を感じずにはいられない」 « WIRED.jp
-  url:http://www.lifehacker.jp/2014/09/140920zero.html	title:成功の秘訣は「道のり」にあり。ゼロからのスタートで世界を変えた5人の物語 ｜ ライフハッカー［日本版］
-  url:http://tsuchiyashutaro.com/archives/3959	title:『カフェだと仕事（勉強）はかどるわ～』って言ってるやつに言いたいことがある
+  url:http://www.nikkansports.com/general/news/f-gn-tp0-20140924-1372161.html	title:テレビドラマをＦＣ２動画に無断投稿し逮捕 - 社会ニュース : nikkansports.com
+  url:http://d.hatena.ne.jp/heimin/20140924/p1	title:吉野家と松屋の大きな違い - 平民新聞
+  url:http://mainichi.jp/feature/news/20140924mog00m040009000c.html	title:ゆるい就職:若者が正社員で働くのは「負け」　慶大助教が提案 - 毎日新聞
+  url:http://appllio.com/20140924-5717-atok-for-ios-problem	title:大物ルーキー「ATOK for iOS」、アップル流に泣かされる | アプリオ
+  url:http://touchlab.jp/2014/09/ios_801_release/	title:【重要】「iOS 8.0.1」を適用すると電波が掴めなくなる可能性あり
+  url:http://matome.naver.jp/odai/2141149598706344801	title:世界的作家、村上春樹はこうやって英語を身につけた - NAVER まとめ
+  url:http://www3.nhk.or.jp/news/html/20140924/k10014845611000.html	title:「ダイエー」の店舗名 4年後になくす方針　NHKニュース
+  url:http://anond.hatelabo.jp/20140924233541	title:女湯の魅力
+  url:http://www.famitsu.com/news/201409/25062175.html	title:『セガ3D復刻アーカイブス』セガの歴史的名作が完全復刻！ - ファミ通.com
+  url:http://dokushohon.hatenablog.com/entry/2014/09/24/203146	title:目標設定の２つのアプローチ『目標達成の技術』 - 読書で本から学ぶブログ
+  url:http://www.jalan.net/yad311379/kuchikomi/detail_07400856/	title:二度と 泊りたくない宿でした。 : 十二屋旅館の口コミ - じゃらんnet
+  url:http://togetter.com/li/723252	title:フォロー外のリプは失礼? 無断ブロック禁止?? ツイッターの不可解な暗黙ルール - Togetterまとめ
+  url:https://securityblog.redhat.com/2014/09/24/bash-specially-crafted-environment-variables-code-injection-attack/	title:Bash specially-crafted environment variables code injection attack | Red Hat Security
+  url:http://akiueo.hatenablog.com/entry/recipe-onion-currychicken-20140924	title:15分放っておくだけで極上の甘み！トロトロ玉ねぎのカレーチキン - AIUEO Lab2
+  url:http://qiita.com/koduki/items/a833d22c7d8cf6f8f55e	title:Windows 8.1ではじめるイマドキの開発環境 - Qiita
+  url:http://jp.techcrunch.com/2014/09/25/20140924apples-ios-8-0-1-update-says-healthkit-apps-can-now-come-to-the-app-store/	title:Apple、iOS 8.0.1アップデートの公開を中止。iPhone 6/6 Plusに重大障害が発生 - TechCrunch
+  url:http://wired.jp/2014/09/24/aphex-twin-syro/	title:キミはAphex Twinを知っているか？ 一から学ぶテクノビースト伝説：『Syro』発売に寄せて « WIRED.jp
+  url:http://d.hatena.ne.jp/orangestar/20140925/1411571227	title:はてな村奇譚３０ - orangestarの日記
+  url:http://kabumatome.doorblog.jp/archives/65778211.html	title:米国本社によるスターバックス日本法人へのドヤ顔TOB、株主優待も配当も止めるしTOBに応じなかったらライセンス契約も更新しない : 市況かぶ全力２階建
+  url:http://blogs.itmedia.co.jp/ykatou/2014/09/ng-6252.html	title:会社名がNGワードそのものとわかり、気絶悶絶した件。：加藤順彦｜Asian視座で未来予想：ITmedia オルタナティブ・ブログ
+  url:http://jp.reuters.com/article/topNews/idJPKCN0HJ0AT20140924	title:原発再稼働、100％安全確保されない限り行わず＝安倍首相 | Reuters
+  url:http://news.tbs.co.jp/newseye/tbs_newseye2306381.html	title:「６年前に記憶喪失と診断の男、著作権法違反容疑で逮捕」　News i - TBSの動画ニュースサイト
+  url:http://muranoserena.blog91.fc2.com/blog-entry-5989.html	title:捕鯨の件で、NHKがニュージーランドに、自民党が世界にケンカを売っている | 村野瀬玲奈の秘書課広報室
+  url:http://www.nikkei.com/article/DGXLASDG24H0J_U4A920C1000000/	title:「事故る」「パニクる」５割使う　文化庁が造語初調査　　：日本経済新聞
+  url:http://jp.automaton.am/articles/columnjp/dragon-quest-english-accents/	title:英語版『ドラクエ』、地域方言を活かしたローカライズの妙味 | AUTOMATON
+  url:http://anond.hatelabo.jp/20140924220719	title:私とヨシノとシマちゃんのこと
+  url:http://underworld2ch.blog29.fc2.com/blog-entry-5389.html	title:【動画】ロシアの老婆、襲ってきた狼を斧の一撃で屠る。村は熱狂 | アンダーワールド
+  url:http://blog.ueda.asia/?p=3967	title:先程から騒ぎになっているbashの脆弱性について | 上田ブログ
+  url:http://www.nikkei.com/edit/interactive/population2014/map.html	title:人口減少地図：日本経済新聞
+  url:http://blog.livedoor.jp/nwknews/archives/4749785.html	title:インターネットはじめてから最初にハマったサイトWWWWWWWWWWWWWWWWWWWW:哲学ニュースnwk
  title:はてな一般記事
-  url:http://miyearnzzlabo.com/archives/19538	title:宇多丸 為末大『日本人にHIPHOPは馴染まない』ツイートに反論する
-  url:http://2chcopipe.com/archives/51954632.html	title:日本人にとっては不思議に思えるけど、色々と複雑な事情があるんだよ : 2chコピペ保存道場
-  url:http://anond.hatelabo.jp/20140920164256	title:はてなエンジニアランチの運営がクソだった
-  url:http://tocana.jp/2014/09/post_4871_entry.html	title:人類はどんどん頭が悪くなっていることが判明！ 各国で止まらない知能指数低下の謎｜TOCANA
-  url:http://www.asahi.com/articles/ASG9M5JHWG9MUTFK00T.html	title:住民投票で帰属決定「日本ではなじんでない」　官房長官：朝日新聞デジタル
-  url:http://blog.livedoor.jp/dqnplus/archives/1810685.html	title:痛いニュース(ﾉ∀`) : ニート株式会社、倒産間近？ 「ニート達の能力が低すぎて、取引先企業の仕事を請けても失敗する」 - ライブドアブログ
-  url:http://www.riabou.net/entry/2014/09/20/111021	title:「ウクライナ危機の原因は、欧米のリベラルな妄想だ」とミアシャイマーは言う - リアリズムと防衛ブログ
-  url:http://asimino.hatenablog.com/entry/2014/09/20/205957	title:ミスチルのおすすめ好きな曲ランキングベスト１００ - あしみの 日記
-  url:http://wired.jp/2014/09/20/post-neuromancer/	title:『ニューロマンサー』からの30年。サイバーパンクは現実を先取りした « WIRED.jp
-  url:http://find-travel.jp/article/3559	title:息を呑むほど美しい…。関東にあった「THE 絶景」25選 - Find Travel
-  url:http://blogos.com/article/94847/	title:"徴兵制のリアリティを日本の若者に感じて欲しい"〜兵役を拒否し亡命中のイ・イェダ氏が会見
-  url:http://www.jiji.com/jc/zc?k=201409/2014091900712&g=pol	title:時事ドットコム：自民、クジラ料理の提供開始
-  url:http://dobonkai.hatenablog.com/entry/%E8%B2%A7%E5%9B%B0%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9/%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88%E7%8F%BE%E9%87%91%E5%8C%96	title:電気屋勤務時代に見た　クレジットの現金化の手口 - ネットの海の渚にて
-  url:http://matome.naver.jp/odai/2141120852771850501	title:【画像集】新宿駅の山手線で高齢者による朝日新聞反対デモ⇒邪魔すぎると乗客ら非難の声殺到 - NAVER まとめ
-  url:http://finalvent.cocolog-nifty.com/fareastblog/2014/09/post-8e1b.html	title:ウクライナ情勢は今どうなっているか: 極東ブログ
-  url:http://www.lifehacker.jp/2014/09/140920zero.html	title:成功の秘訣は「道のり」にあり。ゼロからのスタートで世界を変えた5人の物語 ｜ ライフハッカー［日本版］
-  url:http://twitter.com/okiteporsche/status/513047917465055233	title:掟ポルシェさんはTwitterを使っています: "小学生の女の子がどんなに素晴らしい歌を歌っても、表現活動でがんばっても、今の時代それを見る男性客ばかりが穿った見方で取り上げられ、小
-  url:http://homare-temujin.hatenablog.com/entry/2014/09/20/210719	title:あったかサラダレシピ〜ゴロゴロ野菜のフライドサラダ - 今日、なに食べよう？〜有機野菜の畑から～
-  url:http://bukimich.blog.fc2.com/blog-entry-307.html	title:すげぇ事発見したｗｗｗｗ宇宙の謎を解明ｗｗこの世の真理を解き明かすｗｗｗｗ : 不気味ちゃんねる
-  url:http://mainichi.jp/select/news/20140920k0000m010067000c.html	title:自民党:委員会「慰安婦、首相の正しい主張求める」決議 - 毎日新聞
-  url:http://www.asahi.com/articles/ASG9N4WNXG9NOIPE00L.html	title:山中の大量投棄、守山署の事件証拠品か　愛知県警が調査：朝日新聞デジタル
-  url:http://mubou.seesaa.net/article/405728644.html	title:国語学研究員は、「日本語の乱れ」の夢を見るか: 不倒城
-  url:http://www.adm.fukuoka-u.ac.jp/fu844/home2/Ronso/Jinbun/L39-3/L3903_0705.pdf	title:柿原武史「少数言語復興に日本アニメが果たす役割 スペイン・ガリシア自治州の場合」 福岡大学人文論叢第39巻第3号
-  url:http://dain.cocolog-nifty.com/myblog/2014/09/post-0efe.html	title:科学は滅びぬ、何度でも蘇るさ『科学の解釈学』: わたしが知らないスゴ本は、きっとあなたが読んでいる
-  url:http://anond.hatelabo.jp/20140920220218	title:喪女だけど可愛くなりたい
-  url:http://twitter.com/apj/status/512978939271073792	title:"「東京理科大学の野島雅先生による水に声かけ結晶実験ををしたというブログ記事」は、勉強会の主催者が結論を曲げて書いたもので、科学的根拠が無い事
-  url:http://togetter.com/li/721401	title:ムー愛読者はと学会を経てネトウヨになる？ - Togetterまとめ
-  url:http://bylines.news.yahoo.co.jp/kandatoshiaki/20140919-00039222/	title:なぜ？銀座のアップルストア前にホームレス風の人が行列するのか？(神田 敏晶) - 個人 - Yahoo!ニュース
-  url:http://www.jiji.com/jc/zc?k=201409/2014091900136&g=soc	title:時事ドットコム：バナナの皮はなぜ滑る？解明＝北里大チームにイグ・ノーベル賞−米
-  url:http://pc.watch.impress.co.jp/docs/news/yajiuma/20140919_667596.html	title:【やじうまPC Watch】NVIDIA、GTX 980でNASAの陰謀論解明に挑む ～人類は本当に月に行ったのか? - PC Watch
+  url:http://matome.naver.jp/odai/2141149598706344801	title:世界的作家、村上春樹はこうやって英語を身につけた - NAVER まとめ
+  url:http://mainichi.jp/feature/news/20140924mog00m040009000c.html	title:ゆるい就職:若者が正社員で働くのは「負け」　慶大助教が提案 - 毎日新聞
+  url:http://www.nikkansports.com/general/news/f-gn-tp0-20140924-1372161.html	title:テレビドラマをＦＣ２動画に無断投稿し逮捕 - 社会ニュース : nikkansports.com
+  url:http://news.livedoor.com/article/detail/9283992/	title:杉村太蔵氏が「資産1億円」を告白 商社を立ち上げて華麗なる転身をしていた - ライブドアニュース
+  url:http://www3.nhk.or.jp/news/html/20140924/k10014845611000.html	title:「ダイエー」の店舗名 4年後になくす方針　NHKニュース
+  url:http://www.jalan.net/yad311379/kuchikomi/detail_07400856/	title:二度と 泊りたくない宿でした。 : 十二屋旅館の口コミ - じゃらんnet
+  url:http://kabumatome.doorblog.jp/archives/65778211.html	title:米国本社によるスターバックス日本法人へのドヤ顔TOB、株主優待も配当も止めるしTOBに応じなかったらライセンス契約も更新しない : 市況かぶ全力２階建
+  url:http://d.hatena.ne.jp/heimin/20140924/p1	title:吉野家と松屋の大きな違い - 平民新聞
+  url:http://zeromoon0.hatenablog.jp/entry/2014/09/24/153144	title:作文教育は難しいという話 - 価値のない話
+  url:http://wired.jp/2014/09/24/aphex-twin-syro/	title:キミはAphex Twinを知っているか？ 一から学ぶテクノビースト伝説：『Syro』発売に寄せて « WIRED.jp
+  url:http://dokushohon.hatenablog.com/entry/2014/09/24/203146	title:目標設定の２つのアプローチ『目標達成の技術』 - 読書で本から学ぶブログ
+  url:http://togetter.com/li/723252	title:フォロー外のリプは失礼? 無断ブロック禁止?? ツイッターの不可解な暗黙ルール - Togetterまとめ
+  url:http://jp.reuters.com/article/topNews/idJPKCN0HJ0AT20140924	title:原発再稼働、100％安全確保されない限り行わず＝安倍首相 | Reuters
+  url:http://www.nikkei.com/article/DGXMZO77376760S4A920C1000000/	title:使用済み核燃料使う次世代原子炉　日立が実用化へ　　：日本経済新聞
+  url:http://akiueo.hatenablog.com/entry/recipe-onion-currychicken-20140924	title:15分放っておくだけで極上の甘み！トロトロ玉ねぎのカレーチキン - AIUEO Lab2
+  url:http://www.nikkei.com/edit/interactive/population2014/map.html	title:人口減少地図：日本経済新聞
+  url:http://headlines.yahoo.co.jp/hl?a=20140924-00000028-xinhua-cn	title:韓国の「空調作戦」も失敗、会場全体を黙らせた中国女子バドミントンの強さ―中国メディア （XINHUA.JP） - Yahoo!ニュース
+  url:http://www.itmedia.co.jp/news/articles/1409/24/news016.html	title:夏を終わらせたくない一心でタブレットで「DJ入門」してみた (1/2) - ITmedia ニュース
+  url:http://www.nikkei.com/article/DGXLASDG24H0J_U4A920C1000000/	title:「事故る」「パニクる」５割使う　文化庁が造語初調査　　：日本経済新聞
+  url:http://news.tbs.co.jp/newseye/tbs_newseye2306381.html	title:「６年前に記憶喪失と診断の男、著作権法違反容疑で逮捕」　News i - TBSの動画ニュースサイト
+  url:http://d.hatena.ne.jp/orangestar/20140925/1411571227	title:はてな村奇譚３０ - orangestarの日記
+  url:http://sankei.jp.msn.com/politics/news/140924/stt14092400200002-n1.htm	title:公明代表、消費税１０％「引き上げなければアベノミクス失敗の烙印」 - MSN産経ニュース
+  url:http://muranoserena.blog91.fc2.com/blog-entry-5989.html	title:捕鯨の件で、NHKがニュージーランドに、自民党が世界にケンカを売っている | 村野瀬玲奈の秘書課広報室
+  url:http://anond.hatelabo.jp/20140924014048	title:CHAGE&ASKAの"On Your Mark"について
+  url:http://anond.hatelabo.jp/20140924233541	title:女湯の魅力
+  url:http://tm2501.hatenablog.com/entry/2014/09/23/234829	title:なぜコンビニ全体の客足が離れてもセブンイレブンは勝ち抜くのか？ - 言いたくないけど、僕が青二才です
+  url:http://jp.reuters.com/article/marketsNews/idJPL3N0RP1EW20140924	title:キリン、ヤッホー社と資本業務提携　クラフトビール事業を推進 | マネーニュース | 最新経済ニュース | Reuters
+  url:http://www.47news.jp/CN/201409/CN2014092401001981.html	title:ヒジャブ禁止でバスケ試合放棄　カタール代表女子、アジア大会 - 47NEWS（よんななニュース）
+  url:http://twitter.com/KazuhiroSoda/status/514210923767017473	title:想田和弘さんはTwitterを使っています: "だから僕の代案は申し上げたでしょ。何もしない方が改悪よりはマシ。立派な代案ですよ。@akiyoshinagai: @KazuhiroSoda 橋下氏がどうのこうのではなく、批
+  url:http://wired.jp/2014/09/24/plastic-duck/	title:新説・海に浮かぶプラスティックゴミのアルゴリズム « WIRED.jp

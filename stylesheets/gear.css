@@ -1,15 +1,1 @@
-body {
-	background-color: #ddddff;
-}
-
-span {
-	font-size: 11pt;
-}
-
-.line {
-	position: absolute;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	overflow: hidden;
-}
-
+../NodeWebkit/stylesheets/gear.css
