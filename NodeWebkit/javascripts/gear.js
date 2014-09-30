@@ -30,7 +30,7 @@ var oldSpans;              // アニメーション前のspans
 
 var shrinking = false;     // 回転方向
 
-var timeout = null;
+var expandTimeout = null;
 var StepTime = 1000;       // 段階的展開のタイムアウト時間
 var ExpandTime = 1500;     // 無操作時展開のタイムアウト時間
 var AnimationTime = 300;   // ズーミングのアニメーション時間
@@ -70,7 +70,7 @@ var loadData = function(){
     $.getJSON(json,function(data){
 	initData(data,null,0);
 	calc(data[0]);
-	timeout = setTimeout(expand,ExpandTime);
+	expandTimeout = setTimeout(expand,ExpandTime);
     });
     setTimeout(loadData,6*60*60*1000); // 6時間ごとにリロード
 };
@@ -99,11 +99,11 @@ var expand = function(){ // 注目してるエントリの子供を段階的に�
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(hideLines,1600);
 
-    timeout = null;
+    expandTimeout = null;
     shrinking = false;
     if(nodeList[0].children){
 	calc(nodeList[0].children[0]);
-	timeout = setTimeout(expand,StepTime);
+	expandTimeout = setTimeout(expand,StepTime);
     }
 };
 
@@ -395,8 +395,10 @@ var move = function(delta){ // 視点移動
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(hideLines,1600);
 
-    clearTimeout(timeout);
-    timeout = setTimeout(expand,ExpandTime);
+    clearTimeout(expandTimeout);
+    if(!mouseisdown){
+	expandTimeout = setTimeout(expand,ExpandTime);
+    }
 
     shrinking = true;
 
@@ -434,8 +436,10 @@ var movex = function(delta){ // 視点移動
     clearTimeout(hideTimeout);
     hideTimeout = setTimeout(hideLines,1600);
 
-    clearTimeout(timeout);
-    timeout = setTimeout(expand,ExpandTime);
+    clearTimeout(expandTimeout);
+    if(!mouseisdown){
+	expandTimeout = setTimeout(expand,ExpandTime);
+    }
 
     shrinking = true; // ?
 
@@ -477,19 +481,15 @@ var downfunc = function(e){
     }
     mouseisdown = true;
 };
-//$(window).mousedown(downfunc);
-//$(window).touchstart(downfunc);
-//$(window).bind('mousedown',downfunc);
-//$(window).bind('touchstart',downfunc);
 
 var upfunc = function(e){
     mouseisdown = false;
+
+    clearTimeout(expandTimeout);
+    expandTimeout = setTimeout(expand,ExpandTime);
+
     step = 0;
 };
-//$(window).mouseup(upfunc);
-//$(window).touchend(upfunc);
-//$(window).bind('mouseup',upfunc);
-//$(window).bind('touchend',upfunc);
 
 var movefunc = function(e){
     e.preventDefault();
@@ -509,7 +509,7 @@ var movefunc = function(e){
 		for(i=0;i<newstep-step;i++) movex(-1);
 	    }
 	    else if(newstep < step){
-		for(i=0;i<newstep-step;i++) movex(1);
+		for(i=0;i<step-newstep;i++) movex(1);
 	    }
 	    step = newstep;
 	}
@@ -519,33 +519,14 @@ var movefunc = function(e){
 		for(i=0;i<newstep-step;i++) movex(1);
 	    }
 	    else if(newstep < step){
-		for(i=0;i<newstep-step;i++) movex(-1);
+		for(i=0;i<step-newstep;i++) movex(-1);
 	    }
 	    step = newstep;
 	}
     }
 };
-//$(window).mousemove(movefunc);
-//$(window).touchmove(movefunc);
-//$(window).bind('mousemove',movefunc);
-//$(window).bind('touchmove',movefunc);
 
-$(window).on({
-    'mousedown': downfunc,
-    'touchstart': downfunc,
-//    'pointerdown': downfunc,
-//    'MSPointerDown': downfunc,
-    'mouseup': upfunc,
-    'touchend': upfunc,
-//    'pointerup': upfunc,
-//    'MSPointerUp': upfunc,
-    'mousemove': movefunc,
-    'touchmove': movefunc
-//    'pointermove': movefunc,
-//    'MSPointerMove': movefunc
-});
-
-$(window).keydown(function(e){
+var keydownfunc = function(e){
     if(e.keyCode == 40){ // 40 = 下
 	return move(1);
     }
@@ -559,4 +540,15 @@ $(window).keydown(function(e){
 	return movex(-1);
     }
     return false;
+};
+
+$(window).on({
+    'mousedown': downfunc,
+    'touchstart': downfunc,
+    'mouseup': upfunc,
+    'touchend': upfunc,
+    'mousemove': movefunc,
+    'touchmove': movefunc,
+    'keydown': keydownfunc
 });
+
