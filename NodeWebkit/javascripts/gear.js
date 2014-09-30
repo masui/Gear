@@ -1,5 +1,5 @@
 //
-// gear.js - 回転ダイヤルで階層的コンテンツを閲覧する
+// gear.js - 単純装置で階層的コンテンツを閲覧する
 //
 // node-webkitで動くようにしたもの
 // 
@@ -8,7 +8,7 @@
 
 var useAnimation = true;   // アニメーションを使うかどうか
 if(typeof(showContents) == 'undefined'){
-    var showContents = false;
+    var showContents = true;
 }
 if(typeof(autoexpand) == 'undefined'){
     var autoexpand = true;
@@ -39,9 +39,26 @@ var AnimationTime = 300;   // ズーミングのアニメーション時間
 var iframe;
 var image;
 var menu;
+var panel;
 
 var typeCount = 0; // 連打したかどうか: 連打されてたら表示を行なう
 var typeCountTimeout = null;
+
+var resizefunc = function(){
+    //var height = $(window).height();
+    //var width = $(window).width();
+    var height = screen.height;
+    var width = screen.width;
+    $('body').css('width',width);
+    $('body').css('height',height);
+    iframe.css('width',width);
+    iframe.css('height',height);
+    image.css('width',width);
+    image.css('height',height);
+    menu.css('height',height);
+    panel.css('width',width);
+    panel.css('height',height);
+}
 
 $(function() { // 最初に呼ばれるjQueryのready関数
     window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
@@ -59,9 +76,16 @@ $(function() { // 最初に呼ばれるjQueryのready関数
         win.menu = nativeMenuBar;
     }
 
+    window.addEventListener("resize", function () {
+	// Get the current window
+	var win = nw.Window.get();
+	win.enterFullscreen();
+    },false);
+
     image = $('#image');
     menu = $('#menu');
     iframe = $('#iframe');
+    panel = $('#panel');
 
     loadData();
 });
@@ -127,17 +151,17 @@ var dispLines = function(){
     $('span').css('visibility','visible');
 };
 var hideLines = function(){
-    //$('span').animate({
-    //    opacity:0.0
-    //}, 700 );
+    $('span').animate({
+        opacity:0.0
+    }, 700 );
     //$('span').css('visibility','hidden');
 };
 
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
     //if(typeCount < 2 && timeout == null) return;
-    //if(typeCount < 2 && !nodeList[0].children){
-    //    return;
-    //}
+    if(typeCount < 2 && !nodeList[0].children){
+        return;
+    }
 
     var span;
     ////var left = 5 + node.level * 20;
@@ -478,11 +502,15 @@ var downfunc = function(e){
     }
     if(e.type == 'touchstart'){
 	mousedowny = event.changedTouches[0].pageY;
+	//mousedowny = event.touches[0].pageY;
     }
     mouseisdown = true;
 };
 
 var upfunc = function(e){
+    //alert('upfunc');
+    e.preventDefault();
+
     mouseisdown = false;
 
     clearTimeout(expandTimeout);
@@ -493,13 +521,17 @@ var upfunc = function(e){
 
 var movefunc = function(e){
     e.preventDefault();
+    event.preventDefault();
     if(mouseisdown){
 	var delta = 0;
 	if(e.type == 'mousemove'){
 	    delta = e.pageY - mousedowny;
 	}
-	if(e.type == 'touchmove'){
-	    delta = e.changedTouches[0].pageY - mousedowny;
+	else if(e.type == 'touchmove'){
+	    delta = event.changedTouches[0].pageY - mousedowny;
+	    //alert("" + mousedowny + " " + event.changedTouches[0].pageY);
+	    //delta = event.touches[0].pageY - mousedowny;
+	    //$('#debug').text(event.changedTouches[0].pageY);
 	}
 	var i;
 	var newstep;
@@ -511,16 +543,18 @@ var movefunc = function(e){
 	    else if(newstep < step){
 		for(i=0;i<step-newstep;i++) movex(1);
 	    }
+	    //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
 	    step = newstep;
 	}
 	if(delta < 0){
-	    newstep = Math.floor((-delta) / 20.0);
+	    newstep = Math.floor((0-delta) / 20.0);
 	    if(newstep > step){
 		for(i=0;i<newstep-step;i++) movex(1);
 	    }
 	    else if(newstep < step){
 		for(i=0;i<step-newstep;i++) movex(-1);
 	    }
+	    //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
 	    step = newstep;
 	}
     }
@@ -549,6 +583,14 @@ $(window).on({
     'touchend': upfunc,
     'mousemove': movefunc,
     'touchmove': movefunc,
-    'keydown': keydownfunc
+    'keydown': keydownfunc,
+    'resize': resizefunc
 });
+
+//$(window).bind('touchend',upfunc);
+//$('.line').bind('touchend',upfunc);
+//$('span').bind('touchend',upfunc);
+//$('body').bind('touchend',upfunc);
+
+//document.addEventListener('touchend',upfunc,false);
 
