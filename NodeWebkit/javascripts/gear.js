@@ -499,7 +499,7 @@ var movefunc = function(e){
 	    delta = e.pageY - mousedowny;
 	}
 	if(e.type == 'touchmove'){
-	    delta = event.changedTouches[0].pageY - mousedowny;
+	    delta = e.changedTouches[0].pageY - mousedowny;
 	}
 	var i;
 	var newstep;
