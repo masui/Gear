@@ -45,3 +45,11 @@ span {
     height: 100%;
     width: 50%;
 }
+
+#panel {
+    position: absolute;
+    top: 0pt;
+    left: 0pt;
+    height: 100%;
+    width: 100%;
+}

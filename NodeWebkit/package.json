@@ -11,7 +11,6 @@
     "icon": "img/icon.png",
     "toolbar": false,
     "frame": true,
-    "width": 800,
-    "height": 480
+    "fullscreen": true
   }
 }
