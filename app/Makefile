@@ -3,7 +3,7 @@
 apps: mac windows
 
 app:
-	cp ../Data/data.json .
+	cp ../data/data.json .
 	zip app.nw \
 		package.json \
 		index.html \
