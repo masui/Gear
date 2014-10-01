@@ -4,7 +4,7 @@ data.json
 Data/News/news.ltsv
 node_modules
 app.nw
-Gear/Gear.exe
+Gear.exe
 Gear.app/Contents/Resources/app.nw
 Gear.zip
 *.log
