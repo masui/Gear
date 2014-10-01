@@ -35,7 +35,6 @@ var StepTime = 1000;       // 段階的展開のタイムアウト時間
 var ExpandTime = 1500;     // 無操作時展開のタイムアウト時間
 var AnimationTime = 300;   // ズーミングのアニメーション時間
 
-//var win;
 var iframe;
 var image;
 var menu;
@@ -164,19 +163,13 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
     }
 
     var span;
-    ////var left = 5 + node.level * 20;
     span = $('<span>');
     span.attr('class','line'); // absoluteになってる
     span.css('width',String(cssWidth(parent)));
-    ////span.css('width',String(cssWidth(parent)-left));
-    ////span.css('left',String(left));
     span.css('left','5');
     span.css('color',color);
-    //span.css('background-color',"rgba(255,255,255,0.5)");
     span.css('background-color',"rgba(200,200,200,0.4)");
     span.css('text-shadow','1px 1px 1px #e0e0e0, -1px 1px 1px #e0e0e0, 1px -1px 1px #e0e0e0, -1px -1px 1px #e0e0e0');
-    //span.css('text-shadow','3px 3px 2px #ffff80, -3px 3px 2px #ffff80, 3px -3px 2px #ffff80, -3px -3px 2px #ffff80');
-    //span.css('text-shadow','3px 3px 2px #d0d0d0');
 
     span.css('top',String(top));
     span.css('font-family','Helvetica, Arial, Hiragino Kaku Gothic ProN, ヒラギノ角ゴ ProN W3, Meiryo, メイリオ, sans-serif');
@@ -281,6 +274,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 				duration: AnimationTime,
 				complete: function(){
 				    //this.remove();
+				    typeCount = 2;
 				    refresh();
 				}
 			    }
@@ -308,6 +302,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 				    duration: AnimationTime,
 				    complete: function(){
 					this.remove();
+					typeCount = 2;
 					refresh();
 				    }
 				}
@@ -344,6 +339,7 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 				{
 				    duration: AnimationTime,
 				    complete: function(){
+					typeCount = 2;
 					refresh();
 				    }
 				}
@@ -529,9 +525,6 @@ var movefunc = function(e){
 	}
 	else if(e.type == 'touchmove'){
 	    delta = event.changedTouches[0].pageY - mousedowny;
-	    //alert("" + mousedowny + " " + event.changedTouches[0].pageY);
-	    //delta = event.touches[0].pageY - mousedowny;
-	    //$('#debug').text(event.changedTouches[0].pageY);
 	}
 	var i;
 	var newstep;
@@ -561,17 +554,11 @@ var movefunc = function(e){
 };
 
 var keydownfunc = function(e){
-    if(e.keyCode == 40){ // 40 = 下
-	return move(1);
-    }
-    else if(e.keyCode == 38){ // 38 = 上
-	return move(-1);
-    }
-    else if(e.keyCode == 39){ // 39 = 右
-	return movex(1);
-    }
-    else if(e.keyCode == 37){ // 37 = 左
-	return movex(-1);
+    switch(e.keyCode){
+    case 40: return move(1);   // 下
+    case 39: return movex(1);  // 右
+    case 38: return move(-1);  // 上
+    case 37: return movex(-1); // 左
     }
     return false;
 };
@@ -587,10 +574,4 @@ $(window).on({
     'resize': resizefunc
 });
 
-//$(window).bind('touchend',upfunc);
-//$('.line').bind('touchend',upfunc);
-//$('span').bind('touchend',upfunc);
-//$('body').bind('touchend',upfunc);
-
-//document.addEventListener('touchend',upfunc,false);
 
