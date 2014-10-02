@@ -87,23 +87,24 @@ $(function() { // 最初に呼ばれるjQueryのready関数
     //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
     //window.resizeTo(screen.width,screen.height);
 
-//    // v0.10からMacではこれが必要らしい
-//    var nw = require('nw.gui');
-//    win = nw.Window.get();
-//    var nativeMenuBar = new nw.Menu({ type: "menubar" });
-//    if(nativeMenuBar.createMacBuiltin){
-//       nativeMenuBar.createMacBuiltin("Gear", {
-//            hideEdit: true,
-//            hideWindow: true
-//        });
-//        win.menu = nativeMenuBar;
-//    }
-//
-//    window.addEventListener("resize", function () {
-//	// Get the current window
-//	var win = nw.Window.get();
-//	win.enterFullscreen();
-//    },false);
+    // v0.10からMacではこれが必要らしい
+    var nw = require('nw.gui');
+    win = nw.Window.get();
+    var nativeMenuBar = new nw.Menu({ type: "menubar" });
+    if(nativeMenuBar.createMacBuiltin){
+       nativeMenuBar.createMacBuiltin("Gear", {
+            hideEdit: true,
+            hideWindow: true
+        });
+        win.menu = nativeMenuBar;
+    }
+    //win.showDevTools()
+
+    window.addEventListener("resize", function () {
+     	// Get the current window
+     	var win = nw.Window.get();
+    	win.enterFullscreen();
+    },false);
 
     image = $('#image');
     menu = $('#menu');
