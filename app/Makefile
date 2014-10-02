@@ -2,8 +2,13 @@
 
 apps: mac windows
 
-app:
+data.json: ../data/data.json
 	cp ../data/data.json .
+
+javascripts/gear.js: javascripts/gear.coffee
+	coffee -c -b javascripts/gear.coffee
+
+app: data.json javascripts/gear.js
 	zip app.nw \
 		package.json \
 		index.html \

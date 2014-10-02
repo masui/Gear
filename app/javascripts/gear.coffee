@@ -18,21 +18,36 @@ nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に�
 spans = {}        # 表示されるspan要素のリスト
 shrinking = false # 回転方向
 
+expandTimeout = null
 loadData = ->
   $.getJSON json, (data) ->
     initData data, null, 0
     calc data[0]
     expandTimeout = setTimeout expand, ExpandTime
-  setTimeout loadData, 6*60*60*1000 # 6時間ごとにリロード
 
-initData = (nodes,parent,level) ->
-  for i in [0...nodes.length]
-    node = nodes[i]
-    node.level = level
-    node.elder = (if i > 0 then  nodes[i-1] else  null)
-    node.younger = (if i < nodes.length-1 then  nodes[i+1] else null)
-    node.parent = parent
-    initData(node.children,node,level+1) if node.children
+`var initData = function(nodes,parent,level){
+  for(var i=0;i<nodes.length;i++){
+  	var node = nodes[i];
+  	node.number = i;
+  	node.level = level;
+  	node.elder = (i > 0 ? nodes[i-1] : null);
+  	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
+  	node.parent = parent;
+    if(node.children){
+  		initData(node.children,node,level+1);
+    }
+  }
+};`
+
+#initData = (nodes,parent,level) ->
+#  #for i, node of nodes
+#  for i in [0...nodes.length]
+#    node = nodes[i]
+#    node.level = level
+#    node.elder = (if i > 0 then nodes[i-1] else null)
+#    node.younger = (if i < nodes.length-1 then nodes[i+1] else null)
+#    node.parent = parent
+#    initData(node.children,node,level+1) if node.children
 
 refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
@@ -40,7 +55,6 @@ refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
 
 
 `
-//var expandTimeout = null;
 var StepTime = 1000;       // 段階的展開のタイムアウト時間
 var ExpandTime = 1500;     // 無操作時展開のタイムアウト時間
 var AnimationTime = 300;   // ズーミングのアニメーション時間
@@ -73,23 +87,23 @@ $(function() { // 最初に呼ばれるjQueryのready関数
     //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
     //window.resizeTo(screen.width,screen.height);
 
-    // v0.10からMacではこれが必要らしい
-    var nw = require('nw.gui');
-    win = nw.Window.get();
-    var nativeMenuBar = new nw.Menu({ type: "menubar" });
-    if(nativeMenuBar.createMacBuiltin){
-       nativeMenuBar.createMacBuiltin("Gear", {
-            hideEdit: true,
-            hideWindow: true
-        });
-        win.menu = nativeMenuBar;
-    }
-
-    window.addEventListener("resize", function () {
-	// Get the current window
-	var win = nw.Window.get();
-	win.enterFullscreen();
-    },false);
+//    // v0.10からMacではこれが必要らしい
+//    var nw = require('nw.gui');
+//    win = nw.Window.get();
+//    var nativeMenuBar = new nw.Menu({ type: "menubar" });
+//    if(nativeMenuBar.createMacBuiltin){
+//       nativeMenuBar.createMacBuiltin("Gear", {
+//            hideEdit: true,
+//            hideWindow: true
+//        });
+//        win.menu = nativeMenuBar;
+//    }
+//
+//    window.addEventListener("resize", function () {
+//	// Get the current window
+//	var win = nw.Window.get();
+//	win.enterFullscreen();
+//    },false);
 
     image = $('#image');
     menu = $('#menu');
@@ -140,26 +154,18 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
         return;
     }
 
-    var span;
-    span = $('<span>');
-    span.attr('class','line'); // absoluteになってる
-    span.css('width',String(cssWidth(parent)));
-    span.css('left','5');
+    var span = $('<span>');
+    span.attr('class','line');
+    span.css('width',parent.css('width'));
     span.css('color',color);
-    span.css('background-color',"rgba(200,200,200,0.4)");
-    span.css('text-shadow','1px 1px 1px #e0e0e0, -1px 1px 1px #e0e0e0, 1px -1px 1px #e0e0e0, -1px -1px 1px #e0e0e0');
-
     span.css('top',String(top));
-    span.css('font-family','Helvetica, Arial, Hiragino Kaku Gothic ProN, ヒラギノ角ゴ ProN W3, Meiryo, メイリオ, sans-serif');
     if(bold) span.css('font-weight','bold');
-
 
     var text = "";
     for(var i=0;i<node.level;i++){ text += "　"; }
     text += ('・' + node.title);
     span.text(text);
 
-    ////span.text('・' + node.title);
     if(showloading){ // ローディングGIFアニメ表示
 	// http://preloaders.net/ で作成したロード中アイコンを利用
 	span.append($(' <span>&nbsp;</span>'));
@@ -176,10 +182,10 @@ var dispLine = function(node,ind,top,color,bold,parent,showloading){
 };
 
 var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関数ないのか?
-    for(var i in hash){
-	if(hash[i] == entry) return i;
-    }
-    return null;
+  for(var i in hash){
+    if(hash[i] == entry) return i;
+  }
+  return null;
 };
 
 var display = function(newNodeList){ // calc()で計算したリストを表示
@@ -408,8 +414,8 @@ var move = function(delta){ // 視点移動
 };
 
 var movex = function(delta){ // 視点移動
-    if(typeCount == 0){
-	clearTimeout(typeCountTimeout);
+  if(typeCount == 0){
+    clearTimeout(typeCountTimeout);
 	typeCount = 1;
 	typeCountTimeout = setTimeout(function(){
 	    typeCount = 0;
@@ -457,7 +463,7 @@ var movex = function(delta){ // 視点移動
     return false;
 };
 
-$(window).blur(function(){
+$(window).blur(function(){ // ????
     setTimeout(window.focus,100);
 });
 
@@ -551,4 +557,3 @@ $(window).on({
     'keydown': keydownfunc,
     'resize': resizefunc
 });`
-
