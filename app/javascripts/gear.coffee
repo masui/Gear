@@ -42,18 +42,28 @@ initData = (nodes,parent,level) -> # 木構造をセットアップ
     node.parent = parent
     initData(node.children,node,level+1) if node.children
 
+$ -> # document.ready()
+  node = (typeof(require) != 'undefined') # node-webkitかどうか
+  if node
+    # v0.10からMacではこれが必要らしい
+    nw = require 'nw.gui'
+    win = nw.Window.get()
+    nativeMenuBar = new nw.Menu({ type: "menubar" })
+    if nativeMenuBar.createMacBuiltin
+      nativeMenuBar.createMacBuiltin "Gear",
+        hideEdit: true
+        hideWindow: true
+      win.menu = nativeMenuBar
+     window.addEventListener "resize", ->
+      	win.enterFullscreen()
+      ,false
+  loadData()
+
 refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
   span.remove() for i, span of oldSpans
 
-
 `
-
-var iframe;
-var image;
-var menu;
-var panel;
-
 var typeCount = 0; // 連打したかどうか: 連打されてたら表示を行なう
 var typeCountTimeout = null;
 
@@ -64,45 +74,45 @@ var resizefunc = function(){
     var width = screen.width;
     $('body').css('width',width);
     $('body').css('height',height);
-    iframe.css('width',width);
-    iframe.css('height',height);
-    image.css('width',width);
-    image.css('height',height);
-    menu.css('height',height);
-    panel.css('width',width);
-    panel.css('height',height);
+    $('#iframe').css('width',width);
+    $('#iframe').css('height',height);
+    $('#image').css('width',width);
+    $('#image').css('height',height);
+    $('#menu').css('height',height);
+    $('#panel').css('width',width);
+    $('#panel').css('height',height);
 }
 
-$(function() { // 最初に呼ばれるjQueryのready関数
-    //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
-    //window.resizeTo(screen.width,screen.height);
-
-    if(typeof(require) != 'undefined'){ // node-webkitの場合
-      // v0.10からMacではこれが必要らしい
-      var nw = require('nw.gui');
-      win = nw.Window.get();
-      var nativeMenuBar = new nw.Menu({ type: "menubar" });
-      if(nativeMenuBar.createMacBuiltin){
-        nativeMenuBar.createMacBuiltin("Gear", {
-          hideEdit: true,
-          hideWindow: true
-          });
-          win.menu = nativeMenuBar;
-      }
-      //win.showDevTools()
-
-      window.addEventListener("resize", function () {
-      	win.enterFullscreen();
-      },false);
-    }
-
-    image = $('#image');
-    menu = $('#menu');
-    iframe = $('#iframe');
-    panel = $('#panel');
-
-    loadData();
-});
+//$(function() { // 最初に呼ばれるjQueryのready関数
+//    //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
+//    //window.resizeTo(screen.width,screen.height);
+//
+//    if(typeof(require) != 'undefined'){ // node-webkitの場合
+//      // v0.10からMacではこれが必要らしい
+//      var nw = require('nw.gui');
+//      win = nw.Window.get();
+//      var nativeMenuBar = new nw.Menu({ type: "menubar" });
+//      if(nativeMenuBar.createMacBuiltin){
+//        nativeMenuBar.createMacBuiltin("Gear", {
+//          hideEdit: true,
+//          hideWindow: true
+//          });
+//          win.menu = nativeMenuBar;
+//      }
+//      //win.showDevTools()
+//
+//      window.addEventListener("resize", function () {
+//      	win.enterFullscreen();
+//      },false);
+//    }
+//
+//    image = $('#image');
+//    menu = $('#menu');
+//    iframe = $('#iframe');
+//    panel = $('#panel');
+//
+//    loadData();
+//});
 
 var browserHeight = function(){ // jQuery式の標準関数がありそうだが?
     if(window.innerHeight){ return window.innerHeight; }  
@@ -204,14 +214,14 @@ var display = function(newNodeList){ // calc()で計算したリストを表示
 	    // 無視
 	}
 	else if(url.match(/(gif|jpg|jpeg|png)$/i)){
-	    iframe.css('display','none');
-	    image.css('display','block');
-	    image.attr('src',url);
+	    $('#iframe').css('display','none');
+	    $('#image').css('display','block');
+	    $('#image').attr('src',url);
 	}
 	else {
-	    iframe.css('display','block');
-	    image.css('display','none');
-	    iframe.attr('src',url);
+	    $('#iframe').css('display','block');
+	    $('#image').css('display','none');
+	    $('#iframe').attr('src',url);
 	}
 	// window.focus(); // 前面に持ってくる
     }
