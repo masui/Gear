@@ -26,6 +26,9 @@ AnimationTime = 300   # ズーミングのアニメーション時間
 HideTime = 1600       # 無操作時にメニューを消すアニメーション
 hideTimeout = null
 
+typeCount = 0           # 連打したかどうか: 連打されてたら表示を行なう
+typeCountTimeout = null
+
 loadData = ->
   $.getJSON json, (data) ->
     initData data, null, 0
@@ -63,92 +66,46 @@ refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
   span.remove() for i, span of oldSpans
 
+browserHeight = -> # jQuery式の標準関数がありそうだが?
+  if window.innerHeight
+    return window.innerHeight
+  if document.body
+    return document.body.clientHeight
+  return 0
+
+resizefunc = ->
+  height = screen.height
+  width = screen.width
+  $('body').css('width',width)
+  $('body').css('height',height)
+  $('#iframe').css('width',width)
+  $('#iframe').css('height',height)
+  $('#image').css('width',width)
+  $('#image').css('height',height)
+  $('#menu').css('height',height)
+  $('#panel').css('width',width)
+  $('#panel').css('height',height)
+
+
+expand = -> # 注目してるエントリの子供を段階的に展開する
+  clearTimeout hideTimeout
+  hideTimeout = setTimeout hideLines, HideTime
+
+  expandTimeout = null
+  shrinking = false
+  if nodeList[0].children
+  	calc nodeList[0].children[0]
+  	expandTimeout = setTimeout expand, StepTime
+
+intValue = (s) ->
+  Number s.replace(/px/,'')
+
+hideLines = ->
+  $('span').animate
+    opacity:0.0
+  , 700
+
 `
-var typeCount = 0; // 連打したかどうか: 連打されてたら表示を行なう
-var typeCountTimeout = null;
-
-var resizefunc = function(){
-    //var height = $(window).height();
-    //var width = $(window).width();
-    var height = screen.height;
-    var width = screen.width;
-    $('body').css('width',width);
-    $('body').css('height',height);
-    $('#iframe').css('width',width);
-    $('#iframe').css('height',height);
-    $('#image').css('width',width);
-    $('#image').css('height',height);
-    $('#menu').css('height',height);
-    $('#panel').css('width',width);
-    $('#panel').css('height',height);
-}
-
-//$(function() { // 最初に呼ばれるjQueryのready関数
-//    //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
-//    //window.resizeTo(screen.width,screen.height);
-//
-//    if(typeof(require) != 'undefined'){ // node-webkitの場合
-//      // v0.10からMacではこれが必要らしい
-//      var nw = require('nw.gui');
-//      win = nw.Window.get();
-//      var nativeMenuBar = new nw.Menu({ type: "menubar" });
-//      if(nativeMenuBar.createMacBuiltin){
-//        nativeMenuBar.createMacBuiltin("Gear", {
-//          hideEdit: true,
-//          hideWindow: true
-//          });
-//          win.menu = nativeMenuBar;
-//      }
-//      //win.showDevTools()
-//
-//      window.addEventListener("resize", function () {
-//      	win.enterFullscreen();
-//      },false);
-//    }
-//
-//    image = $('#image');
-//    menu = $('#menu');
-//    iframe = $('#iframe');
-//    panel = $('#panel');
-//
-//    loadData();
-//});
-
-var browserHeight = function(){ // jQuery式の標準関数がありそうだが?
-    if(window.innerHeight){ return window.innerHeight; }  
-    else if(document.body){ return document.body.clientHeight; }  
-    return 0;  
-};
-
-var expand = function(){ // 注目してるエントリの子供を段階的に展開する
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,HideTime);
-
-    expandTimeout = null;
-    shrinking = false;
-    if(nodeList[0].children){
-	calc(nodeList[0].children[0]);
-	expandTimeout = setTimeout(expand,StepTime);
-    }
-};
-
-var intValue = function(s){
-    return Number(s.replace(/px/,''));
-};
-
-var cssWidth = function(entry){
-    return intValue(entry.css('width'));
-};
-
-var dispLines = function(){
-    $('span').css('visibility','visible');
-};
-var hideLines = function(){
-    $('span').animate({
-        opacity:0.0
-    }, 700 );
-};
-
 var dispLine = function(node,ind,top,color,bold,parent,showloading){
     //if(typeCount < 2 && timeout == null) return;
     if(typeCount < 2 && !nodeList[0].children){
