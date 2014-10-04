@@ -17,28 +17,22 @@ nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に�
 spans = {}        # 表示されるspan要素のリスト
 shrinking = false # 回転方向
 
+StepTime = 1000       # 段階的展開のタイムアウト時間   ?????
+ExpandTime = 1500     # 無操作時展開のタイムアウト時間
 expandTimeout = null
+
+AnimationTime = 300   # ズーミングのアニメーション時間
+
+HideTime = 1600       # 無操作時にメニューを消すアニメーション
+hideTimeout = null
+
 loadData = ->
   $.getJSON json, (data) ->
     initData data, null, 0
     calc data[0]
     expandTimeout = setTimeout expand, ExpandTime
 
-#var initData = function(nodes,parent,level){
-#  for(var i=0;i<nodes.length;i++){
-#  	var node = nodes[i];
-#  	node.number = i;
-#  	node.level = level;
-#  	node.elder = (i > 0 ? nodes[i-1] : null);
-#  	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
-#  	node.parent = parent;
-#    if(node.children){
-#  		initData(node.children,node,level+1);
-#    }
-#  }
-#};
-
-initData = (nodes,parent,level) ->
+initData = (nodes,parent,level) -> # 木構造をセットアップ
   #for i, node of nodes
   for i in [0...nodes.length]
     node = nodes[i]
@@ -54,9 +48,6 @@ refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
 
 
 `
-var StepTime = 1000;       // 段階的展開のタイムアウト時間
-var ExpandTime = 1500;     // 無操作時展開のタイムアウト時間
-var AnimationTime = 300;   // ズーミングのアニメーション時間
 
 var iframe;
 var image;
@@ -121,7 +112,7 @@ var browserHeight = function(){ // jQuery式の標準関数がありそうだが
 
 var expand = function(){ // 注目してるエントリの子供を段階的に展開する
     clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,1600);
+    hideTimeout = setTimeout(hideLines,HideTime);
 
     expandTimeout = null;
     shrinking = false;
@@ -369,7 +360,6 @@ var prevNode = function(node){
     return prevnode;
 };
 
-var hideTimeout = null;
 
 var move = function(delta){ // 視点移動
     if(typeCount == 0){
@@ -397,7 +387,7 @@ var move = function(delta){ // 視点移動
     refresh();
 
     clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,1600);
+    hideTimeout = setTimeout(hideLines,HideTime);
 
     clearTimeout(expandTimeout);
     if(!mouseisdown){
@@ -438,7 +428,7 @@ var movex = function(delta){ // 視点移動
 
 
     clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,1600);
+    hideTimeout = setTimeout(hideLines,HideTime);
 
     clearTimeout(expandTimeout);
     if(!mouseisdown){
