@@ -6,13 +6,12 @@
 # http://GitHub.com/masui/Gear
 #
 
-useAnimation = true   # アニメーションを使うかどうか
-
-showContents =       true        unless showContents?
-autoexpand =         true        unless autoexpand?
-json =               'data.json' unless json?
+useAnimation =       true        unless useAnimation?        # アニメーションを使うかどうか
+showContents =       true        unless showContents?        # メニューだけだでなく内容も表示するか
+autoexpand =         true        unless autoexpand?          # 自動展開(デフォルト動作)
 pauseAtLevelChange = true        unless pauseAtLevelChange?
-dontShowSingleNode = true        unless dontShowSingleNode?
+dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使うときとか
+json =               'data.json' unless json?
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
 spans = {}        # 表示されるspan要素のリスト
@@ -25,29 +24,29 @@ loadData = ->
     calc data[0]
     expandTimeout = setTimeout expand, ExpandTime
 
-`var initData = function(nodes,parent,level){
-  for(var i=0;i<nodes.length;i++){
-  	var node = nodes[i];
-  	node.number = i;
-  	node.level = level;
-  	node.elder = (i > 0 ? nodes[i-1] : null);
-  	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
-  	node.parent = parent;
-    if(node.children){
-  		initData(node.children,node,level+1);
-    }
-  }
-};`
+#var initData = function(nodes,parent,level){
+#  for(var i=0;i<nodes.length;i++){
+#  	var node = nodes[i];
+#  	node.number = i;
+#  	node.level = level;
+#  	node.elder = (i > 0 ? nodes[i-1] : null);
+#  	node.younger = (i < nodes.length-1 ? nodes[i+1] : null);
+#  	node.parent = parent;
+#    if(node.children){
+#  		initData(node.children,node,level+1);
+#    }
+#  }
+#};
 
-#initData = (nodes,parent,level) ->
-#  #for i, node of nodes
-#  for i in [0...nodes.length]
-#    node = nodes[i]
-#    node.level = level
-#    node.elder = (if i > 0 then nodes[i-1] else null)
-#    node.younger = (if i < nodes.length-1 then nodes[i+1] else null)
-#    node.parent = parent
-#    initData(node.children,node,level+1) if node.children
+initData = (nodes,parent,level) ->
+  #for i, node of nodes
+  for i in [0...nodes.length]
+    node = nodes[i]
+    node.level = level
+    node.elder = (if i > 0 then nodes[i-1] else null)
+    node.younger = (if i < nodes.length-1 then nodes[i+1] else null)
+    node.parent = parent
+    initData(node.children,node,level+1) if node.children
 
 refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
@@ -87,24 +86,24 @@ $(function() { // 最初に呼ばれるjQueryのready関数
     //window.moveTo(0,0); // node-webkitだと有効だがブラウザだと駄目っぽい
     //window.resizeTo(screen.width,screen.height);
 
-    // v0.10からMacではこれが必要らしい
-    var nw = require('nw.gui');
-    win = nw.Window.get();
-    var nativeMenuBar = new nw.Menu({ type: "menubar" });
-    if(nativeMenuBar.createMacBuiltin){
-       nativeMenuBar.createMacBuiltin("Gear", {
-            hideEdit: true,
-            hideWindow: true
-        });
-        win.menu = nativeMenuBar;
-    }
-    //win.showDevTools()
+    if(typeof(require) != 'undefined'){ // node-webkitの場合
+      // v0.10からMacではこれが必要らしい
+      var nw = require('nw.gui');
+      win = nw.Window.get();
+      var nativeMenuBar = new nw.Menu({ type: "menubar" });
+      if(nativeMenuBar.createMacBuiltin){
+        nativeMenuBar.createMacBuiltin("Gear", {
+          hideEdit: true,
+          hideWindow: true
+          });
+          win.menu = nativeMenuBar;
+      }
+      //win.showDevTools()
 
-    window.addEventListener("resize", function () {
-     	// Get the current window
-     	var win = nw.Window.get();
-    	win.enterFullscreen();
-    },false);
+      window.addEventListener("resize", function () {
+      	win.enterFullscreen();
+      },false);
+    }
 
     image = $('#image');
     menu = $('#menu');
@@ -501,7 +500,6 @@ var upfunc = function(e){
 };
 
 var movefunc = function(e){
-    e.preventDefault();
     e.preventDefault();
     if(mouseisdown){
 	var delta = 0;
