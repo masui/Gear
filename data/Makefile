@@ -5,7 +5,6 @@
 
 CONTENTS = \
 	News/news.ltsv \
-	Bookmarks/bookmarks.ltsv \
 	Music/music.ltsv \
 	Music2/music2.ltsv \
 	Radio/radio.ltsv \
@@ -18,6 +17,7 @@ CONTENTS = \
 	Geta/geta.ltsv \
 	Stations/stations.ltsv
 
+#	Bookmarks/bookmarks.ltsv \
 
 json: getnews
 	~/.rbenv/shims/bundle exec ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json

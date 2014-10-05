@@ -17,7 +17,6 @@ nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に�
 oldNodeList = {}
 spans = {}        # 表示されるspan要素のリスト
 oldSpans = {}
-shrinking = false # 回転方向
 
 StepTime = 1000       # 段階的展開のタイムアウト時間   ?????
 ExpandTime = 1500     # 無操作時展開のタイムアウト時間
@@ -160,8 +159,8 @@ prevNode = (node) ->
   prevnode
 
 nasty = (url) -> # 意地悪サイト
-  url.match /twitter\.com/i ||
-  url.match /www\.ted\.com/i
+  (url.match /twitter\.com/i) ||
+  (url.match /www\.ted\.com/i)
 
 display = (newNodeList) -> # calc()で計算したリストを表示
   oldNodeList = nodeList
@@ -218,9 +217,8 @@ display = (newNodeList) -> # calc()で計算したリストを表示
           if oldnode.span
             oldnode.span.hide()
       else # 古いエントリが消える場合
-        if shrinking
-          j = hashIndex nodeList, oldnode.parent
-          if j != null # 親の位置にシュリンクしながら消える
+        if shrinking?
+          if j = hashIndex nodeList, oldnode.parent # 親の位置にシュリンクしながら消える
             if oldSpans[i]
               oldSpans[i].animate
                 top: nodeList[j].span.css 'top'
@@ -237,12 +235,10 @@ display = (newNodeList) -> # calc()で計算したリストを表示
             oldnode.span.hide()
   
     for i, newnode of nodeList # 新たに出現するエントリ
-      k = hashIndex oldNodeList, newnode
-      if k == null
+      if null == hashIndex oldNodeList, newnode
         parent = newnode.parent
-        if parent && !shrinking # 親の位置から出現する
-          j = hashIndex nodeList, parent
-          if j != null
+        if parent && !shrinking? # 親の位置から出現する
+          if j = hashIndex nodeList, parent
             if newnode.span
               dest = newnode.span.css('top')
               newnode.span.show()
@@ -312,8 +308,8 @@ $(window).mousewheel (event, delta, deltaX, deltaY) ->
   d = (if delta < 0 then 1 else -1)
   move d, 1
 
-mousedowny = 0
 mouseisdown = false
+mousedowny = 0
 step = 0
 
 downfunc = (e) ->
@@ -344,15 +340,15 @@ movefunc = (e) ->
     if delta > 0
       newstep = Math.floor(delta / 20.0)
       if newstep > step
-        [0 ... newstep-step].map move(-1,1)
+        move(-1,1) for i in [0 ... newstep-step]
       else
-        [0 ... step-newstep].map move(1,1)
+        move(1,1) for i in [0 ... step-newstep]
     else
       newstep = Math.floor((0-delta) / 20.0)
       if newstep > step
-        [0 ... newstep-step].map move(1,1)
+        move(1,1) for i in [0 ... newstep-step]
       else
-        [0 ... step-newstep].map move(-1,1)
+        move(-1,1) for i in [0 ... step-newstep]
     step = newstep
 
 keydownfunc = (e) ->

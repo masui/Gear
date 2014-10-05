@@ -1,7 +1,7 @@
 data.json
 .ruby-version
 *.save*
-Data/News/news.ltsv
+news.ltsv
 node_modules
 app.nw
 Gear.exe
