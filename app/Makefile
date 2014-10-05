@@ -5,10 +5,16 @@ apps: mac windows
 data.json: ../data/data.json
 	cp ../data/data.json .
 
-javascripts/gear.js: javascripts/gear.coffee
+javascripts/gear.js: ../javascripts/gear.coffee
+	-mkdir javascripts
+	cp ../javascripts/gear.coffee javascripts
 	coffee -c -b javascripts/gear.coffee
 
-app: data.json javascripts/gear.js
+images/loading.gif
+	-mkdir images
+	cp ../images/loading.gif images
+
+app: data.json javascripts/gear.js images/loading.gif
 	zip app.nw \
 		package.json \
 		index.html \
@@ -17,7 +23,7 @@ app: data.json javascripts/gear.js
 		javascripts/jquery.mousewheel.js \
 		javascripts/gear.js \
 		data.json \
-		loading.gif
+		images/loading.gif
 mac: app
 	/bin/rm -f Gear.dmg
 	cp app.nw Gear.app/Contents/Resources

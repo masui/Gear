@@ -11,7 +11,18 @@ showContents =       true        unless showContents?        # メニューだ�
 autoexpand =         true        unless autoexpand?          # 自動展開(デフォルト動作)
 pauseAtLevelChange = true        unless pauseAtLevelChange?
 dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使うときとか
+singleWindow =       false       unless singleWindow?        # メニューとコンテンツを同じ画面にするかどうか
 json =               'data.json' unless json?
+
+node_app = typeof(require) != 'undefined' # node-webkitによるアプリかどうか
+singleWindow = true if node_app
+
+if singleWindow
+  menuFontSize = 18
+  lineHeight = 30
+else
+  menuFontSize = 11
+  lineHeight = 20
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
 oldNodeList = {}
@@ -47,11 +58,12 @@ initData = (nodes,parent,level) -> # 木構造をセットアップ
     initData(node.children,node,level+1) if node.children
 
 $ -> # document.ready()
-  if typeof(require) != 'undefined' # node-webkitかどうか
+  if node_app
     # v0.10からMacではこれが必要らしい
     nw = require 'nw.gui'
     win = nw.Window.get()
-    nativeMenuBar = new nw.Menu({ type: "menubar" })
+    nativeMenuBar = new nw.Menu
+      type: "menubar"
     if nativeMenuBar.createMacBuiltin
       nativeMenuBar.createMacBuiltin "Gear",
         hideEdit: true
@@ -61,6 +73,21 @@ $ -> # document.ready()
         win.enterFullscreen()
       ,false
   loadData()
+
+  if showContents
+    if singleWindow
+    else # コンテンツ表示ウィンドウを開く
+      height = screen.availHeight
+      menuwidth = screen.availWidth / 5
+      menuwidth = 300 if menuwidth > 300
+      width = screen.availWidth - menuwidth
+      param = "top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=yes"
+      $.contentswin = window.open "","Contents",param
+
+  if singleWindow
+    $('#menu').css('left','200pt')
+  else
+    $('#menu').css('left','10pt')
 
 refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
@@ -87,8 +114,9 @@ resizefunc = ->
   $('#panel').css('height',height)
 
 expand = -> # 注目してるエントリの子供を段階的に展開する
-  clearTimeout hideTimeout
-  hideTimeout = setTimeout hideLines, HideTime
+  if singleWindow
+    clearTimeout hideTimeout
+    hideTimeout = setTimeout hideLines, HideTime
 
   expandTimeout = null
   shrinking = false
@@ -105,21 +133,23 @@ hideLines = ->
   , 700
 
 dispLine = (node,ind,top,color,bold,parent,showloading) ->
-  return if typeCount < 2 && !nodeList[0].children
+  if singleWindow
+    return if typeCount < 2 && !nodeList[0].children
 
   span = $('<span>')
   span.attr 'class', 'line'
   span.css 'width', parent.css('width')
   span.css 'color', color
-  span.css 'top', String(top)
+  span.css 'top', String(top)+'pt'
   span.css 'font-weight','bold' if bold
+  span.css 'font-size',menuFontSize+'pt'
 
-  span.text Array(node.level+1).join("　")+'・' + node.title
+  span.text Array(node.level+1).join("　")+'・' + node.title # strをx回繰り返し
 
   if showloading # ローディングGIFアニメ表示
     #  http://preloaders.net/ で作成したロード中アイコンを利用
     span.append $(' <span>&nbsp;</span>')
-    span.append $('<img src="loading.gif" style="height:12pt;">')
+    span.append $('<img src="images/loading.gif" style="height:12pt;">')
 
   parent.append span
 
@@ -173,15 +203,19 @@ display = (newNodeList) -> # calc()で計算したリストを表示
   # コンテンツに応じてiframeなどを表示
   # 
   url = nodeList[0].url
-  if url && showContents && !nasty(url)
-    if url.match /(gif|jpg|jpeg|png)$/i
-      $('#iframe').css 'display','none'
-      $('#image').css 'display','block'
-      $('#image').attr 'src',url
+  if url && showContents
+    if singleWindow
+      if showContents && !nasty(url)
+        if url.match /(gif|jpg|jpeg|png)$/i
+          $('#iframe').css 'display','none'
+          $('#image').css 'display','block'
+          $('#image').attr 'src',url
+        else
+          $('#iframe').css 'display','block'
+          $('#image').css 'display','none'
+          $('#iframe').attr 'src',url
     else
-      $('#iframe').css 'display','block'
-      $('#image').css 'display','none'
-      $('#iframe').attr 'src',url
+    	$.contentswin.location.href = url
 
   # 新しいノードの表示位置計算
   node = nodeList[0]
@@ -189,13 +223,13 @@ display = (newNodeList) -> # calc()で計算したリストを表示
   dispLine node, 0, center, '#0000ff', true, menu, node.children
   i = 1
   while node = nodeList[i]
-    top = center + i * 30
+    top = center + i * lineHeight
     break if top > browserHeight() - 40
     dispLine node, i, top, '#000000', false, menu, false
     i += 1
   i = -1
   while node = nodeList[i]
-    top = center + i * 30
+    top = center + i * lineHeight
     break if top < 0
     dispLine node, i, top, '#000000', false, menu, false
     i -= 1
@@ -275,8 +309,9 @@ move = (delta, shrinkMode) -> # 視点移動
     ,1000
   refresh()
 
-  clearTimeout hideTimeout
-  hideTimeout = setTimeout hideLines, HideTime
+  if singleWindow
+    clearTimeout hideTimeout
+    hideTimeout = setTimeout hideLines, HideTime
 
   clearTimeout expandTimeout
   if !mouseisdown

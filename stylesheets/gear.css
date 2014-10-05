@@ -7,7 +7,7 @@ body {
 }
 
 span {
-	font-size: 11pt;
+	/* font-size: 11pt; */
 }
 
 .line {
@@ -40,9 +40,9 @@ span {
 #menu {
     position: absolute;
     top: 0pt;
-    left: 200pt;
+    left: 50pt;
     height: 100%;
-    width: 50%;
+    width: 90%;
 }
 
 #panel {

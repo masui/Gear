@@ -1,3 +1,7 @@
+make:
+	coffee -c -b javascripts/gear.coffee
+
+
 all:
 	echo make dat / make scp
 dat:
