@@ -87,7 +87,6 @@ resizefunc = ->
   $('#panel').css('width',width)
   $('#panel').css('height',height)
 
-
 expand = -> # 注目してるエントリの子供を段階的に展開する
   clearTimeout hideTimeout
   hideTimeout = setTimeout hideLines, HideTime
@@ -290,9 +289,9 @@ move = (delta, shrinkMode) -> # 視点移動
   shrinking = true;
 
   if nodeList[delta]
-    if shrinkMode == 0      # move()
+    if shrinkMode == 0       # フォーカスがはずれたらシュリンクする
       calc nodeList[delta]
-    else
+    else                     # 可逆的に
       newNodeList = {}
       i = 0
       while nodeList[i+delta]
@@ -303,101 +302,72 @@ move = (delta, shrinkMode) -> # 視点移動
         newNodeList[i] = nodeList[i+delta]
         i -= 1
       display newNodeList
+  false
 
-  return false
+#$(window).blur(function(){ // ????
+#    setTimeout(window.focus,100);
+#});
 
+$(window).mousewheel (event, delta, deltaX, deltaY) ->
+  d = (if delta < 0 then 1 else -1)
+  move d, 1
 
-`
-$(window).blur(function(){ // ????
-    setTimeout(window.focus,100);
-});
+mousedowny = 0
+mouseisdown = false
+step = 0
 
-$(window).mousewheel(function(event, delta, deltaX, deltaY) {
-    return move(delta < 0 ? 1 : -1, 1);
-});
+downfunc = (e) ->
+  e.preventDefault()
+  if e.type == 'mousedown'
+    mousedowny = e.pageY
+  if e.type == 'touchstart'
+    mousedowny = event.changedTouches[0].pageY
+  mouseisdown = true;
 
-var mousedowny = 0;
-var mouseisdown = false;
-var step = 0;
+upfunc = (e) ->
+  e.preventDefault()
+  mouseisdown = false
 
-var downfunc = function(e){
-    e.preventDefault();
-    if(e.type == 'mousedown'){
-  mousedowny = e.pageY;
-    }
-    if(e.type == 'touchstart'){
-  mousedowny = event.changedTouches[0].pageY;
-  //mousedowny = event.touches[0].pageY;
-    }
-    mouseisdown = true;
-};
+  clearTimeout expandTimeout
+  expandTimeout = setTimeout expand, ExpandTime
 
-var upfunc = function(e){
-    //alert('upfunc');
-    e.preventDefault();
+  step = 0
 
-    mouseisdown = false;
+movefunc = (e) ->
+  e.preventDefault()
+  delta = 0
+  if mouseisdown
+    if e.type == 'mousemove'
+      delta = e.pageY - mousedowny
+    if e.type == 'touchmove'
+      delta = event.changedTouches[0].pageY - mousedowny
+    if delta > 0
+      newstep = Math.floor(delta / 20.0)
+      if newstep > step
+        [0 ... newstep-step].map move(-1,1)
+      else
+        [0 ... step-newstep].map move(1,1)
+    else
+      newstep = Math.floor((0-delta) / 20.0)
+      if newstep > step
+        [0 ... newstep-step].map move(1,1)
+      else
+        [0 ... step-newstep].map move(-1,1)
+    step = newstep
 
-    clearTimeout(expandTimeout);
-    expandTimeout = setTimeout(expand,ExpandTime);
+keydownfunc = (e) ->
+  switch e.keyCode
+    when 40 then move(1,0)  # 下
+    when 39 then move(1,1)  # 右
+    when 38 then move(-1,0) # 上
+    when 37 then move(-1,1) # 左
 
-    step = 0;
-};
-
-var movefunc = function(e){
-    e.preventDefault();
-    if(mouseisdown){
-  var delta = 0;
-  if(e.type == 'mousemove'){
-      delta = e.pageY - mousedowny;
-  }
-  else if(e.type == 'touchmove'){
-      delta = event.changedTouches[0].pageY - mousedowny;
-  }
-  var i;
-  var newstep;
-  if(delta > 0){
-      newstep = Math.floor(delta / 20.0);
-      if(newstep > step){
-    for(i=0;i<newstep-step;i++) move(-1,1);
-      }
-      else if(newstep < step){
-    for(i=0;i<step-newstep;i++) move(1,1);
-      }
-      //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
-      step = newstep;
-  }
-  if(delta < 0){
-      newstep = Math.floor((0-delta) / 20.0);
-      if(newstep > step){
-    for(i=0;i<newstep-step;i++) move(1,1);
-      }
-      else if(newstep < step){
-    for(i=0;i<step-newstep;i++) move(-1,1);
-      }
-      //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
-      step = newstep;
-  }
-    }
-};
-
-var keydownfunc = function(e){
-    switch(e.keyCode){
-    case 40: return move(1,0);   // 下
-    case 39: return move(1,1);  // 右
-    case 38: return move(-1,0);  // 上
-    case 37: return move(-1,1); // 左
-    }o
-    return false;
-};
-
-$(window).on({
-    'mousedown': downfunc,
-    'touchstart': downfunc,
-    'mouseup': upfunc,
-    'touchend': upfunc,
-    'mousemove': movefunc,
-    'touchmove': movefunc,
-    'keydown': keydownfunc,
-    'resize': resizefunc
-});`
+$(window).on
+  'mousedown':  downfunc
+  'touchstart': downfunc
+  'mouseup':    upfunc
+  'touchend':   upfunc
+  'mousemove':  movefunc
+  'touchmove':  movefunc
+  'keydown':    keydownfunc
+  'resize':     resizefunc
