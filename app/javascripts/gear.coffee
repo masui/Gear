@@ -46,8 +46,7 @@ initData = (nodes,parent,level) -> # 木構造をセットアップ
     initData(node.children,node,level+1) if node.children
 
 $ -> # document.ready()
-  node = (typeof(require) != 'undefined') # node-webkitかどうか
-  if node
+  if typeof(require) != 'undefined' # node-webkitかどうか
     # v0.10からMacではこれが必要らしい
     nw = require 'nw.gui'
     win = nw.Window.get()
@@ -105,40 +104,30 @@ hideLines = ->
     opacity:0.0
   , 700
 
+dispLine = (node,ind,top,color,bold,parent,showloading) ->
+  return if typeCount < 2 && !nodeList[0].children
+
+  span = $('<span>')
+  span.attr 'class', 'line'
+  span.css 'width', parent.css('width')
+  span.css 'color', color
+  span.css 'top', String(top)
+  span.css 'font-weight','bold' if bold
+
+  span.text Array(node.level+1).join("　")+'・' + node.title
+
+  if showloading # ローディングGIFアニメ表示
+	  #  http://preloaders.net/ で作成したロード中アイコンを利用
+  	span.append $(' <span>&nbsp;</span>')
+  	span.append $('<img src="loading.gif" style="height:12pt;">')
+
+  parent.append span
+
+  span.hide() if useAnimation
+  spans[ind] = span
+  node.span = span
+
 `
-var dispLine = function(node,ind,top,color,bold,parent,showloading){
-    //if(typeCount < 2 && timeout == null) return;
-    if(typeCount < 2 && !nodeList[0].children){
-        return;
-    }
-
-    var span = $('<span>');
-    span.attr('class','line');
-    span.css('width',parent.css('width'));
-    span.css('color',color);
-    span.css('top',String(top));
-    if(bold) span.css('font-weight','bold');
-
-    var text = "";
-    for(var i=0;i<node.level;i++){ text += "　"; }
-    text += ('・' + node.title);
-    span.text(text);
-
-    if(showloading){ // ローディングGIFアニメ表示
-	// http://preloaders.net/ で作成したロード中アイコンを利用
-	span.append($(' <span>&nbsp;</span>'));
-	span.append($('<img src="loading.gif" style="height:12pt;">'));
-    }
-    parent.append(span);
-    //if(typeCount < 2 && timeout == null){
-    //	span.css('visibility','hidden');
-    //}
-
-    if(useAnimation) span.hide();
-    spans[ind] = span;
-    node.span = span;
-};
-
 var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関数ないのか?
   for(var i in hash){
     if(hash[i] == entry) return i;
