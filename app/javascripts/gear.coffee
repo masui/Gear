@@ -14,7 +14,9 @@ dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使う�
 json =               'data.json' unless json?
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
+oldNodeList = {}
 spans = {}        # 表示されるspan要素のリスト
+oldSpans = {}
 shrinking = false # 回転方向
 
 StepTime = 1000       # 段階的展開のタイムアウト時間   ?????
@@ -57,7 +59,7 @@ $ -> # document.ready()
         hideWindow: true
       win.menu = nativeMenuBar
      window.addEventListener "resize", ->
-      	win.enterFullscreen()
+        win.enterFullscreen()
       ,false
   loadData()
 
@@ -93,8 +95,8 @@ expand = -> # 注目してるエントリの子供を段階的に展開する
   expandTimeout = null
   shrinking = false
   if nodeList[0].children
-  	calc nodeList[0].children[0]
-  	expandTimeout = setTimeout expand, StepTime
+    calc nodeList[0].children[0]
+    expandTimeout = setTimeout expand, StepTime
 
 intValue = (s) ->
   Number s.replace(/px/,'')
@@ -117,9 +119,9 @@ dispLine = (node,ind,top,color,bold,parent,showloading) ->
   span.text Array(node.level+1).join("　")+'・' + node.title
 
   if showloading # ローディングGIFアニメ表示
-	  #  http://preloaders.net/ で作成したロード中アイコンを利用
-  	span.append $(' <span>&nbsp;</span>')
-  	span.append $('<img src="loading.gif" style="height:12pt;">')
+    #  http://preloaders.net/ で作成したロード中アイコンを利用
+    span.append $(' <span>&nbsp;</span>')
+    span.append $('<img src="loading.gif" style="height:12pt;">')
 
   parent.append span
 
@@ -127,294 +129,191 @@ dispLine = (node,ind,top,color,bold,parent,showloading) ->
   spans[ind] = span
   node.span = span
 
-`
-var hashIndex = function(hash,entry){ // ハッシュの値を検索. 標準関数ないのか?
-  for(var i in hash){
-    if(hash[i] == entry) return i;
-  }
+hashIndex = (hash,entry) -> # ハッシュの値を検索. 標準関数ないのか?
+  for key, val of hash
+    return key if val == entry
   return null;
-};
 
-var display = function(newNodeList){ // calc()で計算したリストを表示
-    oldNodeList = nodeList;
-    nodeList = newNodeList;
-    oldSpans = spans;
-    spans = {};
+calc = (centerNode) -> # centerNodeを中心にnodeListを再計算して表示
+  newNodeList = {} # 毎回富豪的にリストを生成
+  newNodeList[0] = centerNode
+  node = centerNode
+  i = 0
+  while node = nextNode node
+    newNodeList[++i] = node
+  node = centerNode;
+  i = 0
+  while node = prevNode node
+    newNodeList[--i] = node
+  display newNodeList
 
-    var node;
-    var top;
-    var i,j,k;
-    var parent;
-    var center = browserHeight() / 2;
-    var body = $('body');
-    if(!useAnimation){
-	//body.children().remove(); // 富豪的に生成したDOMを消す
-    }
+nextNode = (node) ->
+  nextnode = node.younger
+  while !nextnode && node.parent
+    node = node.parent
+    nextnode = node.younger
+  nextnode
 
-    if(nodeList[0].url && showContents){ // iframeコンテンツ表示
-    	var url = nodeList[0].url;
-	if(url.match(/twitter\.com/)){
-	    // 無視
-	}
-	else if(url.match(/www\.ted\.com/)){
-	    // 無視
-	}
-	else if(url.match(/(gif|jpg|jpeg|png)$/i)){
-	    $('#iframe').css('display','none');
-	    $('#image').css('display','block');
-	    $('#image').attr('src',url);
-	}
-	else {
-	    $('#iframe').css('display','block');
-	    $('#image').css('display','none');
-	    $('#iframe').attr('src',url);
-	}
-	// window.focus(); // 前面に持ってくる
-    }
+prevNode = (node) ->
+  prevnode = node.elder
+  while !prevnode && node.parent
+    prevnode = node.parent
+  prevnode
 
-    // 新しいノードの表示位置計算
-    node = nodeList[0];
-    menu = $('#menu');
-    dispLine(node, 0, center, '#0000ff', true, menu, node.children);
-    for(i=1;nodeList[i];i++){
-	top = center + i * 30;
-	if(top > browserHeight() - 40) break;
-	node = nodeList[i];
-	dispLine(node, i, top, '#000000', false, menu, false);
-    }
-    for(i= -1;nodeList[i];i--){
-	top = center + i * 30;
-	if(top < 0) break;
-	node = nodeList[i];
-	dispLine(node, i, top, '#000000', false, menu, false);
-    }
+nasty = (url) -> # 意地悪サイト
+  url.match /twitter\.com/i ||
+  url.match /www\.ted\.com/i
 
-    // アニメーション表示
-    if(useAnimation){
-	for(i in oldNodeList){ // 古いエントリの扱いを調査
-	    var oldnode = oldNodeList[i];
-	    j = hashIndex(nodeList,oldnode); // 新しいリストに存在するか調査
-	    if(j != null){ // 新しいリストに存在する == エントリが移動する
-		if(spans[j]){ // 見える場所に移動する場合
-		    if(oldSpans[i]){
-			oldSpans[i].animate( // 移動アニメーション
-			    {
-				top: nodeList[j].span.css('top')
-			    },
-			    {
-				duration: AnimationTime,
-				complete: function(){
-				    //this.remove();
-				    typeCount = 2;
-				    refresh();
-				}
-			    }
-			);
-		    }
-		}
-		else { // 見えなくなるエントリは即座に消す
-		    if(oldnode.span){
-			oldnode.span.hide();
-		    }
-		}
-	    }
-	    else { // 古いエントリが消える場合
-		if(shrinking){
-		    j = hashIndex(nodeList,oldnode.parent);
-		    if(j != null){ // 親の位置にシュリンクしながら消える
-			if(oldSpans[i]){
-			    oldSpans[i].animate(
-				{
-				    top: nodeList[j].span.css('top'),
-				    color: '#ffffff',
-				    opacity: 0.1
-				},
-				{
-				    duration: AnimationTime,
-				    complete: function(){
-					this.remove();
-					typeCount = 2;
-					refresh();
-				    }
-				}
-			    );
-			}
-		    }
-		}
-		else { // 即座に消す
-		    if(oldnode.span != undefined){
-			oldnode.span.hide();
-		    }
-		}
-	    }
-	}
-	for(i in nodeList){ // 新たに出現するエントリ
-	    var newnode = nodeList[i];
-	    k = hashIndex(oldNodeList,newnode);
-	    if(k == null){
-		parent = newnode.parent;
-		if(parent && !shrinking){ // 親の位置から出現する
-		    j = hashIndex(nodeList,parent);
-		    if(j != null){
-			if(newnode.span){
-			    var dest = newnode.span.css('top');
-			    newnode.span.show();
-			    newnode.span.css('opacity',0);
-			    newnode.span.css('top',intValue(parent.span.css('top'))+20);
-			    newnode.span.animate(
-				{
-				    top: dest,
-				    color: '#000000',
-				    opacity: 1.0
-				},
-				{
-				    duration: AnimationTime,
-				    complete: function(){
-					typeCount = 2;
-					refresh();
-				    }
-				}
-			    );
-			}
-		    }
-		}
-	    }
-	}
-    }
-};
+display = (newNodeList) -> # calc()で計算したリストを表示
+  oldNodeList = nodeList
+  nodeList = newNodeList
+  oldSpans = spans
+  spans = {}
 
-var calc = function(centerNode){ // centerNodeを中心にnodeListを再計算して表示
-    var node;
-    var i;
-    var newNodeList = {}; // 毎回富豪的にリストを生成
-    newNodeList[0] = centerNode;
-    node = centerNode;
-    for(i=1;node = nextNode(node);i++){
-	newNodeList[i] = node;
-    }
-    node = centerNode;
-    for(i= -1;node = prevNode(node);i--){
-	newNodeList[i] = node;
-    }
-    display(newNodeList);
-};
+  center = browserHeight() / 2
 
-var nextNode = function(node){
-    var nextnode = node.younger;
-    while(!nextnode && node.parent){
-	node = node.parent;
-	nextnode = node.younger;
-    }
-    return nextnode;
-};
+  # コンテンツに応じてiframeなどを表示
+  # 
+  url = nodeList[0].url
+  if url && showContents && !nasty(url)
+    if url.match /(gif|jpg|jpeg|png)$/i
+      $('#iframe').css 'display','none'
+      $('#image').css 'display','block'
+      $('#image').attr 'src',url
+    else
+      $('#iframe').css 'display','block'
+      $('#image').css 'display','none'
+      $('#iframe').attr 'src',url
 
-var prevNode = function(node){
-    var prevnode = node.elder;
-    while(!prevnode && node.parent){
-	prevnode = node.parent;
-    }
-    return prevnode;
-};
+  # 新しいノードの表示位置計算
+  node = nodeList[0]
+  menu = $('#menu')
+  dispLine node, 0, center, '#0000ff', true, menu, node.children
+  i = 1
+  while node = nodeList[i]
+    top = center + i * 30
+    break if top > browserHeight() - 40
+    dispLine node, i, top, '#000000', false, menu, false
+    i += 1
+  i = -1
+  while node = nodeList[i]
+    top = center + i * 30
+    break if top < 0
+    dispLine node, i, top, '#000000', false, menu, false
+    i -= 1
+
+  # アニメーション表示
+  if useAnimation
+    for i, oldnode of oldNodeList # 古いエントリの扱いを調査
+      if j = hashIndex nodeList, oldnode # 新しいリストに存在するか調査
+        if spans[j] # 見える場所に移動する場合
+          if oldSpans[i]
+            oldSpans[i].animate # 移動アニメーション
+              top: nodeList[j].span.css 'top'
+            ,
+              duration: AnimationTime
+              complete: ->
+                typeCount = 2
+                refresh()
+        else # 見えなくなるエントリは即座に消す
+          if oldnode.span
+            oldnode.span.hide()
+      else # 古いエントリが消える場合
+        if shrinking
+          j = hashIndex nodeList, oldnode.parent
+          if j != null # 親の位置にシュリンクしながら消える
+            if oldSpans[i]
+              oldSpans[i].animate
+                top: nodeList[j].span.css 'top'
+                color: '#ffffff'
+                opacity: 0.1
+              ,
+                duration: AnimationTime
+                complete: ->
+                  this.remove()
+                  typeCount = 2
+                  refresh()
+        else # 即座に消す
+          if oldnode.span != undefined
+            oldnode.span.hide()
+  
+    for i, newnode of nodeList # 新たに出現するエントリ
+      k = hashIndex oldNodeList, newnode
+      if k == null
+        parent = newnode.parent
+        if parent && !shrinking # 親の位置から出現する
+          j = hashIndex nodeList, parent
+          if j != null
+            if newnode.span
+              dest = newnode.span.css('top')
+              newnode.span.show()
+              newnode.span.css('opacity',0)
+              newnode.span.css('top',intValue(parent.span.css('top'))+20)
+              newnode.span.animate
+                top: dest
+                color: '#000000'
+                opacity: 1.0
+              ,
+                duration: AnimationTime
+                complete: ->
+                  typeCount = 2
+                  refresh()
+
+move = (delta, shrinkMode) -> # 視点移動
+  if typeCount == 0
+    clearTimeout typeCountTimeout
+    typeCount = 1
+    typeCountTimeout = setTimeout ->
+      typeCount = 0
+    , 1000
+  else if typeCount == 1
+    clearTimeout typeCountTimeout
+    typeCount = 2
+    typeCountTimeout = setTimeout ->
+      typeCount = 0
+    , 1000
+  else if typeCount == 2
+    clearTimeout typeCountTimeout
+    typeCount = 2
+    typeCountTimeout = setTimeout ->
+      typeCount = 0
+    ,1000
+  refresh()
+
+  clearTimeout hideTimeout
+  hideTimeout = setTimeout hideLines, HideTime
+
+  clearTimeout expandTimeout
+  if !mouseisdown
+    expandTimeout = setTimeout expand, ExpandTime
+
+  shrinking = true;
+
+  if nodeList[delta]
+    if shrinkMode == 0      # move()
+      calc nodeList[delta]
+    else
+      newNodeList = {}
+      i = 0
+      while nodeList[i+delta]
+        newNodeList[i] = nodeList[i+delta]
+        i += 1
+      i = -1
+      while nodeList[i+delta]
+        newNodeList[i] = nodeList[i+delta]
+        i -= 1
+      display newNodeList
+
+  return false
 
 
-var move = function(delta){ // 視点移動
-    if(typeCount == 0){
-	clearTimeout(typeCountTimeout);
-	typeCount = 1;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-    else if(typeCount == 1){
-	clearTimeout(typeCountTimeout);
-	typeCount = 2;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-    else if(typeCount == 2){
-	clearTimeout(typeCountTimeout);
-	typeCount = 2;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-
-    refresh();
-
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,HideTime);
-
-    clearTimeout(expandTimeout);
-    if(!mouseisdown){
-	expandTimeout = setTimeout(expand,ExpandTime);
-    }
-
-    shrinking = true;
-
-    if(nodeList[delta]){
-    	calc(nodeList[delta]);
-    }
-
-    return false;
-};
-
-var movex = function(delta){ // 視点移動
-  if(typeCount == 0){
-    clearTimeout(typeCountTimeout);
-	typeCount = 1;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-    else if(typeCount == 1){
-	clearTimeout(typeCountTimeout);
-	typeCount = 2;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-    else if(typeCount == 2){
-	clearTimeout(typeCountTimeout);
-	typeCount = 2;
-	typeCountTimeout = setTimeout(function(){
-	    typeCount = 0;
-	},1000);
-    }
-
-
-    clearTimeout(hideTimeout);
-    hideTimeout = setTimeout(hideLines,HideTime);
-
-    clearTimeout(expandTimeout);
-    if(!mouseisdown){
-	expandTimeout = setTimeout(expand,ExpandTime);
-    }
-
-    shrinking = true; // ?
-
-    refresh();
-
-    if(nodeList[delta]){
-	var newNodeList = {};
-	for(i=0;nodeList[i+delta];i++){
-	    newNodeList[i] = nodeList[i+delta];
-	}
-	for(i=-1;nodeList[i+delta];i--){
-	    newNodeList[i] = nodeList[i+delta];
-	}
-	display(newNodeList);
-    }
-
-    return false;
-};
-
+`
 $(window).blur(function(){ // ????
     setTimeout(window.focus,100);
 });
 
 $(window).mousewheel(function(event, delta, deltaX, deltaY) {
-    return movex(delta < 0 ? 1 : -1);
+    return move(delta < 0 ? 1 : -1, 1);
 });
 
 var mousedowny = 0;
@@ -424,11 +323,11 @@ var step = 0;
 var downfunc = function(e){
     e.preventDefault();
     if(e.type == 'mousedown'){
-	mousedowny = e.pageY;
+  mousedowny = e.pageY;
     }
     if(e.type == 'touchstart'){
-	mousedowny = event.changedTouches[0].pageY;
-	//mousedowny = event.touches[0].pageY;
+  mousedowny = event.changedTouches[0].pageY;
+  //mousedowny = event.touches[0].pageY;
     }
     mouseisdown = true;
 };
@@ -448,47 +347,47 @@ var upfunc = function(e){
 var movefunc = function(e){
     e.preventDefault();
     if(mouseisdown){
-	var delta = 0;
-	if(e.type == 'mousemove'){
-	    delta = e.pageY - mousedowny;
-	}
-	else if(e.type == 'touchmove'){
-	    delta = event.changedTouches[0].pageY - mousedowny;
-	}
-	var i;
-	var newstep;
-	if(delta > 0){
-	    newstep = Math.floor(delta / 20.0);
-	    if(newstep > step){
-		for(i=0;i<newstep-step;i++) movex(-1);
-	    }
-	    else if(newstep < step){
-		for(i=0;i<step-newstep;i++) movex(1);
-	    }
-	    //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
-	    step = newstep;
-	}
-	if(delta < 0){
-	    newstep = Math.floor((0-delta) / 20.0);
-	    if(newstep > step){
-		for(i=0;i<newstep-step;i++) movex(1);
-	    }
-	    else if(newstep < step){
-		for(i=0;i<step-newstep;i++) movex(-1);
-	    }
-	    //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
-	    step = newstep;
-	}
+  var delta = 0;
+  if(e.type == 'mousemove'){
+      delta = e.pageY - mousedowny;
+  }
+  else if(e.type == 'touchmove'){
+      delta = event.changedTouches[0].pageY - mousedowny;
+  }
+  var i;
+  var newstep;
+  if(delta > 0){
+      newstep = Math.floor(delta / 20.0);
+      if(newstep > step){
+    for(i=0;i<newstep-step;i++) move(-1,1);
+      }
+      else if(newstep < step){
+    for(i=0;i<step-newstep;i++) move(1,1);
+      }
+      //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
+      step = newstep;
+  }
+  if(delta < 0){
+      newstep = Math.floor((0-delta) / 20.0);
+      if(newstep > step){
+    for(i=0;i<newstep-step;i++) move(1,1);
+      }
+      else if(newstep < step){
+    for(i=0;i<step-newstep;i++) move(-1,1);
+      }
+      //$('#debug').text("step="+step+", newstep="+newstep+", y="+event.changedTouches[0].pageY);
+      step = newstep;
+  }
     }
 };
 
 var keydownfunc = function(e){
     switch(e.keyCode){
-    case 40: return move(1);   // 下
-    case 39: return movex(1);  // 右
-    case 38: return move(-1);  // 上
-    case 37: return movex(-1); // 左
-    }
+    case 40: return move(1,0);   // 下
+    case 39: return move(1,1);  // 右
+    case 38: return move(-1,0);  // 上
+    case 37: return move(-1,1); // 左
+    }o
     return false;
 };
 
