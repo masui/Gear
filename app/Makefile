@@ -10,7 +10,7 @@ javascripts/gear.js: ../javascripts/gear.coffee
 	cp ../javascripts/gear.coffee javascripts
 	coffee -c -b javascripts/gear.coffee
 
-images/loading.gif
+images/loading.gif: ../images/loading.gif
 	-mkdir images
 	cp ../images/loading.gif images
 

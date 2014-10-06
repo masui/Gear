@@ -40,7 +40,7 @@ if (singleWindow) {
   lineHeight = 30;
 } else {
   menuFontSize = 11;
-  lineHeight = 20;
+  lineHeight = 14;
 }
 
 nodeList = {};

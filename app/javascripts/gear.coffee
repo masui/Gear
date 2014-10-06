@@ -22,7 +22,7 @@ if singleWindow
   lineHeight = 30
 else
   menuFontSize = 11
-  lineHeight = 20
+  lineHeight = 14
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
 oldNodeList = {}
