@@ -1,7 +1,7 @@
 #
-# gear.js - 単純装置で階層的コンテンツを閲覧する
+# gear.js - 「超」ナビゲーション
 #
-# node-webkitで動くようにしたもの
+# node-webkit / ブラウザでも動く
 # 
 # http://GitHub.com/masui/Gear
 #
@@ -16,13 +16,6 @@ json =               'data.json' unless json?
 
 node_app = typeof(require) != 'undefined' # node-webkitによるアプリかどうか
 singleWindow = true if node_app
-
-if singleWindow
-  menuFontSize = 18
-  lineHeight = 30
-else
-  menuFontSize = 11
-  lineHeight = 20
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
 oldNodeList = {}
@@ -137,13 +130,14 @@ dispLine = (node,ind,top,color,bold,parent,showloading) ->
   if singleWindow
     return if typeCount < 2 && !nodeList[0].children
 
+  fontsize = (if singleWindow then 18 else 11)
   span = $('<span>')
   span.attr 'class', 'line'
   span.css 'width', parent.css('width')
   span.css 'color', color
   span.css 'top', String(top)
   span.css 'font-weight','bold' if bold
-  span.css 'font-size',menuFontSize+'pt'
+  span.css 'font-size', "#{fontsize}pt"
 
   span.text Array(node.level+1).join("　")+'・' + node.title # strをx回繰り返し
 
@@ -221,6 +215,7 @@ display = (newNodeList) -> # calc()で計算したリストを表示
   # 新しいノードの表示位置計算
   node = nodeList[0]
   menu = $('#menu')
+  lineHeight = (if singleWindow then 30 else 20)
   dispLine node, 0, center, '#0000ff', true, menu, node.children
   i = 1
   while node = nodeList[i]
@@ -353,8 +348,8 @@ upfunc = (e) ->
 
 movefunc = (e) ->
   e.preventDefault()
-  delta = 0
   if $.mouseisdown
+    delta = 0
     if e.type == 'mousemove'
       delta = e.pageY - $.mousedowny
     if e.type == 'touchmove'
@@ -375,10 +370,10 @@ movefunc = (e) ->
 
 keydownfunc = (e) ->
   switch e.keyCode
-    when 40 then move(1,0)  # 下
-    when 39 then move(1,1)  # 右
-    when 38 then move(-1,0) # 上
     when 37 then move(-1,1) # 左
+    when 38 then move(-1,0) # 上
+    when 39 then move(1,1)  # 右
+    when 40 then move(1,0)  # 下
 
 $(window).on
   'mousedown':  downfunc
