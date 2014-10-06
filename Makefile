@@ -1,4 +1,4 @@
-make:
+javascripts/gear.js: javascripts/gear.coffee
 	coffee -c -b javascripts/gear.coffee
 
 all:
@@ -8,7 +8,7 @@ dat:
 	mv /www/www.pitecan.com/tmp/Dial/Data/data.json /www/www.pitecan.com/tmp/Dial
 
 push:
-	git push
+	git push origin master
 
 paddle:
 	PORT=3000 BLE=paddle npm start & sleep 2; open 'http://localhost:3000/paddle.html'
