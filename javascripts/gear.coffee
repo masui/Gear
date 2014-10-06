@@ -72,8 +72,7 @@ $ -> # document.ready()
     if singleWindow
     else # コンテンツ表示ウィンドウを開く
       height = screen.availHeight
-      menuwidth = screen.availWidth / 5
-      menuwidth = 300 if menuwidth > 300
+      menuwidth = Math.min screen.availWidth / 5, 300
       width = screen.availWidth - menuwidth
       param = "top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=yes"
       $.contentswin = window.open "","Contents",param
@@ -126,27 +125,27 @@ hideLines = ->
     opacity:0.0
   , HideAnimationTime
 
-dispLine = (node,ind,top,color,bold,parent,showloading) ->
+dispLine = (node,ind,top,color,bold,showloading) ->
   if singleWindow
     return if typeCount < 2 && !nodeList[0].children
 
   fontsize = (if singleWindow then 18 else 11)
   span = $('<span>')
   span.attr 'class', 'line'
-  span.css 'width', parent.css('width')
+  span.css 'width', $('#menu').css('width')
   span.css 'color', color
   span.css 'top', String(top)
   span.css 'font-weight','bold' if bold
   span.css 'font-size', "#{fontsize}pt"
 
-  span.text Array(node.level+1).join("　")+'・' + node.title # strをx回繰り返し
+  span.text Array(node.level+1).join("　")+"・#{node.title}" # strをx回繰り返し
 
   if showloading # ローディングGIFアニメ表示
     #  http://preloaders.net/ で作成したロード中アイコンを利用
     span.append $(' <span>&nbsp;</span>')
     span.append $('<img src="images/loading.gif" style="height:12pt;">')
 
-  parent.append span
+  $('#menu').append span
 
   span.hide() if useAnimation
   spans[ind] = span
@@ -195,8 +194,7 @@ display = (newNodeList) -> # calc()で計算したリストを表示
 
   center = browserHeight() / 2
 
-  # コンテンツに応じてiframeなどを表示
-  # 
+  # iframeまたは別ウィンドウにコンテンツを表示
   url = nodeList[0].url
   if url && showContents
     if singleWindow
@@ -214,20 +212,19 @@ display = (newNodeList) -> # calc()で計算したリストを表示
 
   # 新しいノードの表示位置計算
   node = nodeList[0]
-  menu = $('#menu')
   lineHeight = (if singleWindow then 30 else 20)
-  dispLine node, 0, center, '#0000ff', true, menu, node.children
+  dispLine node, 0, center, '#0000ff', true, node.children
   i = 1
   while node = nodeList[i]
     top = center + i * lineHeight
     break if top > browserHeight() - 40
-    dispLine node, i, top, '#000000', false, menu, false
+    dispLine node, i, top, '#000000', false, false
     i += 1
   i = -1
   while node = nodeList[i]
     top = center + i * lineHeight
     break if top < 0
-    dispLine node, i, top, '#000000', false, menu, false
+    dispLine node, i, top, '#000000', false, false
     i -= 1
 
   # アニメーション表示
@@ -354,16 +351,16 @@ movefunc = (e) ->
       delta = event.changedTouches[0].pageY - $.mousedowny
     if delta > 0
       newstep = Math.floor(delta / 20.0)
-      if newstep > $.step
-        move(-1,1) for i in [0 ... newstep-$.step]
-      else
-        move(1,1) for i in [0 ... $.step-newstep]
+      #if newstep > $.step
+      move(-1,1) for i in [0 ... newstep-$.step]
+      #else
+      #  move(1,1) for i in [0 ... $.step-newstep]
     else
       newstep = Math.floor((0-delta) / 20.0)
-      if newstep > $.step
-        move(1,1) for i in [0 ... newstep-$.step]
-      else
-        move(-1,1) for i in [0 ... $.step-newstep]
+      #if newstep > $.step
+      move(1,1) for i in [0 ... newstep-$.step]
+      #else
+      #  move(-1,1) for i in [0 ... $.step-newstep]
     step = newstep
 
 keydownfunc = (e) ->
