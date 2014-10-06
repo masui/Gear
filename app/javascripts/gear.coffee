@@ -22,7 +22,7 @@ if singleWindow
   lineHeight = 30
 else
   menuFontSize = 11
-  lineHeight = 14
+  lineHeight = 20
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
 oldNodeList = {}
@@ -140,7 +140,7 @@ dispLine = (node,ind,top,color,bold,parent,showloading) ->
   span.attr 'class', 'line'
   span.css 'width', parent.css('width')
   span.css 'color', color
-  span.css 'top', String(top)+'pt'
+  span.css 'top', String(top)
   span.css 'font-weight','bold' if bold
   span.css 'font-size',menuFontSize+'pt'
 
