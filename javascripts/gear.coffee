@@ -286,10 +286,8 @@ display = (newNodeList) -> # calc()で計算したリストを表示
 
 move = (delta, shrinkMode) -> # 視点移動
   if typeCount <= 2
-    newcount = typeCount + 1
-    newcount = 2 if newcount > 2
     clearTimeout typeCountTimeout
-    typeCount = newcount
+    typeCount = Math.min typeCount+1, 2 
     typeCountTimeout = setTimeout ->
       typeCount = 0
     , 1000
@@ -308,7 +306,7 @@ move = (delta, shrinkMode) -> # 視点移動
   if nodeList[delta]
     if shrinkMode == 0       # フォーカスがはずれたらシュリンクする
       calc nodeList[delta]
-    else                     # 可逆的に
+    else                     # 可逆的に移動する場合
       newNodeList = {}
       i = 0
       while nodeList[i+delta]
