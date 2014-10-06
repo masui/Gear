@@ -7,6 +7,7 @@ app.nw
 Gear.exe
 Gear.app/Contents/Resources/app.nw
 Gear.zip
+app/javascripts/gear.coffee
 app/javascripts/gear.js
 app/images/loading.gif
 javascripts/gear.js
