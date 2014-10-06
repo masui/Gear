@@ -29,13 +29,14 @@ oldNodeList = {}
 spans = {}        # 表示されるspan要素のリスト
 oldSpans = {}
 
-StepTime = 1000       # 段階的展開のタイムアウト時間   ?????
-ExpandTime = 1500     # 無操作時展開のタイムアウト時間
+StepTime = 1000         # 段階的展開のタイムアウト時間   ?????
+ExpandTime = 1500       # 無操作時展開のタイムアウト時間
 expandTimeout = null
 
-AnimationTime = 300   # ズーミングのアニメーション時間
+AnimationTime = 300     # ズーミングのアニメーション時間
 
-HideTime = 1600       # 無操作時にメニューを消すアニメーション
+HideTime = 1600         # 無操作時にメニューを消すまでの時間
+HideAnimationTime = 700 # メニューが消えるアニメーションの時間
 hideTimeout = null
 
 typeCount = 0           # 連打したかどうか: 連打されてたら表示を行なう
@@ -130,7 +131,7 @@ intValue = (s) ->
 hideLines = ->
   $('span').animate
     opacity:0.0
-  , 700
+  , HideAnimationTime
 
 dispLine = (node,ind,top,color,bold,parent,showloading) ->
   if singleWindow
@@ -189,8 +190,8 @@ prevNode = (node) ->
   prevnode
 
 nasty = (url) -> # 意地悪サイト
-  (url.match /twitter\.com/i) ||
-  (url.match /www\.ted\.com/i)
+  url.match(/twitter\.com/i) ||
+  url.match(/www\.ted\.com/i)
 
 display = (newNodeList) -> # calc()で計算したリストを表示
   oldNodeList = nodeList
@@ -289,24 +290,14 @@ display = (newNodeList) -> # calc()で計算したリストを表示
                   refresh()
 
 move = (delta, shrinkMode) -> # 視点移動
-  if typeCount == 0
+  if typeCount <= 2
+    newcount = typeCount + 1
+    newcount = 2 if newcount > 2
     clearTimeout typeCountTimeout
-    typeCount = 1
+    typeCount = newcount
     typeCountTimeout = setTimeout ->
       typeCount = 0
     , 1000
-  else if typeCount == 1
-    clearTimeout typeCountTimeout
-    typeCount = 2
-    typeCountTimeout = setTimeout ->
-      typeCount = 0
-    , 1000
-  else if typeCount == 2
-    clearTimeout typeCountTimeout
-    typeCount = 2
-    typeCountTimeout = setTimeout ->
-      typeCount = 0
-    ,1000
   refresh()
 
   if singleWindow
@@ -314,7 +305,7 @@ move = (delta, shrinkMode) -> # 視点移動
     hideTimeout = setTimeout hideLines, HideTime
 
   clearTimeout expandTimeout
-  if !mouseisdown
+  if !$.mouseisdown
     expandTimeout = setTimeout expand, ExpandTime
 
   shrinking = true;
@@ -343,47 +334,43 @@ $(window).mousewheel (event, delta, deltaX, deltaY) ->
   d = (if delta < 0 then 1 else -1)
   move d, 1
 
-mouseisdown = false
-mousedowny = 0
-step = 0
-
 downfunc = (e) ->
   e.preventDefault()
   if e.type == 'mousedown'
-    mousedowny = e.pageY
+    $.mousedowny = e.pageY
   if e.type == 'touchstart'
-    mousedowny = event.changedTouches[0].pageY
-  mouseisdown = true;
+    $.mousedowny = event.changedTouches[0].pageY
+  $.mouseisdown = true;
 
 upfunc = (e) ->
   e.preventDefault()
-  mouseisdown = false
+  $.mouseisdown = false
 
   clearTimeout expandTimeout
   expandTimeout = setTimeout expand, ExpandTime
 
-  step = 0
+  $.step = 0
 
 movefunc = (e) ->
   e.preventDefault()
   delta = 0
-  if mouseisdown
+  if $.mouseisdown
     if e.type == 'mousemove'
-      delta = e.pageY - mousedowny
+      delta = e.pageY - $.mousedowny
     if e.type == 'touchmove'
-      delta = event.changedTouches[0].pageY - mousedowny
+      delta = event.changedTouches[0].pageY - $.mousedowny
     if delta > 0
       newstep = Math.floor(delta / 20.0)
-      if newstep > step
-        move(-1,1) for i in [0 ... newstep-step]
+      if newstep > $.step
+        move(-1,1) for i in [0 ... newstep-$.step]
       else
-        move(1,1) for i in [0 ... step-newstep]
+        move(1,1) for i in [0 ... $.step-newstep]
     else
       newstep = Math.floor((0-delta) / 20.0)
-      if newstep > step
-        move(1,1) for i in [0 ... newstep-step]
+      if newstep > $.step
+        move(1,1) for i in [0 ... newstep-$.step]
       else
-        move(-1,1) for i in [0 ... step-newstep]
+        move(-1,1) for i in [0 ... $.step-newstep]
     step = newstep
 
 keydownfunc = (e) ->
