@@ -31,3 +31,16 @@ upload:
 		Gear/data.json \
 		| ssh pitecan.com "cd /www/www.pitecan.com; tar xvzf -"
 
+zip:
+	cd ..; zip Gear.zip \
+		Gear/demo.html \
+		Gear/index.html \
+		Gear/images/loading.gif \
+		Gear/javascripts/gear.js \
+		Gear/javascripts/jquery-1.10.2.js \
+		Gear/javascripts/jquery.js \
+		Gear/javascripts/jquery.mousewheel.js \
+		Gear/stylesheets/gear.css \
+		Gear/data.json \
+		Gear/demo.bat
+
