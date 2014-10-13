@@ -18,7 +18,6 @@ linda = require('linda').Server.listen(io: io, server: server)
 ts = linda.tuplespace('paddle')
 console.log "server start - port:#{process.env.PORT}"
 
-
 ## Arduino ##
 arduino = new Firmata()
 arduino.once 'connect', ->
