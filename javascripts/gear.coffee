@@ -310,7 +310,7 @@ move = (delta, shrinkMode) -> # 視点移動
 
   if nodeList[delta]
     if !$.step1
-      $.step1 = nodeList[delta] # 1ステップ移動先
+      $.step1 = nodeList[delta] # 1ステップ移動先を計算しておく
 
     if shrinkMode == 0       # フォーカスがはずれたらシュリンクする
       calc nodeList[delta]
@@ -397,8 +397,6 @@ setup_paddle = ->
   ts = linda.tuplespace 'paddle'
 
   linda.io.on 'connect', ->
-    direction = 'None'
-
     $.starttime = null
     $.moveTimeout = null  # move()をsetTimeout()で呼ぶ
     $.nexttime = null   # 次のmove()予定時刻
@@ -410,7 +408,6 @@ setup_paddle = ->
       curtime = new Date()
       clearTimeout $.moveTimeout
       if value < 10
-        direction = 'None'
         if curtime - $.starttime < 300 && $.step1 # 一瞬で離した場合は1ステップだけ動かす
           refresh()
           calc $.step1
@@ -449,4 +446,4 @@ repeatedfunc = (interval, func) ->
 
 movefunc = (delta) ->
   ->
-    move delta, 1
+    move delta, 0
