@@ -40,3 +40,6 @@ upload: dmg zip
 	scp Gear.zip pitecan.com:/www/www.pitecan.com/tmp
 	scp Gear.dmg pitecan.com:/www/www.pitecan.com/tmp
 
+demo:
+	open Gear.app
+	cd ../arduino; PORT=3000 BLE=paddle npm start
