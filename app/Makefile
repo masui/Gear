@@ -20,6 +20,8 @@ app: data.json javascripts/gear.js images/loading.gif
 		javascripts/jquery.js \
 		javascripts/jquery.mousewheel.js \
 		javascripts/gear.js \
+		javascripts/linda.js \
+		javascripts/socket.io.js \
 		data.json \
 		images/loading.gif
 mac: app
