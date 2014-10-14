@@ -45,4 +45,5 @@ upload: dmg zip
 
 demo:
 	open Gear.app
-	cd ../arduino; PORT=3000 BLE=paddle npm start
+	cd ../arduino; make
+
