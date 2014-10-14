@@ -408,6 +408,9 @@ setup_paddle = ->
       curtime = new Date()
       clearTimeout $.moveTimeout
       if value < 10
+        # ポンと押してすぐ離したときひとつぶんだけ移動してほしいので、
+        # ひとつ先の位置をstep1に記録しておき、すぐ離した場合は
+        # そこに移動するようにする。
         if curtime - $.starttime < 300 && $.step1 # 一瞬で離した場合は1ステップだけ動かす
           refresh()
           calc $.step1
