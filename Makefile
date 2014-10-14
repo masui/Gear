@@ -1,11 +1,14 @@
+demo: javascripts/gear.js data.json
+	open demo.html
+
 javascripts/gear.js: javascripts/gear.coffee
 	coffee -c -b javascripts/gear.coffee
 
 all:
 	echo make dat / make scp
-dat:
-	cd /www/www.pitecan.com/tmp/Dial/Data; make; cd /www/www.pitecan.com/tmp/Dial
-	mv /www/www.pitecan.com/tmp/Dial/Data/data.json /www/www.pitecan.com/tmp/Dial
+data.json:
+	cd data; make
+	cp data/data.json .
 
 push:
 	git push origin master
