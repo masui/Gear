@@ -1,5 +1,6 @@
 {
   "name": "Gear",
+  "xxx": "http://localhost:3000/paddle.html",
   "main": "index.html",
   "webkit": {
     "plugin": true,

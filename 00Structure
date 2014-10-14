@@ -1,0 +1,62 @@
+* 種類
+ ブラウザ版
+   2画面
+   キーまたはPaddleで動く
+   paddleの場合は paddle.js を使う?
+   新しいウィンドウとして開くと全画面になるとか
+   full.htmlからindex.htmlを開く
+     サイズを指定してindex.htmlを開くだけ
+ node-webkit版
+  1画面
+  アプリとして動く
+  キーとマウスで動く
+  paddleも使えれば嬉しいかも
+
+* 方針
+ JSはひとつにしたい
+  gear.coffeeだけ
+ Linda関連ソースも入れておくべきか
+ Lindaを使うかどうかは書いておく
+
+* ベースはindex.html + gear.coffee
+ メニューのウィンドウ
+ コンテンツウィンドウは開いたり開かなかったり
+ node-webkitの場合はfullscreenにする
+ Linda関連も入れておく
+
+ index.htmlのパラメタ変えればいろいろ実験できるようにする
+
+ index.htmlは... 
+  nodeの場合は1画面に
+  そうでない場合は2画面にしよう
+
+-------
+
+
+ node-webkit
+  node_webkit.html とか適当な名前でいい
+ ブラウザのもの
+  index.html がいいんじゃないかな
+ 特殊なもの
+  date.html とか
+
+* index.heml
+  menu.htmlを開く
+    その中で gear.js を読む?
+
+* demo.html
+  demo.js?
+    index.htmlをオープン
+    index.html
+      gear.js
+      モードに応じてウィンドウを開く
+
+//
+* paddle.html
+  paddle.js
+  index.htmlを開く
+    PaddleとかLindaとかを制御
+  paddleからmenuwinの関数を呼び出す
+
+
+

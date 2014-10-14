@@ -14,7 +14,10 @@ dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使う�
 singleWindow =       false       unless singleWindow?        # メニューとコンテンツを同じ画面にするかどうか
 json =               'data.json' unless json?
 
-node_app = typeof(require) != 'undefined' # node-webkitによるアプリかどうか
+node_app = (typeof(require) != 'undefined') # node-webkitによるアプリかどうか
+use_linda = (typeof(io) != 'undefined')     # Lindaを使うかどうか
+ts = null
+linda = null
 singleWindow = true if node_app
 
 nodeList = {}     # 表示可能ノードのリスト. nodeList[0]を中心に表示する
@@ -67,22 +70,20 @@ $ -> # document.ready()
         win.enterFullscreen()
       ,false
 
-    # paddle対応
-    #
-    # BLEFirmata = require 'ble-firmata'
-    # arduino = new BLEFirmata().connect "paddle"
-    # arduino.on 'connect', ->
-    #   allert "connect!!"
-    #   allert "board version: #{arduino.boardVersion}"
-    #
-    # arduino.on 'analogChange', (e) ->
-    #   if e.pin == 0
-    #     allert "pin" + e.pin + " : " + e.old_value + " -> " + e.value
-    #
-    #arduino.on('disconnect', function(){
-    #  console.log("disconnect!");
-    #});
-      
+  # 可能ならpaddle対応
+  if use_linda
+    # socket = io.connect location.protocol + "//" + location.host
+    socket = io.connect "http://localhost:3000"
+    linda = new Linda().connect(socket)
+    ts = linda.tuplespace 'paddle'
+
+    linda.io.on 'connect', ->
+      ts.watch {type:"paddle"}, (err, tuple) ->
+        allert "Linda error" if err
+        direction = tuple.data['direction']
+        d = (if direction == 'left' then -1 else 1)
+        move d, 0
+ 
   loadData()
 
   if showContents
@@ -378,7 +379,7 @@ movefunc = (e) ->
       move(1,1) for i in [0 ... newstep-$.step]
       #else
       #  move(-1,1) for i in [0 ... $.step-newstep]
-    step = newstep
+    $.step = newstep
 
 keydownfunc = (e) ->
   switch e.keyCode
@@ -396,3 +397,50 @@ $(window).on
   'touchmove':  movefunc
   'keydown':    keydownfunc
   'resize':     resizefunc
+
+#direction = 'None'
+#value = 0
+#
+#starttime = null
+#movetimer = null  # move()をsetTimeout()で呼ぶ
+#nexttime = null   # 次のmove()予定時刻
+#
+#linda.io.on 'connect', ->
+#  ts.watch {type:"paddle"}, (err, tuple) ->
+#    return if err
+#    # $.allfocus() ???
+#
+#    direction = tuple.data['direction']
+#    value = tuple.data['value']
+#    curtime = new Date()
+#    clearTimeout movetimer
+#    if value < 10
+#      direction = 'None'
+#      if curtime - starttime < 300 && menuwin.$.step1 # 1ステップだけ動かす
+#        refresh()
+#        calc(menuwin.$.step1);
+#      starttime = null
+#      nexttime = null
+#      menuwin.$.step1 = null;
+#      repcount = 0;
+#    }
+#    else {
+#      // このあたりのパラメタは結構重要
+#      var interval = 
+#            value > 500 ? 25 :
+#            value > 400 ? 50 :
+#            value > 300 ? 100 :
+#            value > 200 ? 200 :
+#            value > 150 ? 300 :
+#            value > 80 ? 400 : 400 ;
+#      if(starttime == null){
+#        starttime = curtime;
+#        nexttime = starttime;
+#      }
+#      //console.log("nexttime = " + Number(nexttime) + ", curtime = " + Number(curtime));
+#      //if(nexttime >= curtime){
+#        fire(nexttime-curtime,interval,movefunc(direction == "left" ? 1 : -1));
+#      //}
+#    }
+#  });
+#});

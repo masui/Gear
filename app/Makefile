@@ -13,14 +13,13 @@ images/loading.gif: ../images/loading.gif
 	cp ../images/loading.gif images
 
 app: data.json javascripts/gear.js images/loading.gif
-	zip -r app.nw \
+	zip app.nw \
 		package.json \
 		index.html \
 		stylesheets/gear.css \
 		javascripts/jquery.js \
 		javascripts/jquery.mousewheel.js \
 		javascripts/gear.js \
-		node_modules \
 		data.json \
 		images/loading.gif
 mac: app
