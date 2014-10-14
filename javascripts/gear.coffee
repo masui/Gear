@@ -63,9 +63,26 @@ $ -> # document.ready()
         hideEdit: true
         hideWindow: true
       win.menu = nativeMenuBar
-     window.addEventListener "resize", ->
+      window.addEventListener "resize", ->
         win.enterFullscreen()
       ,false
+
+    # paddle対応
+    #
+    # BLEFirmata = require 'ble-firmata'
+    # arduino = new BLEFirmata().connect "paddle"
+    # arduino.on 'connect', ->
+    #   allert "connect!!"
+    #   allert "board version: #{arduino.boardVersion}"
+    #
+    # arduino.on 'analogChange', (e) ->
+    #   if e.pin == 0
+    #     allert "pin" + e.pin + " : " + e.old_value + " -> " + e.value
+    #
+    #arduino.on('disconnect', function(){
+    #  console.log("disconnect!");
+    #});
+      
   loadData()
 
   if showContents

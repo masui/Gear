@@ -1,5 +1,3 @@
-#	cd javascripts; coffee -b -c gear.coffee; cd ..
-
 apps: mac windows
 
 data.json: ../data/data.json
@@ -15,13 +13,14 @@ images/loading.gif: ../images/loading.gif
 	cp ../images/loading.gif images
 
 app: data.json javascripts/gear.js images/loading.gif
-	zip app.nw \
+	zip -r app.nw \
 		package.json \
 		index.html \
 		stylesheets/gear.css \
 		javascripts/jquery.js \
 		javascripts/jquery.mousewheel.js \
 		javascripts/gear.js \
+		node_modules \
 		data.json \
 		images/loading.gif
 mac: app
