@@ -3,6 +3,9 @@ apps: mac windows
 data.json: ../data/data.json
 	cp ../data/data.json .
 
+../data/data.json:
+	cd ../data; make
+
 javascripts/gear.js: ../javascripts/gear.coffee
 	-mkdir javascripts
 	cp ../javascripts/gear.coffee javascripts
