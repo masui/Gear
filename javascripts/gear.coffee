@@ -72,17 +72,7 @@ $ -> # document.ready()
 
   # 可能ならpaddle対応
   if use_linda
-    # socket = io.connect location.protocol + "//" + location.host
-    socket = io.connect "http://localhost:3000"
-    linda = new Linda().connect(socket)
-    ts = linda.tuplespace 'paddle'
-
-    linda.io.on 'connect', ->
-      ts.watch {type:"paddle"}, (err, tuple) ->
-        allert "Linda error" if err
-        direction = tuple.data['direction']
-        d = (if direction == 'left' then -1 else 1)
-        move d, 0
+    setup_paddle()
  
   loadData()
 
@@ -319,6 +309,9 @@ move = (delta, shrinkMode) -> # 視点移動
   shrinking = true;
 
   if nodeList[delta]
+    if !$.step1
+      $.step1 = nodeList[delta] # 1ステップ移動先
+
     if shrinkMode == 0       # フォーカスがはずれたらシュリンクする
       calc nodeList[delta]
     else                     # 可逆的に移動する場合
@@ -398,49 +391,62 @@ $(window).on
   'keydown':    keydownfunc
   'resize':     resizefunc
 
-#direction = 'None'
-#value = 0
-#
-#starttime = null
-#movetimer = null  # move()をsetTimeout()で呼ぶ
-#nexttime = null   # 次のmove()予定時刻
-#
-#linda.io.on 'connect', ->
-#  ts.watch {type:"paddle"}, (err, tuple) ->
-#    return if err
-#    # $.allfocus() ???
-#
-#    direction = tuple.data['direction']
-#    value = tuple.data['value']
-#    curtime = new Date()
-#    clearTimeout movetimer
-#    if value < 10
-#      direction = 'None'
-#      if curtime - starttime < 300 && menuwin.$.step1 # 1ステップだけ動かす
-#        refresh()
-#        calc(menuwin.$.step1);
-#      starttime = null
-#      nexttime = null
-#      menuwin.$.step1 = null;
-#      repcount = 0;
-#    }
-#    else {
-#      // このあたりのパラメタは結構重要
-#      var interval = 
-#            value > 500 ? 25 :
-#            value > 400 ? 50 :
-#            value > 300 ? 100 :
-#            value > 200 ? 200 :
-#            value > 150 ? 300 :
-#            value > 80 ? 400 : 400 ;
-#      if(starttime == null){
-#        starttime = curtime;
-#        nexttime = starttime;
-#      }
-#      //console.log("nexttime = " + Number(nexttime) + ", curtime = " + Number(curtime));
-#      //if(nexttime >= curtime){
-#        fire(nexttime-curtime,interval,movefunc(direction == "left" ? 1 : -1));
-#      //}
-#    }
-#  });
-#});
+setup_paddle = ->
+  socket = io.connect "http://localhost:3000"
+  linda = new Linda().connect(socket)
+  ts = linda.tuplespace 'paddle'
+
+  linda.io.on 'connect', ->
+    direction = 'None'
+
+    $.starttime = null
+    $.moveTimeout = null  # move()をsetTimeout()で呼ぶ
+    $.nexttime = null   # 次のmove()予定時刻
+    
+    ts.watch {type:"paddle"}, (err, tuple) ->
+      alert "Linda error" if err
+      direction = tuple.data['direction']
+      value = tuple.data['value']
+      curtime = new Date()
+      clearTimeout $.moveTimeout
+      if value < 10
+        direction = 'None'
+        if curtime - $.starttime < 300 && $.step1 # 一瞬で離した場合は1ステップだけ動かす
+          refresh()
+          calc $.step1
+        $.starttime = null
+        $.nexttime = null
+        $.step1 = null
+      else
+        # このあたりのパラメタは結構重要
+        interval = 
+          if value > 500 then 25
+          else if value > 400 then 50
+          else if value > 300 then 100
+          else if value > 200 then 200
+          else if value > 150 then 300
+          else if value > 80  then 400
+          else 500
+        if $.starttime == null
+          $.starttime = curtime
+          $.nexttime = $.starttime
+        fire $.nexttime-curtime, interval, movefunc(if direction == "left" then -1 else 1)
+
+# wait時間待った後でfuncを起動し、その後はintervalごとにfuncを起動
+fire = (wait, interval, func) ->
+  curtime = new Date()
+  if wait == 0
+    func()
+    $.nexttime = Number(curtime) + interval
+    $.moveTimeout = setTimeout repeatedfunc(interval,func), interval
+  else
+    $.nexttime = Number(curtime) + wait
+    $.moveTimeout = setTimeout repeatedfunc(interval,func), wait
+
+repeatedfunc = (interval, func) ->
+  ->
+    fire 0, interval, func
+
+movefunc = (delta) ->
+  ->
+    move delta, 1

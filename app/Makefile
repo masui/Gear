@@ -43,7 +43,7 @@ upload: dmg zip
 	scp Gear.zip pitecan.com:/www/www.pitecan.com/tmp
 	scp Gear.dmg pitecan.com:/www/www.pitecan.com/tmp
 
-demo:
+demo: apps
 	open Gear.app
 	cd ../arduino; make
 
