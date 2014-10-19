@@ -14,6 +14,8 @@ root = {}
 parents = []
 parents[0] = root
 
+category = ''
+
 ARGF.each { |line|
   line = Kconv.kconv(line, Kconv::UTF8, Kconv::AUTO)
   line.chomp!
@@ -27,11 +29,20 @@ ARGF.each { |line|
   parents[indent+1] = node
   if parents[indent]['children'].nil? then
     parents[indent]['children'] = []
+    if indent > 0 then
+      nop = {}
+      nop['url'] = ''
+      nop['title'] = "#{category}のリスト"
+      parents[indent]['children'] << nop
+    end
   end
   parents[indent]['children'] << node
   line.split(/\t/).each { |entry|
     entry =~ /^([a-zA-Z_]+):(\s*)(.*)$/
     node[$1] = $3
+    if $1 == 'title'
+      category = $3
+    end
   }
 }
 

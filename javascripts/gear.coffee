@@ -14,6 +14,10 @@ dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使う�
 singleWindow =       false       unless singleWindow?        # メニューとコンテンツを同じ画面にするかどうか
 json =               'data.json' unless json?
 
+# sayコマンドで読みあげる
+useAudio =           false       unless useAudio?            # 項目を発声するかどうか
+sayCGI =  "http://localhost/~masui/say.cgi" unless sayCGI?
+
 node_app = (typeof(require) != 'undefined') # node-webkitによるアプリかどうか
 use_linda = (typeof(io) != 'undefined')     # Lindaを使うかどうか
 ts = null
@@ -122,6 +126,7 @@ expand = -> # 注目してるエントリの子供を段階的に展開する
   expandTimeout = null
   shrinking = false
   if nodeList[0].children
+    say nodeList[0].children[0] if useAudio
     calc nodeList[0].children[0]
     expandTimeout = setTimeout expand, StepTime
 
@@ -325,6 +330,9 @@ move = (delta, shrinkMode) -> # 視点移動
         newNodeList[i] = nodeList[i+delta]
         i -= 1
       display newNodeList
+      
+  say nodeList[0] if useAudio
+  
   false
 
 #$(window).blur(function(){ // ????
@@ -333,7 +341,7 @@ move = (delta, shrinkMode) -> # 視点移動
 
 $(window).mousewheel (event, delta, deltaX, deltaY) ->
   d = (if delta < 0 then 1 else -1)
-  move d, 1
+  move d, 0
 
 downfunc = (e) ->
   e.preventDefault()
@@ -450,3 +458,14 @@ repeatedfunc = (interval, func) ->
 movefunc = (delta) ->
   ->
     move delta, 0
+
+say = (node) ->
+  text = node.title
+  if text
+    #if(! node.children){
+    #  text = text.substring(0,6);
+    #
+    $.ajax
+      type: "GET"
+      async: true
+      url: "#{sayCGI}?text=#{text}&level=#{node.level}"
