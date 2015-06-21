@@ -29,12 +29,12 @@ ARGF.each { |line|
   parents[indent+1] = node
   if parents[indent]['children'].nil? then
     parents[indent]['children'] = []
-    if indent > 0 then
-      nop = {}
-      nop['url'] = ''
-      nop['title'] = "#{category}のリスト"
-      parents[indent]['children'] << nop
-    end
+    #if indent > 0 then
+    #  nop = {}
+    #  nop['url'] = ''
+    #  nop['title'] = "#{category} リスト先頭"
+    #  parents[indent]['children'] << nop
+    #end
   end
   parents[indent]['children'] << node
   line.split(/\t/).each { |entry|

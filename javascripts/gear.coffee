@@ -438,7 +438,7 @@ setup_paddle = ->
         if $.starttime == null
           $.starttime = curtime
           $.nexttime = $.starttime
-        fire $.nexttime-curtime, interval, movefunc(if direction == "left" then -1 else 1)
+        fire $.nexttime-curtime, interval, movefunc(if direction == "left" then 1 else -1)
 
 # wait時間待った後でfuncを起動し、その後はintervalごとにfuncを起動
 fire = (wait, interval, func) ->
