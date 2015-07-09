@@ -5,8 +5,10 @@
 
 CONTENTS = \
 	News/news.ltsv \
+	Info/info.ltsv \
 	Music/music.ltsv \
 	Music2/music2.ltsv \
+	GyaTV/gyatv.ltsv \
 	Radio/radio.ltsv \
 	YouTube/youtube.ltsv \
 	GIF/gif.ltsv \

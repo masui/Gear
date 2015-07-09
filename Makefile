@@ -6,6 +6,8 @@ javascripts/gear.js: javascripts/gear.coffee
 
 all:
 	echo make dat / make scp
+
+.PHONY: data.json
 data.json:
 	cd data; make
 	cp data/data.json .
