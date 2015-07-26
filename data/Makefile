@@ -9,6 +9,7 @@ CONTENTS = \
 	Music/music.ltsv \
 	Music2/music2.ltsv \
 	GyaTV/gyatv.ltsv \
+	TED/ted.ltsv \
 	Radio/radio.ltsv \
 	YouTube/youtube.ltsv \
 	GIF/gif.ltsv \
