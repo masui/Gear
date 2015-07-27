@@ -2,6 +2,7 @@
   "name": "Gear",
   "xxx": "http://localhost:3000/paddle.html",
   "main": "index.html",
+  "version": "1.0.0",
   "webkit": {
     "plugin": true,
     "java": true,
@@ -10,8 +11,8 @@
   "window": {
     "title": "Gear",
     "icon": "img/icon.png",
-    "toolbar": false,
-    "frame": true,
-    "fullscreen": false
+    "toolbar": true,
+    "frame": false,
+    "fullscreen": true
   }
 }

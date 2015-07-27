@@ -6,6 +6,7 @@
 CONTENTS = \
 	News/news.ltsv \
 	Info/info.ltsv \
+	Menthas/menthas.ltsv \
 	Music/music.ltsv \
 	Music2/music2.ltsv \
 	GyaTV/gyatv.ltsv \
