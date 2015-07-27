@@ -24,7 +24,7 @@ CONTENTS = \
 #	Bookmarks/bookmarks.ltsv \
 
 json: getnews
-	~/.rbenv/shims/bundle exec ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
+	ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
 
 getnews:
 	cd News; make
