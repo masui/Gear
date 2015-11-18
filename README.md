@@ -31,6 +31,7 @@ nodeが使うモジュールなどは package.json に記述されている。
 
 必要なnodeモジュールをインストール
 
+    % cd arduino
     % npm install
 
 
