@@ -10,7 +10,7 @@ process.env.PORT ||= 3000
 
 ## HTTP, Socket.IO, Linda ##
 app = express()
-app.use express.static path.resolve './'
+app.use express.static path.resolve '../'
 
 server = app.listen process.env.PORT
 io = require('socket.io').listen server

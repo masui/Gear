@@ -1,0 +1,23 @@
+title:音量
+ title:音量レベルゼロ
+  url:http://localhost/~masui/volume.cgi?level=0	title:音量レベルゼロにセットします
+ title:音量レベル10
+  url:http://localhost/~masui/volume.cgi?level=10	title:音量レベル10にセットします
+ title:音量レベル20
+  url:http://localhost/~masui/volume.cgi?level=20	title:音量レベル20にセットします
+ title:音量レベル30
+  url:http://localhost/~masui/volume.cgi?level=30	title:音量レベル30にセットします
+ title:音量レベル40
+  url:http://localhost/~masui/volume.cgi?level=40	title:音量レベル40にセットします
+ title:音量レベル50
+  url:http://localhost/~masui/volume.cgi?level=50	title:音量レベル50にセットします
+ title:音量レベル60
+  url:http://localhost/~masui/volume.cgi?level=60	title:音量レベル60にセットします
+ title:音量レベル70
+  url:http://localhost/~masui/volume.cgi?level=70	title:音量レベル70にセットします
+ title:音量レベル80
+  url:http://localhost/~masui/volume.cgi?level=80	title:音量レベル80にセットします
+ title:音量レベル90
+  url:http://localhost/~masui/volume.cgi?level=90	title:音量レベル90にセットします
+ title:音量レベル100
+  url:http://localhost/~masui/volume.cgi?level=100	title:音量レベル100にセットします

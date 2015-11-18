@@ -4,6 +4,7 @@
 #
 
 CONTENTS = \
+	Volume/volume.ltsv \
 	News/news.ltsv \
 	Info/info.ltsv \
 	Menthas/menthas.ltsv \
@@ -23,9 +24,9 @@ CONTENTS = \
 
 #	Bookmarks/bookmarks.ltsv \
 
-json: getnews
-	ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
-
+json: getnews data
 getnews:
 	cd News; make
+data:
+	ruby ltsv2json ${CONTENTS} | /usr/local/bin/jq . > data.json
 
