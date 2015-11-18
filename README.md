@@ -8,12 +8,14 @@
 
 Rubyが必要
 
-```
-% cd Data
-% make
-% cp data.json ../
-```
 
+    % cd Data
+    % make
+    % cp data.json ../
+    
+または
+
+    % make data.json
 
 ## 起動
 
@@ -23,7 +25,9 @@ dial.js で制御する
 
     % open index.html
     
-### パドルを使う場合
+### BlendMicro接続のパドルを使う場合
+
+Node.jsが必要
 
 圧力センサ付きパドルをBlendMicroで制御している。BlendMicroは圧力値を[ble-firmata](https://www.npmjs.org/package/ble-firmata)でMacのnode.jsに送っていて、そのnodeプログラムがHTTPとLindaのサーバーにもなっている。
 
@@ -37,7 +41,6 @@ nodeが使うモジュールなどは package.json に記述されている。
 
 #### サーバー起動
 
-- Node.jsが必要
 - USB接続かBLE接続を選ぶ
   - 環境変数ARDUINOを指定 : USB接続のArduinoを使う
   - 環境変数BLEを指定 : BLE接続のBlendMicroを使う
