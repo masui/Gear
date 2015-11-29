@@ -19,6 +19,7 @@ CONTENTS = \
 	Photos/photos.ltsv \
 	Aozora/aozora.ltsv \
 	Recipe/allrecipe.ltsv \
+	Videom/videom.ltsv \
 	Geta/geta.ltsv \
 	Stations/stations.ltsv
 
