@@ -52,14 +52,28 @@ name = cgi.params['name'][0].to_s
 name = "Gear" if name == ''
 title = cgi.params['title'][0].to_s
 title = "masui" if title == ''
+format = cgi.params['format'][0].to_s
+format = "ltsv" if format == ''
 
 data = []
 process(data, 0, "http://#{host}", name, title)
+out = data.join("\n") + "\n"
+
+if format == 'json'
+  tmpltsv = "/tmp/tmpltsv#{$$}"
+  tmpjson = "/tmp/tmpjson#{$$}"
+  File.open(tmpltsv,"w"){ |f|
+    data.each { |line|
+      f.puts line
+    }
+  }
+  jq = '/usr/local/bin/jq'
+  jq = '/usr/bin/jq' unless File.exist?(jq)
+  # system "/usr/bin/ruby /www/www.pitecan.com/ltsv2json #{tmpltsv} | #{jq} . > #{tmpjson}" # json gemが入ってない
+  system "/home/masui/.rbenv/shims/ruby /www/www.pitecan.com/ltsv2json #{tmpltsv} | #{jq} . > #{tmpjson}"
+  out = File.read(tmpjson)
+end
 
 cgi.out {
-  data.join("\n")
+  out
 }
-
-
-
-
