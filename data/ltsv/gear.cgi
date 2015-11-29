@@ -11,12 +11,9 @@ def get_web_data(url)
   u = URI.parse(URI.encode(url)) # UTFな文字列をparseできないようなので
   res = Net::HTTP.start(u.host, u.port){ |http|
     # http.get(u.path)
-
     req = Net::HTTP::Get.new(u.path)
     req.basic_auth 'pitecan', 'masu1lab'
     http.request(req)
-    #response = http.request(req)
-    #response.body
   }
   res.body
 end
@@ -29,17 +26,18 @@ def process(data, indent, host, name, title)
   # puts "#{host} -- #{name} -- #{title}"
   a = get_gyazz_data(host, name, title).split(/\n/)
   a.each { |line|
-    if line =~ /^(\s*)\[\[(http.*)\]\]/ # ltsv取得
-      indent = $1.length
-      get_web_data($2).split(/\n/).each { |l|
-        # l.sub!('videom.masuilab', 'video.masuilab') # videomのltsvのバグ対応
-        data << "#{' '*indent}#{l}"
+    if line =~ /^\s*\#/
+      next
+    elsif line =~ /^(\s*)\[\[(http.*)\]\]/ # ltsv取得
+      len = $1.length
+      url = $2.split(/ /)[0]
+      get_web_data(url).split(/\n/).each { |l|
+        data << "#{' '*len}#{l}"
       }
     elsif line =~ /^(\s*)\[\[(.*)\]\]/ # Gyazzページ
-      indent = $1.length
-      process(data, indent, host, name, $2)
+      process(data, $1.length, host, name, $2)
     else
-      data << line
+      data << "#{' '*indent}#{line}"
     end
   }
 end
