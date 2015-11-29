@@ -32,6 +32,7 @@ def process(data, indent, host, name, title)
     if line =~ /^(\s*)\[\[(http.*)\]\]/ # ltsv取得
       indent = $1.length
       get_web_data($2).split(/\n/).each { |l|
+        # l.sub!('videom.masuilab', 'video.masuilab') # videomのltsvのバグ対応
         data << "#{' '*indent}#{l}"
       }
     elsif line =~ /^(\s*)\[\[(.*)\]\]/ # Gyazzページ
@@ -74,6 +75,6 @@ if format == 'json'
   out = File.read(tmpjson)
 end
 
-cgi.out {
+cgi.out({"Access-Control-Allow-Origin" => '*'}){ # クロスドメインアクセス可能にするため
   out
 }
