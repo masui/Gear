@@ -13,6 +13,7 @@ pauseAtLevelChange = true        unless pauseAtLevelChange?
 dontShowSingleNode = true        unless dontShowSingleNode?  # 辞書に使うときとか
 singleWindow =       false       unless singleWindow?        # メニューとコンテンツを同じ画面にするかどうか
 json =               'data.json' unless json?
+json = 'http://www.pitecan.com/gear.cgi?format=json'
 
 # sayコマンドで読みあげる
 useAudio =           false       unless useAudio?            # 項目を発声するかどうか
