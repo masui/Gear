@@ -1,0 +1,109 @@
+#!/usr/bin/ruby
+# -*- coding: utf-8 -*-
+#
+require 'rubygems'
+require 'rss'
+require 'open-uri'
+require 'hpricot'
+
+#
+# 取得したフィードを配列で返す。
+# フィードが無い場合は空配列を返す。
+# 指定したURLが無効な場合はnilを返す。
+#
+
+def process_rss(rss,list)
+  content = ''
+  open(rss){ |f|
+    content = f.read
+  }
+      
+  rss = nil
+  begin
+    rss = RSS::Parser::parse(content)
+  rescue RSS::InvalidRSSError
+    rss = RSS::Parser::parse(content,false)
+  end
+  if rss then
+    rss.items.each { |u|
+      next if u.title =~ /^PR:/ ||
+      u.title =~ /^【PR】/ ||
+      u.title =~ /^【広告特集】/ ||
+      u.title =~ /^AD:/ ||
+      u.title =~ /^\s*$/
+      list << "url:#{u.link}\ttitle:#{u.title}"
+    }
+  else
+    content.each_with_index { |line,i|
+      while line.sub!(/<link>([^<]*)<\/link>/,'') do
+        list << "url:#{$1}\t記事#{i}"
+      end
+      while line.sub!(/<link.*href="(.*?)"/,'') do
+        list << "url:#{$1}\t記事#{i}"
+      end
+    }
+  end
+end
+
+def feeds(url)
+  list = []
+  begin
+    server = open(url)
+  rescue
+    return nil
+  end
+  links = Hpricot(server).search('link')
+  links.each { |link|
+    if link.attributes['type'] == 'application/rss+xml' ||
+        link.attributes['type'] == 'application/atom+xml' then
+      rss = link.attributes['href']
+      if rss !~ /^http:/ then
+        if rss =~ /^\// then
+          url =~ /(http:\/\/[^\/]+)\//
+          rss = $1 + '/' + rss.sub(/^\//,'')
+        else
+          url.sub(/\/$/,'')
+          rss = url + '/' + rss.sub(/^\.\//,'')
+        end
+      end
+
+      process_rss(rss,list)
+
+      break
+    end
+  }
+  return list
+end
+
+def getnews(title,url,rss=false)
+  list = []
+  if rss then
+    process_rss(url,list)
+  else
+    list = feeds(url)
+  end
+  a = [" title:#{title}"]
+  if list then
+    list.each { |entry|
+      a << ["  #{entry}"]
+    }
+  end
+  a
+end
+
+lines = ["title:ニュース"]
+lines += getnews('朝日新聞','http://www.asahi.com/')
+lines += getnews('日本経済新聞','http://www.nikkei.com/')
+lines += getnews('読売新聞','http://www.yomiuri.co.jp/')
+lines += getnews('毎日新聞','http://mainichi.jp/')
+lines += getnews('産経新聞','http://sankei.jp.msn.com')
+lines += getnews('ITmedia','http://www.itmedia.co.jp')
+#getnews('はてな人気記事','http://feeds.feedburner.com/hatena/b/hotentry',true)
+#getnews('はてな一般記事','http://b.hatena.ne.jp/hotentry.rss?mode=general',true)
+
+require 'cgi'
+cgi = CGI.new('html3')
+
+cgi.out {
+  lines.join("\n") + "\n"
+}

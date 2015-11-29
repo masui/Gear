@@ -1,0 +1,59 @@
+#!/usr/bin/ruby
+# -*- coding: utf-8 -*-
+#
+#  http://pitecan.com/gear.ltsv?host=gear.masuilab.org&name=Gear&title=masui
+#
+
+require 'net/http'
+require 'uri'
+
+def get_web_data(url)
+  u = URI.parse(URI.encode(url)) # UTFな文字列をparseできないようなので
+  res = Net::HTTP.start(u.host, u.port){ |http|
+    http.get(u.path)
+  }
+  res.body
+end
+
+def get_gyazz_data(host, name, title)
+  get_web_data("#{host}/#{name}/#{title}/text")
+end
+
+def process(data, indent, host, name, title)
+  # puts "#{host} -- #{name} -- #{title}"
+  a = get_gyazz_data(host, name, title).split(/\n/)
+  a.each { |line|
+    if line =~ /^(\s*)\[\[(http.*)\]\]/ # ltsv取得
+      indent = $1.length
+      get_web_data($2).split(/\n/).each { |l|
+        data << "#{' '*indent}#{l}"
+      }
+    elsif line =~ /^(\s*)\[\[(.*)\]\]/ # Gyazzページ
+      indent = $1.length
+      process(data, indent, host, name, $2)
+    else
+      data << line
+    end
+  }
+end
+
+require 'cgi'
+cgi = CGI.new('html3')
+
+host = cgi.params['host'][0].to_s
+host = "gyazz.masuilab.org" if host == ''
+name = cgi.params['name'][0].to_s
+name = "Gear" if name == ''
+title = cgi.params['title'][0].to_s
+title = "masui" if title == ''
+
+data = []
+process(data, 0, "http://#{host}", name, title)
+
+cgi.out {
+  data.join("\n")
+}
+
+
+
+
