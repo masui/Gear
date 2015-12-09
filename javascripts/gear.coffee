@@ -95,7 +95,6 @@ $ -> # document.ready()
   else
     $('#menu').css('left','10pt')
 
-  # exports.ltsv "#{GYAZZROOT}/text", (data) ->
   exports.ltsv "#{root}/text", (data) ->
     # alert "ltsv success"
     console.log data
