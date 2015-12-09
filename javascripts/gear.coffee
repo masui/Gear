@@ -6,6 +6,9 @@
 # http://GitHub.com/masui/Gear
 #
 
+gearname = params['root'] || "masui"
+root = "http://gyazz.masuilab.org/Gear/#{gearname}"
+
 useAnimation =       true        unless useAnimation?        # アニメーションを使うかどうか
 showContents =       true        unless showContents?        # メニューだけだでなく内容も表示するか
 autoexpand =         true        unless autoexpand?          # 自動展開(デフォルト動作)
@@ -43,14 +46,13 @@ hideTimeout = null
 typeCount = 0           # 連打したかどうか: 連打されてたら表示を行なう
 typeCountTimeout = null
 
-loadData = ->
-  $.getJSON json, (data) ->
-    initData data, null, 0
-    calc data[0]
-    expandTimeout = setTimeout expand, ExpandTime
+#loadData = ->
+#  $.getJSON json, (data) ->
+#    initData data, null, 0
+#    calc data[0]
+#    expandTimeout = setTimeout expand, ExpandTime
 
 initData = (nodes,parent,level) -> # 木構造をセットアップ
-  #for i, node of nodes
   for i in [0...nodes.length]
     node = nodes[i]
     node.level = level
@@ -78,8 +80,6 @@ $ -> # document.ready()
   # 可能ならpaddle対応
   if use_linda
     setup_paddle()
- 
-  loadData()
 
   if showContents
     if singleWindow
@@ -94,6 +94,14 @@ $ -> # document.ready()
     $('#menu').css('left','200pt')
   else
     $('#menu').css('left','10pt')
+
+  # exports.ltsv "#{GYAZZROOT}/text", (data) ->
+  exports.ltsv "#{root}/text", (data) ->
+    # alert "ltsv success"
+    console.log data
+    initData data.children, null, 0
+    calc data.children[0]
+    expandTimeout = setTimeout expand, ExpandTime
 
 refresh = -> # 不要DOMを始末する. 富豪的すぎるかも?
   span.show() for i, span of spans
@@ -340,10 +348,30 @@ move = (delta, shrinkMode) -> # 視点移動
 #    setTimeout(window.focus,100);
 #});
 
-$(window).mousewheel (event, delta, deltaX, deltaY) ->
+#$(window).mousewheel (event, delta, deltaX, deltaY) ->
+#  d = (if delta < 0 then 1 else -1)
+#  move d, 0
+#
+
+mousewheelevent =
+  if 'onwheel' in document
+    'wheel'
+  else if 'onmousewheel' in document
+    'mousewheel'
+  else
+    'DOMMouseScroll'
+$(document).on mousewheelevent, (e) ->
+  e.preventDefault()
+  delta =
+    if e.originalEvent.deltaY
+      -(e.originalEvent.deltaY)
+    else if e.originalEvent.wheelDelta
+      e.originalEvent.wheelDelta
+    else
+      -(e.originalEvent.detail)
   d = (if delta < 0 then 1 else -1)
   move d, 0
-
+    
 downfunc = (e) ->
   e.preventDefault()
   if e.type == 'mousedown'

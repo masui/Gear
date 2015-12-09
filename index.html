@@ -2,11 +2,24 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Gear - 「超」ナビゲーション</title>
+<script>
+var params = {};
+var pair = location.search.substring(1).split('&');
+for(var i=0; pair[i]; i++){
+  var kv = pair[i].split('=');
+  params[kv[0]] = kv[1];
+}
+var exports = {};
+alert(module);
+</script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/linda/linda.js"></script>
 <script src="./javascripts/jquery.js"></script>
-<script src="./javascripts/jquery.mousewheel.js"></script>
+<!-- <script src="./javascripts/jquery.mousewheel.js"></script> -->
+<script src="./javascripts/ltsv.js"></script>
 <script src="./javascripts/gear.js"></script>
+<script>
+</script>
 <link rel="stylesheet" href="./stylesheets/gear.css" type="text/css">
 </head>
 <body>

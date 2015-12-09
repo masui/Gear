@@ -7,11 +7,18 @@
 // index.htmlをメニューとして画面の左側1/5ぐらいで大きく開く
 // コンテンツウィンドウはその右に開く
 //
-height = screen.availHeight;
-width = screen.availWidth / 5;
+var params = {};
+var pair = location.search.substring(1).split('&');
+for(var i=0; pair[i]; i++){
+  var kv = pair[i].split('=');
+  params[kv[0]] = kv[1];
+}
+height = params['height'] || screen.availHeight;
+width = params['width'] || screen.availWidth / 5;
+root = params['root'] || 'masui';
 if(width > 300) width = 300;
 param = "top=0,left=0,height="+height+",width="+width;
-window.open("index.html","menu",param);
+window.open("index.html?root="+root,"menu",param);
 </script>
 </head>
 </html>

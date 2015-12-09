@@ -1,13 +1,17 @@
+.PHONY: data.json javascripts/gear.js javascripts/ltsv.js
+
 demo: javascripts/gear.js data.json
 	open demo.html
 
+compile: javascripts/gear.js javascripts/ltsv.js
 javascripts/gear.js: javascripts/gear.coffee
 	coffee -c -b javascripts/gear.coffee
+javascripts/ltsv.js: javascripts/ltsv.coffee
+	coffee -c javascripts/ltsv.coffee
 
 all:
 	echo make dat / make scp
 
-.PHONY: data.json
 data.json:
 	cd data; make
 	cp data/data.json .
