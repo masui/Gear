@@ -47,7 +47,7 @@ processline = (line) ->
     m = entry.match /^([a-zA-Z_]+):(\s*)(.*)$/
     node[m[1]] = m[3]
 
-process = (tree, indent, url, callback) ->
+process = (tree, indent, url, gyazz, gearname, callback) ->
   acount += 1 # 非同期なget()を呼ぶたびにカウントアップ
   # request.get url, (err, response, body) ->
   get url, (body) ->
@@ -65,17 +65,17 @@ process = (tree, indent, url, callback) ->
         link = a[1]
         tree[i] = []
         if link.match /^http/
-          process tree[i], indent+lineindent, link.split(/\s/)[0], callback
+          process tree[i], indent+lineindent, link.split(/\s/)[0], gyazz, gearname, callback
         else
-          process tree[i], indent+lineindent, "http://gyazz.masuilab.org/Gear/#{encodeURI(a[1])}/text", callback
+          process tree[i], indent+lineindent, "#{gyazz}/#{encodeURI(a[1])}/text", gyazz, gearname, callback
       else
         tree[i] = " ".repeat(indent) + line
     acount -= 1 # get()成功したらカウントダウン
     if acount == 0
       dump treeroot, callback
 
-exports.ltsv = (url, callback) ->
-  process treeroot, 0, url, callback
+exports.ltsv = (gyazz, gearname, callback) ->
+  process treeroot, 0, "#{gyazz}/#{gearname}/text", gyazz, gearname, callback
   
-#exports.ltsv "http://gyazz.masuilab.org/Gear/test/text", (root) ->
-#  console.log root.children
+# exports.ltsv "http://gyazz.masuilab.org/Gear", "test", (root) ->
+#   console.log root.children

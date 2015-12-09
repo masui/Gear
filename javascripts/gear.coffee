@@ -6,8 +6,10 @@
 # http://GitHub.com/masui/Gear
 #
 
+# index.html?root=test など
+
+gyazz = params['gyazz'] || 'http://gyazz.masuilab.org/Gear'
 gearname = params['root'] || "masui"
-root = "http://gyazz.masuilab.org/Gear/#{gearname}"
 
 useAnimation =       true        unless useAnimation?        # アニメーションを使うかどうか
 showContents =       true        unless showContents?        # メニューだけだでなく内容も表示するか
@@ -95,7 +97,7 @@ $ -> # document.ready()
   else
     $('#menu').css('left','10pt')
 
-  exports.ltsv "#{root}/text", (data) ->
+  exports.ltsv gyazz, gearname, (data) ->
     initData data.children, null, 0
     calc data.children[0]
     expandTimeout = setTimeout expand, ExpandTime
@@ -480,9 +482,6 @@ movefunc = (delta) ->
 say = (node) ->
   text = node.title
   if text
-    #if(! node.children){
-    #  text = text.substring(0,6);
-    #
     $.ajax
       type: "GET"
       async: true
