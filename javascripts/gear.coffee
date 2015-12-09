@@ -96,8 +96,6 @@ $ -> # document.ready()
     $('#menu').css('left','10pt')
 
   exports.ltsv "#{root}/text", (data) ->
-    # alert "ltsv success"
-    console.log data
     initData data.children, null, 0
     calc data.children[0]
     expandTimeout = setTimeout expand, ExpandTime
@@ -343,22 +341,14 @@ move = (delta, shrinkMode) -> # 視点移動
   
   false
 
-#$(window).blur(function(){ // ????
-#    setTimeout(window.focus,100);
-#});
-
-#$(window).mousewheel (event, delta, deltaX, deltaY) ->
-#  d = (if delta < 0 then 1 else -1)
-#  move d, 0
-#
-
 mousewheelevent =
-  if 'onwheel' in document
+  if 'onwheel' in document # FF/Chrome/Safari
     'wheel'
   else if 'onmousewheel' in document
     'mousewheel'
   else
     'DOMMouseScroll'
+    
 $(document).on mousewheelevent, (e) ->
   e.preventDefault()
   delta =

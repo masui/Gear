@@ -1,8 +1,6 @@
 #
 # Gyazzに記述されたltsvのリストを読んで展開する
 #
-#
-#
 
 isNode = (typeof(require) != "undefined")
 

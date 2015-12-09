@@ -139,7 +139,6 @@ $(function() {
     $('#menu').css('left', '10pt');
   }
   return exports.ltsv(root + "/text", function(data) {
-    console.log(data);
     initData(data.children, null, 0);
     calc(data.children[0]);
     return expandTimeout = setTimeout(expand, ExpandTime);
