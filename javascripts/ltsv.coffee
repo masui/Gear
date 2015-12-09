@@ -8,16 +8,16 @@ isNode = (typeof(require) != "undefined")
 
 if isNode
   request = require 'request'
-  get = (url, func) ->
+  get = (url, callback) ->
     request.get url, (err, response, body) ->
       if !err
-        func body
+        callback body
   alert = (msg) ->
     console.log msg
 else
-  get = (url, func) ->
+  get = (url, callback) ->
     $.get url, (data) ->
-      func data
+      callback data
 
 treeroot = []    # 全LTSVを取得するとき使われる木構造のトップ
 root = {}        # 取得したLTSVから生成された階層的データ
@@ -76,8 +76,8 @@ process = (tree, indent, url, callback) ->
     if acount == 0
       dump treeroot, callback
 
-exports.ltsv = (url, func) ->
-  process treeroot, 0, url, func
+exports.ltsv = (url, callback) ->
+  process treeroot, 0, url, callback
   
 #exports.ltsv "http://gyazz.masuilab.org/Gear/test/text", (root) ->
 #  console.log root.children
