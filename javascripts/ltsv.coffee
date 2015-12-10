@@ -49,17 +49,14 @@ processline = (line) ->
 
 process = (tree, indent, url, gyazz, gearname, callback) ->
   acount += 1 # 非同期なget()を呼ぶたびにカウントアップ
-  # request.get url, (err, response, body) ->
   get url, (body) ->
     lines = body.split(/\n/)
     lines = lines.filter (line) ->
       !line.match(/^\s*#/) && !line.match(/^\s*$/)
     [0...lines.length].map (i) ->
       line = lines[i]
-      # if !line.match(/^\s*#/) && !line.match(/^\s*$/)
       if line.match(/^(\s*)\S/)
         lineindent = line.match(/^(\s*)\S/)[1].length
-      # lineindent = 0
       a = line.match /\[\[(.*)\]\]/
       if a
         link = a[1]
