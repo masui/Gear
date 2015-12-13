@@ -44,8 +44,8 @@ processline = (line) ->
     parents[indent]['children'] = []
   parents[indent]['children'].push node
   line.split(/\t/).forEach (entry) ->
-    m = entry.match /^([a-zA-Z_]+):(\s*)(.*)$/
-    node[m[1]] = m[3]
+    if m = entry.match /^([a-zA-Z_]+):(\s*)(.*)$/
+      node[m[1]] = m[3]
 
 process = (tree, indent, url, gyazz, gearname, callback) ->
   acount += 1 # 非同期なget()を呼ぶたびにカウントアップ
