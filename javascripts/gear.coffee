@@ -89,7 +89,7 @@ $ -> # document.ready()
       height = screen.availHeight
       menuwidth = Math.min screen.availWidth / 5, 300
       width = screen.availWidth - menuwidth
-      param = "resizable=no,top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=no,menubar=no,location=no,status=no,toolbar=no" # 全然有効にならないが
+      param = "top=0,left=#{menuwidth},height=#{height},width=#{width}"
       $.contentswin = window.open "","Contents",param
 
   if singleWindow
@@ -350,7 +350,7 @@ mousewheelevent =
     'mousewheel'
   else
     'DOMMouseScroll'
-    
+
 $(document).on mousewheelevent, (e) ->
   # showmenu()
   e.preventDefault()
