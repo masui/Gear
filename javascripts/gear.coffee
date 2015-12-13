@@ -40,7 +40,7 @@ ExpandTime = 1500       # 無操作時展開のタイムアウト時間
 expandTimeout = null
 
 AnimationTime = 300     # ズーミングのアニメーション時間
-
+           
 HideTime = 1600         # 無操作時にメニューを消すまでの時間
 HideAnimationTime = 700 # メニューが消えるアニメーションの時間
 hideTimeout = null
@@ -89,7 +89,7 @@ $ -> # document.ready()
       height = screen.availHeight
       menuwidth = Math.min screen.availWidth / 5, 300
       width = screen.availWidth - menuwidth
-      param = "top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=yes"
+      param = "resizable=no,top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=no,menubar=no,location=no,status=no,toolbar=no" # 全然有効にならないが
       $.contentswin = window.open "","Contents",param
 
   if singleWindow
@@ -352,6 +352,7 @@ mousewheelevent =
     'DOMMouseScroll'
     
 $(document).on mousewheelevent, (e) ->
+  # showmenu()
   e.preventDefault()
   delta =
     if e.originalEvent.deltaY
@@ -486,3 +487,20 @@ say = (node) ->
       type: "GET"
       async: true
       url: "#{sayCGI}?text=#{text}&level=#{node.level}"
+
+# hideTimeout = null      
+#
+# hidemenu = () ->
+#   # window.resizeTo 1, screen.availHeight
+#   $.contentswin.moveTo 20, 0
+#   $.contentswin.resizeTo screen.availWidth-20, screen.availHeight
+#   $.contentswin.focus()
+#   hideTimeout = null
+# 
+# showmenu = () ->
+#   # window.resizeTo 1, screen.availHeight
+#   $.contentswin.moveTo 200, 0
+#   $.contentswin.resizeTo screen.availWidth-200, screen.availHeight
+#   window.focus()
+#   if !hideTimeout
+#     hideTimeout = setTimeout hidemenu, 2000

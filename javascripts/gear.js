@@ -129,7 +129,7 @@ $(function() {
       height = screen.availHeight;
       menuwidth = Math.min(screen.availWidth / 5, 300);
       width = screen.availWidth - menuwidth;
-      param = "top=0,left=" + menuwidth + ",height=" + height + ",width=" + width + ",scrollbars=yes";
+      param = "resizable=no,top=0,left=" + menuwidth + ",height=" + height + ",width=" + width + ",scrollbars=no,menubar=no,location=no,status=no,toolbar=no";
       $.contentswin = window.open("", "Contents", param);
     }
   }
@@ -501,7 +501,6 @@ upfunc = function(e) {
 
 movefunc = function(e) {
   var delta, i, k, l, newstep, ref, ref1;
-  e.preventDefault();
   if ($.mouseisdown) {
     delta = 0;
     if (e.type === 'mousemove') {
