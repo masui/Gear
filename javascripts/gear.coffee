@@ -89,7 +89,7 @@ $ -> # document.ready()
       height = screen.availHeight
       menuwidth = Math.min screen.availWidth / 5, 300
       width = screen.availWidth - menuwidth
-      param = "top=0,left=#{menuwidth},height=#{height},width=#{width}"
+      param = "top=0,left=#{menuwidth},height=#{height},width=#{width},scrollbars=yes"
       $.contentswin = window.open "","Contents",param
 
   if singleWindow
