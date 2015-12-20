@@ -44,7 +44,8 @@ processline = (line) ->
     parents[indent]['children'] = []
   parents[indent]['children'].push node
   line.split(/\t/).forEach (entry) ->
-    if m = entry.match /^([a-zA-Z_]+):(\s*)(.*)$/
+    m = entry.match /^([a-zA-Z_]+):(\s*)(.*)$/
+    if m
       node[m[1]] = m[3]
 
 process = (tree, indent, url, gyazz, gearname, callback) ->
