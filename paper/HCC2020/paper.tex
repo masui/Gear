@@ -13,6 +13,15 @@
 
 \usepackage{here} % [H]とするとその場所に配置されるらしい
 
+% \def\up{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/uptriangle.pdf} }
+% \def\down{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/downtriangle.pdf} }
+% \def\right{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/righttriangle.pdf} }
+% \def\left{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/lefttriangle.pdf} }
+\def\up{▲}
+\def\down{▼}
+\def\right{▶}
+\def\left{◀}
+
 \long\def\ttt#1{\texttt{\small #1}}
 \long\def\tsf#1{\textsf{\small{#1}}}
 \long\def\tit#1{\textit{\small{#1}}}
@@ -159,7 +168,7 @@ where users can explore a large hierarchical database by simple rotating operati
 \section*{NAVIGATION METHOD AND EXAMPLES}
 
 Interaction with Gear is based on the following simple principles.
-Two types of operations, ``{\U}'' (up) and ``{\D}'' (down), are used for the navigation.
+Two types of operations, ``{\up}'' (up) and ``{\down}'' (down), are used for the navigation.
 They can be generated either by rotating the Gear device or typing a keyboard.
 
 \begin{enumerate}
@@ -172,8 +181,8 @@ They can be generated either by rotating the Gear device or typing a keyboard.
 \item When an elemente is selected, its siblings, its ancestors and their siblings are displayed
 around the selected element.
 
-\item Users can issue {\U} to select the element above the currently selected element,
-or issue {\D} to select the element below the selected element.
+\item Users can issue {\up} to select the element above the currently selected element,
+or issue {\down} to select the element below the selected element.
 Whenever the selection is changed, 3. is performed.
 If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element disappear.
@@ -199,7 +208,7 @@ other rectangles represent individual shops.
 
 When a user starts the exploration, only the shops and categories
 at the top level are displayed (Figure \ref{fig2}).
-When the user issues {\D},
+When the user issues {\down},
 the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3})\footnote{
   Readers can try this at \textsf{http://jsbin.com/lecuroku}.
 }.
@@ -212,11 +221,11 @@ the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3})\foot
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig3.pdf}}
-\caption{Typing {\D}.}
+\caption{Typing {\down}.}
 \label{fig3}
 \end{figure}
 
-If the user issues {\D} two more times, 
+If the user issues {\down} two more times, 
 \tsf{Food/drink} category is selected (Figure \ref{fig4}).
 If the user stops the operation and waits for a moment, the shops under the \tsf{Food/drink}
 category are automatically displayed,
@@ -234,7 +243,7 @@ and the first entry (\tsf{Liquor shop}) is selected (Figure \ref{fig5}).
 \label{fig5}
 \end{figure}
 
-When the user issues {\D} twice here,
+When the user issues {\down} twice here,
 \tsf{Fresh grocery} category is selected (Figure \ref{fig6}).
 
 \begin{figure}[H]
@@ -243,7 +252,7 @@ When the user issues {\D} twice here,
 \label{fig6}
 \end{figure}
 
-If the user keeps issuing {\D}, 
+If the user keeps issuing {\down}, 
 the list will change to Figure \ref{fig8},
 without expanding the children of \tsf{Fresh grocery}.
 
@@ -253,7 +262,7 @@ without expanding the children of \tsf{Fresh grocery}.
 \label{fig8}
 \end{figure}
 
-If the use stops issuing {\D} at Figure \ref{fig6},
+If the use stops issuing {\down} at Figure \ref{fig6},
 the shops under category \tsf{Fresh grocery} is automatically selected (Figure \ref{fig7}).
 
 \begin{figure}[H]
@@ -262,14 +271,14 @@ the shops under category \tsf{Fresh grocery} is automatically selected (Figure \
 \label{fig7}
 \end{figure}
 
-When the user issues {\U} here, \tsf{Fresh grocery} is selected,
+When the user issues {\up} here, \tsf{Fresh grocery} is selected,
 and the shops under \tsf{Fresh grocery} disappears, 
 resulting in the same state as Figure \ref{fig6}.
-If the user issues {\U} two more times, the display changes to the state
+If the user issues {\up} two more times, the display changes to the state
 shown in Figure \ref{fig5},
-and one more {\U} will set the system to the state of Figure \ref{fig4}.
+and one more {\up} will set the system to the state of Figure \ref{fig4}.
 
-If the user issues {\D} in Figure \ref{fig4}, the next visible entry
+If the user issues {\down} in Figure \ref{fig4}, the next visible entry
 (\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
 
 \begin{figure}[H]
@@ -278,11 +287,11 @@ If the user issues {\D} in Figure \ref{fig4}, the next visible entry
 \label{fig9}
 \end{figure}
 
-When the user issues {\D} twice in Figure \ref{fig7},
+When the user issues {\down} twice in Figure \ref{fig7},
 \tsf{Clothing} is selected, and the category under \tsf{Food/drink} will shrinke (Figure \ref{fig8}).
 
 In this way, users can explore the hierarchical structure
-only by issuing {\U} and {\D} at the right timing.
+only by issuing {\up} and {\down} at the right timing.
 
 \section{SERENCAST: A GEAR-BASED BROWSING SERVICE}
 
@@ -291,53 +300,213 @@ only by issuing {\U} and {\D} at the right timing.
 
 To prove that Gear can be used for selecting entries from a very
 large hierarchical database,
-we have started the ``\sf{Serencast.com}'' service where
-users can enjoy various contents on the Web using the Gear interface.
+we have started the ``\tsf{Serencast.com}'' service, where
+users can enjoy videos, musics, and other Web pages
+on the browser with the Gear interface.
 
-誰もがCastできるところがポイント
-RSSもできる
-
-Serencast uses the ``\sf{Scrapbox.io}'' system\footnote{
-  Scrapbox.io
-}for listing data sources.
+Serencast uses the ``\tsf{Scrapbox.io}'' wiki service\footnote{
+  \tsf{https://Scrapbox.io/}
+} for listing the contents of the hierarchical database.
 Scrapbox is an interactive wiki\footnote{
- Wikipedia
-}system where users can share and edit texts on the Web among people.
-A user can create a Scrapbox page that consists of texts and links,
-and other people can share the page and edit it freely.
+  \tsf{https://en.wikipedia.org/wiki/Wiki}
+} system where users can share and edit texts on the Web.
+A user can create a Scrapbox ``project'', and create pages
+that consists of texts and links,
+and people can share the page and edit it freely on their browsers.
 
-(Figure: Using Scrapbox)
 
-When we list the URLs of existing web pages including
-videos and musics on a Scrapbox page, we can get the list and play the
-data using the Gear interface.  We created the Serencast.com service
-with which we can use the Gear interface to select a program from the
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 1553 1174]{figures/28818d749896f87f3eb8bd6b6f9e9a36.png}}
+\caption{An example of a Scrapbox project.}
+\label{exampleproject}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 1606 1200]{figures/9e867c325bafc415bd0870c1717fbaf7.png}}
+\caption{An example Scrapbox page.}
+\label{examplepage}
+\end{figure}
+
+The page is based on plain text, and users can use special markup tags
+like ``\texttt{[}'' and ``\texttt{]}'' to display bold texts, icons, URL links,
+and links to other pages.
+In this example, a URL link to \textsf{http://gyazo.com} is used
+just like \textsf{A} tags in HTML.
+
+{\scriptsize
+\begin{verbatim}
+Features
+(The [Check.icon] means we believe this feature is unique \
+ toScrapbox among competing services.)
+
+[[Easy to use Gyazo images]]
+ By using together with [Gyazo https://gyazo.com] you can \
+ surprisingly paste any image onto the page, and it \
+ displays instantly.
+
+[Check.icon] [[Use of an [image] to represent pages]]
+ By attaching images to each page, it is easier to discover \
+and remember them. Our method allows visual organization to \
+happen spontanteously.
+\end{verbatim}
+}
+
+When we list the URLs of Web pages of
+videos and musics on a Scrapbox page,
+we can create a hierarchical structure from the list and
+use the Gear interface to find data and browse it.
+We can use Serencast.com service
+for using the Gear interface to select a program from the
 list on Serencast pages, and automatically play it on the browser.
 
-Figure 1 shows a list of movies on a Scrapbox page.
-[https://gyazo.com/65b01a87b67c9a8e838a047b945f6a77]
+Figure \ref{movielist} shows a Scrapbox page listing movies.
 
-When we access the page using Serencast, we get a screen like this.(スクリーン)
-When the user pushes the down key, ...
-In this example, we can select only one of the 10 movies using the Gear interface.
-We can hierarchically construct a list of movies and other programs by using another Scrapbox like this.
+\begin{figure}[H]
+% \centerline{\includegraphics[width=40mm,bb=0 0 417 619]{figures/2690db244045aa809a3e2fc2b40ba0a3.png}}
+\centerline{\includegraphics[width=40mm,bb=0 0 387 568]{figures/2b97930bf5730fcaf4d9c0adeb9c5f6e.png}}
+\caption{Movie list.}
+\label{movielist}
+\end{figure}
 
-By using this technique, we can build a very large hierarchical database for watching movies, videos, etc.
-(figure)
-In this page, over 100,000 Web pages are listed, and we can select one of the programs only by typing up/down keys.
+The raw text of this page looks like this.
 
-\subsection{Input devices for using Serencast}
+{\scriptsize
+\begin{verbatim}
+Movies
+ [https://www.netflix.com/watch/70105600 Gran Torino]
+ [https://www.netflix.com/watch/80047616 My Intern]
+ [https://www.netflix.com/watch/330201 Breakfast at Tiffany's]
+ [https://www.netflix.com/watch/70080178 Heroes]
+ [https://www.netflix.com/watch/70174781 Sherlock]
+ [https://www.happyon.jp/watch/100048550 Mad Max]
+ [https://www.netflix.com/watch/60010351 Flashcance]
+ [https://www.netflix.com/watch/80095365 La La Land]
+ [https://www.netflix.com/watch/81191988 Don't stop the camera]
+ [https://youtube.com/embed/AtZr9g2vwrI?autoplay=1 Fireplace]
+\end{verbatim}}
 
- Since only two switches are required for using Gear for Serencast, various kinds of input devices can be used for...
- We have tried various input devices, and collected experiences.
+\begin{figure}[H]
+% \centerline{\includegraphics[width=80mm,bb=0 0 524 598]{figures/65b01a87b67c9a8e838a047b945f6a77.png}}
+\centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/e8ae562a5a68a1955ac70b4faed9a146.png}}
+\caption{Showing a movie.}
+\label{tiffany}
+\end{figure}
 
-\paragraph{Rollers}
-  We tried various rotating devices for Gear.
-  Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
-  For example, "jog dials" have been widely used for controlling VCRs, and we tried the device for Gear.
-  We have also tried "rollers" for Gear.
-  After trying these devices, we found that controlling rotating devices are not as easy as we expect, because 肱や腕で細かい操作するのは難しいから.
-  We also tried mouse wheels, and found that mouse wheels are very suitable for using Gear, because 指のコントロールは簡単だから.
+When we access the Scrapbox page from Serencast,
+``Gran Trino'' from Netflix automatically starts in the right side of the screen,
+just like a TV program starts when we rotate tha channel dial of an old TV.
+When the user pushes the {\down} key twice,
+``Breakfast at Tiffarny's'' is selected and
+the movie starts at the right side of the screen. (Figure \ref{tiffany})
+
+In the above example, we can select only one of the 10 movies using the Gear interface.
+We can add more data by hierarchically proiding the contents of Scrapbox pages.
+
+In one page, we can specify a hierarchical structure by using indentations.
+Figure \ref{musiclist} shows a portion of a list of CDs and
+musics titles by Weather Report and Wes Montgomery are shown.
+For example, 
+``Black Market'' is the first music title in the album ``8:30'' of Weather Report, and
+the tune ``Scarlet Woman'' follows ``Black Market''.
+``Wes Montgomery'' is listed in the same layer as ``Weather Report'', and
+the album ``Tequilla'' is listed below the level.
+
+\begin{figure}[H]
+% \centerline{\includegraphics[width=40mm,bb=0 0 596 808]{figures/6657544cf60cbf0aea91ba7da0455b90.png}}
+\centerline{\includegraphics[width=40mm,bb=0 0 652 926]{figures/d8fe8ff8f3e1bbcb34cf51e268592f8c.png}}
+\caption{Music list.}
+\label{musiclist}
+\end{figure}
+
+The title of this Scrapbox page is ``Music'', and 
+we can collect Movie page, Music page, and other pages by
+listing them in another page (``Top'' page, in this case).
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=40mm,bb=0 0 396 523]{figures/8a8e4d63b75183f1b4d0ed4db733f500.png}}
+\caption{Top page.}
+\label{top}
+\end{figure}
+
+Many pages (Music, Movies, etc.) are listed below the Top page, and
+the pages are treated as children pages of the Top page.
+By constructing data hierarchically like this,
+We can build a very large hierarchical database for watching movies, videos, etc.
+As many as 100,000 pages can be put on a hierarchical Scrapbox pages, and
+we can select one of the entries only by using only {\up} and {\down} keys.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackmarket.png}}
+\caption{Playing a music.}
+\label{blackmarket}
+\end{figure}
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackjack.png}}
+\caption{Reading a comicbook.}
+\label{blackjack}
+\end{figure}
+
+Since anybody can edit the Scrapbox page and construct the hierarchical data,
+people can enjoy creating his own data by editing his Scrapbox pages.
+Also, people who want to distribute their works,
+they can create their Scrapbox page
+and give it to others so that other people can include the page and
+enjoy it by using Gear.
+
+\section{DISCUSSIONS}
+
+\subsection{Input devices for Gear}
+
+Since only two switches are required,
+various kinds of input devices can be used for Gear.
+We have tried various input devices, and collected experiences.
+
+\paragraph{Keys and buttons}
+
+We can use two arrow keys on a computer for using Serencast.
+
+キーリピートも良い
+
+
+\paragraph{Rotating devices}
+
+We tried various rotating devices for Gear.
+Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
+For example, ``jog dials''ave been widely used for controlling VCRs, and we tried the device for Gear.
+
+We have also tried "rollers" for Gear.
+After trying these devices, we found that controlling rotating devices are not as easy as we expect,
+because presice control of a hand is fairly difficult.
+People are good at controling fingers, but people are usually not very good at controlling hands.
+
+We also tried mouse wheels, and found that mouse wheels are very suitable for using Gear, because
+we are good at presice control of our fingers.
+
+
+We can use a rotary encoder as a 
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=54mm,bb=0 0 362 354]{figures/ff2d18e66f9a4655dbb5e22e0bb9a0ae.png}}
+\caption{回転板デバイス}
+\label{disk}
+\end{figure}
+
+We used
+PowerMate\footnote{
+  \textsf{http://griffintechnology.com/support/powermate}
+} from Griffin Technology for the rotating device.
+PowerMate generates standard keyboard events when rotated,
+and no special programming techniques are required.
+%
+Users can explore all the contents just by
+rotating the device clockwise and counterclockwise.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=30mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
+\caption{A PowerMate used for the prototype.}
+\label{powermate}
+\end{figure}
 
 \paragraph{Keyboards and buttons}
   The simplest input device for Gear may be keyboards or buttons.
@@ -348,11 +517,31 @@ In this page, over 100,000 Web pages are listed, and we can select one of the pr
 \paragraph{2-way lever}
 
 We tried a lever with two pressure sensors.
-  モールス用「エレキー」
-  [https://gyazo.com/d64d2a8e1dddc57f693267f811510f23]
+モールス用「エレキー」
+Puddle
 
- After trying various devices, it became clear that simple buttons or wheels can be put at anywhere like on the table or under a chair, and we felt that the integration of furniture and input devices will be important in the IoT age.
- If we can put input devices that fits to furnituers, we can use the device near the furniture, without making the input devices look awkward.
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 1200 799]{figures/d64d2a8e1dddc57f693267f811510f23.jpg}}
+\caption{Elekey.}
+\label{elekey}
+\end{figure}
+
+
+図\ref{paddle}は，
+パドルに貼った2個の圧力センサの値を{\up}{\down}に割り当てている．
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=54mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
+\caption{左右にはじく「パドル」デバイス}
+\label{paddle}
+\end{figure}
+
+After trying various devices, it became clear that simple buttons or
+wheels can be put at anywhere like on the table or under a chair, and
+we felt that the integration of furniture and input devices will be
+important in the IoT age.
+
+If we can put input devices that fits to furnituers, we can use the device near the furniture, without making the input devices look awkward.
   入力装置つきのカッコ良い家具が作れる
  If we can put the devices neatlly on furnitures and beds, people with disabilities can easilyt use them, 
  体が不自由でも使えることは間違いない
@@ -381,6 +570,7 @@ We tried a lever with two pressure sensors.
 \section*{IMPLEMENTATION}
 
 A prototype of Gear was built using JavaScript on modern browsers.
+
 A large list of news articles, movies, anime films, musics, and e-book titles are listed in one browser window
 and the content is displayed in another window (Figure \ref{screenshot}).
 
@@ -388,22 +578,6 @@ and the content is displayed in another window (Figure \ref{screenshot}).
 \centerline{\includegraphics[width=80mm,bb=0 0 671 464]{figures/95cf2fec71c52ead6fdbcb7f79aca654.png}}
 \caption{Selecting an Internet radio station.}
 \label{screenshot}
-\end{figure}
-
-We used
-PowerMate\footnote{
-  \textsf{http://griffintechnology.com/support/powermate}
-} from Griffin Technology for the rotating device.
-PowerMate generates standard keyboard events when rotated,
-and no special programming techniques are required.
-%
-Users can explore all the contents just by
-rotating the device clockwise and counterclockwise.
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=30mm,bb=0 0 389 348]{figures/d3a69499f7e7314ae6dc10f5bf3a2be5.png}}
-\caption{A PowerMate used for the prototype.}
-\label{powermate}
 \end{figure}
 
 \section*{DISCUSSIONS}
@@ -470,7 +644,7 @@ TreeView\footnote{
 The biggest disadvantage of Gear is that
 the behavior of Gear depends on the speed of the user's operations.
 In Figure \ref{fig4},
-if a user wanted to select \tsf{Clothing} but couldn't issue {\D}
+if a user wanted to select \tsf{Clothing} but couldn't issue {\down}
 quickly enough, he will see Figure \ref{fig5} instead of Figure \ref{fig7}.
 This is a tradeoff between usability and simplicity, and
 the best parameter should be set based on the user and the Gear device.
