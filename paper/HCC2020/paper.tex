@@ -30,6 +30,9 @@
 \long\def\U{\textsf{\small{U}}}
 \long\def\D{\textsf{\small{D}}}
 
+\def\SC{\textsf{\small Serencast}}
+\def\SB{\textsf{\small Scrapbox}}
+
 \usepackage{graphicx}
 % mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
 % http://www.ns.musashi-tech.ac.jp/~inoue/Pages/TeX/mediabb.sty.html
@@ -56,7 +59,7 @@
 \maketitle
 \abstract
 
-We introduce a new simple interaction technique for finding and browsing
+We introduce a novel simple interaction technique for finding and browsing
 data in a huge hierarchical database using only two keys or
 one rotating device.
 % that can generate two different signals based on the rotation direction.
@@ -66,7 +69,7 @@ etc. distribued from many service providers like Amazon and Netflix.
 However, 
 finding a data from the huge database is not a trivial task. Users can
 either find an entry using keywords, or using a menu based
-on a hierarchical structure of the data.
+on a hierarchical structure of the database.
 After successfully finding a candidate data,
 the user should confirm that he wants to watch it by pressing a ``select'' button.
 If the user finds that the data is not the one he wanted,
@@ -76,12 +79,12 @@ In the past, when only a small number of ``channels'' were availale
 from broadcast TV stations, the only thing users could do was
 using the ``television dial'' to select a ``channel'' and watch the
 broadcasted data.
-Although the variety of the sources were limited,
+Although the number of the sources were limited,
 the user interface for selecting a station was simple.
 %
 We introduce a simple interaction technique called ``Gear'',
 with which users can select an entry from a very large hiearchial database and
-browse it instantly, just like we could select a channel and enjoyed a TV program
+browse it instantly, just like we could select a channel and enjoy a TV program
 using old television dials.
 
 \keywords Input device, Information navigation, Hierarchical data, Gear, Serencast
@@ -95,15 +98,15 @@ using old television dials.
 Large data are often represented as a hierarchical structure, and
 various navigation methods are provided for exploring the data.
 For example, files on Unix are structured hierarchically, and
-various commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
+many commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
 Large dictionary database can also be treated as a large
 hierarchical data, since the name of the entry can be treated hierarchically:
-e.g. an entry for ``\tsf{dictionary}'' can be stored under ``\tsf{d}'' and ``\tsf{d/i}''.
+e.g. an entry for ``\tsf{dictionary}'' can be stored under ``\tsf{d}'', ``\tsf{d/i}'', and so on.
 
 Many information visualization techniques and navigation techniques
 have been proposed for handling large hierarchical data.
 On modern personal computers,
-multiple GUI methods are provided for
+multiple GUI techniques are provided for
 exploring the hierarchical file structure, because
 there is no best interaction technique that fits to all the users and situations.
 On MacOS, four GUI methods are provided for browsing the file system.
@@ -133,7 +136,7 @@ This 4-way navigation is popular on small mp3 players\footnote{
 for selecting a song from the hierarchical data.
 4-way navigation is also available on desktop software like Finder.app on Mac.
 
-Amazon FireTV
+% Amazon FireTV
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 547 179]{figures/4buttons.png}}
@@ -166,13 +169,14 @@ where users can explore a large hierarchical database by simple rotating operati
 \end{figure}
 
 \section*{NAVIGATION METHOD AND EXAMPLES}
+\label{navigation}
 
 Interaction with Gear is based on the following simple principles.
 Two types of operations, ``{\up}'' (up) and ``{\down}'' (down), are used for the navigation.
-They can be generated either by rotating the Gear device or typing a keyboard.
+They can be performed either by rotating the Gear device or pressing keys.
 
 \begin{enumerate}
-\item A portion of the hierarchical data is shown to the user.
+\item A portion of the hierarchical data is shown to the user as a list.
 
 \item One element in the list is selected and highlighted.
 
@@ -196,7 +200,7 @@ As a result, all the siblings of the newly selected element
 
 We show how Gear works, using a hierarchical data structure of
 a shops list in a shopping mall shown in Figure \ref{fig1} as example data.
-A rectangles with a thick border represent categories, and
+A rectangles with a thick border represent shop categories, and
 other rectangles represent individual shops.
 
 \begin{figure}[H]
@@ -209,18 +213,18 @@ other rectangles represent individual shops.
 When a user starts the exploration, only the shops and categories
 at the top level are displayed (Figure \ref{fig2}).
 When the user issues {\down},
-the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3})\footnote{
-  Readers can try this at \textsf{http://jsbin.com/lecuroku}.
-}.
+the second element (\tsf{Stationery store}) is selected (Figure \ref{fig3}).
+
+\def\menuwidth{22mm}
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig2.pdf}}
+\centerline{\includegraphics[width=\menuwidth, bb=0 0 139 157]{figures/fig2.pdf}}
 \caption{Initial display.}
 \label{fig2}
 \end{figure}
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig3.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 157]{figures/fig3.pdf}}
 \caption{Typing {\down}.}
 \label{fig3}
 \end{figure}
@@ -232,13 +236,13 @@ category are automatically displayed,
 and the first entry (\tsf{Liquor shop}) is selected (Figure \ref{fig5}).
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig4.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 157]{figures/fig4.pdf}}
 \caption{Selecting Food/drink.}
 \label{fig4}
 \end{figure}
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig5.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 238]{figures/fig5.pdf}}
 \caption{Selecting Liquor shop.}
 \label{fig5}
 \end{figure}
@@ -247,7 +251,7 @@ When the user issues {\down} twice here,
 \tsf{Fresh grocery} category is selected (Figure \ref{fig6}).
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 238]{figures/fig6.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 238]{figures/fig6.pdf}}
 \caption{Selecting Fresh grocery.}
 \label{fig6}
 \end{figure}
@@ -257,7 +261,7 @@ the list will change to Figure \ref{fig8},
 without expanding the children of \tsf{Fresh grocery}.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 157]{figures/fig8.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 157]{figures/fig8.pdf}}
 \caption{Selecting Clothing.}
 \label{fig8}
 \end{figure}
@@ -266,7 +270,7 @@ If the use stops issuing {\down} at Figure \ref{fig6},
 the shops under category \tsf{Fresh grocery} is automatically selected (Figure \ref{fig7}).
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 292]{figures/fig7.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 292]{figures/fig7.pdf}}
 \caption{Selecting Fish store.}
 \label{fig7}
 \end{figure}
@@ -282,7 +286,7 @@ If the user issues {\down} in Figure \ref{fig4}, the next visible entry
 (\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=24mm,bb=0 0 139 211]{figures/fig9.pdf}}
+\centerline{\includegraphics[width=\menuwidth,bb=0 0 139 211]{figures/fig9.pdf}}
 \caption{Selecting Shoes store.}
 \label{fig9}
 \end{figure}
@@ -293,51 +297,59 @@ When the user issues {\down} twice in Figure \ref{fig7},
 In this way, users can explore the hierarchical structure
 only by issuing {\up} and {\down} at the right timing.
 
-\section{SERENCAST: A GEAR-BASED BROWSING SERVICE}
+\section{SERENCAST: A NON-CLICK BROWSING SERVICE}
 
 % SerencastというサービスでGearを使う
 % SerencastはScrapboxを利用したものである
 
-To prove that Gear can be used for selecting entries from a very
+To prove that Gear is useful for selecting an entry from a very
 large hierarchical database,
-we have started the ``\tsf{Serencast.com}'' service, where
-users can enjoy videos, musics, and other Web pages
+we have developed the ``\tsf{Serencast.com}'' service, where
+users can enjoy movies, musics, and other Web services
 on the browser with the Gear interface.
 
-Serencast uses the ``\tsf{Scrapbox.io}'' wiki service\footnote{
+{\SC} uses the ``\tsf{Scrapbox.io}'' wiki service\footnote{
   \tsf{https://Scrapbox.io/}
 } for listing the contents of the hierarchical database.
-Scrapbox is an interactive wiki\footnote{
+{\SB} is an interactive wiki\footnote{
   \tsf{https://en.wikipedia.org/wiki/Wiki}
-} system where users can share and edit texts on the Web.
-A user can create a Scrapbox ``project'', and create pages
+} system where users can share and edit texts on the Web browser.
+A user can create a {\SB} ``project'', and create pages
 that consists of texts and links,
 and people can share the page and edit it freely on their browsers.
 
-
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 1553 1174]{figures/28818d749896f87f3eb8bd6b6f9e9a36.png}}
-\caption{An example of a Scrapbox project.}
+\caption{An example of a {\SB} project.}
 \label{exampleproject}
 \end{figure}
 
+Figure \ref{exampleproject} shows an example of a {\SB} project.
+The title of the project is ``Scrapbox help'', and
+many pages like ``Features'' exist inthe project.
+
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 1606 1200]{figures/9e867c325bafc415bd0870c1717fbaf7.png}}
-\caption{An example Scrapbox page.}
+\caption{An example {\SB} page.}
 \label{examplepage}
 \end{figure}
 
-The page is based on plain text, and users can use special markup tags
-like ``\texttt{[}'' and ``\texttt{]}'' to display bold texts, icons, URL links,
+Figure \ref{examplepage} is an example of a {\SB} page.
+%
+The page is based on plain text just like an WikiPedia page is based on plain text.
+Users can use special markup tags
+like ``\texttt{[}'' and ``\texttt{]}'' to show bold texts, icons, URL links,
 and links to other pages.
-In this example, a URL link to \textsf{http://gyazo.com} is used
-just like \textsf{A} tags in HTML.
+In this example, a URL link to {\tsf{http://gyazo.com}} is used
+just like \tsf{A} tags used in HTML.
+
+The raw text of the {\SB} page looks like this:
 
 {\scriptsize
 \begin{verbatim}
 Features
 (The [Check.icon] means we believe this feature is unique \
- toScrapbox among competing services.)
+ to {\SB} among competing services.)
 
 [[Easy to use Gyazo images]]
  By using together with [Gyazo https://gyazo.com] you can \
@@ -352,14 +364,14 @@ happen spontanteously.
 }
 
 When we list the URLs of Web pages of
-videos and musics on a Scrapbox page,
+movies and musics on a {\SB} page,
 we can create a hierarchical structure from the list and
 use the Gear interface to find data and browse it.
-We can use Serencast.com service
+We can use \tsf{Serencast.com} service
 for using the Gear interface to select a program from the
-list on Serencast pages, and automatically play it on the browser.
+list on {\SC} pages, and automatically play it on the browser.
 
-Figure \ref{movielist} shows a Scrapbox page listing movies.
+Figure \ref{movielist} shows the movie list defined in a {\SB} page.
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=40mm,bb=0 0 417 619]{figures/2690db244045aa809a3e2fc2b40ba0a3.png}}
@@ -368,7 +380,7 @@ Figure \ref{movielist} shows a Scrapbox page listing movies.
 \label{movielist}
 \end{figure}
 
-The raw text of this page looks like this.
+The raw text of this page is shown below:
 
 {\scriptsize
 \begin{verbatim}
@@ -392,24 +404,26 @@ Movies
 \label{tiffany}
 \end{figure}
 
-When we access the Scrapbox page from Serencast,
+When we access the {\SB} page from {\SC},
 ``Gran Trino'' from Netflix automatically starts in the right side of the screen,
-just like a TV program starts when we rotate tha channel dial of an old TV.
+just like a TV program starts when we rotate tha channel dial of an old television.
 When the user pushes the {\down} key twice,
 ``Breakfast at Tiffarny's'' is selected and
 the movie starts at the right side of the screen. (Figure \ref{tiffany})
 
 In the above example, we can select only one of the 10 movies using the Gear interface.
-We can add more data by hierarchically proiding the contents of Scrapbox pages.
+But we can add more data by hierarchically providing more contents in {\SB} pages.
 
 In one page, we can specify a hierarchical structure by using indentations.
 Figure \ref{musiclist} shows a portion of a list of CDs and
-musics titles by Weather Report and Wes Montgomery are shown.
+musics titles by ``Weather Report'' and ``Wes Montgomery'' are shown\footnote{
+  Weather Report is the name of a famous Jazz group, and Wes Montgomery is a famous Jazz guitarist.
+}.
 For example, 
-``Black Market'' is the first music title in the album ``8:30'' of Weather Report, and
-the tune ``Scarlet Woman'' follows ``Black Market''.
+``Black Market'' is the first title in the album ``8:30'' of ``Weather Report'', and
+``Scarlet Woman'' follows ``Black Market''.
 ``Wes Montgomery'' is listed in the same layer as ``Weather Report'', and
-the album ``Tequilla'' is listed below the level.
+the album ``Tequilla'' is listed one level below the level of the name of the artist.
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=40mm,bb=0 0 596 808]{figures/6657544cf60cbf0aea91ba7da0455b90.png}}
@@ -418,7 +432,7 @@ the album ``Tequilla'' is listed below the level.
 \label{musiclist}
 \end{figure}
 
-The title of this Scrapbox page is ``Music'', and 
+The title of this {\SB} page is ``Music'', and 
 we can collect Movie page, Music page, and other pages by
 listing them in another page (``Top'' page, in this case).
 
@@ -428,12 +442,14 @@ listing them in another page (``Top'' page, in this case).
 \label{top}
 \end{figure}
 
-Many pages (Music, Movies, etc.) are listed below the Top page, and
+Many pages (Music, Movies, etc.) are listed in the Top page, and
 the pages are treated as children pages of the Top page.
 By constructing data hierarchically like this,
-We can build a very large hierarchical database for watching movies, videos, etc.
-As many as 100,000 pages can be put on a hierarchical Scrapbox pages, and
-we can select one of the entries only by using only {\up} and {\down} keys.
+We can build a very large hierarchical database for watching movies, videos, news, etc.
+A hierarchical database with
+As many as 100,000 pages can be easily constructed on a {\SB} pages, and
+we can select one of the entries only by using only {\up} and {\down} keys,
+using the Gear technique described in section \ref{navigation}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackmarket.png}}
@@ -447,33 +463,43 @@ we can select one of the entries only by using only {\up} and {\down} keys.
 \label{blackjack}
 \end{figure}
 
-Since anybody can edit the Scrapbox page and construct the hierarchical data,
-people can enjoy creating his own data by editing his Scrapbox pages.
-Also, people who want to distribute their works,
-they can create their Scrapbox page
-and give it to others so that other people can include the page and
-enjoy it by using Gear.
+Since anybody can edit the {\SB} page and construct the hierarchical data,
+people can enjoy creating their own data by editing their {\SB} pages.
+Also, when people who want to advertise their works,
+they can create their {\SB} page
+and give it to others so that other people can include the page
+in their list and enjoy it using Gear.
 
 \section{DISCUSSIONS}
 
 \subsection{Input devices for Gear}
 
-Since only two switches are required,
+Since only two switches are required in the Gear interface,
 various kinds of input devices can be used for Gear.
 We have tried various input devices, and collected experiences.
 
 \paragraph{Keys and buttons}
 
-We can use two arrow keys on a computer for using Serencast.
+The simplest input device for Gear may be keyboards or buttons.
+We tried using arrow keys on a PC, and it works fairly fine.
+We also tried special devices with pressure sensors, with which users can press the button strongly to simulate multiple keyboard presses.
+Two keys or pressure sensors can be placed anywhere: we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
 
-キーリピートも良い
+We can use two arrow keys on a computer keyboard for using {\SC}.
+It works fine, but Gear is not more useful than using many keys on a computer.
+%
+Good thing is that many keyboard devices are available for personal computers,
+and we can use such devices for using Gear.
 
+% キーリピート
 
 \paragraph{Rotating devices}
 
 We tried various rotating devices for Gear.
 Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
 For example, ``jog dials''ave been widely used for controlling VCRs, and we tried the device for Gear.
+
+(figure)
 
 We have also tried "rollers" for Gear.
 After trying these devices, we found that controlling rotating devices are not as easy as we expect,
@@ -508,14 +534,25 @@ rotating the device clockwise and counterclockwise.
 \label{powermate}
 \end{figure}
 
-\paragraph{Keyboards and buttons}
-  The simplest input device for Gear may be keyboards or buttons.
-  We tried using arrow keys on a PC, and it works fairly fine.
-  We also tried special devices with pressure sensors, with which users can press the button strongly to simulate multiple keyboard presses.
-  Two keys or pressure sensors can be placed anywhere: we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
-
 \paragraph{2-way lever}
 
+We have also tried to use a paddle-like device for generating {\U} and {\D}.
+Users can push the puddle to the right to generate {\U} and
+left to generate {\D}.
+Pressure sensors are installed on the puddle, and
+many {\U}s are generated when the user pushs the puddle strongly.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=54mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
+\caption{Paddle device for Gear.}
+\label{paddle}
+\end{figure}
+
+Controling the speed of the scrolling of Gear by pressure is convenient,
+since sometimes users want to jump to a far entry from current position.
+That behavior is close to the key-repeat feature or computer keyboards.
+
+\comment{
 We tried a lever with two pressure sensors.
 モールス用「エレキー」
 Puddle
@@ -526,15 +563,8 @@ Puddle
 \label{elekey}
 \end{figure}
 
+}
 
-図\ref{paddle}は，
-パドルに貼った2個の圧力センサの値を{\up}{\down}に割り当てている．
-
-\begin{figure}[H]
-  \centerline{\includegraphics[width=54mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
-\caption{左右にはじく「パドル」デバイス}
-\label{paddle}
-\end{figure}
 
 After trying various devices, it became clear that simple buttons or
 wheels can be put at anywhere like on the table or under a chair, and
@@ -547,6 +577,7 @@ If we can put input devices that fits to furnituers, we can use the device near 
  体が不自由でも使えることは間違いない
 
 \section{Discussions}
+
 \subsection{Is the Gear interface a new idea?}
   Since the idea of Gear interface is so simple, we have been wondering if the same idea had been around in the past.
   But as far as we know, Gear is the first attempt to explore 
@@ -569,7 +600,7 @@ If we can put input devices that fits to furnituers, we can use the device near 
 
 \section*{IMPLEMENTATION}
 
-A prototype of Gear was built using JavaScript on modern browsers.
+{\SC} is built using JavaScript on modern browsers.
 
 A large list of news articles, movies, anime films, musics, and e-book titles are listed in one browser window
 and the content is displayed in another window (Figure \ref{screenshot}).
@@ -696,5 +727,15 @@ various places like kitchens, restrooms, etc.
 }
 
 \end{document}
+
+Non-click browsingの威力
+  ストレスが全然違う
+音声を使う
+満員電車で使える
+速度
+  log(n)
+時計のセットとか
+
+
 
 
