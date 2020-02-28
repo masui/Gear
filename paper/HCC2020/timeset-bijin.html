@@ -1,0 +1,25 @@
+<!--
+  標準の<input>で美人時計を検索
+-->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>美人時計</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="time" id="time" name="appt" value="00:00" min="00:00" max="24:00" required onChange="change()" style="font-size:20pt;">
+    <br>
+    <p>
+    <img id="img" />
+    <script>
+      $('#time').focus()
+      $('#img').attr('src',`http://www.bijint.com/assets/pict/jp/pc/0000.jpg`)
+      function change(){
+        var t = $('#time').val().replace(/:/,'')
+        $('#img').attr('src',`http://www.bijint.com/assets/pict/jp/pc/${t}.jpg`)
+      }
+    </script>
+  </body>
+</html>
+
