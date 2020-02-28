@@ -307,6 +307,7 @@ large hierarchical database,
 we have developed the ``\tsf{Serencast.com}'' service, where
 users can enjoy movies, musics, and other Web services
 on the browser with the Gear interface.
+{\SC} is implemented in JavaScript, and runs on modern browsers 
 
 {\SC} uses the ``\tsf{Scrapbox.io}'' wiki service\footnote{
   \tsf{https://Scrapbox.io/}
@@ -490,8 +491,7 @@ It works fine, but Gear is not more useful than using many keys on a computer.
 %
 Good thing is that many keyboard devices are available for personal computers,
 and we can use such devices for using Gear.
-
-% キーリピート
+``Key-repeat'' feature is useful for fast scrolling of the menu.
 
 \paragraph{Rotating devices}
 
@@ -514,7 +514,7 @@ We can use a rotary encoder as a
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=54mm,bb=0 0 362 354]{figures/ff2d18e66f9a4655dbb5e22e0bb9a0ae.png}}
-\caption{回転板デバイス}
+\caption{A disk-based device for Gear.}
 \label{disk}
 \end{figure}
 
@@ -576,31 +576,8 @@ If we can put input devices that fits to furnituers, we can use the device near 
  If we can put the devices neatlly on furnitures and beds, people with disabilities can easilyt use them, 
  体が不自由でも使えることは間違いない
 
-\section{Discussions}
-
-\subsection{Is the Gear interface a new idea?}
-  Since the idea of Gear interface is so simple, we have been wondering if the same idea had been around in the past.
-  But as far as we know, Gear is the first attempt to explore 
-
- こういうデバイスは超簡単なので、存在した可能性はある
- 特許や論文を調べた限りはみつけられなかった
-
-\section{Evaluations}
-
-\begin{verbatim}
-実際に家で使っていた
- 階層構成の問題点はあるが、いろんな階層を用意しておけばいい
-  時間的階層、アーティスト的階層、名前的階層、...
-  それはなんとか対応できることをいう
-   もちろん同時に指定できればいいのだが...
- 音量とか場所とかは?
- 名前があるものは必ず階層的に検索できる
-  e.g. 辞書
-\end{verbatim}
-
+\comment{
 \section*{IMPLEMENTATION}
-
-{\SC} is built using JavaScript on modern browsers.
 
 A large list of news articles, movies, anime films, musics, and e-book titles are listed in one browser window
 and the content is displayed in another window (Figure \ref{screenshot}).
@@ -610,6 +587,7 @@ and the content is displayed in another window (Figure \ref{screenshot}).
 \caption{Selecting an Internet radio station.}
 \label{screenshot}
 \end{figure}
+}
 
 \section*{DISCUSSIONS}
 
@@ -680,7 +658,27 @@ quickly enough, he will see Figure \ref{fig5} instead of Figure \ref{fig7}.
 This is a tradeoff between usability and simplicity, and
 the best parameter should be set based on the user and the Gear device.
 
+\section{Discussions}
+
+\subsection{Is the Gear interface a new idea?}
+  Since the idea of Gear interface is so simple, we have been wondering if the same idea had been around in the past.
+  But as far as we know, Gear is the first attempt to explore 
+
+ こういうデバイスは超簡単なので、存在した可能性はある
+ 特許や論文を調べた限りはみつけられなかった
+
 \section*{EVALUATION}
+
+\begin{verbatim}
+実際に家で使っていた
+ 階層構成の問題点はあるが、いろんな階層を用意しておけばいい
+  時間的階層、アーティスト的階層、名前的階層、...
+  それはなんとか対応できることをいう
+   もちろん同時に指定できればいいのだが...
+ 音量とか場所とかは?
+ 名前があるものは必ず階層的に検索できる
+  e.g. 辞書
+\end{verbatim}
 
 No formal evaluation have been done yet, but Gear has been used in the author's
 living room for six months, and the author's family members are using it
@@ -704,7 +702,7 @@ all the subjects, but the hard restriction of the device seemed to have worked i
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=70mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
-\caption{People at the right trying Strotor at an exhibition.}
+\caption{People at the right using {\SC} at an exhibition.}
 \label{exhibition}
 \end{figure}
 
