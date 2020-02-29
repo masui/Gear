@@ -1,16 +1,16 @@
 #
 # モノレールをSerencastで観賞する
 #
-i = 1
 (0..14).each { |m|
   mm = sprintf("%02d",m)
-  puts " #{mm}:--"
+  id = sprintf("%04d",m*60+1)
+  puts " [#{mm}:-- http://pitecan.com/monorail/monorail#{id}.jpg]"
   (0..5).each { |s1|
-    puts "  #{mm}:#{s1}-"
+    id = sprintf("%04d",m*60+s1*10+1)
+    puts "  [#{mm}:#{s1}-- http://pitecan.com/monorail/monorail#{id}.jpg]"
     (0..9).each { |s2|
-      id = sprintf("%04d",i)
+      id = sprintf("%04d",m*60+s1*10+s2+1)
       puts "   [#{mm}:#{s1}#{s2} http://pitecan.com/monorail/monorail#{id}.jpg]"
-      i += 1
     }
   }
 }
