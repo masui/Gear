@@ -1,0 +1,42 @@
+<!--
+  標準の<input>で湘南モノレール画像を検索
+-->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>湘南モノレール</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="time" id="time" name="appt" value="00:00" min="00:00" max="14:24" required onChange="change()" style="font-size:20pt;">
+    <br/>
+    <p><p/>
+      <a id="youtube" href="https://www.youtube.com/watch?v=ouGReLZtYuY">〈前面展望〉湘南モノレール 大船→湘南江の島</a> 
+      <br/>
+    <p><p/>
+      <img id="img" />
+    <p><p/>
+    <ul>
+      <li>0:00 大船</li>
+      <li>1:55 富士見町</li>
+      <li>3:57 湘南町屋</li>
+      <li>5:40 湘南深沢</li>
+      <li>9:03 西鎌倉</li>
+      <li>10:53 片瀬山</li>
+      <li>12:41 目白山下</li>
+      <li>14:00 湘南江ノ島</li>
+    </ul>
+    <script>
+      $('#time').focus()
+      $('#img').attr('src',`http://pitecan.com/monorail/monorail0001.jpg`)
+      function change(){
+        a = $('#time').val().match(/(..):(..)/)
+        t = Number(a[1]) * 60 + Number(a[2]) + 1
+        ts = ("0000"+t).slice(-4)
+        $('#img').attr('src',`http://pitecan.com/monorail/monorail${ts}.jpg`)
+        $('#youtube').attr('href',`https://www.youtube.com/watch?v=ouGReLZtYuY&t=${t}`)
+      }
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,63 @@
+<!--
+  標準の<input>で湘南モノレール画像を検索
+-->
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>湘南モノレール</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="time" id="time" name="appt" value="00:00" min="00:00" max="14:24" required onChange="change()" style="font-size:20pt;">
+    &nbsp;
+    <span id="targettime" style="font-size:30px; color:#000;">0:00</span>
+    <p><p/>
+
+      <a id="youtube" href="https://www.youtube.com/watch?v=ouGReLZtYuY">Source at YouTube</a> 
+      <br/>
+    <p><p/>
+      <img id="img" />
+    <p><p/>
+    <script>
+      var count = 0;
+      var startTime = new Date;
+
+      function randTime(){
+        t = Math.floor(Math.random()*867)
+        min = ("0" + Math.floor(t/60)).slice(-2)
+        sec = ("0" + t % 60).slice(-2)
+        return `${min}:${sec}`
+      }
+      $('#targettime').text(randTime())
+	
+      $('#time').focus()
+      $('#img').attr('src',`http://pitecan.com/monorail/monorail0001.jpg`)
+      function change(){
+        a = $('#time').val().match(/(..):(..)/)
+        t = Number(a[1]) * 60 + Number(a[2]) + 1
+        ts = ("0000"+t).slice(-4)
+        $('#img').attr('src',`http://pitecan.com/monorail/monorail${ts}.jpg`)
+        $('#youtube').attr('href',`https://www.youtube.com/watch?v=ouGReLZtYuY&t=${t}`)
+
+        if(count < 5){
+          if($('#time').val() == $('#targettime').text()){
+            count += 1
+            if(count == 5){ // end
+              endTime = new Date
+              elapsed = endTime - startTime
+              alert(elapsed / 1000.0 / count)
+              $('#targettime').css('display','none')
+            }
+            else {
+              c = $('body').css('background-color')
+              $('body').css('background-color','#ff0')
+              setTimeout(function(){ $('body').css('background-color',c) }, 300)
+            }
+            $('#targettime').text(randTime())
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
+
