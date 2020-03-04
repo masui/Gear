@@ -41,7 +41,7 @@
 % \usepackage{ascmac}
 
 \begin{document}
-\title{Non-click browsing}
+\title{No-click browsing of large hierarchical data}
 \author{
 \begin{tabular}{l}
 \parbox{5.5cm}{
@@ -95,39 +95,35 @@ using old television dials.
 
 \section*{INTRODUCTION}
 
-\begin{verbatim}
-Macのファインダでは最下層ではザッピングができる
-/ no-clickブラウジングができてて便利
-カバーフローでザッピングできるし、ファイルを選択すると
-中身が右に見える。。。これはno-clickブラウジングである
-しかし階層を上下することはできないし、
-沢山ファイルがあるとザッピングできない
-\end{verbatim}
-
 % 大量のコンテンツから見たいものを捜して再生するのは大変である
 % 
 % 1. 階層から捜すのが大変
 % 2. みつけたものをConfirmする手間がいる
 
-Huge amount of movies, musics, and documents are available on the web, but
-viewing a content usually takes time because
-(1) finding a content is difficult, and
-(2) a ``confirm'' operation is required for viewing.
+Huge amount of movies, musics, and other programs are available on the web, but
+finding and viewing a program usually takes time because
+(1) finding a program takes time, and
+(2) a ``confirm'' operation (clicking something or typing a key)
+is required for viewing the content.
 
 % 昔のテレビやラジオではこの手間がなかった
 % チャンネルやチューニングつまみを回すだけでよかった
 % 選択操作はなかった
 % つまりいわゆる「ザッピング」が可能であった
 
-The confirm operations were not required on old TVs and radios,
-because we could enjoy the TV and radio program
-as soon as we rotated a ``TV channel'' or a tuning dial of the radio.
+The confirm operations was not required on old TVs and radios,
+because we could enjoy the TV and radio programs
+as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
 
-\begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}}
-\caption{A TV channel}
+\begin{figure} % [H]
+\centerline{
+   \includegraphics[width=40mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}
+   \includegraphics[width=40mm,bb=0 0 128 72]{figures/fedc4f3c899c48b5a3ddd0982801c79d.png}
+}
+\caption{A n old TV channel and a radio tuning dial}
 \label{TV channel}
 \end{figure}
+
 
 % 一般に、選択するとすぐに見えるのはどこでも便利なものである
 % Finderのカバーフローや、最下層では選択内容がすぐに見えたりする
@@ -135,57 +131,124 @@ as soon as we rotated a ``TV channel'' or a tuning dial of the radio.
 % これをno-click browsingと呼ぶことにする
 % TVもラジオもno-click browsingが可能であった
 
-It is always convenient to see the contents of the selected item
-as soon as we select the item.
-We'd like to call this viewing style as ``no-click browsing''.
-We could enjoy no-click browsing on old TVs and radios, but we can
-also use the style on modern personal computers.
-On the ``\tsf{Finder.app}'' program on MacOS, we can use the ``CoverFlow'' mode to browse
-the contents with simple swyping gestures.
+It is always convenient to view the contents of the selected item
+as soon as we find it.
+We call such viewing style as ``\tit{no-click browsing}''.
+
+We can use the style on modern personal computers.
+Using the ``\tsf{Finder.app}'' on MacOS, we can use the ``CoverFlow''\footnote{
+  \tsf{https://en.wikipedia.org/wiki/Cover\_Flow}
+} viewer to browse the contents in a folder
+with simple swyping gestures (Figure \ref{coverflow}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
-\caption{Cover Flow}
+\caption{Cover Flow on MacOS}
 \label{coverflow}
 \end{figure}
 
-We can also enjoy no-click browsing on finder windows see the contents of files when ....
+We can also enjoy no-click browsing on a Finder.app windows
+when we select a file in a folder and
+type arrow keys for selecting other files.
+The contents of the file is shown at the right as soon as
+we select a file in a folder.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
+% \centerline{\includegraphics[width=70mm,bb=0 0 1678 846]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
+\centerline{\includegraphics[width=70mm,bb=0 0 839 423]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
 \caption{No-click browsing on conventinal Finder mode}
-\label{coverflow}
+\label{noclickfinder}
 \end{figure}
+
 
 % テレビやカバーフローのザッピングはもちろんソースが少なかったからできるわけだが、
 % 大量データの場合はこれが難しい。
+% 何千個もソースがある場合は
+% 階層をたどる処理が必要になり、その移動操作が必要だからである
 
-We could enjoy no-click browsing on TVs and radios because the number of
-sources are limited.
-Likely, we can enjoy no-click browsing on the Finder.app when the number of files
-in one directory is not too big.
+We can enjoy no-click browsing on old TVs and radios because the number of
+source channels are limited.
+Likely, we can enjoy no-click browsing on Finder.app when the number of files
+in one folder is not very large.
 
-何千個もソースがある場合は
-階層をたどる処理が必要になり、その移動操作が必要だからである
+No-click browsing is not popular on the GUI of personal computers.
+People are used to click-based browsing on web browsers and other
+information visualization systems.
+People can navigate through a huge information space by
+clicking links, zooming by dragging, and other GUI operations.
+These techniques are useful for finding an item in a large information space,
+but many clicks and dragging operations are required.
+The contents of the items are usually not shown while 
 
-階層でもそうでなくても、移動操作は慣れている
-適切な階層構造を用意して、クリックしながらたどるのがブラウザでは一般的である
-ブラウザの場合、カバーフローのようなインタフェースは一般的でないので、
-みつけたものを選択したり戻ったりを繰り返さなければならない。
+% 階層でもそうでなくても、移動操作は慣れている
+% 適切な階層構造を用意して、クリックしながらたどるのがブラウザでは一般的である
+% ブラウザの場合、カバーフローのようなインタフェースは一般的でないので、
+% みつけたものを選択したり戻ったりを繰り返さなければならない。
+% 
+% ブラウザでは階層のInfoVis[]もいろいろあるが、操作に頭を使うし、no-clickブラウジングできるものは無い。
 
-ブラウザでは階層のInfoVis[]もいろいろあるが、操作に頭を使うし、no-clickブラウジングできるものは無い。
+% 階層的なら上下操作でなんとかなる
+% 小型機器で階層情報をたどるときは4-wayでひとつずつたどるのが普通
 
-小型機器で階層情報をたどるときは4-wayでひとつずつたどるのが普通
+% The simplest way of navigatin a hierarchical data is to use four keys
 
+When a user cannot use GUI, key-based interaction techniques are widely used for
+finding information in hierarchical data.
+%
+For example, a user can find a music data by
+selecting an artist from the list of artist names,
+selecting an album title from the title list,
+and selecting a music data from the song list.
+%
+Users can use two keys for choosing an entry from the list
+% (e.g. selecting an artist from the artist list),
+and use another key for selecting an entry and moving to the next level.
+% (e.g. selecting an artist and show album titles).
+It is also necessary to provide a way to go back to the previous state, and
+yet another key can be used for that task.
+% (e.g. showing the artist list for artist selection).
+This 4-way navigation is popular on small devices
+and remote controllers like AppleRemote\footnote{\textsf{http://en.wikipedia.org/wiki/Apple\_Remote}}
+for selecting a song from the hierarchical data.
+4-way navigation is also available on desktop software like Finder.app.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=50mm,bb=0 0 333 250]{figures/0048a5e91ddcf1d5670bd958e3c55619.jpg}}
+\caption{A small device supporting 4-way navigation}
+\label{rio}
+\end{figure}
+
+Using 4 keys might be okay on these devices, but it would be much better
+if we could perform the navigation task using simpler dvices that have only 2 keys.
+In that case, we can also use a rotating device like a disk or a wheel for the navigation,
+since such devices can generate 2 signals based on the rotation direction (Figure \ref{rotation}).
+%
+% We have developed a new navigation technique where only two keys are required
+% for exploring large hierarchical data, and implemented the system on
+% a rotating device ``Strotor''.
+%
+We have developed a new navigation technique called ``{Gear}'',
+where users can explore a large hierarchical database by simple rotating operations.
+%
+Using Gear, we can enjoy no-click browsing only by typing two keys or
+rotating a dial
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=60mm,bb=0 0 294 110]{figures/rotation.pdf}}
+\caption{Using a rotation device for generating key events.}
+\label{rotation}
+\end{figure}
+
+\comment{
 ブラウザ上でも小型機器でもザッピングのようなインタフェースで気楽に大量データをブラウズしたい
 
 そのためのGearというインタフェースを考えた
 
 Gearでは、ふたつのスイッチやキーだけを使って大量のコンテンツをno-clickでザッピングできる
+}
 
-
-
-Large Large data are often represented as a hierarchical structure, and
+\comment{
+Large data are often represented as a hierarchical structure, and
 various navigation methods are provided for exploring the data.
 For example, files on Unix are structured hierarchically, and
 many commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
@@ -200,34 +263,9 @@ multiple GUI techniques are provided for
 exploring the hierarchical file structure, because
 there is no best interaction technique that fits to all the users and situations.
 On MacOS, four GUI methods are provided for browsing the file system.
+}
 
-% there is no single interaction technique that is always good for any situation.
-% ZUIの話, ハイパーリンクでたどる方法もある
-
-When a user cannot use GUI,
-selection-based interaction techniques are used for
-finding information in hierarchical data.
-For example, a user can hierarchically find a music data by
-selecting an artist from the list of artist names,
-selecting an album title from the title list,
-and selecting a music data from the song list.
-% Users can do the selection jobs either by using a mouse or by using arrow keys.
-% For exaple,
-Users can use two keys for choosing an entry from the list
-(e.g. selecting an artist from the artist list),
-and use another key for selecting an entry and moving to the next level
-(e.g. selecting an artist and show album titles).
-It is also necessary to provide a way to go back to the previous state, and
-yet another key can be used for that task
-(e.g. showing the artist list for artist selection).
-This 4-way navigation is popular on small mp3 players\footnote{
-  e.g. \textsf{http://www.iriver.com/product/view.asp?pCode=003\&pNo=37}
-} and remote controllers like AppleRemote\footnote{\textsf{http://en.wikipedia.org/wiki/Apple\_Remote}}
-for selecting a song from the hierarchical data.
-4-way navigation is also available on desktop software like Finder.app on Mac.
-
-% Amazon FireTV
-
+\comment{
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 547 179]{figures/4buttons.png}}
 \caption{4-button controllers on a small mp3 player (left) and AppleRemote (right).}
@@ -239,24 +277,7 @@ for selecting a song from the hierarchical data.
 
 % Small devices like Rio MP3 player and remote controllers like AppleRemote have
 % 4 buttons for selecting a song from the hierarchical data.
-
-Using 4 keys might be okay on these devices, but it would be much better
-if we could perform the navigation task using simpler dvices that have only 2 keys.
-In that case, we can also use a rotating device like a disk or a wheel for the navigation,
-since such devices can generate 2 signals based on the rotation direction (Figure \ref{rotation}).
-%
-% We have developed a new navigation technique where only two keys are required
-% for exploring large hierarchical data, and implemented the system on
-% a rotating device ``Strotor''.
-%
-We have developed a new navigation technique called ``{Gear}'',
-where users can explore a large hierarchical database by simple rotating operations.
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=60mm,bb=0 0 294 110]{figures/rotation.pdf}}
-\caption{Using a rotation device for generating key events.}
-\label{rotation}
-\end{figure}
+}
 
 \section*{NAVIGATION METHOD AND EXAMPLES}
 \label{navigation}
