@@ -95,12 +95,97 @@ using old television dials.
 
 \section*{INTRODUCTION}
 
-Macのファインダでは最下層ではザッピングができる / no-clickブラウジングができてて便利
-カバーフローでザッピングできるし、ファイルを選択すると中身が右に見える。。。これはno-clickブラウジングである
+\begin{verbatim}
+Macのファインダでは最下層ではザッピングができる
+/ no-clickブラウジングができてて便利
+カバーフローでザッピングできるし、ファイルを選択すると
+中身が右に見える。。。これはno-clickブラウジングである
 しかし階層を上下することはできないし、
 沢山ファイルがあるとザッピングできない
+\end{verbatim}
 
-Large data are often represented as a hierarchical structure, and
+% 大量のコンテンツから見たいものを捜して再生するのは大変である
+% 
+% 1. 階層から捜すのが大変
+% 2. みつけたものをConfirmする手間がいる
+
+Huge amount of movies, musics, and documents are available on the web, but
+viewing a content usually takes time because
+(1) finding a content is difficult, and
+(2) a ``confirm'' operation is required for viewing.
+
+% 昔のテレビやラジオではこの手間がなかった
+% チャンネルやチューニングつまみを回すだけでよかった
+% 選択操作はなかった
+% つまりいわゆる「ザッピング」が可能であった
+
+The confirm operations were not required on old TVs and radios,
+because we could enjoy the TV and radio program
+as soon as we rotated a ``TV channel'' or a tuning dial of the radio.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}}
+\caption{A TV channel}
+\label{TV channel}
+\end{figure}
+
+% 一般に、選択するとすぐに見えるのはどこでも便利なものである
+% Finderのカバーフローや、最下層では選択内容がすぐに見えたりする
+% このときはConfirmの手間なく内容を見られるのは便利なもので、
+% これをno-click browsingと呼ぶことにする
+% TVもラジオもno-click browsingが可能であった
+
+It is always convenient to see the contents of the selected item
+as soon as we select the item.
+We'd like to call this viewing style as ``no-click browsing''.
+We could enjoy no-click browsing on old TVs and radios, but we can
+also use the style on modern personal computers.
+On the ``\tsf{Finder.app}'' program on MacOS, we can use the ``CoverFlow'' mode to browse
+the contents with simple swyping gestures.
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
+\caption{Cover Flow}
+\label{coverflow}
+\end{figure}
+
+We can also enjoy no-click browsing on finder windows see the contents of files when ....
+
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
+\caption{No-click browsing on conventinal Finder mode}
+\label{coverflow}
+\end{figure}
+
+% テレビやカバーフローのザッピングはもちろんソースが少なかったからできるわけだが、
+% 大量データの場合はこれが難しい。
+
+We could enjoy no-click browsing on TVs and radios because the number of
+sources are limited.
+Likely, we can enjoy no-click browsing on the Finder.app when the number of files
+in one directory is not too big.
+
+何千個もソースがある場合は
+階層をたどる処理が必要になり、その移動操作が必要だからである
+
+階層でもそうでなくても、移動操作は慣れている
+適切な階層構造を用意して、クリックしながらたどるのがブラウザでは一般的である
+ブラウザの場合、カバーフローのようなインタフェースは一般的でないので、
+みつけたものを選択したり戻ったりを繰り返さなければならない。
+
+ブラウザでは階層のInfoVis[]もいろいろあるが、操作に頭を使うし、no-clickブラウジングできるものは無い。
+
+小型機器で階層情報をたどるときは4-wayでひとつずつたどるのが普通
+
+ブラウザ上でも小型機器でもザッピングのようなインタフェースで気楽に大量データをブラウズしたい
+
+そのためのGearというインタフェースを考えた
+
+Gearでは、ふたつのスイッチやキーだけを使って大量のコンテンツをno-clickでザッピングできる
+
+
+
+Large Large data are often represented as a hierarchical structure, and
 various navigation methods are provided for exploring the data.
 For example, files on Unix are structured hierarchically, and
 many commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
