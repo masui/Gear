@@ -30,8 +30,8 @@
 \long\def\U{\textsf{\small{U}}}
 \long\def\D{\textsf{\small{D}}}
 
-\def\SC{\textsf{\small Serencast}}
-\def\SB{\textsf{\small Scrapbox}}
+\def\SC{\tsf{Serencast}}
+\def\SB{\tsf{Scrapbox}}
 
 \usepackage{graphicx}
 % mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
@@ -60,12 +60,12 @@
 \abstract
 
 We introduce a novel simple interaction technique for finding and browsing
-data in a huge hierarchical database using only two keys or
-one rotating device.
+data in a huge hierarchical database using only two keys.
+% or one rotating device.
 % that can generate two different signals based on the rotation direction.
 
 We can enjoy various kinds of movies, musics, books,
-etc. distribued from many service providers like Amazon and Netflix.
+etc. distributed from many service providers like Amazon and Netflix.
 However, 
 finding a data from the huge database is not a trivial task. Users can
 either find an entry using keywords, or using a menu based
@@ -73,7 +73,7 @@ on a hierarchical structure of the database.
 After successfully finding a candidate data,
 the user should confirm that he wants to watch it by pressing a ``select'' button.
 If the user finds that the data is not the one he wanted,
-he should go back to the previous state and perform the search again.
+he should go back to the previous state and perform the selection again.
 
 In the past, when only a small number of ``channels'' were availale
 from broadcast TV stations, the only thing users could do was
@@ -101,7 +101,7 @@ using old television dials.
 % 2. みつけたものをConfirmする手間がいる
 
 Huge amount of movies, musics, and other programs are available on the web, but
-finding and viewing a program usually takes time because
+finding and viewing a program is not easy because
 (1) finding a program takes time, and
 (2) a ``confirm'' operation (clicking something or typing a key)
 is required for viewing the content.
@@ -112,7 +112,7 @@ is required for viewing the content.
 % つまりいわゆる「ザッピング」が可能であった
 
 The confirm operations was not required on old TVs and radios,
-because we could enjoy the TV and radio programs
+because we could enjoy TV/radio programs
 as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
 
 \begin{figure} % [H]
@@ -135,7 +135,7 @@ It is always convenient to view the contents of the selected item
 as soon as we find it.
 We call such viewing style as ``\tit{no-click browsing}''.
 
-We can use the style on modern personal computers.
+We can see the non-click browsing style on personal computers.
 Using the ``\tsf{Finder.app}'' on MacOS, we can use the ``CoverFlow''\footnote{
   \tsf{https://en.wikipedia.org/wiki/Cover\_Flow}
 } viewer to browse the contents in a folder
@@ -143,20 +143,22 @@ with simple swyping gestures (Figure \ref{coverflow}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
+% \centerline{\includegraphics[width=80mm,bb=0 0 803 555]{figures/5d46fb09c3c5b4baccfd68ca026ef25b.png}} % Monorail
 \caption{Cover Flow on MacOS}
 \label{coverflow}
 \end{figure}
 
-We can also enjoy no-click browsing on a Finder.app windows
+We can also enjoy no-click browsing on a Finder.app window
 when we select a file in a folder and
 type arrow keys for selecting other files.
-The contents of the file is shown at the right as soon as
-we select a file in a folder.
+Using the ``column view'' mode, 
+the contents of the file is shown at the right side of the window
+as soon as we select a file in a folder (Figure \ref{noclickfinder}).
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=70mm,bb=0 0 1678 846]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
 \centerline{\includegraphics[width=70mm,bb=0 0 839 423]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
-\caption{No-click browsing on conventinal Finder mode}
+\caption{No-click browsing on the column view of Finder.app.}
 \label{noclickfinder}
 \end{figure}
 
@@ -166,19 +168,19 @@ we select a file in a folder.
 % 何千個もソースがある場合は
 % 階層をたどる処理が必要になり、その移動操作が必要だからである
 
-We can enjoy no-click browsing on old TVs and radios because the number of
-source channels are limited.
-Likely, we can enjoy no-click browsing on Finder.app when the number of files
-in one folder is not very large.
+We can use no-click browsing on old TVs and radios because the number of
+broadcast channels are limited.
+Likewise, we can use no-click browsing on Finder.app when the number of files
+in a folder is not very large.
 
-No-click browsing is not popular on the GUI of personal computers.
+No-click browsing is not popular on conventional GUI of personal computers.
 People are used to click-based browsing on web browsers and other
 information visualization systems.
 People can navigate through a huge information space by
-clicking links, zooming by dragging, and other GUI operations.
+clicking links, zooming by dragging, and using other GUI techniques.
 These techniques are useful for finding an item in a large information space,
-but many clicks and dragging operations are required.
-The contents of the items are usually not shown while 
+but many clicks and drag operations are required.
+The contents of the items are usually not shown during the search.
 
 % 階層でもそうでなくても、移動操作は慣れている
 % 適切な階層構造を用意して、クリックしながらたどるのがブラウザでは一般的である
@@ -192,52 +194,50 @@ The contents of the items are usually not shown while
 
 % The simplest way of navigatin a hierarchical data is to use four keys
 
-When a user cannot use GUI, key-based interaction techniques are widely used for
+When a user cannot use a pointing device,
+key-based interaction techniques are used for
 finding information in hierarchical data.
 %
 For example, a user can find a music data by
 selecting an artist from the list of artist names,
 selecting an album title from the title list,
-and selecting a music data from the song list.
+and selecting a music title from the song list.
 %
 Users can use two keys for choosing an entry from the list
 % (e.g. selecting an artist from the artist list),
 and use another key for selecting an entry and moving to the next level.
 % (e.g. selecting an artist and show album titles).
-It is also necessary to provide a way to go back to the previous state, and
-yet another key can be used for that task.
+It is also necessary to use another key for going back to the previous level.
 % (e.g. showing the artist list for artist selection).
 This 4-way navigation is popular on small devices
 and remote controllers like AppleRemote\footnote{\textsf{http://en.wikipedia.org/wiki/Apple\_Remote}}
 for selecting a song from the hierarchical data.
-4-way navigation is also available on desktop software like Finder.app.
+4-way navigation is also available on the column view of Finder.app.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=50mm,bb=0 0 333 250]{figures/0048a5e91ddcf1d5670bd958e3c55619.jpg}}
-\caption{A small device supporting 4-way navigation}
+\centerline{
+  \includegraphics[width=30mm,bb=0 0 333 250]{figures/0048a5e91ddcf1d5670bd958e3c55619.jpg}
+  \includegraphics[width=30mm,bb=0 0 551 551]{figures/70c036b24525c6cace9955b24152e97e.jpg}
+  }
+\caption{Small devices supporting 4-way navigation}
 \label{rio}
 \end{figure}
 
 Using 4 keys might be okay on these devices, but it would be much better
-if we could perform the navigation task using simpler dvices that have only 2 keys.
-In that case, we can also use a rotating device like a disk or a wheel for the navigation,
-since such devices can generate 2 signals based on the rotation direction (Figure \ref{rotation}).
-%
-% We have developed a new navigation technique where only two keys are required
-% for exploring large hierarchical data, and implemented the system on
-% a rotating device ``Strotor''.
-%
-We have developed a new navigation technique called ``{Gear}'',
-where users can explore a large hierarchical database by simple rotating operations.
-%
-Using Gear, we can enjoy no-click browsing only by typing two keys or
-rotating a dial
+if we could perform the navigation task using simpler dvices that have only two keys.
+In that case, we can use a rotating device like a disk or a wheel for the navigation,
+since such devices can generate 2 signals based on the rotation direction.
 
+We have developed a new navigation technique called ``{Gear}'' for no-click browsing,
+where users can explore a large hierarchical database by using only two keys.
+
+\comment{
 \begin{figure}[H]
 \centerline{\includegraphics[width=60mm,bb=0 0 294 110]{figures/rotation.pdf}}
 \caption{Using a rotation device for generating key events.}
 \label{rotation}
 \end{figure}
+}
 
 \comment{
 ブラウザ上でも小型機器でもザッピングのようなインタフェースで気楽に大量データをブラウズしたい
@@ -283,8 +283,9 @@ On MacOS, four GUI methods are provided for browsing the file system.
 \label{navigation}
 
 Interaction with Gear is based on the following simple principles.
-Two types of operations, ``{\up}'' (up) and ``{\down}'' (down), are used for the navigation.
-They can be performed either by rotating the Gear device or pressing keys.
+Two types of operations,
+``{\up}'' (up) and ``{\down}'' (down), are used for the navigation.
+They can be performed either by pressing keys or rotating a dial.
 
 \begin{enumerate}
 \item A portion of the hierarchical data is shown to the user as a list.
@@ -415,7 +416,7 @@ only by issuing {\up} and {\down} at the right timing.
 
 To prove that Gear is useful for selecting an entry from a very
 large hierarchical database,
-we have developed the ``\tsf{Serencast.com}'' service, where
+we have developed the ``{\SC}'' service, where
 users can enjoy movies, musics, and other Web services
 on the browser with the Gear interface.
 {\SC} is implemented in JavaScript, and runs on modern browsers 
@@ -479,7 +480,7 @@ When we list the URLs of Web pages of
 movies and musics on a {\SB} page,
 we can create a hierarchical structure from the list and
 use the Gear interface to find data and browse it.
-We can use \tsf{Serencast.com} service
+We can use {\SC} service
 for using the Gear interface to select a program from the
 list on {\SC} pages, and automatically play it on the browser.
 
@@ -512,7 +513,7 @@ Movies
 \begin{figure}[H]
 % \centerline{\includegraphics[width=80mm,bb=0 0 524 598]{figures/65b01a87b67c9a8e838a047b945f6a77.png}}
 \centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/e8ae562a5a68a1955ac70b4faed9a146.png}}
-\caption{Showing a movie.}
+\caption{Showing ``Breakfast at Tiffany's''.}
 \label{tiffany}
 \end{figure}
 
@@ -588,7 +589,7 @@ in their list and enjoy it using Gear.
 
 Since only two switches are required in the Gear interface,
 various kinds of input devices can be used for Gear.
-We have tried various input devices, and collected experiences.
+We have tried some input devices and collected experiences.
 
 \paragraph{Keys and buttons}
 
