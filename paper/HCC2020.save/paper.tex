@@ -1,50 +1,64 @@
-\documentclass[conference]{IEEEtran}
-\IEEEoverridecommandlockouts
+%
+%
+%
+\long\def\comment#1{}
+\newif\ifcover
 
-\usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
-% \usepackage{algorithmic}
-\usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage{xcolor}
+% パタンはtt
+% 出力文字列はsf
+
+\documentclass{article}
+\usepackage{times}
+\usepackage{uist04}
 
 \usepackage{here} % [H]とするとその場所に配置されるらしい
-\long\def\comment#1{}
 
-\long\def\comment#1{}
-
-\long\def\ttt#1{\texttt{\small #1}}
-\long\def\tsf#1{\textsf{\small{#1}}}
-\long\def\tit#1{\textit{\small{#1}}}
-
+% \def\up{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/uptriangle.pdf} }
+% \def\down{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/downtriangle.pdf} }
+% \def\right{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/righttriangle.pdf} }
+% \def\left{ \includegraphics[width=3mm,bb=0 0 36 36]{figures/lefttriangle.pdf} }
 \def\up{▲}
 \def\down{▼}
 \def\right{▶}
 \def\left{◀}
 
+\long\def\ttt#1{\texttt{\small #1}}
+\long\def\tsf#1{\textsf{\small{#1}}}
+\long\def\tit#1{\textit{\small{#1}}}
+
+% \long\def\ST{\textsf{\small{Strotor}}}
+\long\def\U{\textsf{\small{U}}}
+\long\def\D{\textsf{\small{D}}}
+
 \def\SC{\tsf{Serencast}}
 \def\SB{\tsf{Scrapbox}}
 
+\usepackage{graphicx}
+% mediabb.sty というのを使うとPDFをそのままincludegraphicsできるらしい。
+% http://www.ns.musashi-tech.ac.jp/~inoue/Pages/TeX/mediabb.sty.html
+%
+% \usepackage{mediabb}
+% \usepackage{ascmac}
+
 \begin{document}
-
 \title{No-click browsing of large hierarchical data}
-
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\author{
+\begin{tabular}{l}
+\parbox{5.5cm}{
+\begin{center}
+% Toshiyuki Masui\\
+% Keio University\\
+% masui@pitecan.com
+~ \\
+~ \\
+~
+\end{center}
 }
-
+\end{tabular}
+}
 \maketitle
+\abstract
 
-\begin{abstract}
 We introduce a novel simple interaction technique for finding and browsing
 data in a huge hierarchical database using only two keys.
 % or one rotating device.
@@ -72,13 +86,14 @@ We introduce a simple interaction technique called ``Gear'',
 with which users can select an entry from a very large hiearchial database and
 browse it instantly, just like we could select a channel and enjoy a TV program
 using old television dials.
-\end{abstract}
 
-\begin{IEEEkeywords}
-component, formatting, style, styling, insert
-\end{IEEEkeywords}
+\keywords Input device, Information navigation, Hierarchical data, Gear, Serencast
 
-\section{Introduction}
+\tolerance=400 
+  % makes some lines with lots of white space, but 	
+  % tends to prevent words from sticking out in the margin
+
+\section*{INTRODUCTION}
 
 % 大量のコンテンツから見たいものを捜して再生するのは大変である
 % 
@@ -216,8 +231,55 @@ since such devices can generate 2 signals based on the rotation direction.
 We have developed a new navigation technique called ``{Gear}'' for no-click browsing,
 where users can explore a large hierarchical database by using only two keys.
 
+\comment{
+\begin{figure}[H]
+\centerline{\includegraphics[width=60mm,bb=0 0 294 110]{figures/rotation.pdf}}
+\caption{Using a rotation device for generating key events.}
+\label{rotation}
+\end{figure}
+}
 
-\section{Navigation method and examples}
+\comment{
+ブラウザ上でも小型機器でもザッピングのようなインタフェースで気楽に大量データをブラウズしたい
+
+そのためのGearというインタフェースを考えた
+
+Gearでは、ふたつのスイッチやキーだけを使って大量のコンテンツをno-clickでザッピングできる
+}
+
+\comment{
+Large data are often represented as a hierarchical structure, and
+various navigation methods are provided for exploring the data.
+For example, files on Unix are structured hierarchically, and
+many commands (\tsf{cd}, \tsf{ls}, etc.) and APIs are provided for exploring the file system.
+Large dictionary database can also be treated as a large
+hierarchical data, since the name of the entry can be treated hierarchically:
+e.g. an entry for ``\tsf{dictionary}'' can be stored under ``\tsf{d}'', ``\tsf{d/i}'', and so on.
+
+Many information visualization techniques and navigation techniques
+have been proposed for handling large hierarchical data.
+On modern personal computers,
+multiple GUI techniques are provided for
+exploring the hierarchical file structure, because
+there is no best interaction technique that fits to all the users and situations.
+On MacOS, four GUI methods are provided for browsing the file system.
+}
+
+\comment{
+\begin{figure}[H]
+\centerline{\includegraphics[width=80mm,bb=0 0 547 179]{figures/4buttons.png}}
+\caption{4-button controllers on a small mp3 player (left) and AppleRemote (right).}
+\label{u10}
+\end{figure}
+
+% http://www.reigncom.com/eng/media/press/en_pr_read.asp?no_noti=1630&cd_noti_host=9
+% D-Click Control System
+
+% Small devices like Rio MP3 player and remote controllers like AppleRemote have
+% 4 buttons for selecting a song from the hierarchical data.
+}
+
+\section*{NAVIGATION METHOD AND EXAMPLES}
 \label{navigation}
 
 Interaction with Gear is based on the following simple principles.
@@ -347,7 +409,7 @@ When the user issues {\down} twice in Figure \ref{fig7},
 In this way, users can explore the hierarchical structure
 only by issuing {\up} and {\down} at the right timing.
 
-\section{Serencast: a non-click browsing service}
+\section{SERENCAST: A NON-CLICK BROWSING SERVICE}
 
 % SerencastというサービスでGearを使う
 % SerencastはScrapboxを利用したものである
@@ -521,7 +583,7 @@ they can create their {\SB} page
 and give it to others so that other people can include the page
 in their list and enjoy it using Gear.
 
-\section{Discussion}
+\section{DISCUSSIONS}
 
 \subsection{Input devices for Gear}
 
@@ -813,7 +875,7 @@ all the subjects, but the hard restriction of the device seemed to have worked i
 % Selecting a content only by rotating a dial is very 気持ち良い。
 % 音楽ソース、ニュースソース、動画、Wikipediaなどあらゆるものをダイヤルやペダルだけで検索できる
 
-\section{Conclusions}
+\section*{CONCLUSIONS}
 
 We have developed a new simple interaction method ``Gear'' for exploring
 large hierarchical data structure.
@@ -823,5 +885,19 @@ wide range of locations where conventional keyboards and switches do not fit.
 We are hoping to install various implementations of Gear and try them at
 various places like kitchens, restrooms, etc.
 
+\small{
+\bibliographystyle{plain}
+\bibliography{paper}
+}
+
 \end{document}
 
+Non-click browsingの威力
+  ストレスが全然違う
+音声を使う
+満員電車で使える
+速度
+  log(n)
+時刻のセットとか
+
+ザッピングの研究はあるか
