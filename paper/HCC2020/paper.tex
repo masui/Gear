@@ -61,29 +61,30 @@ data in a huge hierarchical database using only two keys.
 We can enjoy various kinds of movies, musics, books,
 etc. distributed from many service providers like Amazon and Netflix.
 However, 
-finding a data from the huge database is not a trivial task. Users can
+finding a data from a huge database is not a trivial task. Users can
 either find an entry using keywords, or using a menu based
 on a hierarchical structure of the database.
-After successfully finding a candidate data,
-the user should confirm that he wants to watch it by pressing a ``select'' button.
+After successfully finding an entry,
+the user should confirm that he wants to watch it by clicking a ``select'' button.
 If the user finds that the data is not the one he wanted,
 he should go back to the previous state and perform the selection again.
 
-In the past, when only a small number of ``channels'' were availale
+In the past, when only a small number of ``channels'' were available
 from broadcast TV stations, the only thing users could do was
-using the ``television dial'' to select a ``channel'' and watch the
-broadcasted data.
+using a television dial to select a ``channel'' and watch the
+broadcast data.
 Although the number of the sources were limited,
 the user interface for selecting a station was simple.
 %
 We introduce a simple interaction technique called ``Gear'',
-with which users can select an entry from a very large hiearchial database and
+with which users can select an entry from a very large hierarchical database and
 browse it instantly, just like we could select a channel and enjoy a TV program
 using old television dials.
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert
+  Input device, Information navigation, No-click browsing,
+  Hierarchical data, Gear, Serencast
 \end{IEEEkeywords}
 
 \section{Introduction}
@@ -113,7 +114,7 @@ as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
    \includegraphics[width=35mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}
    \includegraphics[width=35mm,bb=0 0 128 72]{figures/fedc4f3c899c48b5a3ddd0982801c79d.png}
 }
-\caption{A n old TV channel and a radio tuning dial}
+\caption{An old TV channel dial and a radio tuning dial}
 \label{TV channel}
 \end{figure}
 
@@ -126,13 +127,13 @@ as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
 
 It is always convenient to view the contents of the selected item
 as soon as we find it.
-We call such viewing style as ``\tit{no-click browsing}''.
+We call such viewing style as ``\textbf{\tit{no-click browsing}}''.
 
-We can see the non-click browsing style on personal computers.
-Using the ``\tsf{Finder.app}'' on MacOS, we can use the ``CoverFlow''\footnote{
+We can use the non-click browsing style on personal computers.
+Using the Finder.app on MacOS, we can use the ``Cover Flow''\footnote{
   \tsf{https://en.wikipedia.org/wiki/Cover\_Flow}
 } viewer to browse the contents in a folder
-with simple swyping gestures (Figure \ref{coverflow}).
+with simple swiping gestures (Figure \ref{coverflow}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=65mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
@@ -151,7 +152,7 @@ as soon as we select a file in a folder (Figure \ref{noclickfinder}).
 \begin{figure}[H]
 % \centerline{\includegraphics[width=70mm,bb=0 0 1678 846]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
 \centerline{\includegraphics[width=70mm,bb=0 0 839 423]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
-\caption{No-click browsing on the column view of Finder.app.}
+\caption{No-click browsing on the ``column view'' of Finder.app.}
 \label{noclickfinder}
 \end{figure}
 
@@ -203,8 +204,7 @@ and use another key for selecting an entry and moving to the next level.
 It is also necessary to use another key for going back to the previous level.
 % (e.g. showing the artist list for artist selection).
 This 4-way navigation is popular on small devices
-and remote controllers like AppleRemote\footnote{\textsf{http://en.wikipedia.org/wiki/Apple\_Remote}}
-for selecting a song from the hierarchical data.
+and remote controllers for selecting a song from the hierarchical data.
 4-way navigation is also available on the column view of Finder.app.
 
 \begin{figure}[H]
@@ -217,7 +217,7 @@ for selecting a song from the hierarchical data.
 \end{figure}
 
 Using 4 keys might be okay on these devices, but it would be much better
-if we could perform the navigation task using simpler dvices that have only two keys.
+if we could perform the navigation task using simpler devices that have only two keys.
 In that case, we can use a rotating device like a disk or a wheel for the navigation,
 since such devices can generate 2 signals based on the rotation direction.
 
@@ -230,17 +230,17 @@ where users can explore a large hierarchical database by using only two keys.
 
 Interaction with Gear is based on the following simple principles.
 Two types of operations,
-``{\up}'' (up) and ``{\down}'' (down), are used for the navigation.
+{\up} (up) and {\down} (down), are used for the navigation.
 They can be performed either by pressing keys or rotating a dial.
 
 \begin{enumerate}
-\item A portion of the hierarchical data is shown to the user as a list.
+\item A portion of hierarchical data is shown to the user as a list.
 
 \item One element in the list is selected and highlighted.
 
 % \item Display the selected element, its siblings, its ancestors and their siblings.
 
-\item When an elemente is selected, its siblings, its ancestors and their siblings are displayed
+\item When an element is selected, its siblings, its ancestors and their siblings are displayed
 around the selected element.
 
 \item Users can issue {\up} to select the element above the currently selected element,
@@ -250,7 +250,7 @@ If the depth of the newly selected element is different from the currently
 selected element, siblings of the currently selected element disappear.
 
 \item When a newly selected element has children and the user performs no further action,
-the first child of the selected elemente is newly selected, and 3. is performed.
+the first child of the selected element is newly selected, and 3. is performed.
 As a result, all the siblings of the newly selected element
 (the first child of the currently selected element) appear in the list.
 
@@ -350,7 +350,7 @@ If the user issues {\down} in Figure \ref{fig4}, the next visible entry
 \end{figure}
 
 When the user issues {\down} twice in Figure \ref{fig7},
-\tsf{Clothing} is selected, and the category under \tsf{Food/drink} will shrinke (Figure \ref{fig8}).
+\tsf{Clothing} is selected, and the category under \tsf{Food/drink} will shrink (Figure \ref{fig8}).
 
 In this way, users can explore the hierarchical structure
 only by issuing {\up} and {\down} at the right timing.
@@ -364,7 +364,7 @@ To prove that Gear is useful for selecting an entry from a
 large hierarchical database,
 we have developed the ``\tsf{\SC}'' service, where
 users can enjoy movies, musics, and other web services
-on the browser with the Gear interface without selectiong (clicking) an item.
+on the browser with the Gear interface without selecting (clicking) an item.
 {\SC} is implemented in JavaScript, and runs on modern web browsers
 
 {\SC} uses the ``\tsf{\SB}'' wiki service\footnote{
@@ -453,7 +453,7 @@ Movies
  [https://www.netflix.com/watch/70080178 Heroes]
  [https://www.netflix.com/watch/70174781 Sherlock]
  [https://www.happyon.jp/watch/100048550 Mad Max]
- [https://www.netflix.com/watch/60010351 Flashcance]
+ [https://www.netflix.com/watch/60010351 Flashdance]
  [https://www.netflix.com/watch/80095365 La La Land]
  [https://www.netflix.com/watch/81191988 Don't stop the camera]
  [https://youtube.com/embed/AtZr9g2vwrI?autoplay=1 Fireplace]
@@ -573,7 +573,7 @@ We have also tried to use a paddle-like device for generating {\up} and {\down}.
 Users can push the puddle to the right to generate {\up} and
 left to generate {\down}.
 Pressure sensors are installed on the puddle, and
-many {\up}'s are generated when the user pushs the puddle strongly.
+many {\up}'s are generated when the user pushes the puddle strongly.
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=54mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
@@ -581,8 +581,8 @@ many {\up}'s are generated when the user pushs the puddle strongly.
 \label{paddle}
 \end{figure}
 
-Controling the speed of the scrolling of Gear by pressure is convenient,
-since sometimes users want to jump to anentry far from current position.
+Controlling the speed of the scrolling of Gear by pressure is convenient,
+since sometimes users want to jump to an entry far from current position.
 That behavior is similar to the key-repeat feature of computer keyboards.
 
 % Keys and pressure sensors can be placed anywhere:
@@ -593,7 +593,7 @@ That behavior is similar to the key-repeat feature of computer keyboards.
 We then tried various rotating devices for Gear.
 %
 We tried mouse wheels first, and found that they are very suitable for Gear,
-because we are good at controling our finger with precision.
+because we are good at controlling our finger with precision.
 
 Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
 For example, ``jog dials'' have been widely used for controlling VCRs, and we tried the device for Gear.
@@ -612,7 +612,7 @@ For example, ``jog dials'' have been widely used for controlling VCRs, and we tr
 
 We have also tried using a cylinder for Gear.
 The rotating cylinder shown in Figure \ref{roller} is touching the mouse wheel, and
-mouse whell events are generated as the user rotates the cylinder using his arm or hand.
+mouse wheel events are generated as the user rotates the cylinder using his arm or hand.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=54mm,bb=0 0 1132 1039]{figures/6ff91502ea4f3f3c47840c887148ada9.png}}
@@ -622,8 +622,8 @@ mouse whell events are generated as the user rotates the cylinder using his arm 
 
 After trying these devices, we found that controlling rotating devices
 like jog dials and cylinders are not as easy as we expected,
-because presice control of an arm or a hand is fairly difficult.
-People are good at controling fingers, but people are usually not very good at
+because precise control of an arm or a hand is fairly difficult.
+People are good at controlling fingers, but people are usually not very good at
 controlling arms and hands precisely.
 
 Keys and pressure sensors can be placed anywhere:
@@ -646,7 +646,7 @@ wheels can be put at anywhere like on the table or under a chair, and
 we felt that the integration of furniture and input devices will be
 important in the IoT age.
 
-If we can install the devices neatlly on furnitures and beds, people with disabilities can easilyt use them, 
+If we can install the devices neatly on furniture and beds, people with disabilities can easily use them, 
 
 \subsection{Comparison with existing navigation methods}
 
@@ -654,8 +654,8 @@ To compare the speed of Gear with conventional navigation method,
 we created two applications for checking how fast a user can select an entry
 from a large hierarchical database.
 %
-Both applicatons behaves the same way:
-a user can set the date to a specific time to see a photo in a 15-minite monorail trip.
+Both applications behaves the same way:
+a user can set the date to a specific time to see a photo in a 15-minute monorail trip.
 %
 Using the first one (App1), a user can set the time using Gear (Figure \ref{monorailgear})
 with up/down arrow keys for {\up} and {\down}.
@@ -794,7 +794,7 @@ with a small personal computer connected to a 60-inch TV monitor.
 The database is managed on {\SB}, and
 a mouse wheel of a wireless Bluetooth is used for Gear interface.
 With Gear, the user can enjoy all available contents on the web with the mouse wheel
-without selecting the source of the movies, animes, and musics (e.g. Amazon, Netflix, etc.)
+without selecting the source of the movies, animes, and musics (e.g. Amazon, Netflix, etc.).
 
 We can enjoy using Gear everywhere using a stick PC and a wireless mouse,
 just like Amazon FireTV can be used for the same purpose.
@@ -829,7 +829,7 @@ Using only one rotating device for data navigation is a new experience for
 all the visitors, but the hard restriction of the device seemed to have worked in this case.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=70mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
+\centerline{\includegraphics[width=80mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
 \caption{People at the right using a wheel device at an exhibition.}
 \label{exhibition}
 \end{figure}
@@ -837,7 +837,7 @@ all the visitors, but the hard restriction of the device seemed to have worked i
 % Selecting a content only by rotating a dial is very 気持ち良い。
 % 音楽ソース、ニュースソース、動画、Wikipediaなどあらゆるものをダイヤルやペダルだけで検索できる
 
-\section{Conclusions}
+\section{Conclusion}
 
 We have developed a new simple interaction method ``Gear'' for exploring
 large hierarchical data structure.
