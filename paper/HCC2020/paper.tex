@@ -1,12 +1,15 @@
+%
+% HCC用にIEEEフォーマットにしたもの
+%
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
 \usepackage{cite}
-\usepackage{amsmath,amssymb,amsfonts}
+% \usepackage{amsmath,amssymb,amsfontOBs}
 % \usepackage{algorithmic}
 \usepackage{graphicx}
-\usepackage{textcomp}
-\usepackage{xcolor}
+% \usepackage{textcomp}
+% \usepackage{xcolor}
 
 \usepackage{here} % [H]とするとその場所に配置されるらしい
 \long\def\comment#1{}
@@ -22,12 +25,17 @@
 \def\right{▶}
 \def\left{◀}
 
-\def\SC{\tsf{Serencast}}
-\def\SB{\tsf{Scrapbox}}
+\def\SC{Serencast}
+\def\SB{Scrapbox}
 
 \begin{document}
 
 \title{No-click browsing of large hierarchical data}
+%
+% zero-click? no-click? clickless?
+% zero-click searchとかclickless searchとかいうのは、Google検索の結果だけ見てクリックをしないことをそう呼ぶらしい
+% no-click search という言葉も使われている
+%
 
 \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
 \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
@@ -100,10 +108,10 @@ The confirm operations was not required on old TVs and radios,
 because we could enjoy TV/radio programs
 as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
 
-\begin{figure} % [H]
+\begin{figure}[H]
 \centerline{
-   \includegraphics[width=40mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}
-   \includegraphics[width=40mm,bb=0 0 128 72]{figures/fedc4f3c899c48b5a3ddd0982801c79d.png}
+   \includegraphics[width=35mm,bb=0 0 279 272]{figures/9bd96506bdaac48b26c5cd192851c11d.png}
+   \includegraphics[width=35mm,bb=0 0 128 72]{figures/fedc4f3c899c48b5a3ddd0982801c79d.png}
 }
 \caption{A n old TV channel and a radio tuning dial}
 \label{TV channel}
@@ -127,7 +135,7 @@ Using the ``\tsf{Finder.app}'' on MacOS, we can use the ``CoverFlow''\footnote{
 with simple swyping gestures (Figure \ref{coverflow}).
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
+\centerline{\includegraphics[width=65mm,bb=0 0 1080 740]{figures/902678c6770b5e043baa6f503375749f.jpg}}
 % \centerline{\includegraphics[width=80mm,bb=0 0 803 555]{figures/5d46fb09c3c5b4baccfd68ca026ef25b.png}} % Monorail
 \caption{Cover Flow on MacOS}
 \label{coverflow}
@@ -255,8 +263,8 @@ other rectangles represent individual shops.
 
 \begin{figure}[H]
 % \includegraphics[width=70mm]{figures/fig1.pdf}
-\centerline{\includegraphics[width=80mm,bb=0 0 490 490]{figures/fig1.pdf}}
-\caption{Sample data: shops in a shopping mall.}
+\centerline{\includegraphics[width=70mm,bb=0 0 490 490]{figures/fig1.pdf}}
+\caption{Sample data: shops data of a shopping mall.}
 \label{fig1}
 \end{figure}
 
@@ -352,32 +360,35 @@ only by issuing {\up} and {\down} at the right timing.
 % SerencastというサービスでGearを使う
 % SerencastはScrapboxを利用したものである
 
-To prove that Gear is useful for selecting an entry from a very
+To prove that Gear is useful for selecting an entry from a
 large hierarchical database,
-we have developed the ``{\SC}'' service, where
-users can enjoy movies, musics, and other Web services
-on the browser with the Gear interface.
-{\SC} is implemented in JavaScript, and runs on modern browsers 
+we have developed the ``\tsf{\SC}'' service, where
+users can enjoy movies, musics, and other web services
+on the browser with the Gear interface without selectiong (clicking) an item.
+{\SC} is implemented in JavaScript, and runs on modern web browsers
 
-{\SC} uses the ``\tsf{Scrapbox.io}'' wiki service\footnote{
+{\SC} uses the ``\tsf{\SB}'' wiki service\footnote{
   \tsf{https://Scrapbox.io/}
 } for listing the contents of the hierarchical database.
 {\SB} is an interactive wiki\footnote{
   \tsf{https://en.wikipedia.org/wiki/Wiki}
-} system where users can share and edit texts on the Web browser.
+} system where users can share and edit texts on the web browser.
 A user can create a {\SB} ``project'', and create pages
-that consists of texts and links,
-and people can share the page and edit it freely on their browsers.
+that consists of texts and links.
+People can share the page and edit it interactively on their browsers
+just like the Google Docs system\footnote{
+  \tsf{https://www.google.com/docs/about/}
+}.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 1553 1174]{figures/28818d749896f87f3eb8bd6b6f9e9a36.png}}
+\centerline{\includegraphics[width=75mm,bb=0 0 1553 1174]{figures/28818d749896f87f3eb8bd6b6f9e9a36.png}}
 \caption{An example of a {\SB} project.}
 \label{exampleproject}
 \end{figure}
 
 Figure \ref{exampleproject} shows an example of a {\SB} project.
 The title of the project is ``Scrapbox help'', and
-many pages like ``Features'' exist inthe project.
+other pages like ``Features'' exist in the project.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 1606 1200]{figures/9e867c325bafc415bd0870c1717fbaf7.png}}
@@ -392,7 +403,7 @@ Users can use special markup tags
 like ``\texttt{[}'' and ``\texttt{]}'' to show bold texts, icons, URL links,
 and links to other pages.
 In this example, a URL link to {\tsf{http://gyazo.com}} is used
-just like \tsf{A} tags used in HTML.
+just like an \tsf{A} tags in HTML.
 
 The raw text of the {\SB} page looks like this:
 
@@ -416,8 +427,8 @@ happen spontanteously.
 
 When we list the URLs of Web pages of
 movies and musics on a {\SB} page,
-we can create a hierarchical structure from the list and
-use the Gear interface to find data and browse it.
+% we can create a hierarchical structure from the list and
+% use the Gear interface to find data and browse it.
 We can use {\SC} service
 for using the Gear interface to select a program from the
 list on {\SC} pages, and automatically play it on the browser.
@@ -426,8 +437,8 @@ Figure \ref{movielist} shows the movie list defined in a {\SB} page.
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=40mm,bb=0 0 417 619]{figures/2690db244045aa809a3e2fc2b40ba0a3.png}}
-\centerline{\includegraphics[width=40mm,bb=0 0 387 568]{figures/2b97930bf5730fcaf4d9c0adeb9c5f6e.png}}
-\caption{Movie list.}
+\centerline{\includegraphics[width=30mm,bb=0 0 387 568]{figures/2b97930bf5730fcaf4d9c0adeb9c5f6e.png}}
+\caption{A movie list page on {\SB}.}
 \label{movielist}
 \end{figure}
 
@@ -455,19 +466,19 @@ Movies
 \label{tiffany}
 \end{figure}
 
-When we access the {\SB} page from {\SC},
+When we access this {\SB} page from {\SC},
 ``Gran Trino'' from Netflix automatically starts in the right side of the screen,
-just like a TV program starts when we rotate tha channel dial of an old television.
+just like a TV program starts when we rotate the channel dial of an old television.
 When the user pushes the {\down} key twice,
 ``Breakfast at Tiffarny's'' is selected and
 the movie starts at the right side of the screen. (Figure \ref{tiffany})
 
-In the above example, we can select only one of the 10 movies using the Gear interface.
-But we can add more data by hierarchically providing more contents in {\SB} pages.
+In the above example, we can select only one of the 10 movies from the movie list.
+But we can add more data by hierarchically providing contents in {\SB} pages.
 
 In one page, we can specify a hierarchical structure by using indentations.
-Figure \ref{musiclist} shows a portion of a list of CDs and
-musics titles by ``Weather Report'' and ``Wes Montgomery'' are shown\footnote{
+Figure \ref{musiclist} shows a portion of a list of music CDs and
+titles by ``Weather Report'' and ``Wes Montgomery'' are shown\footnote{
   Weather Report is the name of a famous Jazz group, and Wes Montgomery is a famous Jazz guitarist.
 }.
 For example, 
@@ -478,7 +489,7 @@ the album ``Tequilla'' is listed one level below the level of the name of the ar
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=40mm,bb=0 0 596 808]{figures/6657544cf60cbf0aea91ba7da0455b90.png}}
-\centerline{\includegraphics[width=40mm,bb=0 0 652 926]{figures/d8fe8ff8f3e1bbcb34cf51e268592f8c.png}}
+\centerline{\includegraphics[width=50mm,bb=0 0 652 926]{figures/d8fe8ff8f3e1bbcb34cf51e268592f8c.png}}
 \caption{Music list.}
 \label{musiclist}
 \end{figure}
@@ -488,7 +499,8 @@ we can collect Movie page, Music page, and other pages by
 listing them in another page (``Top'' page, in this case).
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=40mm,bb=0 0 396 523]{figures/8a8e4d63b75183f1b4d0ed4db733f500.png}}
+% \centerline{\includegraphics[width=40mm,bb=0 0 396 523]{figures/8a8e4d63b75183f1b4d0ed4db733f500.png}}
+\centerline{\includegraphics[width=27mm,bb=0 0 262 515]{figures/5a644f357ba6a6b81b011e200019d736.png}}
 \caption{Top page.}
 \label{top}
 \end{figure}
@@ -510,28 +522,29 @@ using the Gear technique described in section \ref{navigation}.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackjack.png}}
-\caption{Reading a comicbook.}
+\caption{Reading a comic book.}
 \label{blackjack}
 \end{figure}
 
-Since anybody can edit the {\SB} page and construct the hierarchical data,
-people can enjoy creating their own data by editing their {\SB} pages.
-Also, when people who want to advertise their works,
-they can create their {\SB} page
-and give it to others so that other people can include the page
-in their list and enjoy it using Gear.
+Since anybody can edit {\SB} pages and construct the hierarchical data,
+people can enjoy creating their own hierarchical database by editing their {\SB} pages.
+When someone wants to advertise their works,
+he can create his {\SB} pages
+and give them to other people so that they can watch the pages.
+People can freely include other people's {\SB} pages in their own list
+and enjoy all the contents just by using Gear.
 
 \section{Discussion}
 
 \subsection{Input devices for Gear}
 
 Since only two switches are required in the Gear interface,
-various kinds of input devices can be used for Gear.
-We have tried some input devices and collected experiences.
+any kind of input devices can be used for Gear.
+We have tried various input devices and collected experiences.
 
-\paragraph{Keys and buttons}
+\subsubsection{Keys and buttons}
 
-The simplest input device for Gear may be keyboards or buttons.
+The simplest input device for Gear may be keyboards and push buttons.
 We tried using arrow keys on a PC, and it works fine.
 Various HID devices\footnote{
   https://en.wikipedia.org/wiki/Human\_interface\_device
@@ -540,6 +553,7 @@ all such devices can be used as an input device for Gear.
 For example, a foot switch for turning music score pages\footnote{
   airturn pedpro
 } can be used as the input device for Gear.
+Even a special foot pedal can be used for Gear (Figure \ref{footswitch}).
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=40mm,bb=0 0 900 900]{figures/8d4f811f5a0c393acaff304102ba963f.jpg}}
@@ -553,10 +567,7 @@ For example, a foot switch for turning music score pages\footnote{
 % ``Key-repeat'' feature is useful for fast scrolling of the menu.
 
 
-\paragraph{2-way lever}
-
-% We also tried speciial devices with pressure sensors, with which
-% users can press the button strongly to simulate multiple keyboard presses.
+\subsubsection{2-way lever}
 
 We have also tried to use a paddle-like device for generating {\up} and {\down}.
 Users can push the puddle to the right to generate {\up} and
@@ -571,18 +582,18 @@ many {\up}'s are generated when the user pushs the puddle strongly.
 \end{figure}
 
 Controling the speed of the scrolling of Gear by pressure is convenient,
-since sometimes users want to jump to a far entry from current position.
-That behavior is similar to the key-repeat feature or computer keyboards.
+since sometimes users want to jump to anentry far from current position.
+That behavior is similar to the key-repeat feature of computer keyboards.
 
 % Keys and pressure sensors can be placed anywhere:
 % we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
 
-\paragraph{Rotating devices}
+\subsubsection{Rotating devices}
 
 We then tried various rotating devices for Gear.
 %
 We tried mouse wheels first, and found that they are very suitable for Gear,
-because we are good at controling fingerf precisely.
+because we are good at controling our finger with precision.
 
 Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
 For example, ``jog dials'' have been widely used for controlling VCRs, and we tried the device for Gear.
@@ -600,7 +611,7 @@ For example, ``jog dials'' have been widely used for controlling VCRs, and we tr
 \end{figure}
 
 We have also tried using a cylinder for Gear.
-The cylinder shown in Figure \ref{roller} is touching the mouse wheel, and
+The rotating cylinder shown in Figure \ref{roller} is touching the mouse wheel, and
 mouse whell events are generated as the user rotates the cylinder using his arm or hand.
 
 \begin{figure}[H]
@@ -612,7 +623,8 @@ mouse whell events are generated as the user rotates the cylinder using his arm 
 After trying these devices, we found that controlling rotating devices
 like jog dials and cylinders are not as easy as we expected,
 because presice control of an arm or a hand is fairly difficult.
-People are good at controling fingers, but people are usually not very good at controlling hands.
+People are good at controling fingers, but people are usually not very good at
+controlling arms and hands precisely.
 
 Keys and pressure sensors can be placed anywhere:
 we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
@@ -639,39 +651,40 @@ If we can install the devices neatlly on furnitures and beds, people with disabi
 \subsection{Comparison with existing navigation methods}
 
 To compare the speed of Gear with conventional navigation method,
-we create two applications that can check how fast a user can select an entry
+we created two applications for checking how fast a user can select an entry
 from a large hierarchical database.
 %
 Both applicatons behaves the same way:
-a user can set the date to a specific time to see a photo of a monorail from Ofuna station to Enoshima station in Japan.
+a user can set the date to a specific time to see a photo in a 15-minite monorail trip.
 %
-Using the first one, a user  can set the time using Gear (Figure \ref{monorailgear}),
-using {\up} and {\down} keys.
+Using the first one (App1), a user can set the time using Gear (Figure \ref{monorailgear})
+with up/down arrow keys for {\up} and {\down}.
 
 \begin{figure}[H]
 \centerline{
 %  \includegraphics[width=38mm,bb=0 0 1624 1193]{figures/d663e8556732d40e70e55592ca1f1258.png}
   \includegraphics[width=70mm,bb=0 0 1624 1193]{figures/75007628f75ef1038bd5737e10a728b7.png}
 }
-\caption{Monorail.}
-\label{monorailgeary}
+\caption{App1: Gear-based application for finding a monorail picture.}
+\label{monorailgear}
 \end{figure}
 
-Using the second one, a user can set the time using the \verb+<input>+ tag of HTML (Figure \ref{monorailinput}).
-Users can first set the value of the ``minute'' side using up/down keys,
-and move to the ``second'' side and use up/down keys to the value of the ``second''.
+Using the second one, a user can set the time using the \ttt{{\textless}input type="time"{\textgreater}} tag of HTML (Figure \ref{monorailinput}).
+Users can first set the value of the ``minute'' value at the top-left using up/down cursor keys,
+and move to the right with the right-arrow key and set the ``second'' value with up/down arrow keys.
 
 \begin{figure}[H]
 \centerline{
   \includegraphics[width=70mm,bb=0 0 1596 1116]{figures/325208a6d94c68e4f08e61a67df419c4.png}
 }
-\caption{Monorail.}
+\caption{App2: using input element.}
 \label{monorailinput}
 \end{figure}
 
-On both applications, target time is displayed on the screen and the subjects are
-asked to set the time to the displayed value.
-After repeating the task 5 times, the average time is logged.
+On both applications, a random target time is displayed on the screen and the subjects are
+asked to set the time to the displayed target time.
+After repeating the task 5 times, the average time is shown to the user, and the value
+is reported.
 
 We asked 5 people to try these tasks 10 times, and the result of the experiment is
 shown in Figure \ref{monorailtime}.
@@ -681,16 +694,22 @@ shown in Figure \ref{monorailtime}.
   \includegraphics[width=38mm,bb=0 0 960 593]{figures/6c39f199b341e30ffc28850afbd90a5a.png}
   \includegraphics[width=38mm,bb=0 0 960 593]{figures/de3f0545e0d0d8dfb9708d2420fb5407.png}
 }
-\caption{Average time.}
+\caption{Average search time of App1 and App2.}
 \label{monorailtime}
 \end{figure}
 
 The average time for finding an entry using Gear was 6.84s,
 and the average time using standard \verb+<input>+ was 4.96s.
 It takes about 40\% more time than using conventional method.
+The standard deviations were 0.71s and 0.93s, respectively.
+%
+This is not a great result for Gear,
+but we are happy to see that
+no-click browsing with Gear is not too slower than
+conventional methods.
 
-This is not 素晴らしい結果
-
+We have also tried using Finder.app for the same data (Figure \ref{noclickfinder}, and
+got similar results as App2.
 
 \comment{
 4-way navigation is commonly used for exploring hierarchical data structure,
@@ -726,8 +745,10 @@ can also be used for handling large hierarchical data laid out in a 2D space.
 %
 These visualization techniques and descendent technologies have become popular these days and
 all of these systems are useful for understanding the structure of
-large hierarchical data, but users of these systems have to use a pointing device
-to take full advantage of these methods.
+large hierarchical data.
+However, users of these systems have to use a pointing device
+to take full advantage of these methods, and
+no-click browsing is not supported.
 
 % More conventional visualization techniques like TreeView\footnote{
 %   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
@@ -759,30 +780,31 @@ quickly enough, he will see Figure \ref{fig5} instead of Figure \ref{fig7}.
 This is a tradeoff between usability and simplicity, and
 the best parameter should be set based on the user and the Gear device.
 
-
 \subsection{Is the Gear interface new?}
 
-
 Since the idea of Gear interface is so simple,
-we have been wondering if the same idea had been around in the past.
-The Gear interface had never been popular before, and
-we could not find a similar method in the patent database.
+we have been wondering if the same idea existed in the past.
+We are almost sure that The Gear interface had never been popular before,
+and we could not find a similar method in the patent database.
 
-こういうデバイスは超簡単なので、存在した可能性はあるが
-特許や論文を調べた限りはみつけられなかった
+\subsection{Using Gear in the wild}
 
-\subsection*{Using Gear in the wild}
+One of the authors have been using Gear in his living room for several years
+with a small personal computer connected to a 60-inch TV monitor.
+The database is managed on {\SB}, and
+a mouse wheel of a wireless Bluetooth is used for Gear interface.
+With Gear, the user can enjoy all available contents on the web with the mouse wheel
+without selecting the source of the movies, animes, and musics (e.g. Amazon, Netflix, etc.)
 
-\begin{verbatim}
-実際に家で使っていた
- 階層構成の問題点はあるが、いろんな階層を用意しておけばいい
-  時間的階層、アーティスト的階層、名前的階層、...
-  それはなんとか対応できることをいう
-   もちろん同時に指定できればいいのだが...
- 音量とか場所とかは?
- 名前があるものは必ず階層的に検索できる
-  e.g. 辞書
-\end{verbatim}
+We can enjoy using Gear everywhere using a stick PC and a wireless mouse,
+just like Amazon FireTV can be used for the same purpose.
+Using {\SC} is more fun for the author, since no-click browsing is more convenient than
+selection-based interface on existing systems.
+
+\comment{
+Large dictionary database can also be treated as a large
+hierarchical data, since the name of the entry can be treated hierarchically:
+e.g. an entry for ``\tsf{dictionary}'' can be stored under ``\tsf{d}'', ``\tsf{d/i}'', and so on.
 
 No formal evaluation have been done yet, but Gear has been used in the author's
 living room for six months, and the author's family members are using it
@@ -790,23 +812,25 @@ everyday for watching anime films and listening to music.
 Besides PowerMate, a wireless mouse is also used,
 since we can carry it anywhere and select
 a film or a music just by rotating the mouse wheel.
+}
 
 We demonstrated Gear at an exhibition
-held in November 2013, and asked more than 100 people to try it
+% held in November 2013,
+and asked more than 100 people to try it
 (Figure \ref{exhibition}).
 %
-Since the only thing a user can do with Gear is to rotate the device,
+Since the only thing a user can do with Gear was to rotate a wheel,
 users seemed to be able to understand the behavior of Gear with trials and errors.
 % 
 % a user can use the device and see what happens without thinking about
 % other interactions.
 % 
 Using only one rotating device for data navigation is a new experience for
-all the subjects, but the hard restriction of the device seemed to have worked in this case.
+all the visitors, but the hard restriction of the device seemed to have worked in this case.
 
 \begin{figure}[H]
 \centerline{\includegraphics[width=70mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
-\caption{People at the right using {\SC} at an exhibition.}
+\caption{People at the right using a wheel device at an exhibition.}
 \label{exhibition}
 \end{figure}
 
@@ -822,6 +846,11 @@ only by using a rotating input device which can be installed at
 wide range of locations where conventional keyboards and switches do not fit.
 We are hoping to install various implementations of Gear and try them at
 various places like kitchens, restrooms, etc.
+
+\small{
+\bibliographystyle{IEEEtran}
+\bibliography{paper}
+}
 
 \end{document}
 
