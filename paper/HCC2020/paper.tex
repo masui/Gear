@@ -1,6 +1,15 @@
 %
 % HCC用にIEEEフォーマットにしたもの
 %
+% 参考文献に適当なものを入れたい
+%  Dynamic Queryとか no-click browsingが気持ちよい理由
+%
+%  https://dl.acm.org/doi/abs/10.1145/964696.964706 五十嵐氏の カスケーディングメニューのトラバース
+%
+% tree traverseという言葉を使いたい
+%
+% Dasher, LensBar
+%
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
@@ -86,6 +95,8 @@ using old television dials.
   Input device, Information navigation, No-click browsing,
   Hierarchical data, Gear, Serencast
 \end{IEEEkeywords}
+
+% Input device, Information navigation, No-click browsing, Hierarchical data, Gear, Serencast
 
 \section{Introduction}
 
@@ -545,7 +556,7 @@ We have tried various input devices and collected experiences.
 \subsubsection{Keys and buttons}
 
 The simplest input device for Gear may be keyboards and push buttons.
-We tried using arrow keys on a PC, and it works fine.
+Gear works pretty comfortably with arrow keys on a PC.
 Various HID devices\footnote{
   https://en.wikipedia.org/wiki/Human\_interface\_device
 } are available on the market, and
@@ -764,6 +775,14 @@ TreeView\footnote{
   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
 }, by replacing 4-way navigation to Gear.
 
+\begin{figure}[H]
+\centerline{
+  \includegraphics[width=38mm,bb=0 0 188 188]{figures/treeview.png}
+}
+\caption{A TreeView example.}
+\label{treeview}
+\end{figure}
+
 % LensBar\cite{Masui:1998:LVB:647341.721215}
 % is also a ZUI system for handling large hierarchical data,
 % but the same data structure used in LensBar can be used for Gear.
@@ -784,8 +803,12 @@ the best parameter should be set based on the user and the Gear device.
 
 Since the idea of Gear interface is so simple,
 we have been wondering if the same idea existed in the past.
+%
+We could not find a research paper on 
+navigation techniques based on two keys.
+Many key-based navigation techniques are found on patent database,
+but we could not find a navigation method based on two keys.
 We are almost sure that The Gear interface had never been popular before,
-and we could not find a similar method in the patent database.
 
 \subsection{Using Gear in the wild}
 

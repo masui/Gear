@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Tree view - Wikipedia</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRequestId":"XmLwTgpAICAAAJN4D@wAAAER","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Tree_view","wgTitle":"Tree view","wgCurRevisionId":849400765,"wgRevisionId":849400765,"wgArticleId":3110614,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["All stub articles","Graphical control elements","Desktop environment stubs"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Tree_view","wgRelevantArticleId":3110614,
+"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgPopupsReferencePreviews":!1,"wgPopupsConflictsWithNavPopupGadget":!1,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","pageVariantFallbacks":"en"},"wgMFDisplayWikibaseDescriptions":{"search":!0,"nearby":!0,"watchlist":!0,"tagline":!1},"wgWMESchemaEditAttemptStepOversample":!1,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgWikibaseItemId":"Q811485","wgCentralAuthMobileDomain":!1,"wgEditSubmitButtonLabelPublish":!0};RLSTATE={"ext.globalCssJs.user.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","ext.globalCssJs.user":"ready","user":"ready","user.options":"ready","user.tokens":"loading","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","jquery.makeCollapsible.styles":"ready","skins.vector.styles":
+"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready"};RLPAGEMODULES=["site","mediawiki.page.startup","skins.vector.js","mediawiki.page.ready","jquery.makeCollapsible","ext.gadget.ReferenceTooltips","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.extra-toolbar-buttons","ext.gadget.switcher","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.popups","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging","ext.wikimediaEvents","ext.navigationTiming","ext.uls.compactlinks","ext.uls.interface","ext.cx.eventlogging.campaigns","ext.quicksurveys.init","ext.centralNotice.geoIP","ext.centralNotice.startUp"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.tokens@tffin",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cjquery.makeCollapsible.styles%7Cmediawiki.legacy.commonPrint%2Cshared%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.35.0-wmf.22"/>
+<meta name="referrer" content="origin"/>
+<meta name="referrer" content="origin-when-crossorigin"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/0/0b/Tree_view_example.png"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=Tree_view&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=Tree_view&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="license" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="alternate" type="application/atom+xml" title="Wikipedia Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/Tree_view"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+<!--[if lt IE 9]><script src="/w/resources/lib/html5shiv/html5shiv.js"></script><![endif]-->
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Tree_view rootpage-Tree_view skin-vector action-view">
+<div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice" class="mw-body-content"><!-- CentralNotice --></div>
+	<div class="mw-indicators mw-body-content">
+</div>
+
+	<h1 id="firstHeading" class="firstHeading" lang="en">Tree view</h1>
+	
+	<div id="bodyContent" class="mw-body-content">
+		<div id="siteSub" class="noprint">From Wikipedia, the free encyclopedia</div>
+		<div id="contentSub"></div>
+		
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#p-search">Jump to search</a>
+		<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div class="mw-parser-output"><div class="thumb tright"><div class="thumbinner" style="width:190px;"><a href="/wiki/File:Tree_view_example.png" class="image"><img alt="" src="//upload.wikimedia.org/wikipedia/commons/0/0b/Tree_view_example.png" decoding="async" width="188" height="188" class="thumbimage" data-file-width="188" data-file-height="188" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Tree_view_example.png" class="internal" title="Enlarge"></a></div>A generic tree view</div></div></div>
+<dl><dd><i>"Treeview" redirects here. There is also a <a href="/wiki/List_of_phylogenetic_tree_visualization_software" title="List of phylogenetic tree visualization software">phylogenetic tree visualization software</a> named TreeView.</i></dd></dl>
+<p>A <b>tree view</b> or an <b>outline view</b> is a <a href="/wiki/Graphical_control_element" class="mw-redirect" title="Graphical control element">graphical control element</a> that presents a <a href="/wiki/Hierarchy#Containment_hierarchy" title="Hierarchy">hierarchical</a> view of information. Each item (often called a <i>branch</i> or a <i><a href="/wiki/Node_(computer_science)" title="Node (computer science)">node</a></i>) can have a number of subitems. This is often visualized by indentation in a list.
+</p><p>An item can be <i>expanded</i> to reveal subitems, if any exist, and <i>collapsed</i> to hide subitems.
+</p><p>Tree views are often seen in <a href="/wiki/File_manager" title="File manager">file manager</a> <a href="/wiki/Software_application" class="mw-redirect" title="Software application">applications</a>, where they allow the <a href="/wiki/User_(computing)" title="User (computing)">user</a> to navigate the <a href="/wiki/File_system" title="File system">file system</a> <a href="/wiki/Directory_(file_systems)" class="mw-redirect" title="Directory (file systems)">directories</a>. They are also used to present hierarchical data, such as an <a href="/wiki/XML" title="XML">XML</a> document.
+</p><p>Extended tree view is the central component of <a href="/wiki/Outliner" title="Outliner">outliner</a> applications, where each node consists of editable text.
+</p>
+<h2><span class="mw-headline" id="See_also">See also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Tree_view&amp;action=edit&amp;section=1" title="Edit section: See also">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a href="/wiki/Directory_(file_systems)" class="mw-redirect" title="Directory (file systems)">Directory (file systems)</a> - an example of application of tree views</li>
+<li><a href="/wiki/File_manager" title="File manager">File manager</a></li>
+<li><a href="/wiki/Genealogy_software" title="Genealogy software">Genealogy software</a></li></ul>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Tree_view&amp;action=edit&amp;section=2" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><a rel="nofollow" class="external text" href="http://experiments.wemakesites.net/css3-treeview.html">Treeview in pure HTML+CSS</a></li>
+<li><a rel="nofollow" class="external text" href="http://developer.gnome.org/gtk/stable/TreeWidget.html">Tree view widget in the GTK+ API</a></li>
+<li><a rel="nofollow" class="external text" href="http://msdn2.microsoft.com/en-us/library/bb759988%28VS.85%29.aspx">Tree view control in the Win32 API (MSDN)</a></li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20070813183917/http://developer.yahoo.com/yui/examples/treeview/default_tree.html">Yahoo! UI Library</a> y</li>
+<li><a rel="nofollow" class="external text" href="https://web.archive.org/web/20071116092321/http://www.altavim.com/Products/Extended-TreeView/Overview.aspx">Extended TreeView for .NET WinForms</a></li>
+<li><a rel="nofollow" class="external text" href="https://quickstarts.asp.net/QuickStartv20/aspnet/doc/ctrlref/navigation/treeview.aspx">TreeView Control in ASP.NET 2.0</a></li>
+<li><a rel="nofollow" class="external text" href="http://www.treepad.com/press/cw">Interview with Henk Hagedoorn, developer of first tree-view PIM</a></li></ul>
+<div role="navigation" class="navbox" aria-labelledby="Widgets" style="padding:3px"><table class="nowraplinks mw-collapsible autocollapse navbox-inner" style="border-spacing:0;background:transparent;color:inherit"><tbody><tr><th scope="col" class="navbox-title" colspan="2"><div class="plainlinks hlist navbar mini"><ul><li class="nv-view"><a href="/wiki/Template:GUI_widgets" title="Template:GUI widgets"><abbr title="View this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:GUI_widgets" title="Template talk:GUI widgets"><abbr title="Discuss this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">t</abbr></a></li><li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:GUI_widgets&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;-moz-box-shadow:none;-webkit-box-shadow:none;box-shadow:none; padding:0;">e</abbr></a></li></ul></div><div id="Widgets" style="font-size:114%;margin:0 4em"><a href="/wiki/Widget_(GUI)" class="mw-redirect" title="Widget (GUI)">Widgets</a></div></th></tr><tr><th scope="row" class="navbox-group" style="width:1%">Command input</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Adjustment_handle" title="Adjustment handle">Adjustment handle</a></li>
+<li><a href="/wiki/Button_(computing)" title="Button (computing)">Button</a></li>
+<li><a href="/wiki/Context_menu" title="Context menu">Context menu</a></li>
+<li><a href="/wiki/Drop-down_list" title="Drop-down list">Drop-down list</a></li>
+<li><a href="/wiki/Hamburger_button" title="Hamburger button">Hamburger button</a></li>
+<li><a href="/wiki/Menu_(computing)" title="Menu (computing)">Menu</a></li>
+<li><a href="/wiki/Pie_menu" title="Pie menu">Pie menu</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Data input-output</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Checkbox" title="Checkbox">Checkbox</a></li>
+<li><a href="/wiki/Color_picker" title="Color picker">Color picker</a></li>
+<li><a href="/wiki/Combo_box" title="Combo box">Combo box</a></li>
+<li><a href="/wiki/Cycle_button" title="Cycle button">Cycle button</a></li>
+<li><a href="/wiki/Date_picker" title="Date picker">Date picker</a></li>
+<li><a href="/wiki/Grid_view" title="Grid view">Grid view</a></li>
+<li><a href="/wiki/Checkbox#Light_switch" title="Checkbox">Light switch</a></li>
+<li><a href="/wiki/List_box" title="List box">List box</a></li>
+<li><a href="/wiki/List_builder" title="List builder">List builder</a></li>
+<li><a href="/wiki/Radio_button" title="Radio button">Radio button</a></li>
+<li><a href="/wiki/Scrollbar" title="Scrollbar">Scrollbar</a></li>
+<li><a href="/wiki/Search_box" title="Search box">Search box</a></li>
+<li><a href="/wiki/Slider_(computing)" title="Slider (computing)">Slider</a></li>
+<li><a href="/wiki/Spinner_(computing)" title="Spinner (computing)">Spinner</a></li>
+<li><a href="/wiki/Text_box" title="Text box">Text box</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Informational</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Balloon_help" title="Balloon help">Balloon help</a></li>
+<li><a href="/wiki/HUD_(computing)" class="mw-redirect" title="HUD (computing)">Head-up display in computing</a></li>
+<li><a href="/wiki/Head-up_display_(video_gaming)" class="mw-redirect" title="Head-up display (video gaming)">Head-up display in video games</a></li>
+<li><a href="/wiki/Icon_(computing)" title="Icon (computing)">Icon</a></li>
+<li><a href="/wiki/Infobar" title="Infobar">Infobar</a></li>
+<li><a href="/wiki/Label_(control)" title="Label (control)">Label</a></li>
+<li><a href="/wiki/Loading_screen" title="Loading screen">Loading screen</a></li>
+<li><a href="/wiki/Progress_indicator" title="Progress indicator">Progress indicator</a>
+<ul><li><a href="/wiki/Progress_bar" title="Progress bar">Progress bar</a></li>
+<li><a href="/wiki/Splash_screen" title="Splash screen">Splash screen</a></li>
+<li><a href="/wiki/Throbber" title="Throbber">Throbber</a></li></ul></li>
+<li><a href="/wiki/Sidebar_(computing)" title="Sidebar (computing)">Sidebar</a></li>
+<li><a href="/wiki/Status_bar" title="Status bar">Status bar</a></li>
+<li><a href="/wiki/Pop-up_notification" title="Pop-up notification">Toast</a></li>
+<li><a href="/wiki/Tooltip" title="Tooltip">Tooltip</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Containers</th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Accordion_(GUI)" title="Accordion (GUI)">Accordion</a></li>
+<li><a class="mw-selflink selflink">Tree view</a></li>
+<li><a href="/wiki/Client-Side_Decoration" class="mw-redirect" title="Client-Side Decoration">Client-Side Decoration</a></li>
+<li><a href="/wiki/Disclosure_widget" title="Disclosure widget">Disclosure widget</a></li>
+<li><a href="/wiki/Frame_(GUI)" title="Frame (GUI)">Frame / Fieldset</a></li>
+<li><a href="/wiki/Menu_bar" title="Menu bar">Menu bar</a></li>
+<li><a href="/wiki/Panel_(computer_software)" title="Panel (computer software)">Panel</a></li>
+<li><a href="/wiki/Popover_(GUI)" title="Popover (GUI)">Popover</a></li>
+<li><a href="/wiki/Ribbon_(computing)" title="Ribbon (computing)">Ribbon</a></li>
+<li><a href="/wiki/Tab_(interface)" title="Tab (interface)">Tab</a></li>
+<li><a href="/wiki/Toolbar" title="Toolbar">Toolbar</a></li>
+<li><a href="/wiki/Window_(computing)" title="Window (computing)">Window</a>
+<ul><li><a href="/wiki/Window_decoration" title="Window decoration">Window decoration</a></li></ul></li>
+<li><a href="/wiki/Workspace" title="Workspace">Workspace</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Navigational</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Address_bar" title="Address bar">Address bar</a></li>
+<li><a href="/wiki/Breadcrumb_(navigation)" class="mw-redirect" title="Breadcrumb (navigation)">Breadcrumb</a></li>
+<li><a href="/wiki/Hyperlink" title="Hyperlink">Hyperlink</a></li>
+<li><a href="/wiki/Navigation_bar" title="Navigation bar">Navigation bar</a></li>
+<li><a href="/wiki/Virtual_desktop" title="Virtual desktop">Virtual desktop</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%"><span class="nowrap">Special <a href="/wiki/Window_(computing)" title="Window (computing)">windows</a></span></th><td class="navbox-list navbox-even hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/Alert_dialog_box" title="Alert dialog box">Alert dialog box</a></li>
+<li><a href="/wiki/Dialog_box" title="Dialog box">Dialog box</a></li>
+<li><a href="/wiki/File_dialog" title="File dialog">File dialog</a></li>
+<li><a href="/wiki/Inspector_window" title="Inspector window">Inspector window</a></li>
+<li><a href="/wiki/Modal_window" title="Modal window">Modal window</a></li>
+<li><a href="/wiki/Palette_window" title="Palette window">Palette window</a></li></ul>
+</div></td></tr><tr><th scope="row" class="navbox-group" style="width:1%">Related concepts</th><td class="navbox-list navbox-odd hlist" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px"><div style="padding:0em 0.25em">
+<ul><li><a href="/wiki/File_viewer" title="File viewer">File viewer</a></li>
+<li><a href="/wiki/List_of_graphical_user_interface_elements" title="List of graphical user interface elements">List of graphical user interface elements</a></li>
+<li><a href="/wiki/Layout_manager" title="Layout manager">Layout manager</a></li>
+<li><a href="/wiki/Look_and_feel" title="Look and feel">Look and feel</a></li>
+<li><a href="/wiki/Mouseover" title="Mouseover">Mouseover</a></li>
+<li><a href="/wiki/Widget_toolkit" title="Widget toolkit">Widget toolkit</a></li>
+<li><a href="/wiki/WIMP_(computing)" title="WIMP (computing)">WIMP</a></li>
+<li><a href="/wiki/Zoomable_user_interface" class="mw-redirect" title="Zoomable user interface">Zoomable user interface</a></li></ul>
+</div></td></tr></tbody></table></div>
+<table class="metadata plainlinks stub" role="presentation" style="background:transparent"><tbody><tr><td><i>This <a href="/wiki/Graphical_user_interface" title="Graphical user interface">graphical user interface</a> article is a <a href="/wiki/Wikipedia:Stub" title="Wikipedia:Stub">stub</a>. You can help Wikipedia by <a class="external text" href="https://en.wikipedia.org/w/index.php?title=Tree_view&amp;action=edit">expanding it</a>.</i><div class="plainlinks hlist navbar mini" style="position: absolute; right: 15px; display: none;"><ul><li class="nv-view"><a href="/wiki/Template:GUI-stub" title="Template:GUI-stub"><abbr title="View this template">v</abbr></a></li><li class="nv-talk"><a href="/wiki/Template_talk:GUI-stub" title="Template talk:GUI-stub"><abbr title="Discuss this template">t</abbr></a></li><li class="nv-edit"><a class="external text" href="https://en.wikipedia.org/w/index.php?title=Template:GUI-stub&amp;action=edit"><abbr title="Edit this template">e</abbr></a></li></ul></div></td></tr></tbody></table>
+<!-- 
+NewPP limit report
+Parsed by mw1296
+Cached time: 20200227120904
+Cache expiry: 2592000
+Dynamic content: false
+Complications: []
+CPU time usage: 0.080 seconds
+Real time usage: 0.112 seconds
+Preprocessor visited node count: 125/1000000
+Post‐expand include size: 16503/2097152 bytes
+Template argument size: 38/2097152 bytes
+Highest expansion depth: 6/40
+Expensive parser function count: 0/500
+Unstrip recursion depth: 0/20
+Unstrip post‐expand size: 0/5000000 bytes
+Number of Wikibase entities loaded: 0/400
+Lua time usage: 0.017/10.000 seconds
+Lua memory usage: 848 KB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   75.631      1 -total
+ 75.10%   56.800      1 Template:Graphical_control_elements
+ 66.74%   50.479      1 Template:Navbox
+ 24.73%   18.701      1 Template:GUI-stub
+ 19.84%   15.004      1 Template:Asbox
+  4.19%    3.172      1 Template:Nowrap
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:3110614-0!canonical and timestamp 20200227120904 and revision id 849400765
+ -->
+</div><noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>
+		<div class="printfooter">Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=Tree_view&amp;oldid=849400765">https://en.wikipedia.org/w/index.php?title=Tree_view&amp;oldid=849400765</a>"</div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:Graphical_control_elements" title="Category:Graphical control elements">Graphical control elements</a></li><li><a href="/wiki/Category:Desktop_environment_stubs" title="Category:Desktop environment stubs">Desktop environment stubs</a></li></ul></div><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden categories: <ul><li><a href="/wiki/Category:All_stub_articles" title="Category:All stub articles">All stub articles</a></li></ul></div></div>
+		<div class="visualClear"></div>
+		
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="read-more-container"></div>
+</div>
+
+<div id="mw-navigation">
+    <h2>Navigation menu</h2>
+    <div id="mw-head">
+        
+<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+	<h3 id="p-personal-label">Personal tools</h3>
+	<ul >
+		
+		<li id="pt-anonuserpage">Not logged in</li>
+		<li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Tree+view" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Tree+view" title="You&#039;re encouraged to log in; however, it&#039;s not mandatory. [o]" accesskey="o">Log in</a></li>
+	</ul>
+</div>
+
+        <div id="left-navigation">
+            <div id="p-namespaces" role="navigation" class="vectorTabs " aria-labelledby="p-namespaces-label">
+	<h3 id="p-namespaces-label">Namespaces</h3>
+	<ul >
+		<li id="ca-nstab-main" class="selected"><a href="/wiki/Tree_view" title="View the content page [c]" accesskey="c">Article</a></li><li id="ca-talk"><a href="/wiki/Talk:Tree_view" rel="discussion" title="Discussion about the content page [t]" accesskey="t">Talk</a></li>
+	</ul>
+</div>
+<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+	<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label">
+		<span>Variants</span>
+	</h3>
+	<ul class="menu" >
+		
+	</ul>
+</div>
+
+        </div>
+        <div id="right-navigation">
+            <div id="p-views" role="navigation" class="vectorTabs " aria-labelledby="p-views-label">
+	<h3 id="p-views-label">Views</h3>
+	<ul >
+		<li id="ca-view" class="collapsible selected"><a href="/wiki/Tree_view">Read</a></li><li id="ca-edit" class="collapsible"><a href="/w/index.php?title=Tree_view&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history" class="collapsible"><a href="/w/index.php?title=Tree_view&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li>
+	</ul>
+</div>
+<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+	<input type="checkbox" class="vectorMenuCheckbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label">
+		<span>More</span>
+	</h3>
+	<ul class="menu" >
+		
+	</ul>
+</div>
+<div id="p-search" role="search">
+	<h3 >
+		<label for="searchInput">Search</label>
+	</h3>
+	<form action="/w/index.php" id="searchform">
+		<div id="simpleSearch">
+			<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/>
+			<input type="hidden" value="Special:Search" name="title"/>
+			<input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+			<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+		</div>
+	</form>
+</div>
+
+        </div>
+    </div>
+    
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a  title="Visit the main page" class="mw-wiki-logo" href="/wiki/Main_Page"></a>
+	</div>
+	<div class="portal" role="navigation" id="p-navigation"  aria-labelledby="p-navigation-label">
+		<h3  id="p-navigation-label">
+			Navigation
+		</h3>
+		<div class="body">
+			<ul><li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Wikipedia:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Wikipedia:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="portal" role="navigation" id="p-interaction"  aria-labelledby="p-interaction-label">
+		<h3  id="p-interaction-label">
+			Interaction
+		</h3>
+		<div class="body">
+			<ul><li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="portal" role="navigation" id="p-tb"  aria-labelledby="p-tb-label">
+		<h3  id="p-tb-label">
+			Tools
+		</h3>
+		<div class="body">
+			<ul><li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/Tree_view" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/Tree_view" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=Tree_view&amp;oldid=849400765" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=Tree_view&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q811485" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=Tree_view&amp;id=849400765" title="Information on how to cite this page">Cite this page</a></li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="portal" role="navigation" id="p-wikibase-otherprojects"  aria-labelledby="p-wikibase-otherprojects-label">
+		<h3  id="p-wikibase-otherprojects-label">
+			In other projects
+		</h3>
+		<div class="body">
+			<ul><li class="wb-otherproject-link wb-otherproject-commons"><a href="https://commons.wikimedia.org/wiki/Category:Tree_view" hreflang="en">Wikimedia Commons</a></li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="portal" role="navigation" id="p-coll-print_export"  aria-labelledby="p-coll-print_export-label">
+		<h3  id="p-coll-print_export-label">
+			Print/export
+		</h3>
+		<div class="body">
+			<ul><li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=Tree+view">Create a book</a></li><li id="coll-download-as-rl"><a href="/w/index.php?title=Special:ElectronPdf&amp;page=Tree+view&amp;action=show-download-screen">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=Tree_view&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li></ul>
+			
+		</div>
+	</div>
+	
+	<div class="portal" role="navigation" id="p-lang"  aria-labelledby="p-lang-label">
+		<h3  id="p-lang-label">
+			Languages
+		</h3>
+		<div class="body">
+			<ul><li class="interlanguage-link interwiki-de"><a href="https://de.wikipedia.org/wiki/Baum_(Steuerelement)" title="Baum (Steuerelement) – German" lang="de" hreflang="de" class="interlanguage-link-target">Deutsch</a></li><li class="interlanguage-link interwiki-es"><a href="https://es.wikipedia.org/wiki/Vista_de_%C3%A1rbol" title="Vista de árbol – Spanish" lang="es" hreflang="es" class="interlanguage-link-target">Español</a></li><li class="interlanguage-link interwiki-id"><a href="https://id.wikipedia.org/wiki/Pandangan_pohon" title="Pandangan pohon – Indonesian" lang="id" hreflang="id" class="interlanguage-link-target">Bahasa Indonesia</a></li><li class="interlanguage-link interwiki-pt"><a href="https://pt.wikipedia.org/wiki/Tree_view" title="Tree view – Portuguese" lang="pt" hreflang="pt" class="interlanguage-link-target">Português</a></li><li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/Tree_view" title="Tree view – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li><li class="interlanguage-link interwiki-uk"><a href="https://uk.wikipedia.org/wiki/%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%BE_%D0%B2%D0%B8%D0%B1%D0%BE%D1%80%D1%83" title="Дерево вибору – Ukrainian" lang="uk" hreflang="uk" class="interlanguage-link-target">Українська</a></li></ul>
+			<div class="after-portlet after-portlet-lang"><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Special:EntityPage/Q811485#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>
+		</div>
+	</div>
+	
+</div>
+
+</div>
+
+
+<div id="footer" role="contentinfo" >
+	<ul id="footer-info" class="">
+		<li id="footer-info-lastmod"> This page was last edited on 8 July 2018, at 18:57<span class="anonymous-show">&#160;(UTC)</span>.</li>
+		<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//foundation.wikimedia.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//foundation.wikimedia.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+	</ul>
+	<ul id="footer-places" class="">
+		<li id="footer-places-privacy"><a href="https://foundation.wikimedia.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+		<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+		<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+		<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+		<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+		<li id="footer-places-statslink"><a href="https://stats.wikimedia.org/#/en.wikipedia.org">Statistics</a></li>
+		<li id="footer-places-cookiestatement"><a href="https://foundation.wikimedia.org/wiki/Cookie_statement">Cookie statement</a></li>
+		<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=Tree_view&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+	</ul>
+	<ul id="footer-icons" class="noprint">
+		<li id="footer-copyrightico"><a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a></li>
+		<li id="footer-poweredbyico"><a href="https://www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a></li>
+	</ul>
+	<div style="clear: both;"></div>
+</div>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.080","walltime":"0.112","ppvisitednodes":{"value":125,"limit":1000000},"postexpandincludesize":{"value":16503,"limit":2097152},"templateargumentsize":{"value":38,"limit":2097152},"expansiondepth":{"value":6,"limit":40},"expensivefunctioncount":{"value":0,"limit":500},"unstrip-depth":{"value":0,"limit":20},"unstrip-size":{"value":0,"limit":5000000},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%   75.631      1 -total"," 75.10%   56.800      1 Template:Graphical_control_elements"," 66.74%   50.479      1 Template:Navbox"," 24.73%   18.701      1 Template:GUI-stub"," 19.84%   15.004      1 Template:Asbox","  4.19%    3.172      1 Template:Nowrap"]},"scribunto":{"limitreport-timeusage":{"value":"0.017","limit":"10.000"},"limitreport-memusage":{"value":868255,"limit":52428800}},"cachereport":{"origin":"mw1296","timestamp":"20200227120904","ttl":2592000,"transientcontent":false}}});});</script>
+<script type="application/ld+json">{"@context":"https:\/\/schema.org","@type":"Article","name":"Tree view","url":"https:\/\/en.wikipedia.org\/wiki\/Tree_view","sameAs":"http:\/\/www.wikidata.org\/entity\/Q811485","mainEntity":"http:\/\/www.wikidata.org\/entity\/Q811485","author":{"@type":"Organization","name":"Contributors to Wikimedia projects"},"publisher":{"@type":"Organization","name":"Wikimedia Foundation, Inc.","logo":{"@type":"ImageObject","url":"https:\/\/www.wikimedia.org\/static\/images\/wmf-hor-googpub.png"}},"datePublished":"2005-11-08T17:41:04Z","dateModified":"2018-07-08T18:57:07Z","image":"https:\/\/upload.wikimedia.org\/wikipedia\/commons\/0\/0b\/Tree_view_example.png","headline":"user interface element"}</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":92,"wgHostname":"mw1330"});});</script></body></html>
