@@ -10,6 +10,8 @@
 %
 % Dasher, LensBar
 %
+% Abstractが210語あるので減らす
+%
 \documentclass[conference]{IEEEtran}
 \IEEEoverridecommandlockouts
 
@@ -29,10 +31,10 @@
 \long\def\tsf#1{\textsf{\small{#1}}}
 \long\def\tit#1{\textit{\small{#1}}}
 
-\def\up{▲}
-\def\down{▼}
-\def\right{▶}
-\def\left{◀}
+\def\up{\tsf{▲}}
+\def\down{\tsf{▼}}
+\def\right{\tsf{▶}}
+\def\left{\tsf{◀}}
 
 \def\SC{Serencast}
 \def\SB{Scrapbox}
@@ -64,30 +66,19 @@ email address or ORCID}
 \begin{abstract}
 We introduce a novel simple interaction technique for finding and browsing
 data in a huge hierarchical database using only two keys.
-% or one rotating device.
-% that can generate two different signals based on the rotation direction.
 
-We can enjoy various kinds of movies, musics, books,
-etc. distributed from many service providers like Amazon and Netflix.
-However, 
-finding a data from a huge database is not a trivial task. Users can
-either find an entry using keywords, or using a menu based
-on a hierarchical structure of the database.
-After successfully finding an entry,
-the user should confirm that he wants to watch it by clicking a ``select'' button.
-If the user finds that the data is not the one he wanted,
-he should go back to the previous state and perform the selection again.
+Finding a data from a huge hierarchical database takes time
+because users should traverse the tree using a mouse or a keyboard,
+and click a ``select'' button to check the content.
+If the data was not appropriate,
+he should go to the next entry and perform the selection task again.
 
 In the past, when only a small number of ``channels'' were available
-from broadcast TV stations, the only thing users could do was
-using a television dial to select a ``channel'' and watch the
-broadcast data.
-Although the number of the sources were limited,
-the user interface for selecting a station was simple.
-%
+from broadcast TV stations, users could simply rotate
+a television dial to select a channel and watch the program.
 We introduce a simple interaction technique called ``Gear'',
-with which users can select an entry from a very large hierarchical database and
-browse it instantly, just like we could select a channel and enjoy a TV program
+with which users can select an entry from a large hierarchical database and
+browse it instantly, just like we could select a channel and enjoy a program
 using old television dials.
 \end{abstract}
 
@@ -118,7 +109,7 @@ is required for viewing the content.
 
 The confirm operations was not required on old TVs and radios,
 because we could enjoy TV/radio programs
-as soon as we rotated a ``TV channel dial'' or a tuning dial of the radio.
+as soon as we rotated a TV channel dial or a tuning dial of the radio.
 
 \begin{figure}[H]
 \centerline{
@@ -140,7 +131,7 @@ It is always convenient to view the contents of the selected item
 as soon as we find it.
 We call such viewing style as ``\textbf{\tit{no-click browsing}}''.
 
-We can use the non-click browsing style on personal computers.
+We can use the no-click browsing style on personal computers.
 Using the Finder.app on MacOS, we can use the ``Cover Flow''\footnote{
   \tsf{https://en.wikipedia.org/wiki/Cover\_Flow}
 } viewer to browse the contents in a folder
@@ -153,12 +144,12 @@ with simple swiping gestures (Figure \ref{coverflow}).
 \label{coverflow}
 \end{figure}
 
-We can also enjoy no-click browsing on a Finder.app window
-when we select a file in a folder and
-type arrow keys for selecting other files.
-Using the ``column view'' mode, 
+We can also enjoy no-click browsing on the ``column view'' mode of Finder.app.
+In the column view mode, 
 the contents of the file is shown at the right side of the window
 as soon as we select a file in a folder (Figure \ref{noclickfinder}).
+When we type an arrow key and select another file,
+the contents is shown instantly without a confirm operation.
 
 \begin{figure}[H]
 % \centerline{\includegraphics[width=70mm,bb=0 0 1678 846]{figures/10d7ca6c55aa93ebcdab799246e4c087.jpg}}
@@ -227,16 +218,16 @@ and remote controllers for selecting a song from the hierarchical data.
 \label{rio}
 \end{figure}
 
-Using 4 keys might be okay on these devices, but it would be much better
+Using 4 keys might be okay on these devices, but it would be better
 if we could perform the navigation task using simpler devices that have only two keys.
 In that case, we can use a rotating device like a disk or a wheel for the navigation,
-since such devices can generate 2 signals based on the rotation direction.
+since such devices can generate two signals based on the rotation direction.
 
 We have developed a new navigation technique called ``{Gear}'' for no-click browsing,
 where users can explore a large hierarchical database by using only two keys.
 
 
-\section{Navigation method and examples}
+\section{Navigation method of Gear}
 \label{navigation}
 
 Interaction with Gear is based on the following simple principles.
@@ -366,7 +357,7 @@ When the user issues {\down} twice in Figure \ref{fig7},
 In this way, users can explore the hierarchical structure
 only by issuing {\up} and {\down} at the right timing.
 
-\section{Serencast: a non-click browsing service}
+\section{Serencast: a no-click browsing service}
 
 % SerencastというサービスでGearを使う
 % SerencastはScrapboxを利用したものである
@@ -381,9 +372,8 @@ on the browser with the Gear interface without selecting (clicking) an item.
 {\SC} uses the ``\tsf{\SB}'' wiki service\footnote{
   \tsf{https://Scrapbox.io/}
 } for listing the contents of the hierarchical database.
-{\SB} is an interactive wiki\footnote{
-  \tsf{https://en.wikipedia.org/wiki/Wiki}
-} system where users can share and edit texts on the web browser.
+{\SB} is an interactive wiki
+system where users can share and edit texts on the web browser.
 A user can create a {\SB} ``project'', and create pages
 that consists of texts and links.
 People can share the page and edit it interactively on their browsers
@@ -550,7 +540,7 @@ and enjoy all the contents just by using Gear.
 \subsection{Input devices for Gear}
 
 Since only two switches are required in the Gear interface,
-any kind of input devices can be used for Gear.
+almost any kind of input devices can be used for Gear.
 We have tried various input devices and collected experiences.
 
 \subsubsection{Keys and buttons}
@@ -558,12 +548,12 @@ We have tried various input devices and collected experiences.
 The simplest input device for Gear may be keyboards and push buttons.
 Gear works pretty comfortably with arrow keys on a PC.
 Various HID devices\footnote{
-  https://en.wikipedia.org/wiki/Human\_interface\_device
+  \tsf{https://en.wikipedia.org/wiki/Human\_interface\_device}
 } are available on the market, and
 all such devices can be used as an input device for Gear.
 For example, a foot switch for turning music score pages\footnote{
-  airturn pedpro
-} can be used as the input device for Gear.
+  \tsf{https://airturn.com/products/airturn-pedpro}
+} can be used as an input device for Gear.
 Even a special foot pedal can be used for Gear (Figure \ref{footswitch}).
 
 \begin{figure}[H]
@@ -637,8 +627,8 @@ because precise control of an arm or a hand is fairly difficult.
 People are good at controlling fingers, but people are usually not very good at
 controlling arms and hands precisely.
 
-Keys and pressure sensors can be placed anywhere:
-we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
+% Keys and pressure sensors can be placed anywhere:
+% we tried putting two pressure sensors at the bottom of a chair, and it worked fine.
 
 \comment{
 We tried a lever with two pressure sensors.
@@ -656,7 +646,7 @@ After trying various devices, it became clear that simple buttons or
 wheels can be put at anywhere like on the table or under a chair, and
 we felt that the integration of furniture and input devices will be
 important in the IoT age.
-
+%
 If we can install the devices neatly on furniture and beds, people with disabilities can easily use them, 
 
 \subsection{Comparison with existing navigation methods}
@@ -710,16 +700,16 @@ shown in Figure \ref{monorailtime}.
 \end{figure}
 
 The average time for finding an entry using Gear was 6.84s,
-and the average time using standard \verb+<input>+ was 4.96s.
+and the average time using standard \ttt{{\textless}input{\textgreater}} was 4.96s.
 It takes about 40\% more time than using conventional method.
 The standard deviations were 0.71s and 0.93s, respectively.
 %
-This is not a great result for Gear,
+This is a little bit disappointing,
 but we are happy to see that
 no-click browsing with Gear is not too slower than
 conventional methods.
 
-We have also tried using Finder.app for the same data (Figure \ref{noclickfinder}, and
+We have also tried using Finder.app for the same data (Figure \ref{noclickfinder}), and
 got similar results as App2.
 
 \comment{
@@ -773,7 +763,7 @@ no-click browsing is not supported.
 It seems to be a good idea to use Gear on more conventional visualization techniques like
 TreeView\footnote{
   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
-}, by replacing 4-way navigation to Gear.
+}, by replacing 4-way navigation with Gear.
 
 \begin{figure}[H]
 \centerline{
@@ -808,20 +798,20 @@ We could not find a research paper on
 navigation techniques based on two keys.
 Many key-based navigation techniques are found on patent database,
 but we could not find a navigation method based on two keys.
-We are almost sure that The Gear interface had never been popular before,
+We are almost sure that The Gear interface had never been popular before.
 
 \subsection{Using Gear in the wild}
 
 One of the authors have been using Gear in his living room for several years
 with a small personal computer connected to a 60-inch TV monitor.
 The database is managed on {\SB}, and
-a mouse wheel of a wireless Bluetooth is used for Gear interface.
+a mouse wheel of a wireless Bluetooth mouse is used for Gear interface.
 With Gear, the user can enjoy all available contents on the web with the mouse wheel
 without selecting the source of the movies, animes, and musics (e.g. Amazon, Netflix, etc.).
 
 We can enjoy using Gear everywhere using a stick PC and a wireless mouse,
 just like Amazon FireTV can be used for the same purpose.
-Using {\SC} is more fun for the author, since no-click browsing is more convenient than
+Using {\SC} is more fun for the author, since no-click browsing is more comfortable than
 selection-based interface on existing systems.
 
 \comment{
@@ -852,7 +842,7 @@ Using only one rotating device for data navigation is a new experience for
 all the visitors, but the hard restriction of the device seemed to have worked in this case.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
+\centerline{\includegraphics[width=84mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
 \caption{People at the right using a wheel device at an exhibition.}
 \label{exhibition}
 \end{figure}
