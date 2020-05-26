@@ -1,0 +1,16 @@
+We introduce a novel simple interaction technique for finding and browsing
+data in a huge hierarchical database using only two keys.
+
+Finding a data from a huge hierarchical database takes time
+because users should traverse the tree using a mouse or a keyboard,
+and click a ``select'' button to check the content.
+If the data was not appropriate,
+he should go to the next entry and perform the selection task again.
+
+In the past, when only a small number of ``channels'' were available
+from broadcast TV stations, users could simply rotate
+a television dial to select a channel and watch the program.
+We introduce a simple interaction technique called ``Gear'',
+with which users can select an entry from a large hierarchical database and
+browse it instantly, just like we could select a channel and enjoy a program
+using old television dials.
