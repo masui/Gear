@@ -50,20 +50,26 @@
 
 \author{\IEEEauthorblockN{Toshiyuki Masui}
   \IEEEauthorblockA{
+    % \textit{Faculty of Environment and Information Studies}\\
     \textit{Keio University} \\
-    \textit{Faculty of Environment and Information Studies}\\
-    5322 Endo, Fujisawa, Kanagawa 252-0882 Japan \\
+    % Fujisawa, Japan \\
+    5322 Endo, Fujisawa, Kanagawa 252-0882, Japan \\
     masui@pitecan.com
   }
 }
 
+\IEEEoverridecommandlockouts
+\IEEEpubid{\makebox[\columnwidth]{978-1-7281-6901-9/20/\$31.00~\copyright2020 IEEE\hfill} \hspace{\columnsep}\makebox[\columnwidth]{ }}
+
 \maketitle
+
+\IEEEpubidadjcol
 
 \begin{abstract}
 We introduce a simple interaction technique for finding and browsing
 data in a large hierarchical database using only two keys.
 
-Finding a data from a huge hierarchical database takes time
+Finding data from a huge hierarchical database takes time
 because users should traverse the tree using a mouse or a keyboard,
 and click a ``select'' button to check the content.
 If the data was not appropriate,
@@ -148,7 +154,7 @@ Two types of operations,
 {\up} (up) and {\down} (down), are used for the navigation.
 
 \begin{enumerate}
-\item A portion of hierarchical data is shown to the user as a list.
+\item A portion of hierarchical data is shown to the user.
 
 \item One element in the list is selected and highlighted.
 
@@ -171,8 +177,8 @@ As a result, all the siblings of the newly selected element
 \end{enumerate}
 
 We show how Gear works, using a hierarchical data structure of
-a shops list in a shopping mall shown in Figure \ref{fig1} as example data.
-A rectangles with a thick border represent shop categories, and
+a shop list in a shopping mall shown in Figure \ref{fig1} as example data.
+A rectangles with a thick border represents a shop category, and
 other rectangles represent individual shops.
 
 \begin{figure}[H]
@@ -276,8 +282,8 @@ only by issuing {\up} and {\down} at the right timing.
 
 To prove that Gear is useful for selecting an entry from a
 large hierarchical database,
-we have developed the ``\tsf{\SC}'' service\footnote{
-  \tsf{https://serencast.com/}
+we developed the ``\tsf{\SC}'' service\footnote{
+  \tsf{https://Serencast.com/}
 }, where users can enjoy movies, musics, and other web services
 on the browser with the Gear interface without clicking an entry.
 {\SC} is implemented in JavaScript and runs on modern web browsers.
@@ -335,7 +341,7 @@ the movie starts automatically at the right side of the screen. (Figure \ref{tif
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=65mm,bb=0 0 2400 1600]{figures/e8ae562a5a68a1955ac70b4faed9a146.png}}
-  \caption{Watching ``Breakfast at Tiffany's''.}
+  \caption{Watching ``Breakfast at Tiffany's'' on Serencast.}
   \label{tiffany}
 \end{figure}
 
@@ -343,65 +349,11 @@ the movie starts automatically at the right side of the screen. (Figure \ref{tif
 In the above example, we can select only one of the 10 movies from the movie list.
 But we can add more data by hierarchically providing contents in {\SB} pages.
 
-In one page, we can specify a hierarchical structure by using indentations.
-Figure \ref{musiclist} shows a portion of a list of music CDs and
-titles by ``Weather Report'' and ``Wes Montgomery'' are shown\footnote{
-  Weather Report is the name of a famous Jazz group, and Wes Montgomery is a famous Jazz guitarist.
-}.
-For example, 
-``Black Market'' is the first title in the album ``8:30'' of ``Weather Report'', and
-``Scarlet Woman'' follows ``Black Market''.
-``Wes Montgomery'' is listed in the same layer as ``Weather Report'', and
-the album ``Tequilla'' is listed one level below the level of the name of the artist.
-%
-The title of {\SB} page shown in Figure \ref{musiclist} is ``Music'', and 
-we can collect Movie page, Music page, and other pages by
-listing them in another page (``Top'' page) shown in Figure \ref{top}.
-
-
-\begin{figure}[H]
- \begin{minipage}{0.45\hsize}
-  \centerline{\includegraphics[width=30mm,bb=0 0 652 926]{figures/d8fe8ff8f3e1bbcb34cf51e268592f8c.png}}
-  \caption{Music list.}
-  \label{musiclist}
- \end{minipage}
- \begin{minipage}{0.45\hsize}
-  \centerline{\includegraphics[width=22mm,bb=0 0 262 515]{figures/5a644f357ba6a6b81b011e200019d736.png}}
-  \caption{Top page.}
-  \label{top}
- \end{minipage}
-\end{figure}
-
-Many {\SB} pages (Music, Movies, etc.) are listed in the Top page, and
-the pages are treated as children pages of the Top page.
-By constructing data hierarchically like this,
-We can build a very large hierarchical database for watching movies, videos, news, etc.
-A hierarchical database with
-As many as 100,000 pages can be easily constructed on {\SB}, and
-we can select one of the entries only by using {\up} and {\down} keys,
-with the Gear technique described in section \ref{navigation}.
-
-\comment{
-\begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackmarket.png}}
-\caption{Playing a music.}
-\label{blackmarket}
-\end{figure}
-
-\begin{figure}[H]
-\centerline{\includegraphics[width=80mm,bb=0 0 2400 1600]{figures/blackjack.png}}
-\caption{Reading a comic book.}
-\label{blackjack}
-\end{figure}
-}
-
 Since anybody can edit {\SB} pages and construct the hierarchical data,
 people can enjoy creating their own database by editing their {\SB} pages.
 When someone wants to advertise their works,
 he can create his {\SB} pages
 and give them to other people so that they can watch the pages.
-People can freely include other people's {\SB} pages in their own list
-and enjoy all the contents just by using Gear.
 
 \section{Discussion}
 
@@ -418,20 +370,27 @@ Gear works pretty comfortably with arrow keys on a PC.
 Various HID devices\footnote{
   \tsf{https://en.wikipedia.org/wiki/Human\_interface\_device}
 } are available on the market, and
-all such devices can be used as an input device for Gear.
+all such devices can be used as input devices for Gear.
 
 \subsubsection{2-way lever}
 
-We have also tried to use a paddle-like device for generating {\up} and {\down}.
+We have also tried to use a paddle-like device for generating {\up} and {\down} (Figure \ref{paddle}).
 Users can push the puddle to the right to generate {\up} and
 left to generate {\down}.
 Pressure sensors are installed on the puddle, and
 many {\up}'s are generated when the user pushes the puddle strongly.
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=38mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
-  \caption{Paddle device for Gear.}
-  \label{paddle}
+  \begin{minipage}{0.49\hsize}
+    \centerline{\includegraphics[width=38mm,bb=0 0 514 418]{figures/3c2de63899653056f3c6be835b9aaf43.png}}
+    \caption{Paddle device for Gear.}
+    \label{paddle}
+  \end{minipage}
+  \begin{minipage}{0.49\hsize}
+    \centerline{\includegraphics[width=38mm,bb=0 0 1324 1095]{figures/7a2c685b930cd30a267f4d564a8079be.png}}
+    \caption{Using a jog dial.}
+    \label{jog}
+  \end{minipage}
 \end{figure}
 
 Controlling the speed of the scrolling of Gear by pressure is convenient,
@@ -446,31 +405,25 @@ We tried mouse wheels first, and found that they are very suitable for Gear,
 because we are good at controlling our finger with precision.
 
 Many kinds of rotating input devices have been used for controlling TVs and VCRs so far.
-For example, ``jog dials'' have been widely used for controlling VCRs, and we tried the device for Gear.
-
+For example, ``jog dials'' have been widely used for controlling VCRs,
+and we tried the device for Gear (Figure \ref{jog}).
 
 \begin{figure}[H]
-  \begin{minipage}{0.49\hsize}
-    \centerline{\includegraphics[width=38mm,bb=0 0 1324 1095]{figures/7a2c685b930cd30a267f4d564a8079be.png}}
-    \caption{Using a jog dial.}
-    \label{jog}
-  \end{minipage}
   \begin{minipage}{0.49\hsize}
     \centerline{\includegraphics[width=38mm,bb=0 0 362 354]{figures/ff2d18e66f9a4655dbb5e22e0bb9a0ae.png}}
     \caption{A disk-based device for Gear.}
     \label{disk}
+  \end{minipage}
+  \begin{minipage}{0.49\hsize}
+    \centerline{\includegraphics[width=38mm,bb=0 0 1132 1039]{figures/6ff91502ea4f3f3c47840c887148ada9.png}}
+    \caption{Using a roller.}
+    \label{roller}
   \end{minipage}
 \end{figure}
 
 We have also tried using a cylinder for Gear.
 The rotating cylinder shown in Figure \ref{roller} is touching the mouse wheel, and
 mouse wheel events are generated as the user rotates the cylinder using his arm or hand.
-
-\begin{figure}[H]
-  \centerline{\includegraphics[width=38mm,bb=0 0 1132 1039]{figures/6ff91502ea4f3f3c47840c887148ada9.png}}
-  \caption{Using a roller.}
-  \label{roller}
-\end{figure}
 
 After trying these devices, we found that controlling rotating devices
 like jog dials and cylinders are not as easy as we expected,
@@ -495,8 +448,8 @@ from a large hierarchical database.
 Both applications behaves the same way:
 a user can set the date to a specific time to see a photo in a 15-minute monorail trip.
 %
-Using the first one (App1), a user can set the time using Gear (Figure \ref{monorailgear})
-with up/down arrow keys for {\up} and {\down}.
+Using the first one (App1), a user can set the time using Gear
+with up/down arrow keys for {\up} and {\down} (Figure \ref{monorailgear}).
 
 Using the second one, a user can set the time using the \ttt{{\textless}input type="time"{\textgreater}} tag of HTML (Figure \ref{monorailinput}).
 Users can first set the value of the ``minute'' value at the top-left using up/down cursor keys,
@@ -525,8 +478,8 @@ shown in Figure \ref{monorailtime}.
 
 \begin{figure}[H]
 \centerline{
-  \includegraphics[width=39mm,bb=0 0 960 593]{figures/6c39f199b341e30ffc28850afbd90a5a.png}
-  \includegraphics[width=39mm,bb=0 0 960 593]{figures/de3f0545e0d0d8dfb9708d2420fb5407.png}
+  \includegraphics[width=43mm,bb=0 0 960 593]{figures/6c39f199b341e30ffc28850afbd90a5a.png}
+  \includegraphics[width=43mm,bb=0 0 960 593]{figures/de3f0545e0d0d8dfb9708d2420fb5407.png}
 }
 \caption{Average search time of App1 and App2.}
 \label{monorailtime}
@@ -587,50 +540,20 @@ no-click browsing is not supported.
 It seems to be a good idea to use Gear on more conventional visualization techniques like
 TreeView\footnote{
   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
-}, by replacing 4-way navigation with Gear.
+}, where 4 keys are used for navigation.
+%
+We can also use Gear on a 1D zooming system like
+LensBar\cite{Masui:1998:LVB:647341.721215},
+where pointing devices are mainly used for navigation.
 
-\comment{
-  \begin{figure}[H]
-    \centerline{
-      \includegraphics[width=38mm,bb=0 0 188 188]{figures/treeview.png}
-    }
-    \caption{A TreeView example.}
-    \label{treeview}
-  \end{figure}
-}
-
-% LensBar\cite{Masui:1998:LVB:647341.721215}
 % is also a ZUI system for handling large hierarchical data,
 % but the same data structure used in LensBar can be used for Gear.
 % Users can use a pointing devices when it is appropriate,
 % and use two keys or a disk device when pointing devices is not available.
 
-\comment{
-\subsection{Timing control}
-
-The biggest disadvantage of Gear is that
-the behavior of Gear depends on the speed of the user's operations.
-In Figure \ref{fig4},
-if a user wanted to select \tsf{Clothing} but couldn't issue {\down}
-quickly enough, he will see Figure \ref{fig5} instead of Figure \ref{fig7}.
-This is a tradeoff between usability and simplicity, and
-the best parameter should be set based on the user and the Gear device.
-
-\subsection{Is the Gear interface new?}
-
-Since the idea of Gear interface is so simple,
-we have been wondering if the same idea existed in the past.
-%
-We could not find a research paper on 
-navigation techniques based on two keys.
-Many key-based navigation techniques are found on patent database,
-but we could not find a navigation method based on two keys.
-We are almost sure that The Gear interface had never been popular before.
-}
-
 \subsection{Using Gear in the wild}
 
-One of the authors have been using Gear in his living room for several years
+The author have been using Gear in his living room for several years
 with a small personal computer connected to a 60-inch TV monitor.
 The database is managed on {\SB}, and
 a mouse wheel of a wireless Bluetooth mouse is used for Gear interface.
@@ -642,21 +565,7 @@ just like Amazon FireTV can be used for the same purpose.
 Using {\SC} is more fun for the author, since no-click browsing is more comfortable than
 selection-based interface on existing systems.
 
-\comment{
-Large dictionary database can also be treated as a large
-hierarchical data, since the name of the entry can be treated hierarchically:
-e.g. an entry for ``\tsf{dictionary}'' can be stored under ``\tsf{d}'', ``\tsf{d/i}'', and so on.
-
-No formal evaluation have been done yet, but Gear has been used in the author's
-living room for six months, and the author's family members are using it
-everyday for watching anime films and listening to music.
-Besides PowerMate, a wireless mouse is also used,
-since we can carry it anywhere and select
-a film or a music just by rotating the mouse wheel.
-}
-
 We demonstrated Gear at an exhibition
-% held in November 2013,
 and asked more than 100 people to try it
 (Figure \ref{exhibition}).
 %
@@ -670,7 +579,7 @@ Using only one rotating device for data navigation is a new experience for
 all the visitors, but the hard restriction of the device seemed to have worked in this case.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=84mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
+\centerline{\includegraphics[width=50mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
 \caption{People at the right using a wheel device at an exhibition.}
 \label{exhibition}
 \end{figure}
@@ -681,9 +590,9 @@ all the visitors, but the hard restriction of the device seemed to have worked i
 \section{Conclusion}
 
 We have developed a new simple interaction method ``Gear'' for exploring
-large hierarchical data structure.
+a large hierarchical data structure.
 A Gear user can easily find an entry in a huge hierarchical database
-only by using a rotating input device which can be installed at
+only by using two keys or a rotating device that can be installed at
 wide range of locations where conventional keyboards and switches do not fit.
 We are hoping to install various implementations of Gear and try them at
 various places like kitchens, restrooms, etc.
