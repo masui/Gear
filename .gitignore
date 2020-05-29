@@ -14,3 +14,8 @@ javascripts/gear.js
 *.log
 *~
 *#*
+*.dvi
+*.log
+*.blg
+*.aux
+*.bbl
