@@ -66,7 +66,7 @@
 \IEEEpubidadjcol
 
 \begin{abstract}
-We introduce a simple interaction technique for finding and browsing
+We introduce a novel simple interaction technique for finding and browsing
 data in a large hierarchical database using only two keys.
 
 Finding data from a huge hierarchical database takes time
@@ -110,9 +110,10 @@ as soon as we rotated a TV channel dial or a tuning dial of the radio.
 %
 It is always convenient to view the contents of the selected item
 as soon as we find it.
-We call such viewing style as ``\textbf{\tit{no-click browsing}}''.
+We call such viewing style as ``\tit{no-click browsing}''.
 
-We can use no-click browsing on the ``column view'' mode of Finder.app on MacOS.
+We can perform no-click browsing on the ``column view'' mode of Finder.app on
+MacOS using four keys.
 In the column view mode, 
 the contents of the file is shown at the right side of the window
 as soon as we select a file in a folder (Figure \ref{noclickfinder}).
@@ -125,12 +126,12 @@ the contents is shown instantly without a confirm operation.
   \label{noclickfinder}
 \end{figure}
 
-We can use no-click browsing on old TVs and radios because the number of
-broadcast channels are limited.
+We could use no-click browsing on old TVs and radios because the number of
+broadcast channels were limited.
 Likewise, no-click browsing on Finder.app is useful
 when the number of files in a folder is not very large.
 
-No-click browsing is not popular on conventional GUI of personal computers.
+No-click browsing is not popular on modern GUI of personal computers.
 People are used to click-based browsing on web browsers and other
 information visualization systems.
 People can navigate through a huge information space by
@@ -142,7 +143,7 @@ and the contents of the items are usually not shown during the search.
 It would be better
 if we could perform the navigation task using devices that have only two keys.
 %
-We have developed a new navigation technique called ``{Gear}'' for no-click browsing,
+We have developed a new navigation technique called ``\tit{Gear}'' for no-click browsing,
 where users can explore a large hierarchical database by using only two keys.
 
 
@@ -150,7 +151,7 @@ where users can explore a large hierarchical database by using only two keys.
 \label{navigation}
 
 Interaction with Gear is based on the following simple principles.
-Two types of operations,
+Two operations,
 {\up} (up) and {\down} (down), are used for the navigation.
 
 \begin{enumerate}
@@ -182,8 +183,8 @@ A rectangles with a thick border represents a shop category, and
 other rectangles represent individual shops.
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=60mm,bb=0 0 490 490]{figures/fig1.pdf}}
-  \caption{Sample data: shop list of a shopping mall.}
+  \centerline{\includegraphics[width=70mm,bb=0 0 490 490]{figures/fig1.pdf}}
+  \caption{Sample data: shop list in a shopping mall.}
   \label{fig1}
 \end{figure}
 
@@ -257,7 +258,7 @@ shown in Figure \ref{fig5},
 and one more {\up} will set the system to the state of Figure \ref{fig4}.
 
 If the user issues {\down} in Figure \ref{fig4}, the next visible entry
-(\tsf{Clothing}) is selected (Figure \ref{fig8}), and then the state changes to Figure \ref{fig9}.
+(\tsf{Clothing}) is selected (Figure \ref{fig8}), and the state changes to Figure \ref{fig9}.
 
 \begin{figure}[H]
   \begin{minipage}{0.45\hsize}
@@ -299,7 +300,7 @@ When we list the URLs of Web pages of
 movies and musics on a {\SB} page,
 we can use {\SC} service
 for using the Gear interface to select a program from the
-list on {\SB} pages, and automatically play it on the browser.
+list on {\SB} pages and automatically play it on the browser.
 
 Figure \ref{movielist} shows the movie list defined in a {\SB} page.
 
@@ -493,24 +494,10 @@ The standard deviations were 0.71s and 0.93s, respectively.
 This is a little bit disappointing,
 but we are happy to see that
 no-click browsing with Gear is not too slower than
-conventional methods.
+conventional methods using four keys.
 %
 We have also tried using Finder.app for the same data (Figure \ref{noclickfinder}), and
-got similar results as App2.
-
-\comment{
-4-way navigation is commonly used for exploring hierarchical data structure,
-and it is familiar to computer users.
-Some mobile phones and PDAs are equipped with a jog dial with a push button,
-where the dial is used for choosing an item from the list and 
-the push button is used for fixing the selection.
-% PowerMate is equipped with a push button which can used for such purposes.
-% As far as we know,
-All the existing methods require more than 2 keys/buttons, and
-to the best of the authors' knowledge,
-Gear is the only interaction method for exploring hierarchical data structure
-with one rotating device.
-}
+got similar results.
 
 Using a conventional hierarchical menu,
 child elements are displayed automatically when their parent element is selected by a mouse.
@@ -540,7 +527,7 @@ no-click browsing is not supported.
 It seems to be a good idea to use Gear on more conventional visualization techniques like
 TreeView\footnote{
   \textsf{http://en.wikipedia.org/wiki/Tree\_view}
-}, where 4 keys are used for navigation.
+}, where four keys are used for navigation.
 %
 We can also use Gear on a 1D zooming system like
 LensBar\cite{Masui:1998:LVB:647341.721215},
@@ -569,17 +556,17 @@ We demonstrated Gear at an exhibition
 and asked more than 100 people to try it
 (Figure \ref{exhibition}).
 %
-Since the only thing a user can do with Gear was to rotate a wheel,
+Since the only thing a user could do with the Gear device was to rotate a wheel,
 users seemed to be able to understand the behavior of Gear with trials and errors.
 % 
 % a user can use the device and see what happens without thinking about
 % other interactions.
 % 
-Using only one rotating device for data navigation is a new experience for
-all the visitors, but the hard restriction of the device seemed to have worked in this case.
+Although using only one rotating device for navigation was a new experience for the visitors,
+they seemed to have felt it natural in a short while.
 
 \begin{figure}[H]
-\centerline{\includegraphics[width=50mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
+\centerline{\includegraphics[width=60mm,bb=0 0 527 329]{figures/c520d5dfbd06c532d48d324a7019b00c.png}}
 \caption{People at the right using a wheel device at an exhibition.}
 \label{exhibition}
 \end{figure}
@@ -593,7 +580,7 @@ We have developed a new simple interaction method ``Gear'' for exploring
 a large hierarchical data structure.
 A Gear user can easily find an entry in a huge hierarchical database
 only by using two keys or a rotating device that can be installed at
-wide range of locations where conventional keyboards and switches do not fit.
+wide ranges of locations where conventional devices do not fit.
 We are hoping to install various implementations of Gear and try them at
 various places like kitchens, restrooms, etc.
 
